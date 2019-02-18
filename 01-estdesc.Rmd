@@ -234,7 +234,7 @@ datos1 %>%
 
 ## Tablas de frecuencia
 
-
+Una tabla de frecuencia
 
 
 
