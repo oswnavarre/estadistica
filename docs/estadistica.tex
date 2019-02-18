@@ -734,7 +734,8 @@ En el resultado de la moda se obtienen 2 valores. Es decir que existen
 dos valores que se repiten más veces o tienen mayor frecuencia. Cuando
 se realiza investigación es común desear hacer una tabla con las
 estadísticas descriptivas de los datos. El paquete \texttt{dplyr}
-permite realizar tablas que resuman las variables de forma sencilla
+permite realizar tablas que resuman las variables de forma sencilla con
+la función \texttt{summarise()}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -756,29 +757,6 @@ permite realizar tablas que resuman las variables de forma sencilla
 ## 1     9190661
 \end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{head}\NormalTok{(datos1)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##   EXPMUESTRA BIG4  ACTIVOS  UTILIDAD      VTAS      PAT          ROA
-## 1         85    1 73315618 7522758.7 191474544 39382529  0.102607862
-## 2     100121    0 21052702 -122898.5 132585022  1577764 -0.005837658
-## 3      45178    0 10468672  536876.9  13974269  4312094  0.051284143
-## 4      51193    0  4130483  455759.4   8670153  1858990  0.110340443
-## 5      47598    0 23507401  266370.5  18555609  7137609  0.011331346
-## 6      31720    0  7220312  437718.3  16097135  4002154  0.060623176
-##             ROS         ROE
-## 1  0.0392885581  0.19101766
-## 2 -0.0009269409 -0.07789408
-## 3  0.0384189612  0.12450492
-## 4  0.0525664720  0.24516509
-## 5  0.0143552550  0.03731929
-## 6  0.0271923089  0.10937068
-\end{verbatim}
-
 \section{Tablas de frecuencia}\label{tablas-de-frecuencia}
 
 \section{Tablas de Contingencia}\label{tablas-de-contingencia}
@@ -792,82 +770,9 @@ atípicos}\label{diagramas-de-caja-y-valores-atipicos}
 
 \section{Medidas de dispersión}\label{medidas-de-dispersion}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, .}\DecValTok{1}\NormalTok{, .}\DecValTok{1}\NormalTok{))}
-\KeywordTok{plot}\NormalTok{(pressure, }\DataTypeTok{type =} \StringTok{'b'}\NormalTok{, }\DataTypeTok{pch =} \DecValTok{19}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}[h]
-
-{\centering \includegraphics[width=0.8\linewidth]{estadistica_files/figure-latex/nice-fig-1} 
-
-}
-
-\caption{Here is a nice figure!}\label{fig:nice-fig}
-\end{figure}
-
-Reference a figure by its code chunk label with the \texttt{fig:}
-prefix, e.g., see Figure \ref{fig:nice-fig}. Similarly, you can
-reference tables generated from \texttt{knitr::kable()}, e.g., see Table
-\ref{tab:nice-tab}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}
-  \KeywordTok{head}\NormalTok{(iris, }\DecValTok{20}\NormalTok{), }\DataTypeTok{caption =} \StringTok{'Here is a nice table!'}\NormalTok{,}
-  \DataTypeTok{booktabs =} \OtherTok{TRUE}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{table}[t]
-
-\caption{\label{tab:nice-tab}Here is a nice table!}
-\centering
-\begin{tabular}{rrrrl}
-\toprule
-Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
-\midrule
-5.1 & 3.5 & 1.4 & 0.2 & setosa\\
-4.9 & 3.0 & 1.4 & 0.2 & setosa\\
-4.7 & 3.2 & 1.3 & 0.2 & setosa\\
-4.6 & 3.1 & 1.5 & 0.2 & setosa\\
-5.0 & 3.6 & 1.4 & 0.2 & setosa\\
-\addlinespace
-5.4 & 3.9 & 1.7 & 0.4 & setosa\\
-4.6 & 3.4 & 1.4 & 0.3 & setosa\\
-5.0 & 3.4 & 1.5 & 0.2 & setosa\\
-4.4 & 2.9 & 1.4 & 0.2 & setosa\\
-4.9 & 3.1 & 1.5 & 0.1 & setosa\\
-\addlinespace
-5.4 & 3.7 & 1.5 & 0.2 & setosa\\
-4.8 & 3.4 & 1.6 & 0.2 & setosa\\
-4.8 & 3.0 & 1.4 & 0.1 & setosa\\
-4.3 & 3.0 & 1.1 & 0.1 & setosa\\
-5.8 & 4.0 & 1.2 & 0.2 & setosa\\
-\addlinespace
-5.7 & 4.4 & 1.5 & 0.4 & setosa\\
-5.4 & 3.9 & 1.3 & 0.4 & setosa\\
-5.1 & 3.5 & 1.4 & 0.3 & setosa\\
-5.7 & 3.8 & 1.7 & 0.3 & setosa\\
-5.1 & 3.8 & 1.5 & 0.3 & setosa\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-You can write citations, too. For example, we are using the
-\textbf{bookdown} package \citep{R-bookdown} in this sample book, which
-was built on top of R Markdown and \textbf{knitr} \citep{xie2015}.
-
 \chapter{Pruebas de Hipótesis}\label{pruebas-de-hipotesis}
 
-Here is a review of existing methods.
-
 \chapter{Regresión}\label{methods}
-
-We describe our methods in this chapter.
 
 \chapter{Análisis Factorial}\label{analisis-factorial}
 
@@ -877,8 +782,6 @@ We describe our methods in this chapter.
 Factorial}\label{evaluacion-de-analisis-factorial}
 
 \chapter{Algo de series de tiempo}\label{algo-de-series-de-tiempo}
-
-We have finished a nice book.
 
 \bibliography{book.bib,packages.bib}
 
