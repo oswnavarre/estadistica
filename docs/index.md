@@ -1,0 +1,28 @@
+--- 
+title: "Análisis Estadístico de Datos Financieros con R"
+author: "Oswaldo Navarrete Carreño"
+date: "2019-02-13"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "Libro de Análisis Estadístico de Datos Financieros con R"
+---
+
+# ¿A quién va dirigido este libro?
+
+Este libro no es una introducción a la estadística. En la presente obra se intenta hacer un repaso de algunos temas de estadistica que debe conocer quien desee hacer investigación en Contabilidad, en Auditoría o quizás en alguna ciencia social. Es probable que omita algunas cosas pero la retroalimentación de los lectores de esta obra será importante para su crecimiento.
+
+En este texto se presentan, discuten y aplican los conceptos. La presentación de los conceptos es realizada pensando en un diálogo entre el autor y el lector, sin descuidar la formalidad de las expresiones matemáticas. Para la discusión y aplicación de los conceptos, se va mostrando al usuario como implementar el análisis estadístico en R. 
+
+Para aprovechar al máximo este libro se recomienda tener a mano una computadora con R instalado, a fin de poder ir ejecutando los códigos que se muestran. Los scripts y los conjuntos de datos que se presentan pueden ser descargados de <https://github.com/oswnavarre/AEDFCR>
+
+Aunque la obra tiene un enfoque práctico, el lector no debe olvidar que aprender a usar R no implica saber estadística y que los programas estadísticos no brindan soluciones si el usuario no conoce los conceptos que deben ser aplicados. 
+
+
+## Adquiriendo R Y Rstudio
+
+R es un lenguaje y entorno para computación estadística y gráficos. En los últimos años el uso del programa estadístico R ha ido en aumento. Puede ser descargado de <https://cran.r-project.org/>. Una de las características interesantes del programa es que su capacidad puede ser incrementada con la ayuda de paquetes, en la actualidad la página oficial del programa tiene cerca de 14000 paquetes. 
+
+RStudio es una interfaz que ayuda a explotar todas las capacidades de R. Rstudio se descarga de la página <https://www.rstudio.com/>. 

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Capítulo 2 Introducción | Análisis Estadístico de Datos Financieros con R</title>
+  <meta name="description" content="Libro de Análisis Estadístico de Datos Financieros con R">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Capítulo 2 Introducción | Análisis Estadístico de Datos Financieros con R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Libro de Análisis Estadístico de Datos Financieros con R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 2 Introducción | Análisis Estadístico de Datos Financieros con R" />
+  
+  <meta name="twitter:description" content="Libro de Análisis Estadístico de Datos Financieros con R" />
+  
+
+<meta name="author" content="Oswaldo Navarrete Carreño, María Alexandra Chávez">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="pruebas-de-hipotesis.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Análisis Estadístico de Datos Financieros Con R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> ¿A quién va dirigido este libro?</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#instalando-r-y-rstudio"><i class="fa fa-check"></i><b>1.1</b> Instalando R Y Rstudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introducción</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#estadistica-descriptiva-e-inferencial"><i class="fa fa-check"></i><b>2.1</b> Estadística descriptiva e inferencial</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#tipos-de-variables"><i class="fa fa-check"></i><b>2.2</b> Tipos de Variables</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#niveles-de-medicion"><i class="fa fa-check"></i><b>2.2.1</b> Niveles de medición</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#primeros-pasos-en-r"><i class="fa fa-check"></i><b>2.3</b> Primeros pasos en R</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#medidas-de-tendencia-central"><i class="fa fa-check"></i><b>2.4</b> Medidas de Tendencia Central</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="intro.html"><a href="intro.html#media"><i class="fa fa-check"></i><b>2.4.1</b> Media</a></li>
+<li class="chapter" data-level="2.4.2" data-path="intro.html"><a href="intro.html#mediana"><i class="fa fa-check"></i><b>2.4.2</b> Mediana</a></li>
+<li class="chapter" data-level="2.4.3" data-path="intro.html"><a href="intro.html#moda"><i class="fa fa-check"></i><b>2.4.3</b> Moda</a></li>
+<li class="chapter" data-level="2.4.4" data-path="intro.html"><a href="intro.html#trabajamos-con-la-media-o-la-mediana"><i class="fa fa-check"></i><b>2.4.4</b> ¿trabajamos con la media o la mediana?</a></li>
+<li class="chapter" data-level="2.4.5" data-path="intro.html"><a href="intro.html#calculo-de-las-medidas-de-tendencia-central-en-r"><i class="fa fa-check"></i><b>2.4.5</b> Cálculo de las medidas de tendencia central en R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#tablas-de-frecuencia"><i class="fa fa-check"></i><b>2.5</b> Tablas de frecuencia</a></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>2.6</b> Tablas de Contingencia</a></li>
+<li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#graficos-y-visualizacion"><i class="fa fa-check"></i><b>2.7</b> Gráficos y Visualización</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="intro.html"><a href="intro.html#diagramas-de-caja-y-valores-atipicos"><i class="fa fa-check"></i><b>2.7.1</b> Diagramas de Caja y valores atípicos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="intro.html"><a href="intro.html#medidas-de-dispersion"><i class="fa fa-check"></i><b>2.8</b> Medidas de dispersión</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="pruebas-de-hipotesis.html"><a href="pruebas-de-hipotesis.html"><i class="fa fa-check"></i><b>3</b> Pruebas de Hipótesis</a></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Regresión</a></li>
+<li class="chapter" data-level="5" data-path="analisis-factorial.html"><a href="analisis-factorial.html"><i class="fa fa-check"></i><b>5</b> Análisis Factorial</a><ul>
+<li class="chapter" data-level="5.1" data-path="analisis-factorial.html"><a href="analisis-factorial.html#analisis-de-fiabilidad"><i class="fa fa-check"></i><b>5.1</b> Análisis de Fiabilidad</a></li>
+<li class="chapter" data-level="5.2" data-path="analisis-factorial.html"><a href="analisis-factorial.html#evaluacion-de-analisis-factorial"><i class="fa fa-check"></i><b>5.2</b> Evaluación de Análisis Factorial</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="algo-de-series-de-tiempo.html"><a href="algo-de-series-de-tiempo.html"><i class="fa fa-check"></i><b>6</b> Algo de series de tiempo</a></li>
+<li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografía</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Análisis Estadístico de Datos Financieros con R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">Capítulo 2</span> Introducción</h1>
+<p>En nuestra vida diaria es común escuchar el término <strong>estadística</strong>, las tasas de desempleo, el índice de pobreza, el saldo promedio de nuestra cuenta de ahorros, el número de goles realizados en la LigaPro durante el fin de semana, etc. Aunque no es una forma incorrecta de ver las estadísticas, en este texto se pensará a la estadística como un conjunto de métodos que se utilizan para <strong>recoger, clasificar, resumir, organizar, presentar, analizar e interpretar información numérica</strong></p>
+<p>En las empresas la estadística es usada para tomar decisiones como los productos y las cantidades que deben ser producidas, la frecuencia con la que una maquinaria debe recibir mantenimiento, el tamaño del inventario, la forma de distribuir los productos, y casi todos los aspectos relativos a sus operaciones. En el estudio de las finanzas, la contabilidad, la economía y otras ciencias sociales la motivación para usar estadística radica en entender como funcionan los sistemas económicos, financieros o contables.</p>
+<div id="estadistica-descriptiva-e-inferencial" class="section level2">
+<h2><span class="header-section-number">2.1</span> Estadística descriptiva e inferencial</h2>
+<p>El uso de la estadística puede ser de dos formas. La primera, cuando se describen y se presentan los datos. Y la segunda es cuando los datos son utilizados para hacer inferencias sobre características del ambiente o entorno de donde se seleccionaron los datos o sobre el mecanismo subyacente que generó los datos. La primera forma recibe el nombre de <strong>estadística descriptiva</strong> y la segunda se conoce como <strong>estadística inferencial</strong></p>
+<p>En la estadística descriptiva se utilizan métodos numéricos y gráficos para encontrar patrones y características de los datos a fin de resumir la información y presentarla de una forma significativa. Mientras que en la estadística inferencial se utilizan los daots para tomar decisiones, hacer estimaciones, pronósticos o predicciones y generalizaciones sobre el entorno del que fueron obtenidos los datos o el proceso que los generó.</p>
+<p>Sea en estadística descriptiva o en estadística inferencial, el primer paso siempre va a ser obtener información de alguna característica, medida o valor que nos interese de un grupo de elementos. Esa característica, medida o valor de interés para el investigador recibe el nombre de <strong>variable</strong>.</p>
+</div>
+<div id="tipos-de-variables" class="section level2">
+<h2><span class="header-section-number">2.2</span> Tipos de Variables</h2>
+<p>Muchos autores presentan algunas clasificaciones para las variables, sin embargo vamos a trabajar con una clasificación que se ajusta a las necesidades de la investigación en las áreas de nuestro interés. Según esta clasificación hay dos grandes grupos de variables: cuantitativas y cualitativas. Las primeras son las que toman valores <strong>numéricos</strong>. Mientras que las cualitativas toman valores que describen una <strong>cualidad</strong> o <strong>característica</strong>.</p>
+<p>Las variables cuantitativas se clasifican a la vez en <strong>continuas</strong> que se presentan cuando las observaciones pueden tomar cualquier valor dentro de un subconjunto de los números reales, ejemplos de variables cuantitativas continuas son: edad, altura, temperatura y peso. Las <strong>discretas</strong> son aquellas cuya característica principal es que las observaciones pueden tomar un valor basado en un recuento de un conjunto de valores enteros distintos. Ejemplos de variables cuantitativas discretas son: número de hijos, número de comprobantes de venta emitidos en un mes, número de clientes haciendo fila durante una hora en un banco.</p>
+<div id="niveles-de-medicion" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Niveles de medición</h3>
+<p>Hay cuatro niveles de medición <strong>ordinal</strong>, <strong>nominal</strong>, <strong>intervalo</strong> y de <strong>radio</strong>. En el nivel ordinal las observaciones toman valores que se ordenan o clasifican de forma lógica, por ejemplo las tallas de ropa (pequeña, media, grande, extra grande), la frecuencia con la que se hace una actividad (nunca, casi nunca, a veces, casi siempre, siempre). Por otro lado, en el nivel nominal las observaciones toman valores que no se pueden organizar de forna lógica, por ejemplo el sexo, el color de ojos, la marca de ropa favorita.</p>
+<p>En el nivel de intervalo existe diferencia significativa entre valores pero el cero no representa la ausencia de la característica un ejemplo es la temperatura medida en grados Farenheit. Finalmente en el nivel de razón el 0 es significativo y la razón entre dos números es significativa, un ejemplo es la temperatura medida en grados Kelvin.</p>
+</div>
+</div>
+<div id="primeros-pasos-en-r" class="section level2">
+<h2><span class="header-section-number">2.3</span> Primeros pasos en R</h2>
+<p>Una vez instalado R y RStudio, abrimos Rstudio para comenzar a trabajar. La ventana de RStudio se ve como se muestra en la figura <a href="intro.html#fig:rstudio1">2.1</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:rstudio1"></span>
+<img src="rstudio1.png" alt="Ventana de RStudio" width="50%" />
+<p class="caption">
+Figura 2.1: Ventana de RStudio
+</p>
+</div>
+<p>Lo primero que debemos hacer es abrir un nuevo script, un script de R es simplemente un archivo de texto que contiene (casi) todos los comandos que se escribirían en la línea de comandos de R, para esto en la barra de menú seguimos la secuencia <strong>File, New File, R Script</strong> o desde el teclado con la combinación <em>Ctrl + Shift + N</em>, en este archivo iremos escribiendo todos los comandos que vamos a trabajar. En la figura <a href="intro.html#fig:rstudio2">2.2</a> se aprecia un script abierto.</p>
+<div class="figure" style="text-align: center"><span id="fig:rstudio2"></span>
+<img src="rstudio2.png" alt="Ventana de RStudio con Script" width="50%" />
+<p class="caption">
+Figura 2.2: Ventana de RStudio con Script
+</p>
+</div>
+<p>Para empezar a aprender en el script vamos a escribir <code>3+2</code> y ejecutamos esto con la combinación de teclas <strong>Ctrl + Enter</strong> el resultado obviamente es 5. Ahora ingresaremos un conjunto de valores y los almacenaremos en una variable, para almacenar algo en una variable se puede usar <code>&lt;-</code> o <code>=</code>. En la variable <code>x</code> almacenaremos un conjunto de 8 observaciones escribiendo el código:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">10</span>) </code></pre></div>
+<p>Recuerde que este código se ejecuta con la combinación de teclas <strong>Ctrl + Enter</strong>. Para poder realizar análisis estadístico, es necesario cargar nuestros datos en el programa. R acepta algunos formatos de archivos, como por ejemplo archivos de Excel, archivos de valores separados por coma, archivos de texto e inclusive archivos de otros programas como SPSS. Lo más usual es trabajar con archvo de valores separados por coma es decir con extensión <code>.csv</code>, estos archivos <code>csv</code> se generan cuando el investigador recolecta la información, la almacena en un archivo de Excel o alguna otra hoja de cálculo y la guarda como un archivo de valores separados por coma.</p>
+<p>Para trabajar de forma eficiente con R, se recomienda comenzar por fijar un directorio de trabajo donde deben estar guardados nuestros archivos en el formato que sea de nuestra preferencia. Una forma de hacerlo es desde la barra de menú <strong>Session, Set Working Directory, Choose Directory</strong> o desde el teclado con la combinación <strong>Ctrl+Shift+H</strong>, o con la función <code>setwd(&quot;rutadelarchivo&quot;)</code>.</p>
+<p>En este primer ejercicio trabajaremos con el archivo <em>cap2_big4_size.csv</em>. Los datos serán guardados en una variable llamada <code>datos1</code>, usaremos la función <code>read.csv()</code> para leer los datos. La función <code>read.csv()</code> recibe las instrucciones <code>read.csv(&quot;archivo&quot;, header=T, sep=&quot;;&quot;,dec=&quot;,&quot;)</code>. La opción <code>&quot;archivo&quot;</code> indica el nombre del archivo, <code>header=T</code> o <code>header=F</code> permite indicar si las columnas tienen un encabezado que las identifique, <code>sep=&quot;;&quot;</code> sirve para indicar cual es el separador presente en nuestro archivo en algunas ocasiones ocurre que un archivo de valores separado por coma en realidad tiene sus valores separados por un punto y cona esto generalmente ocurre cuando el sistema utiliza, como en este caso, la coma como separador decimal y finalmente la opción <code>dec=&quot;,&quot;</code> sirve para indicar que el separador decimal es la coma.</p>
+<p>Una característica de R es que permite acceder a la ayuda sobre las funciones, esto se hace escribiendo <code>?funcion</code> por ejemplo si queremos la ayuda de la función <code>read.csv</code> simplemente escribimos <code>?read.csv</code> en el panel ubicado en la parte inferior derecha se desplegará la ayuda de la función. Con la particularidad de que la ayuda se despliega en inglés lo que no debería ser problema para un buen investigador.</p>
+<p>El archivo que vamos a analizar contiene los activos, la utilidad, las ventas y el patrimonio de una muestra de empresas tomada de los registros de la Superintendencia de Compañías. Además en el conjunto de datos se indica si la empresa ha sido auditada por una de las 4 firmas auditoras consideradas las más grandes o también llamadas <em><em>Big Four</em></em>. En la <a href="intro.html#tab:tabla1">2.1</a> se muestran las 10 primeras observaciones de nuestro conjunto de datos.</p>
+<table>
+<caption><span id="tab:tabla1">Tabla 2.1: </span>Primeras 10 observaciones</caption>
+<thead>
+<tr class="header">
+<th align="right">EXPMUESTRA</th>
+<th align="right">BIG4</th>
+<th align="right">ACTIVOS</th>
+<th align="right">UTILIDAD</th>
+<th align="right">VTAS</th>
+<th align="right">PAT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">85</td>
+<td align="right">1</td>
+<td align="right">73315618</td>
+<td align="right">7522758.7</td>
+<td align="right">191474544</td>
+<td align="right">39382529</td>
+</tr>
+<tr class="even">
+<td align="right">100121</td>
+<td align="right">0</td>
+<td align="right">21052702</td>
+<td align="right">-122898.5</td>
+<td align="right">132585022</td>
+<td align="right">1577764</td>
+</tr>
+<tr class="odd">
+<td align="right">45178</td>
+<td align="right">0</td>
+<td align="right">10468672</td>
+<td align="right">536876.9</td>
+<td align="right">13974269</td>
+<td align="right">4312094</td>
+</tr>
+<tr class="even">
+<td align="right">51193</td>
+<td align="right">0</td>
+<td align="right">4130483</td>
+<td align="right">455759.4</td>
+<td align="right">8670153</td>
+<td align="right">1858990</td>
+</tr>
+<tr class="odd">
+<td align="right">47598</td>
+<td align="right">0</td>
+<td align="right">23507401</td>
+<td align="right">266370.5</td>
+<td align="right">18555609</td>
+<td align="right">7137609</td>
+</tr>
+<tr class="even">
+<td align="right">31720</td>
+<td align="right">0</td>
+<td align="right">7220312</td>
+<td align="right">437718.3</td>
+<td align="right">16097135</td>
+<td align="right">4002154</td>
+</tr>
+<tr class="odd">
+<td align="right">46189</td>
+<td align="right">0</td>
+<td align="right">14526822</td>
+<td align="right">1206400.9</td>
+<td align="right">12281188</td>
+<td align="right">5015806</td>
+</tr>
+<tr class="even">
+<td align="right">9731</td>
+<td align="right">0</td>
+<td align="right">8539445</td>
+<td align="right">367848.1</td>
+<td align="right">10844918</td>
+<td align="right">2232339</td>
+</tr>
+<tr class="odd">
+<td align="right">4619</td>
+<td align="right">0</td>
+<td align="right">2605059</td>
+<td align="right">-22438.4</td>
+<td align="right">6244589</td>
+<td align="right">1366610</td>
+</tr>
+<tr class="even">
+<td align="right">102434</td>
+<td align="right">0</td>
+<td align="right">23975816</td>
+<td align="right">790265.6</td>
+<td align="right">40612649</td>
+<td align="right">8754369</td>
+</tr>
+</tbody>
+</table>
+<p>Sin más preámbulos, empecemos a trabajar. Recapitulando, primero configuraremos el directorio de trabajo, luego cargaremos el archivo indicado. Finalmente usamos la función <code>str()</code>, la que nos permite obtener la descripción de la estructura de los datos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/onava_000/OneDrive/libro_mc/estadistica&quot;</span>)
+datos1 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;cap2_big4_size.csv&quot;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>,<span class="dt">sep=</span><span class="st">&quot;;&quot;</span>,<span class="dt">dec=</span><span class="st">&quot;,&quot;</span>)
+<span class="kw">str</span>(datos1)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    2256 obs. of  6 variables:
+##  $ EXPMUESTRA: int  85 100121 45178 51193 47598 31720 46189 9731 4619 102434 ...
+##  $ BIG4      : int  1 0 0 0 0 0 0 0 0 0 ...
+##  $ ACTIVOS   : num  73315618 21052702 10468672 4130483 23507401 ...
+##  $ UTILIDAD  : num  7522759 -122898 536877 455759 266371 ...
+##  $ VTAS      : num  1.91e+08 1.33e+08 1.40e+07 8.67e+06 1.86e+07 ...
+##  $ PAT       : num  39382529 1577764 4312094 1858990 7137609 ...</code></pre>
+<p>En la primera línea de los resultados se observa la salida <code>'data.frame':    2256 obs. of  6 variables:</code> esto nos indica que nuestro <em>marco de datos (data frame)</em> tiene 2256 observaciones y 6 variables. Con respecto a las variables tenemos 6 variables que a continuación se describen y se explican los resultados obtenidos con la función.</p>
+<ul>
+<li><code>EXPMUESTRA</code>: esta variable es de tipo entera (INT) y almacena el expediente de la empresa. Aunque la variable tiene valores numéricos, no es una variable cuantitativa sino cualitativa “Expediente de la Empresa”</li>
+<li><code>BIG4</code>: esta variable es de tipo entera, y ha sido codificada con 1 si la empresa fue auditada por una Big Four y 0 si no. Podemos cambiar esta codificación por “Sí” y “No” en lugar de “1” y “0”, más adelante aprendemos como hacerlo. Al igual que la variable anterior aunque tiene valores numéricos, no es una variable cuantitativa sino cualitativa, dejamos al lector la reflexión en este particular.</li>
+<li><code>ACTIVOS</code>: contiene el valor de los activos totales de la empresa. Es de tipo <code>num</code> porque permite el uso de decimales. Corresponde a una variable cuantitativa continua.</li>
+<li><code>UTILIDAD</code>: contiene el valor de la utildad de la empresa.</li>
+<li><code>VTAS</code>: contiene el valor de las ventas de la empresa.</li>
+<li><code>PAT</code>: contiene el valor del patrimonio de la empresa.</li>
+</ul>
+<p>Los paquetes de R son colecciones de funciones y conjuntos de datos desarrollados por la comunidad de usuarios, los paquetes aumentan el poder de R mejorando las funcionalidades existentes en la base de R, o añadiendo nuevas funcionalidades. En este texto trabajaremos con algunos de los paquetes desarrollados por el equipo de RStudio, una descripción detallada de estos paquetes puede ser encontrada en <a href="https://www.rstudio.com/products/rpackages/" class="uri">https://www.rstudio.com/products/rpackages/</a>. . Comenzaremos por instalar el paquete <code>dplyr</code>, este paquete tiene funciones que permiten realizar facilmente manipulaciones de datos. Para instalar un paquete se utiliza la función <code>install.packages(&quot;paquete&quot;)</code>. Una vez instalado el paquete, se carga el paquete utilizando la función <code>library(paquete)</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</code></pre></div>
+<p>La primera manipulación que vamos a realizar es la creación de nuevas variables con el paquete <code>dplyr</code>. En nuestros datos cargados en el conjunto de datos <code>datos1</code> vamos a crear tres variables nuevas <strong>ROA</strong>, <strong>ROS</strong> y <strong>ROE</strong>. Recordemos que el <strong>Retorno sobre activos</strong> ( <strong>ROA</strong>, Return on Assets) se lo calcula como la razón entre la utilidad y los activos como se ve en la ecuación <a href="intro.html#eq:roa">(2.1)</a>. En las ecuaciones <a href="intro.html#eq:ros">(2.2)</a> y <a href="intro.html#eq:roe">(2.3)</a> se dan las expresiones para calcular el <strong>Retorno sobre ventas</strong> ( <strong>ROS</strong> Return on Sales) y el <strong>Retorno sobre el Patrimonio</strong> ( <strong>ROE</strong> Return on Equity)</p>
+<span class="math display" id="eq:roa">\[\begin{equation} 
+  ROA = \dfrac{Utilidad}{Activos}
+  \tag{2.1}
+\end{equation}\]</span>
+<span class="math display" id="eq:ros">\[\begin{equation} 
+  ROS = \dfrac{Utilidad}{Ventas}
+  \tag{2.2}
+\end{equation}\]</span>
+<span class="math display" id="eq:roe">\[\begin{equation} 
+  ROE = \dfrac{Utilidad}{Patrimonio}
+  \tag{2.3}
+\end{equation}\]</span>
+<p>Una característica importante de <code>dplyr</code> es el uso del operador <code>%&gt;%</code>. Cada transformación u operación en los datos se separa por el operador <code>%&gt;%</code>. La primera función de <code>dplyr</code> que usaremos es <code>mutate()</code>, básicamente esta función permite crear nuevas variables.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+datos1 &lt;-<span class="st"> </span>datos1 <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(
+    <span class="dt">ROA =</span> UTILIDAD<span class="op">/</span>ACTIVOS,
+    <span class="dt">ROS =</span> UTILIDAD<span class="op">/</span>VTAS,
+    <span class="dt">ROE =</span> UTILIDAD<span class="op">/</span>PAT
+  )
+<span class="kw">str</span>(datos1)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    2256 obs. of  9 variables:
+##  $ EXPMUESTRA: int  85 100121 45178 51193 47598 31720 46189 9731 4619 102434 ...
+##  $ BIG4      : int  1 0 0 0 0 0 0 0 0 0 ...
+##  $ ACTIVOS   : num  73315618 21052702 10468672 4130483 23507401 ...
+##  $ UTILIDAD  : num  7522759 -122898 536877 455759 266371 ...
+##  $ VTAS      : num  1.91e+08 1.33e+08 1.40e+07 8.67e+06 1.86e+07 ...
+##  $ PAT       : num  39382529 1577764 4312094 1858990 7137609 ...
+##  $ ROA       : num  0.10261 -0.00584 0.05128 0.11034 0.01133 ...
+##  $ ROS       : num  0.039289 -0.000927 0.038419 0.052566 0.014355 ...
+##  $ ROE       : num  0.191 -0.0779 0.1245 0.2452 0.0373 ...</code></pre>
+<p>En las últimas líneas de la salida de R, se observa que ahora en el conjunto de datos existen ahora tres nuevas variables. En la próxima sección seguiremos trabajando con el mismo conjunto de datos.</p>
+</div>
+<div id="medidas-de-tendencia-central" class="section level2">
+<h2><span class="header-section-number">2.4</span> Medidas de Tendencia Central</h2>
+<p>Una medida de tendencia central, es una medida de resumen que intenta describir un conjunto completo de datos con un único valor que representa la mitad o centro de la distribución.</p>
+<p>Las tres medidas de tendencia central principales son la media la mediana y la moda.</p>
+<div id="media" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Media</h3>
+<p>La media se la calcula como la suma de todos los valores de una variable dividido para el número de valores. En la ecuación <a href="intro.html#eq:mean">(2.4)</a> se muestra la fórmula para calcular la media.</p>
+<span class="math display" id="eq:mean">\[\begin{equation} 
+  \bar{x} = \dfrac{\sum_{i=1}^{n}x_i}{n}
+  \tag{2.4}
+\end{equation}\]</span>
+<p>La media tiene algunas propiedades que a continuación se detallan:</p>
+<ul>
+<li>Si a cada valor <span class="math inline">\(x_i\)</span> de una distribución con media <span class="math inline">\(\bar{x}\)</span> se le suma un valor constante <span class="math inline">\(k \in \mathbb{R}\)</span>, la nueva media es <span class="math inline">\(\bar{x}+k\)</span></li>
+<li>Si a cada valor <span class="math inline">\(x_i\)</span> de una distribución con media <span class="math inline">\(\bar{x}\)</span> se lo multiplica por un valor constante <span class="math inline">\(k \in \mathbb{R}\)</span>, la nueva media es <span class="math inline">\(k\bar{x}\)</span></li>
+<li>Si a cada valor <span class="math inline">\(x_i\)</span> de una distribución con media <span class="math inline">\(\bar{x}\)</span> se lo divide por un valor constante <span class="math inline">\(k \neq 0 \in \mathbb{R}\)</span>, la nueva media es <span class="math inline">\(\frac{\bar{x}}{k}\)</span></li>
+</ul>
+<p>Las ventajas de usar la media son:</p>
+<ul>
+<li>Es fácil de entender y calcular</li>
+<li>No se ve afectada mayormente por fluctuaciones productos del muestreo</li>
+<li>Toma en cuenta todos los valores de la variable</li>
+</ul>
+<p>Las desventajas de usar la media son:</p>
+<ul>
+<li>Es muy sensible a la presencia de pocos valores muy pequeños o muy grandes, dicho de otra forma la media es sensible a valores aberrantes.</li>
+<li>No se puede calcular por inspección.</li>
+</ul>
+</div>
+<div id="mediana" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> Mediana</h3>
+<p>La mediana es el valor central en una distribución cuando se ordenan los valores de forma ascendente o descendente. El valor de la mediana depende entonces del número de valores presentes en la variable. Definamos como <span class="math inline">\(\left\{ X \right \}\)</span> al conjunto de datos ordenado, y sea <span class="math inline">\(\left \{ X \right \}_i\)</span> el valor i-ésimo del conjunto <span class="math inline">\(\left \{ X \right \}\)</span> entonces la mediana <span class="math inline">\(Me\)</span> se define como</p>
+<span class="math display" id="eq:median">\[\begin{equation}
+Me = \begin{cases} 
+      \left \{ X \right\}_{\frac{n+1}{2}} &amp; ; n \quad \textrm{impar}  \\
+      \dfrac{\left \{ X  \right \}_{\frac{n}{2}} + \left \{ X  \right \}_{\frac{n}{2}+1} }{2} &amp; ; n \quad \textrm{par}
+   \end{cases}
+   \tag{2.5}
+\end{equation}\]</span>
+<p>Lo escrito en la ecuación <a href="intro.html#eq:median">(2.5)</a> se puede expresar de la siguiente forma: si el número de datos es impar, la mediana es igual al valor central de la distribución y si el número de datos es par, la mediana es igual al promedio de los valores centrales de la distribución.</p>
+<p>Las ventajas de usar la mediana son:</p>
+<ul>
+<li>Es fácil de calcular y comprender</li>
+<li>No se ve afectada por valores extremos</li>
+<li>Se puede determinar para escalas ordinales, nominales, de razón e intervalo</li>
+</ul>
+<p>Las desventajas de usar la mediana son:</p>
+<ul>
+<li>No toma en cuenta el valor exacto de cada dato y por tanto no usa toda la información disponible.</li>
+<li>Si se agrupan los valores de dos grupos, la mediana de cada grupo no puede ser expresada en términos del grupo agrupado.</li>
+</ul>
+</div>
+<div id="moda" class="section level3">
+<h3><span class="header-section-number">2.4.3</span> Moda</h3>
+<p>La moda es definida como el valor que ocurre con mayor frecuencia en los datos. Algunos conjuntos de datos no tienen moda porque cada valor ocurre solo una vez. Hay conjuntos de datos que tienen más de una moda, si tienen 2 modas reciben el nombre de bimodal y se acostumbra que si tiene más de 3 modas se la llama multimodal.</p>
+<p>Las ventajas de usar la moda son:</p>
+<ul>
+<li>Puede ser usada para datos con escala nominal</li>
+<li>Es sencilla de calcular</li>
+</ul>
+<p>La desventaja de la moda es:</p>
+<ul>
+<li>No es usada en análisis estadístico debido a que no está definida algebraicamente y la fluctuación en la frecuencia de las observaciones es mayor cuando el tamaño de la muestra es pequeña.</li>
+</ul>
+</div>
+<div id="trabajamos-con-la-media-o-la-mediana" class="section level3">
+<h3><span class="header-section-number">2.4.4</span> ¿trabajamos con la media o la mediana?</h3>
+<p>La media es considerada generalmente la mejor medida de tendencia central y la más usada. Sin embargo, hay situaciones donde las otras medidas de tendencia central son preferidas.</p>
+<p>La mediana es preferida a la media cuando:</p>
+<ul>
+<li>Hay valores extremos en la distribución</li>
+<li>Hay valores indeterminados</li>
+<li>Los datos son medidos en una escala ordinal</li>
+</ul>
+<p>La moda es la medida preferida cuando los datos son medidos en una escala nominal.</p>
+</div>
+<div id="calculo-de-las-medidas-de-tendencia-central-en-r" class="section level3">
+<h3><span class="header-section-number">2.4.5</span> Cálculo de las medidas de tendencia central en R</h3>
+<p>Para calcular la media y la mediana se utilizan las funciones <code>mean()</code> y <code>median()</code> respectivamente, estas dos funciones vienen cargadas con los paquetes base de R. Para calcular la moda usaremos la función <code>Mode()</code> del paquete <code>DescTools</code>, recuerde que para instalar un paquete se utiliza la función <code>install.packages()</code>.</p>
+<p>En el siguiente ejemplo se obtiene la media de los activos de las empresas. como solamente necesitamos una variable del conjunto de datos usamos el operador <code>$</code>, el funcionamiento de este operador es <code>data.frame$variable</code> es decir indicamos el conjunto de datos del que llamamos la variable y después del operador <code>$</code> indicamos la variable que vamos a trabajar.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(datos1<span class="op">$</span>ACTIVOS)</code></pre></div>
+<pre><code>## [1] 44064165</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(datos1<span class="op">$</span>ACTIVOS)</code></pre></div>
+<pre><code>## [1] 10326361</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(DescTools)
+<span class="kw">Mode</span>(datos1<span class="op">$</span>ACTIVOS)</code></pre></div>
+<pre><code>## [1]  55996406 628446149</code></pre>
+<p>En el resultado de la moda se obtienen 2 valores. Es decir que existen dos valores que se repiten más veces o tienen mayor frecuencia. Cuando se realiza investigación es común desear hacer una tabla con las estadísticas descriptivas de los datos. El paquete <code>dplyr</code> permite realizar tablas que resuman las variables de forma sencilla</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datos1 <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">PROM.ACTIVOS =</span> <span class="kw">mean</span>(ACTIVOS),
+            <span class="dt">PROM.UTILIDAD =</span> <span class="kw">mean</span>(UTILIDAD),
+            <span class="dt">PROM.VTAS =</span> <span class="kw">mean</span>(VTAS),
+            <span class="dt">MEDIAN.ACTIVOS =</span> <span class="kw">median</span>(ACTIVOS),
+            <span class="dt">MEDIAN.UTILIDAD =</span> <span class="kw">median</span>(UTILIDAD),
+            <span class="dt">MEDIAN.VTAS =</span> <span class="kw">median</span>(VTAS)
+            )</code></pre></div>
+<pre><code>##   PROM.ACTIVOS PROM.UTILIDAD PROM.VTAS MEDIAN.ACTIVOS MEDIAN.UTILIDAD
+## 1     44064165       4250664  50555030       10326361        350642.1
+##   MEDIAN.VTAS
+## 1     9190661</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(datos1)</code></pre></div>
+<pre><code>##   EXPMUESTRA BIG4  ACTIVOS  UTILIDAD      VTAS      PAT          ROA
+## 1         85    1 73315618 7522758.7 191474544 39382529  0.102607862
+## 2     100121    0 21052702 -122898.5 132585022  1577764 -0.005837658
+## 3      45178    0 10468672  536876.9  13974269  4312094  0.051284143
+## 4      51193    0  4130483  455759.4   8670153  1858990  0.110340443
+## 5      47598    0 23507401  266370.5  18555609  7137609  0.011331346
+## 6      31720    0  7220312  437718.3  16097135  4002154  0.060623176
+##             ROS         ROE
+## 1  0.0392885581  0.19101766
+## 2 -0.0009269409 -0.07789408
+## 3  0.0384189612  0.12450492
+## 4  0.0525664720  0.24516509
+## 5  0.0143552550  0.03731929
+## 6  0.0271923089  0.10937068</code></pre>
+</div>
+</div>
+<div id="tablas-de-frecuencia" class="section level2">
+<h2><span class="header-section-number">2.5</span> Tablas de frecuencia</h2>
+</div>
+<div id="tablas-de-contingencia" class="section level2">
+<h2><span class="header-section-number">2.6</span> Tablas de Contingencia</h2>
+</div>
+<div id="graficos-y-visualizacion" class="section level2">
+<h2><span class="header-section-number">2.7</span> Gráficos y Visualización</h2>
+<div id="diagramas-de-caja-y-valores-atipicos" class="section level3">
+<h3><span class="header-section-number">2.7.1</span> Diagramas de Caja y valores atípicos</h3>
+<div id="intervalos-de-confianza" class="section level4">
+<h4><span class="header-section-number">2.7.1.1</span> Intervalos de Confianza</h4>
+</div>
+</div>
+</div>
+<div id="medidas-de-dispersion" class="section level2">
+<h2><span class="header-section-number">2.8</span> Medidas de dispersión</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>))
+<span class="kw">plot</span>(pressure, <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:nice-fig"></span>
+<img src="estadistica_files/figure-html/nice-fig-1.png" alt="Here is a nice figure!" width="80%" />
+<p class="caption">
+Figura 2.3: Here is a nice figure!
+</p>
+</div>
+<p>Reference a figure by its code chunk label with the <code>fig:</code> prefix, e.g., see Figure <a href="intro.html#fig:nice-fig">2.3</a>. Similarly, you can reference tables generated from <code>knitr::kable()</code>, e.g., see Table <a href="intro.html#tab:nice-tab">2.2</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(
+  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,
+  <span class="dt">booktabs =</span> <span class="ot">TRUE</span>
+)</code></pre></div>
+<table>
+<caption><span id="tab:nice-tab">Tabla 2.2: </span>Here is a nice table!</caption>
+<thead>
+<tr class="header">
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+<th align="right">Petal.Length</th>
+<th align="right">Petal.Width</th>
+<th align="left">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.9</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.7</td>
+<td align="right">3.2</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.6</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.0</td>
+<td align="right">3.6</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.7</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.6</td>
+<td align="right">3.4</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.0</td>
+<td align="right">3.4</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.4</td>
+<td align="right">2.9</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.9</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.4</td>
+<td align="right">3.7</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.8</td>
+<td align="right">3.4</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.8</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.3</td>
+<td align="right">3.0</td>
+<td align="right">1.1</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.8</td>
+<td align="right">4.0</td>
+<td align="right">1.2</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.7</td>
+<td align="right">4.4</td>
+<td align="right">1.5</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.3</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.7</td>
+<td align="right">3.8</td>
+<td align="right">1.7</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.1</td>
+<td align="right">3.8</td>
+<td align="right">1.5</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+</tbody>
+</table>
+<p>You can write citations, too. For example, we are using the <strong>bookdown</strong> package <span class="citation">(Xie <a href="#ref-R-bookdown">2018</a>)</span> in this sample book, which was built on top of R Markdown and <strong>knitr</strong> <span class="citation">(Xie <a href="#ref-xie2015">2015</a>)</span>.</p>
+
+</div>
+</div>
+<h3>Bibliografía</h3>
+<div id="refs" class="references">
+<div id="ref-R-bookdown">
+<p>Xie, Yihui. 2018. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown" class="uri">https://CRAN.R-project.org/package=bookdown</a>.</p>
+</div>
+<div id="ref-xie2015">
+<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="pruebas-de-hipotesis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["estadistica.pdf", "estadistica.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}\IeC {\textquestiondown }A qui\IeC {\'e}n va dirigido este libro?}{5}{chapter.1}
+\contentsline {section}{\numberline {1.1}Adquiriendo R Y Rstudio}{5}{section.1.1}
+\contentsline {chapter}{\numberline {2}Introducci\IeC {\'o}n}{7}{chapter.2}
+\contentsline {section}{\numberline {2.1}EStad\IeC {\'\i }stica descriptiva e inferencial}{7}{section.2.1}
+\contentsline {section}{\numberline {2.2}Tipos de Variables}{8}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Variables Cuantitativas}{8}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Variables Cualitativas}{8}{subsection.2.2.2}
+\contentsline {section}{\numberline {2.3}Medidas de Tendencia Central}{8}{section.2.3}
+\contentsline {section}{\numberline {2.4}Tablas de frecuencia}{8}{section.2.4}
+\contentsline {section}{\numberline {2.5}Gr\IeC {\'a}ficos y Visualizaci\IeC {\'o}n}{8}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Diagramas de Caja y valores at\IeC {\'\i }picos}{8}{subsection.2.5.1}
+\contentsline {subsubsection}{\numberline {2.5.1.1}Intervalos de Confianza}{8}{subsubsection.2.5.1.1}
+\contentsline {section}{\numberline {2.6}Tablas de Contingencia}{8}{section.2.6}
+\contentsline {section}{\numberline {2.7}Medidas de dispersi\IeC {\'o}n}{8}{section.2.7}
+\contentsline {chapter}{\numberline {3}Literatura}{11}{chapter.3}
+\contentsline {chapter}{\numberline {4}M\IeC {\'e}todos}{13}{chapter.4}
+\contentsline {chapter}{\numberline {5}Applications}{15}{chapter.5}
+\contentsline {section}{\numberline {5.1}Example one}{15}{section.5.1}
+\contentsline {section}{\numberline {5.2}Example two}{15}{section.5.2}
+\contentsline {chapter}{\numberline {6}Final Words}{17}{chapter.6}
