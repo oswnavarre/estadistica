@@ -142,7 +142,7 @@ La media tiene algunas propiedades que a continuación se detallan:
 
 * Si a cada valor $x_i$ de una distribución con media $\bar{x}$ se le suma un valor constante $k \in \mathbb{R}$, la nueva media es $\bar{x}+k$
 * Si a cada valor $x_i$ de una distribución con media $\bar{x}$ se lo multiplica por un valor constante $k \in \mathbb{R}$, la nueva media es $k\bar{x}$
-* Si a cada valor $x_i$ de una distribución con media $\bar{x}$ se lo divide por un valor constante $k \neq 0 \in \mathbb{R}$, la nueva media es $\frac{\bar{x}}{k}$
+* Si a cada valor $x_i$ de una distribución con media $\bar{x}$ se lo divide por un valor constante $k \neq 0 \in \mathbb{R}$, la nueva media es $\dfrac{\bar{x}}{k}$
 
 Las ventajas de usar la media son:
 
