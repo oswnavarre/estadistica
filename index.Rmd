@@ -14,6 +14,7 @@ description: "Libro de Análisis Estadístico de Datos Financieros con R"
 
 ```{r global_options, include=FALSE}
 knitr::opts_chunk$set(fig.pos = 'h')
+library(kableExtra)
 library(tidyverse)
 ```
 

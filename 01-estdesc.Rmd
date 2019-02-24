@@ -24,7 +24,7 @@ Hay cuatro niveles de medición **ordinal**,  **nominal**, **intervalo** y de **
 
 En el nivel de intervalo existe diferencia significativa entre valores pero el cero no representa la ausencia de la característica un ejemplo es la temperatura medida en grados Farenheit. Finalmente en el nivel de razón el 0 es significativo y la razón entre dos números es significativa, un ejemplo es la temperatura medida en grados Kelvin.
 
-## Primeros pasos en R
+## Primeros pasos en R {#primerR}
 
 Una vez instalado R y RStudio, abrimos Rstudio para comenzar a trabajar. La ventana de RStudio se ve como se muestra en la figura \@ref(fig:rstudio1).
 
@@ -236,9 +236,99 @@ datos1 %>%
 
 Una tabla de frecuencia es una forma de describir los datos de forma resumida, las tablas de frecuencia pueden construirse para variables cualitativas y para variables cuantitativas. 
 
-Para las variables cualitativas una tabla de frecuencia basicámente tiene tres columnas: "Categoría", "Frecuencia", "Porcentaje".  
+### Variables Cualitativas
+
+Para las variables cualitativas una tabla de frecuencia basicámente tiene tres columnas: "Categoría", "Frecuencia", "Porcentaje". Para aprender a realizar tablas de frecuencia para variables cualitativas, trabajaremos con el conjunto de datos `audit_bolsa`, Este conjunto de datos tiene información sobre las empresas que cotizan en la Bolsa de Valores de Guayaquil, se elaborará una tabla de frecuencias de las firmas auditoras que han trabajado para estas empresas. La variable en la que se almacena esta información es la variable `FIRMA`. La tabla de frecuencia se elabora usando el paquete  `dplyr`. El comando `mutate( )` sirve para crear nuevas columnas, en este caso se crea la columna porcentaje. 
 
 
+```{r , echo=TRUE,eval=FALSE}
+setwd("C:/Users/onava_000/OneDrive/libro_mc/estadistica")
+audit_bolsa <- read.csv("audit_bolsa.csv",header=TRUE,sep=";",dec=",")
+
+tabla_firma <- audit_bolsa %>%
+  group_by(FIRMA) %>%
+  summarise(Frecuencia=n()) %>%
+  mutate(Porcentaje = round(100*Frecuencia/sum(Frecuencia),2)
+         ) %>%
+  arrange(desc(Porcentaje))
+ print(tabla_firma)
+```
+
+```{r , echo=FALSE,eval=TRUE}
+setwd("C:/Users/onava_000/OneDrive/libro_mc/estadistica")
+audit_bolsa <- read.csv("audit_bolsa.csv",header=TRUE,sep=";",dec=",")
+
+tabla_firma <- audit_bolsa %>%
+  group_by(FIRMA) %>%
+  summarise(Frecuencia=n()) %>%
+  mutate(Porcentaje = round(100*Frecuencia/sum(Frecuencia),2)
+         ) %>%
+  arrange(desc(Porcentaje))
+ print(tabla_firma)
+```
+
+```{r tabla2, echo=FALSE}
+knitr::kable(
+  tabla_firma, caption = 'Tabla de Frecuencia de Firmas Auditoras',
+  booktabs = TRUE) 
+```
+
+En la tabla \@ref(tab:tabla2) se aprecia el resultado obtenido y formateado para ser publicado. El resultado de R, puede ser exportado a un archivo Excel con la finalidad de luego tomar esa tabla y llevarla a un documento donde se presentará toda la información analizada. Para exportar la información a un archivo excel se puede trabajar con el paquete `xlsx`. Para exportar los resultados a Excel se puede proceder de la siguiente forma.
+
+1. Cargar el paquete `xlsx`.
+2. Convertir el resultado a un `data frame` utilizando la función `as.data.frame()`
+3. Exportar el resultado con la función `write.xlsx()` cuya estructura básica es `write.xlsx(datos, "archivo.xlsx")`, si se desea consultar más detalles de la función se puede escribir `?write.xlsx`. 
+
+El resultado de esta operación será un archivo de excel guardado en nuestro directorio de trabajo.
+
+```{r, echo=TRUE, eval=TRUE}
+library(xlsx)
+tabla_firma = as.data.frame(tabla_firma)
+write.xlsx(tabla_firma, "tablas.xlsx", sheetName = "firmas", row.names = FALSE)
+
+```
+
+La opción `sheetname = "firmas"` crea dentro del libro `tablas.xlsx` una hoja de cálculo llamada `firmas`. La opción `row.names = FALSE` hace que en el archivo final no se graben los números de cada fila. 
+ 
+Nota: es importante tener fijado el directorio de trabajo, como se explicó en la sección \@ref(primerR). 
+
+### Variables Cuantitativas
+
+Una tabla de frecuencias para variables cualitativas tiene 6 columnas:
+
+1. Clase: una clase es un intervalo del tipo $\left[ menor, mayor \right)$
+2. Marca de Clase: es un valor igual al promedio de los dos extremos de la clase.
+3. Frecuencia: la frecuencia es igual al número de valores de la variable que están dentro del intervalo.
+4. Frecuencia relativa: la frecuencia relativa se la calcula como la frecuencia dividida para el total de valores de la variable.
+5. Frecuencia acumulada: se la calcula sumando las frecuencias desde la primera clase hasta la clase en consideración.
+6. Frecuencia Relativa acumulada: se la calcula como la frecuencia acumulada pero para las frecuencias relativas. 
+
+
+Una de las ventajas de usar R es que se pueden crear funciones para cada necesidad que el investigador tenga, en este caso el código que se muestra sirve para hacer tablas de frecuencia de cualquier variable cuantitativa. A manera de ejemplo se hará la tabla de frecuencia de la variable `VTAS` en millones de dólares, del conjunto de datos trabajado en la sección \@ref(primerR). 
+
+```{r,echo = TRUE,}
+library(agricolae)
+library(dplyr)
+
+h2<-with(datos1,graph.freq(VTAS/1000000,plot=FALSE));
+
+h2 = table.freq(h2)
+
+h3 <- h2 %>%
+  mutate(Clase = paste("[",Lower,",",Upper,")"),	
+        "Marca de Clase"  =  Main,
+        Frec. = Frequency,
+        "Frec. Rel." = Percentage,
+        "Frec. Acu." = CF,
+        "Rel. Acu." = CPF )  %>%
+  select(-c(1:7))
+```
+
+```{r tabla3, echo=FALSE}
+knitr::kable(
+  h3, caption = 'Tabla de Frecuencia de las Ventas',
+  booktabs = TRUE) 
+```
 
 
 

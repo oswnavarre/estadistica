@@ -265,7 +265,7 @@ es la temperatura medida en grados Farenheit. Finalmente en el nivel de
 razón el 0 es significativo y la razón entre dos números es
 significativa, un ejemplo es la temperatura medida en grados Kelvin.
 
-\section{Primeros pasos en R}\label{primeros-pasos-en-r}
+\section{Primeros pasos en R}\label{primerR}
 
 Una vez instalado R y RStudio, abrimos Rstudio para comenzar a trabajar.
 La ventana de RStudio se ve como se muestra en la figura
@@ -360,28 +360,139 @@ auditoras consideradas las más grandes o también llamadas
 \emph{\emph{Big Four}}. En la \ref{tab:tabla1} se muestran las 10
 primeras observaciones de nuestro conjunto de datos.
 
-\begin{table}[t]
+\label{tab:tabla1}Primeras 10 observaciones
 
-\caption{\label{tab:tabla1}Primeras 10 observaciones}
-\centering
-\begin{tabular}{rrrrrr}
-\toprule
-EXPMUESTRA & BIG4 & ACTIVOS & UTILIDAD & VTAS & PAT\\
-\midrule
-85 & 1 & 73315618 & 7522758.7 & 191474544 & 39382529\\
-100121 & 0 & 21052702 & -122898.5 & 132585022 & 1577764\\
-45178 & 0 & 10468672 & 536876.9 & 13974269 & 4312094\\
-51193 & 0 & 4130483 & 455759.4 & 8670153 & 1858990\\
-47598 & 0 & 23507401 & 266370.5 & 18555609 & 7137609\\
-\addlinespace
-31720 & 0 & 7220312 & 437718.3 & 16097135 & 4002154\\
-46189 & 0 & 14526822 & 1206400.9 & 12281188 & 5015806\\
-9731 & 0 & 8539445 & 367848.1 & 10844918 & 2232339\\
-4619 & 0 & 2605059 & -22438.4 & 6244589 & 1366610\\
-102434 & 0 & 23975816 & 790265.6 & 40612649 & 8754369\\
-\bottomrule
-\end{tabular}
-\end{table}
+EXPMUESTRA
+
+BIG4
+
+ACTIVOS
+
+UTILIDAD
+
+VTAS
+
+PAT
+
+85
+
+1
+
+73315618
+
+7522758.7
+
+191474544
+
+39382529
+
+100121
+
+0
+
+21052702
+
+-122898.5
+
+132585022
+
+1577764
+
+45178
+
+0
+
+10468672
+
+536876.9
+
+13974269
+
+4312094
+
+51193
+
+0
+
+4130483
+
+455759.4
+
+8670153
+
+1858990
+
+47598
+
+0
+
+23507401
+
+266370.5
+
+18555609
+
+7137609
+
+31720
+
+0
+
+7220312
+
+437718.3
+
+16097135
+
+4002154
+
+46189
+
+0
+
+14526822
+
+1206400.9
+
+12281188
+
+5015806
+
+9731
+
+0
+
+8539445
+
+367848.1
+
+10844918
+
+2232339
+
+4619
+
+0
+
+2605059
+
+-22438.4
+
+6244589
+
+1366610
+
+102434
+
+0
+
+23975816
+
+790265.6
+
+40612649
+
+8754369
 
 Sin más preámbulos, empecemos a trabajar. Recapitulando, primero
 configuraremos el directorio de trabajo, luego cargaremos el archivo
@@ -763,8 +874,407 @@ Una tabla de frecuencia es una forma de describir los datos de forma
 resumida, las tablas de frecuencia pueden construirse para variables
 cualitativas y para variables cuantitativas.
 
+\subsection{Variables Cualitativas}\label{variables-cualitativas}
+
 Para las variables cualitativas una tabla de frecuencia basicámente
-tiene tres columnas: ``Categoría'', ``Frecuencia'', ``Porcentaje''.
+tiene tres columnas: ``Categoría'', ``Frecuencia'', ``Porcentaje''. Para
+aprender a realizar tablas de frecuencia para variables cualitativas,
+trabajaremos con el conjunto de datos \texttt{audit\_bolsa}, Este
+conjunto de datos tiene información sobre las empresas que cotizan en la
+Bolsa de Valores de Guayaquil, se elaborará una tabla de frecuencias de
+las firmas auditoras que han trabajado para estas empresas. La variable
+en la que se almacena esta información es la variable \texttt{FIRMA}. La
+tabla de frecuencia se elabora usando el paquete \texttt{dplyr}. El
+comando \texttt{mutate(\ )} sirve para crear nuevas columnas, en este
+caso se crea la columna porcentaje.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{setwd}\NormalTok{(}\StringTok{"C:/Users/onava_000/OneDrive/libro_mc/estadistica"}\NormalTok{)}
+\NormalTok{audit_bolsa <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"audit_bolsa.csv"}\NormalTok{,}\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{,}\DataTypeTok{sep=}\StringTok{";"}\NormalTok{,}\DataTypeTok{dec=}\StringTok{","}\NormalTok{)}
+
+\NormalTok{tabla_firma <-}\StringTok{ }\NormalTok{audit_bolsa }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(FIRMA) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{Frecuencia=}\KeywordTok{n}\NormalTok{()) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Porcentaje =} \KeywordTok{round}\NormalTok{(}\DecValTok{100}\OperatorTok{*}\NormalTok{Frecuencia}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(Frecuencia),}\DecValTok{2}\NormalTok{)}
+\NormalTok{         ) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(Porcentaje))}
+ \KeywordTok{print}\NormalTok{(tabla_firma)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 15 x 3
+##    FIRMA                               Frecuencia Porcentaje
+##    <fct>                                    <int>      <dbl>
+##  1 DELOITTE                                   103      48.6 
+##  2 MOORE STEPHENS                              29      13.7 
+##  3 PWC PRICE WATER HOUSE COOPERS               24      11.3 
+##  4 HANSEN HOLM & CO. CIA. LTDA.                15       7.08
+##  5 KPMG                                        13       6.13
+##  6 ERNST & YOUNG                                7       3.3 
+##  7 BDO                                          6       2.83
+##  8 ALTAMIRANO HIDALGO MARIO ROBERTO             3       1.42
+##  9 KRESTON                                      3       1.42
+## 10 PKF                                          3       1.42
+## 11 BATALLAS & BATALLAS                          2       0.94
+## 12 ASE + ASESORANDO MAS                         1       0.47
+## 13 CONSULTORES MORAN CEDILLO CIA. LTDA          1       0.47
+## 14 HERRERA CHANG 6 ASOCIADOS                    1       0.47
+## 15 NGV                                          1       0.47
+\end{verbatim}
+
+\label{tab:tabla2}Tabla de Frecuencia de Firmas Auditoras
+
+FIRMA
+
+Frecuencia
+
+Porcentaje
+
+DELOITTE
+
+103
+
+48.58
+
+MOORE STEPHENS
+
+29
+
+13.68
+
+PWC PRICE WATER HOUSE COOPERS
+
+24
+
+11.32
+
+HANSEN HOLM \& CO. CIA. LTDA.
+
+15
+
+7.08
+
+KPMG
+
+13
+
+6.13
+
+ERNST \& YOUNG
+
+7
+
+3.30
+
+BDO
+
+6
+
+2.83
+
+ALTAMIRANO HIDALGO MARIO ROBERTO
+
+3
+
+1.42
+
+KRESTON
+
+3
+
+1.42
+
+PKF
+
+3
+
+1.42
+
+BATALLAS \& BATALLAS
+
+2
+
+0.94
+
+ASE + ASESORANDO MAS
+
+1
+
+0.47
+
+CONSULTORES MORAN CEDILLO CIA. LTDA
+
+1
+
+0.47
+
+HERRERA CHANG 6 ASOCIADOS
+
+1
+
+0.47
+
+NGV
+
+1
+
+0.47
+
+En la tabla \ref{tab:tabla2} se aprecia el resultado obtenido y
+formateado para ser publicado. El resultado de R, puede ser exportado a
+un archivo Excel con la finalidad de luego tomar esa tabla y llevarla a
+un documento donde se presentará toda la información analizada. Para
+exportar la información a un archivo excel se puede trabajar con el
+paquete \texttt{xlsx}. Para exportar los resultados a Excel se puede
+proceder de la siguiente forma.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Cargar el paquete \texttt{xlsx}.
+\item
+  Convertir el resultado a un \texttt{data\ frame} utilizando la función
+  \texttt{as.data.frame()}
+\item
+  Exportar el resultado con la función \texttt{write.xlsx()} cuya
+  estructura básica es \texttt{write.xlsx(datos,\ "archivo.xlsx")}, si
+  se desea consultar más detalles de la función se puede escribir
+  \texttt{?write.xlsx}.
+\end{enumerate}
+
+El resultado de esta operación será un archivo de excel guardado en
+nuestro directorio de trabajo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(xlsx)}
+\NormalTok{tabla_firma =}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(tabla_firma)}
+\KeywordTok{write.xlsx}\NormalTok{(tabla_firma, }\StringTok{"tablas.xlsx"}\NormalTok{, }\DataTypeTok{sheetName =} \StringTok{"firmas"}\NormalTok{, }\DataTypeTok{row.names =} \OtherTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+La opción \texttt{sheetname\ =\ "firmas"} crea dentro del libro
+\texttt{tablas.xlsx} una hoja de cálculo llamada \texttt{firmas}. La
+opción \texttt{row.names\ =\ FALSE} hace que en el archivo final no se
+graben los números de cada fila.
+
+Nota: es importante tener fijado el directorio de trabajo, como se
+explicó en la sección \ref{primerR}.
+
+\subsection{Variables Cuantitativas}\label{variables-cuantitativas}
+
+Una tabla de frecuencias para variables cualitativas tiene 6 columnas:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Clase: una clase es un intervalo del tipo
+  \(\left[ menor, mayor \right)\)
+\item
+  Marca de Clase: es un valor igual al promedio de los dos extremos de
+  la clase.
+\item
+  Frecuencia: la frecuencia es igual al número de valores de la variable
+  que están dentro del intervalo.
+\item
+  Frecuencia relativa: la frecuencia relativa se la calcula como la
+  frecuencia dividida para el total de valores de la variable.
+\item
+  Frecuencia acumulada: se la calcula sumando las frecuencias desde la
+  primera clase hasta la clase en consideración.
+\item
+  Frecuencia Relativa acumulada: se la calcula como la frecuencia
+  acumulada pero para las frecuencias relativas.
+\end{enumerate}
+
+Una de las ventajas de usar R es que se pueden crear funciones para cada
+necesidad que el investigador tenga, en este caso el código que se
+muestra sirve para hacer tablas de frecuencia de cualquier variable
+cuantitativa. A manera de ejemplo se hará la tabla de frecuencia de la
+variable \texttt{VTAS} en millones de dólares, del conjunto de datos
+trabajado en la sección \ref{primerR}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(agricolae)}
+\KeywordTok{library}\NormalTok{(dplyr)}
+
+\NormalTok{h2<-}\KeywordTok{with}\NormalTok{(datos1,}\KeywordTok{graph.freq}\NormalTok{(VTAS}\OperatorTok{/}\DecValTok{1000000}\NormalTok{,}\DataTypeTok{plot=}\OtherTok{FALSE}\NormalTok{));}
+
+\NormalTok{h2 =}\StringTok{ }\KeywordTok{table.freq}\NormalTok{(h2)}
+
+\NormalTok{h3 <-}\StringTok{ }\NormalTok{h2 }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Clase =} \KeywordTok{paste}\NormalTok{(}\StringTok{"["}\NormalTok{,Lower,}\StringTok{","}\NormalTok{,Upper,}\StringTok{")"}\NormalTok{),    }
+        \StringTok{"Marca de Clase"}\NormalTok{  =}\StringTok{  }\NormalTok{Main,}
+        \DataTypeTok{Frec. =}\NormalTok{ Frequency,}
+        \StringTok{"Frec. Rel."}\NormalTok{ =}\StringTok{ }\NormalTok{Percentage,}
+        \StringTok{"Frec. Acu."}\NormalTok{ =}\StringTok{ }\NormalTok{CF,}
+        \StringTok{"Rel. Acu."}\NormalTok{ =}\StringTok{ }\NormalTok{CPF )  }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{7}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\label{tab:tabla3}Tabla de Frecuencia de las Ventas
+
+Clase
+
+Marca de Clase
+
+Frec.
+
+Frec. Rel.
+
+Frec. Acu.
+
+Rel. Acu.
+
+{[} 0 , 165.76 )
+
+82.88
+
+2099
+
+93.0
+
+2099
+
+93.0
+
+{[} 165.76 , 331.52 )
+
+248.64
+
+83
+
+3.7
+
+2182
+
+96.7
+
+{[} 331.52 , 497.28 )
+
+414.40
+
+35
+
+1.6
+
+2217
+
+98.3
+
+{[} 497.28 , 663.04 )
+
+580.16
+
+17
+
+0.8
+
+2234
+
+99.0
+
+{[} 663.04 , 828.8 )
+
+745.92
+
+0
+
+0.0
+
+2234
+
+99.0
+
+{[} 828.8 , 994.56 )
+
+911.68
+
+7
+
+0.3
+
+2241
+
+99.3
+
+{[} 994.56 , 1160.32 )
+
+1077.44
+
+12
+
+0.5
+
+2253
+
+99.9
+
+{[} 1160.32 , 1326.08 )
+
+1243.20
+
+0
+
+0.0
+
+2253
+
+99.9
+
+{[} 1326.08 , 1491.84 )
+
+1408.96
+
+0
+
+0.0
+
+2253
+
+99.9
+
+{[} 1491.84 , 1657.6 )
+
+1574.72
+
+0
+
+0.0
+
+2253
+
+99.9
+
+{[} 1657.6 , 1823.36 )
+
+1740.48
+
+2
+
+0.1
+
+2255
+
+100.0
+
+{[} 1823.36 , 1989.12 )
+
+1906.24
+
+1
+
+0.0
+
+2256
+
+100.0
 
 \section{Tablas de Contingencia}\label{tablas-de-contingencia}
 

@@ -111,7 +111,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#tipos-de-variables"><i class="fa fa-check"></i><b>2.2</b> Tipos de Variables</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#niveles-de-medicion"><i class="fa fa-check"></i><b>2.2.1</b> Niveles de medición</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#primeros-pasos-en-r"><i class="fa fa-check"></i><b>2.3</b> Primeros pasos en R</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#primerR"><i class="fa fa-check"></i><b>2.3</b> Primeros pasos en R</a></li>
 <li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#medidas-de-tendencia-central"><i class="fa fa-check"></i><b>2.4</b> Medidas de Tendencia Central</a><ul>
 <li class="chapter" data-level="2.4.1" data-path="intro.html"><a href="intro.html#media"><i class="fa fa-check"></i><b>2.4.1</b> Media</a></li>
 <li class="chapter" data-level="2.4.2" data-path="intro.html"><a href="intro.html#mediana"><i class="fa fa-check"></i><b>2.4.2</b> Mediana</a></li>
@@ -119,7 +119,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.4.4" data-path="intro.html"><a href="intro.html#trabajamos-con-la-media-o-la-mediana"><i class="fa fa-check"></i><b>2.4.4</b> ¿trabajamos con la media o la mediana?</a></li>
 <li class="chapter" data-level="2.4.5" data-path="intro.html"><a href="intro.html#calculo-de-las-medidas-de-tendencia-central-en-r"><i class="fa fa-check"></i><b>2.4.5</b> Cálculo de las medidas de tendencia central en R</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#tablas-de-frecuencia"><i class="fa fa-check"></i><b>2.5</b> Tablas de frecuencia</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#tablas-de-frecuencia"><i class="fa fa-check"></i><b>2.5</b> Tablas de frecuencia</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="intro.html"><a href="intro.html#variables-cualitativas"><i class="fa fa-check"></i><b>2.5.1</b> Variables Cualitativas</a></li>
+<li class="chapter" data-level="2.5.2" data-path="intro.html"><a href="intro.html#variables-cuantitativas"><i class="fa fa-check"></i><b>2.5.2</b> Variables Cuantitativas</a></li>
+</ul></li>
 <li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>2.6</b> Tablas de Contingencia</a></li>
 <li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#graficos-y-visualizacion"><i class="fa fa-check"></i><b>2.7</b> Gráficos y Visualización</a><ul>
 <li class="chapter" data-level="2.7.1" data-path="intro.html"><a href="intro.html#diagramas-de-caja-y-valores-atipicos"><i class="fa fa-check"></i><b>2.7.1</b> Diagramas de Caja y valores atípicos</a></li>
@@ -174,7 +177,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>En el nivel de intervalo existe diferencia significativa entre valores pero el cero no representa la ausencia de la característica un ejemplo es la temperatura medida en grados Farenheit. Finalmente en el nivel de razón el 0 es significativo y la razón entre dos números es significativa, un ejemplo es la temperatura medida en grados Kelvin.</p>
 </div>
 </div>
-<div id="primeros-pasos-en-r" class="section level2">
+<div id="primerR" class="section level2">
 <h2><span class="header-section-number">2.3</span> Primeros pasos en R</h2>
 <p>Una vez instalado R y RStudio, abrimos Rstudio para comenzar a trabajar. La ventana de RStudio se ve como se muestra en la figura <a href="intro.html#fig:rstudio1">2.1</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:rstudio1"></span>
@@ -198,97 +201,231 @@ Figura 2.2: Ventana de RStudio con Script
 <p>Una característica de R es que permite acceder a la ayuda sobre las funciones, esto se hace escribiendo <code>?funcion</code> por ejemplo si queremos la ayuda de la función <code>read.csv</code> simplemente escribimos <code>?read.csv</code> en el panel ubicado en la parte inferior derecha se desplegará la ayuda de la función. Con la particularidad de que la ayuda se despliega en inglés lo que no debería ser problema para un buen investigador.</p>
 <p>El archivo que vamos a analizar contiene los activos, la utilidad, las ventas y el patrimonio de una muestra de empresas tomada de los registros de la Superintendencia de Compañías. Además en el conjunto de datos se indica si la empresa ha sido auditada por una de las 4 firmas auditoras consideradas las más grandes o también llamadas <em><em>Big Four</em></em>. En la <a href="intro.html#tab:tabla1">2.1</a> se muestran las 10 primeras observaciones de nuestro conjunto de datos.</p>
 <table>
-<caption><span id="tab:tabla1">Tabla 2.1: </span>Primeras 10 observaciones</caption>
+<caption>
+<span id="tab:tabla1">Tabla 2.1: </span>Primeras 10 observaciones
+</caption>
 <thead>
-<tr class="header">
-<th align="right">EXPMUESTRA</th>
-<th align="right">BIG4</th>
-<th align="right">ACTIVOS</th>
-<th align="right">UTILIDAD</th>
-<th align="right">VTAS</th>
-<th align="right">PAT</th>
+<tr>
+<th style="text-align:right;">
+EXPMUESTRA
+</th>
+<th style="text-align:right;">
+BIG4
+</th>
+<th style="text-align:right;">
+ACTIVOS
+</th>
+<th style="text-align:right;">
+UTILIDAD
+</th>
+<th style="text-align:right;">
+VTAS
+</th>
+<th style="text-align:right;">
+PAT
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">85</td>
-<td align="right">1</td>
-<td align="right">73315618</td>
-<td align="right">7522758.7</td>
-<td align="right">191474544</td>
-<td align="right">39382529</td>
+<tr>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+73315618
+</td>
+<td style="text-align:right;">
+7522758.7
+</td>
+<td style="text-align:right;">
+191474544
+</td>
+<td style="text-align:right;">
+39382529
+</td>
 </tr>
-<tr class="even">
-<td align="right">100121</td>
-<td align="right">0</td>
-<td align="right">21052702</td>
-<td align="right">-122898.5</td>
-<td align="right">132585022</td>
-<td align="right">1577764</td>
+<tr>
+<td style="text-align:right;">
+100121
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+21052702
+</td>
+<td style="text-align:right;">
+-122898.5
+</td>
+<td style="text-align:right;">
+132585022
+</td>
+<td style="text-align:right;">
+1577764
+</td>
 </tr>
-<tr class="odd">
-<td align="right">45178</td>
-<td align="right">0</td>
-<td align="right">10468672</td>
-<td align="right">536876.9</td>
-<td align="right">13974269</td>
-<td align="right">4312094</td>
+<tr>
+<td style="text-align:right;">
+45178
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+10468672
+</td>
+<td style="text-align:right;">
+536876.9
+</td>
+<td style="text-align:right;">
+13974269
+</td>
+<td style="text-align:right;">
+4312094
+</td>
 </tr>
-<tr class="even">
-<td align="right">51193</td>
-<td align="right">0</td>
-<td align="right">4130483</td>
-<td align="right">455759.4</td>
-<td align="right">8670153</td>
-<td align="right">1858990</td>
+<tr>
+<td style="text-align:right;">
+51193
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4130483
+</td>
+<td style="text-align:right;">
+455759.4
+</td>
+<td style="text-align:right;">
+8670153
+</td>
+<td style="text-align:right;">
+1858990
+</td>
 </tr>
-<tr class="odd">
-<td align="right">47598</td>
-<td align="right">0</td>
-<td align="right">23507401</td>
-<td align="right">266370.5</td>
-<td align="right">18555609</td>
-<td align="right">7137609</td>
+<tr>
+<td style="text-align:right;">
+47598
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+23507401
+</td>
+<td style="text-align:right;">
+266370.5
+</td>
+<td style="text-align:right;">
+18555609
+</td>
+<td style="text-align:right;">
+7137609
+</td>
 </tr>
-<tr class="even">
-<td align="right">31720</td>
-<td align="right">0</td>
-<td align="right">7220312</td>
-<td align="right">437718.3</td>
-<td align="right">16097135</td>
-<td align="right">4002154</td>
+<tr>
+<td style="text-align:right;">
+31720
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+7220312
+</td>
+<td style="text-align:right;">
+437718.3
+</td>
+<td style="text-align:right;">
+16097135
+</td>
+<td style="text-align:right;">
+4002154
+</td>
 </tr>
-<tr class="odd">
-<td align="right">46189</td>
-<td align="right">0</td>
-<td align="right">14526822</td>
-<td align="right">1206400.9</td>
-<td align="right">12281188</td>
-<td align="right">5015806</td>
+<tr>
+<td style="text-align:right;">
+46189
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+14526822
+</td>
+<td style="text-align:right;">
+1206400.9
+</td>
+<td style="text-align:right;">
+12281188
+</td>
+<td style="text-align:right;">
+5015806
+</td>
 </tr>
-<tr class="even">
-<td align="right">9731</td>
-<td align="right">0</td>
-<td align="right">8539445</td>
-<td align="right">367848.1</td>
-<td align="right">10844918</td>
-<td align="right">2232339</td>
+<tr>
+<td style="text-align:right;">
+9731
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+8539445
+</td>
+<td style="text-align:right;">
+367848.1
+</td>
+<td style="text-align:right;">
+10844918
+</td>
+<td style="text-align:right;">
+2232339
+</td>
 </tr>
-<tr class="odd">
-<td align="right">4619</td>
-<td align="right">0</td>
-<td align="right">2605059</td>
-<td align="right">-22438.4</td>
-<td align="right">6244589</td>
-<td align="right">1366610</td>
+<tr>
+<td style="text-align:right;">
+4619
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2605059
+</td>
+<td style="text-align:right;">
+-22438.4
+</td>
+<td style="text-align:right;">
+6244589
+</td>
+<td style="text-align:right;">
+1366610
+</td>
 </tr>
-<tr class="even">
-<td align="right">102434</td>
-<td align="right">0</td>
-<td align="right">23975816</td>
-<td align="right">790265.6</td>
-<td align="right">40612649</td>
-<td align="right">8754369</td>
+<tr>
+<td style="text-align:right;">
+102434
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+23975816
+</td>
+<td style="text-align:right;">
+790265.6
+</td>
+<td style="text-align:right;">
+40612649
+</td>
+<td style="text-align:right;">
+8754369
+</td>
 </tr>
 </tbody>
 </table>
@@ -453,7 +590,532 @@ Me = \begin{cases}
 <div id="tablas-de-frecuencia" class="section level2">
 <h2><span class="header-section-number">2.5</span> Tablas de frecuencia</h2>
 <p>Una tabla de frecuencia es una forma de describir los datos de forma resumida, las tablas de frecuencia pueden construirse para variables cualitativas y para variables cuantitativas.</p>
-<p>Para las variables cualitativas una tabla de frecuencia basicámente tiene tres columnas: “Categoría”, “Frecuencia”, “Porcentaje”.</p>
+<div id="variables-cualitativas" class="section level3">
+<h3><span class="header-section-number">2.5.1</span> Variables Cualitativas</h3>
+<p>Para las variables cualitativas una tabla de frecuencia basicámente tiene tres columnas: “Categoría”, “Frecuencia”, “Porcentaje”. Para aprender a realizar tablas de frecuencia para variables cualitativas, trabajaremos con el conjunto de datos <code>audit_bolsa</code>, Este conjunto de datos tiene información sobre las empresas que cotizan en la Bolsa de Valores de Guayaquil, se elaborará una tabla de frecuencias de las firmas auditoras que han trabajado para estas empresas. La variable en la que se almacena esta información es la variable <code>FIRMA</code>. La tabla de frecuencia se elabora usando el paquete <code>dplyr</code>. El comando <code>mutate( )</code> sirve para crear nuevas columnas, en este caso se crea la columna porcentaje.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/onava_000/OneDrive/libro_mc/estadistica&quot;</span>)
+audit_bolsa &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;audit_bolsa.csv&quot;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>,<span class="dt">sep=</span><span class="st">&quot;;&quot;</span>,<span class="dt">dec=</span><span class="st">&quot;,&quot;</span>)
+
+tabla_firma &lt;-<span class="st"> </span>audit_bolsa <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(FIRMA) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Frecuencia=</span><span class="kw">n</span>()) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Porcentaje =</span> <span class="kw">round</span>(<span class="dv">100</span><span class="op">*</span>Frecuencia<span class="op">/</span><span class="kw">sum</span>(Frecuencia),<span class="dv">2</span>)
+         ) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(Porcentaje))
+ <span class="kw">print</span>(tabla_firma)</code></pre></div>
+<pre><code>## # A tibble: 15 x 3
+##    FIRMA                               Frecuencia Porcentaje
+##    &lt;fct&gt;                                    &lt;int&gt;      &lt;dbl&gt;
+##  1 DELOITTE                                   103      48.6 
+##  2 MOORE STEPHENS                              29      13.7 
+##  3 PWC PRICE WATER HOUSE COOPERS               24      11.3 
+##  4 HANSEN HOLM &amp; CO. CIA. LTDA.                15       7.08
+##  5 KPMG                                        13       6.13
+##  6 ERNST &amp; YOUNG                                7       3.3 
+##  7 BDO                                          6       2.83
+##  8 ALTAMIRANO HIDALGO MARIO ROBERTO             3       1.42
+##  9 KRESTON                                      3       1.42
+## 10 PKF                                          3       1.42
+## 11 BATALLAS &amp; BATALLAS                          2       0.94
+## 12 ASE + ASESORANDO MAS                         1       0.47
+## 13 CONSULTORES MORAN CEDILLO CIA. LTDA          1       0.47
+## 14 HERRERA CHANG 6 ASOCIADOS                    1       0.47
+## 15 NGV                                          1       0.47</code></pre>
+<table>
+<caption>
+<span id="tab:tabla2">Tabla 2.2: </span>Tabla de Frecuencia de Firmas Auditoras
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+FIRMA
+</th>
+<th style="text-align:right;">
+Frecuencia
+</th>
+<th style="text-align:right;">
+Porcentaje
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+DELOITTE
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:right;">
+48.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MOORE STEPHENS
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+13.68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PWC PRICE WATER HOUSE COOPERS
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+11.32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HANSEN HOLM &amp; CO. CIA. LTDA.
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+7.08
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+KPMG
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+6.13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ERNST &amp; YOUNG
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3.30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BDO
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+2.83
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ALTAMIRANO HIDALGO MARIO ROBERTO
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1.42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+KRESTON
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1.42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PKF
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1.42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BATALLAS &amp; BATALLAS
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.94
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ASE + ASESORANDO MAS
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CONSULTORES MORAN CEDILLO CIA. LTDA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HERRERA CHANG 6 ASOCIADOS
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NGV
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.47
+</td>
+</tr>
+</tbody>
+</table>
+<p>En la tabla <a href="intro.html#tab:tabla2">2.2</a> se aprecia el resultado obtenido y formateado para ser publicado. El resultado de R, puede ser exportado a un archivo Excel con la finalidad de luego tomar esa tabla y llevarla a un documento donde se presentará toda la información analizada. Para exportar la información a un archivo excel se puede trabajar con el paquete <code>xlsx</code>. Para exportar los resultados a Excel se puede proceder de la siguiente forma.</p>
+<ol style="list-style-type: decimal">
+<li>Cargar el paquete <code>xlsx</code>.</li>
+<li>Convertir el resultado a un <code>data frame</code> utilizando la función <code>as.data.frame()</code></li>
+<li>Exportar el resultado con la función <code>write.xlsx()</code> cuya estructura básica es <code>write.xlsx(datos, &quot;archivo.xlsx&quot;)</code>, si se desea consultar más detalles de la función se puede escribir <code>?write.xlsx</code>.</li>
+</ol>
+<p>El resultado de esta operación será un archivo de excel guardado en nuestro directorio de trabajo.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(xlsx)
+tabla_firma =<span class="st"> </span><span class="kw">as.data.frame</span>(tabla_firma)
+<span class="kw">write.xlsx</span>(tabla_firma, <span class="st">&quot;tablas.xlsx&quot;</span>, <span class="dt">sheetName =</span> <span class="st">&quot;firmas&quot;</span>, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p>La opción <code>sheetname = &quot;firmas&quot;</code> crea dentro del libro <code>tablas.xlsx</code> una hoja de cálculo llamada <code>firmas</code>. La opción <code>row.names = FALSE</code> hace que en el archivo final no se graben los números de cada fila.</p>
+<p>Nota: es importante tener fijado el directorio de trabajo, como se explicó en la sección <a href="intro.html#primerR">2.3</a>.</p>
+</div>
+<div id="variables-cuantitativas" class="section level3">
+<h3><span class="header-section-number">2.5.2</span> Variables Cuantitativas</h3>
+<p>Una tabla de frecuencias para variables cualitativas tiene 6 columnas:</p>
+<ol style="list-style-type: decimal">
+<li>Clase: una clase es un intervalo del tipo <span class="math inline">\(\left[ menor, mayor \right)\)</span></li>
+<li>Marca de Clase: es un valor igual al promedio de los dos extremos de la clase.</li>
+<li>Frecuencia: la frecuencia es igual al número de valores de la variable que están dentro del intervalo.</li>
+<li>Frecuencia relativa: la frecuencia relativa se la calcula como la frecuencia dividida para el total de valores de la variable.</li>
+<li>Frecuencia acumulada: se la calcula sumando las frecuencias desde la primera clase hasta la clase en consideración.</li>
+<li>Frecuencia Relativa acumulada: se la calcula como la frecuencia acumulada pero para las frecuencias relativas.</li>
+</ol>
+<p>Una de las ventajas de usar R es que se pueden crear funciones para cada necesidad que el investigador tenga, en este caso el código que se muestra sirve para hacer tablas de frecuencia de cualquier variable cuantitativa. A manera de ejemplo se hará la tabla de frecuencia de la variable <code>VTAS</code> en millones de dólares, del conjunto de datos trabajado en la sección <a href="intro.html#primerR">2.3</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(agricolae)
+<span class="kw">library</span>(dplyr)
+
+h2&lt;-<span class="kw">with</span>(datos1,<span class="kw">graph.freq</span>(VTAS<span class="op">/</span><span class="dv">1000000</span>,<span class="dt">plot=</span><span class="ot">FALSE</span>));
+
+h2 =<span class="st"> </span><span class="kw">table.freq</span>(h2)
+
+h3 &lt;-<span class="st"> </span>h2 <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Clase =</span> <span class="kw">paste</span>(<span class="st">&quot;[&quot;</span>,Lower,<span class="st">&quot;,&quot;</span>,Upper,<span class="st">&quot;)&quot;</span>),    
+        <span class="st">&quot;Marca de Clase&quot;</span>  =<span class="st">  </span>Main,
+        <span class="dt">Frec. =</span> Frequency,
+        <span class="st">&quot;Frec. Rel.&quot;</span> =<span class="st"> </span>Percentage,
+        <span class="st">&quot;Frec. Acu.&quot;</span> =<span class="st"> </span>CF,
+        <span class="st">&quot;Rel. Acu.&quot;</span> =<span class="st"> </span>CPF )  <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">7</span>))</code></pre></div>
+<table>
+<caption>
+<span id="tab:tabla3">Tabla 2.3: </span>Tabla de Frecuencia de las Ventas
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Clase
+</th>
+<th style="text-align:right;">
+Marca de Clase
+</th>
+<th style="text-align:right;">
+Frec.
+</th>
+<th style="text-align:right;">
+Frec. Rel.
+</th>
+<th style="text-align:right;">
+Frec. Acu.
+</th>
+<th style="text-align:right;">
+Rel. Acu.
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+[ 0 , 165.76 )
+</td>
+<td style="text-align:right;">
+82.88
+</td>
+<td style="text-align:right;">
+2099
+</td>
+<td style="text-align:right;">
+93.0
+</td>
+<td style="text-align:right;">
+2099
+</td>
+<td style="text-align:right;">
+93.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[ 165.76 , 331.52 )
+</td>
+<td style="text-align:right;">
+248.64
+</td>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:right;">
+3.7
+</td>
+<td style="text-align:right;">
+2182
+</td>
+<td style="text-align:right;">
+96.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[ 331.52 , 497.28 )
+</td>
+<td style="text-align:right;">
+414.40
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+1.6
+</td>
+<td style="text-align:right;">
+2217
+</td>
+<td style="text-align:right;">
+98.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[ 497.28 , 663.04 )
+</td>
+<td style="text-align:right;">
+580.16
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+0.8
+</td>
+<td style="text-align:right;">
+2234
+</td>
+<td style="text-align:right;">
+99.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[ 663.04 , 828.8 )
+</td>
+<td style="text-align:right;">
+745.92
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+2234
+</td>
+<td style="text-align:right;">
+99.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[ 828.8 , 994.56 )
+</td>
+<td style="text-align:right;">
+911.68
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+2241
+</td>
+<td style="text-align:right;">
+99.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[ 994.56 , 1160.32 )
+</td>
+<td style="text-align:right;">
+1077.44
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+2253
+</td>
+<td style="text-align:right;">
+99.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[ 1160.32 , 1326.08 )
+</td>
+<td style="text-align:right;">
+1243.20
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+2253
+</td>
+<td style="text-align:right;">
+99.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[ 1326.08 , 1491.84 )
+</td>
+<td style="text-align:right;">
+1408.96
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+2253
+</td>
+<td style="text-align:right;">
+99.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[ 1491.84 , 1657.6 )
+</td>
+<td style="text-align:right;">
+1574.72
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+2253
+</td>
+<td style="text-align:right;">
+99.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[ 1657.6 , 1823.36 )
+</td>
+<td style="text-align:right;">
+1740.48
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+2255
+</td>
+<td style="text-align:right;">
+100.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[ 1823.36 , 1989.12 )
+</td>
+<td style="text-align:right;">
+1906.24
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+2256
+</td>
+<td style="text-align:right;">
+100.0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div id="tablas-de-contingencia" class="section level2">
 <h2><span class="header-section-number">2.6</span> Tablas de Contingencia</h2>
