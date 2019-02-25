@@ -868,6 +868,146 @@ la función \texttt{summarise()}.
 ## 1     9190661
 \end{verbatim}
 
+\section{Medidas de posición
+(Cuantiles)}\label{medidas-de-posicion-cuantiles}
+
+Las medidas de posición no central permiten conocer otros puntos
+característicos de la distribución que no son los valores centrales.
+Entre las medidas de posición no central más importantes están los
+cuantiles. El término cuantil fue usado por primera vez por Kendall en
+1940.
+
+El cuantil de orden p de una distribución con \(0<p<1\) es el valor
+\(x_{i}\) de la variable \(X\) que marca un corte de modo que una
+proporción \(p\) o un porcentaje \(100p\)\% de valores de la población
+es menor o igual que \(x_{i}\) Por ejemplo el cuantil de orden \(0.35\)
+dejaría un 35\% de valores por debajo de él.
+
+\subsection{Tipos de Cuantiles}\label{tipos-de-cuantiles}
+
+\begin{itemize}
+\item
+  \emph{Cuartiles}: son 3 valores (\(Q_{1}, Q_{2}, Q_{3}\)) que dividen
+  a la distribución en 4 partes iguales.
+\item
+  \emph{Quintiles}: son 4 valores (\(K_{1}, K_{2}, K_{3}, K_{4}\)) que
+  dividen a la distribución en 5 partes iguales.
+\item
+  \emph{Deciles}: son 9 valores
+  (\(D_1, D_2, D_3, D_4, D_5, D_6, D_7, D_8, D_9\)) que dividen a la
+  distribución en 10 partes iguales.
+\item
+  \emph{Percentiles}, son 99 valores (\(P_1, P_2, \ldots P_{99}\)) que
+  dividen a la distribución en 100 partes iguales.
+\end{itemize}
+
+\subsection{Cálculo de cuantiles}\label{calculo-de-cuantiles}
+
+Es fácil darse cuenta que existen equivalencias importantes entre los
+cuantiles, algunos ejemplos de estas equivalencias:
+
+\begin{itemize}
+\tightlist
+\item
+  \(D_5=Q_2=P_{50}\)
+\item
+  \(D_4=K_2=P_{40}\)
+\item
+  \(D_3=P_{30}\)
+\end{itemize}
+
+Se deduce entonces que no es necesario tener una expresión para cada
+tipo de cuantiles, basta con conocer una expresión para calcular
+percentiles. Para esto debemos conocer dos cosas:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  La posición del percentil en nuestro conjunto de datos.
+\item
+  El valor del percentil tomando en cuenta su posición.
+\end{enumerate}
+
+Para calcular la posición del percentil \(i\) que acumula el 100\(p\)\%
+en un conjunto de datos no agrupado \(X\), de tamaño \(n\) y ordenado en
+forma ascendente primero determinamos la posición del percentil con la
+expresión:
+
+\begin{equation} 
+  Posición = p(n-1)+1
+  \label{eq:posperc}
+\end{equation}
+
+Para determinar el valor \(X_{i.a}\) utilizamos la expresión:
+
+\begin{equation} 
+  X_{i.a}=X_{i}+0.a(X_{i+1}-X_{i})
+  \label{eq:valperc}
+\end{equation}
+
+Para calcular percentiles en R, se utiliza la función
+\texttt{quantile()}. Esta función recibe dos argumentos, la variable de
+la que se calcula el percentil y el porcentaje del percentil que se
+desea calcular. Se pueden calcular varios percentiles al mismo tiempo.
+
+Vamos a calcular el primer cuartil \(Q_{1}\) de la variable
+\texttt{ACTIVOS} del conjunto de datos ya trabajado anteriormente. Vamos
+a llamar a esta variable utilizando la notación \texttt{\$} esta
+notación se usa poniendo \texttt{data.frame\$variable} en este caso
+nuestra variable está en el conjunto \texttt{datos1}y se llama
+\texttt{ACTIVOS} por lo que para llamar la variable desde la función
+escribimos \texttt{datos1\$ACTIVOS}. Luego debemos recordar que
+\(Q_1=P_{25}\) es decir que en la función \texttt{quantile} debemos
+anotar \(0.25\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{quantile}\NormalTok{(datos1}\OperatorTok{$}\NormalTok{ACTIVOS, }\FloatTok{0.25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     25% 
+## 3184669
+\end{verbatim}
+
+Ahora calculamos los tres cuartiles en este caso podemos escribir dentro
+de una lista los tres valores, para ingresar listas en R lo hacemos con
+\texttt{c(elemento1,\ elemento2,\ ...\ )}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{quantile}\NormalTok{(datos1}\OperatorTok{$}\NormalTok{ACTIVOS, }\KeywordTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.50}\NormalTok{,}\FloatTok{0.75}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      25%      50%      75% 
+##  3184669 10326361 33192848
+\end{verbatim}
+
+De los resultados obtenidos se interpreta que el 25\% de los activos de
+las empresas es menor que \(3 184 669\). Supongamos que se quieren
+determinar los deciles, una forma de hacer la lista es con la función
+\texttt{seq}con las instrucciones
+\texttt{seq(inicial,\ final,\ by\ =\ aumento)}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{quantile}\NormalTok{(datos1}\OperatorTok{$}\NormalTok{ACTIVOS, }\KeywordTok{seq}\NormalTok{(}\FloatTok{0.1}\NormalTok{,}\FloatTok{0.9}\NormalTok{, }\DataTypeTok{by =} \FloatTok{0.1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      10%      20%      30%      40%      50%      60%      70%      80% 
+##  1621865  2561491  3882643  6187167 10326361 16883801 26613778 49838668 
+##      90% 
+## 93545755
+\end{verbatim}
+
+\section{Medidas de dispersión}\label{medidas-de-dispersion}
+
 \section{Tablas de frecuencia}\label{tablas-de-frecuencia}
 
 Una tabla de frecuencia es una forma de describir los datos de forma
@@ -1299,10 +1439,11 @@ Una tabla de contingencia es una forma útil para examinar relaciones
 entre dos variables categóricas. Los valores en las celdas de una tabla
 de contingencia pueden ser de frecuencia absoluta o frecuencia relativa.
 
-Para ejemplificar la construcción de una tabla de frecuencias vamos a
+Para ejemplificar la construcción de una tabla de contingencia vamos a
 trabajar con el archivo \texttt{Ranking2018Guayas.csv} este archivo
-contiene todas las empresas de la provincia del Guayas. Se analizará la
-relación entre la ciudad y el tamaño de las empresas.
+contiene información sobre una muestra de 162 empresas de la provincia
+del Guayas. Se analizará la relación entre la ciudad y el tamaño de las
+empresas.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1318,7 +1459,8 @@ relación entre la ciudad y el tamaño de las empresas.
 \end{Highlighting}
 \end{Shaded}
 
-\label{tab:tabla4}Tabla de Frecuencia de las Ventas
+\label{tab:tabla4}Tabla de Contingencia de las empresas clasificadas por
+tamaño y ciudad
 
 CIUDAD
 
@@ -1392,14 +1534,166 @@ VELASCO IBARRA
 
 1
 
+En la tabla \ref{tab:tabla4} se observa que de las 162 empresas 117 son
+microempresas y de la ciudad de Guayaquil, de la ciudad de Samborondón
+se ha tomada una empresa pequeña. Esta información, como se mencionó
+antes, puede también ser mostrada en porcentajes. En la tabla
+\ref{tab:tabla5} se observa la tabla de contingencia con los
+porcentajes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ciudad.tama.porc =}\StringTok{ }\NormalTok{datos }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(CIUDAD, TAMAÑO)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{Porc =} \KeywordTok{round}\NormalTok{(}\DecValTok{100}\OperatorTok{*}\KeywordTok{n}\NormalTok{()}\OperatorTok{/}\KeywordTok{nrow}\NormalTok{(datos),}\DecValTok{2}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{spread}\NormalTok{(TAMAÑO, Porc) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{replace}\NormalTok{(., }\KeywordTok{is.na}\NormalTok{(.), }\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\label{tab:tabla5}Tabla de Contingencia de las empresas clasificadas por
+tamaño y ciudad
+
+CIUDAD
+
+MEDIANA
+
+MICROEMPRESA
+
+PEQUEÑA
+
+DAULE
+
+0.62
+
+0.62
+
+0.00
+
+ELOY ALFARO
+
+0.00
+
+1.24
+
+0.00
+
+GUAYAQUIL
+
+1.24
+
+72.67
+
+17.39
+
+MILAGRO
+
+0.00
+
+1.24
+
+0.00
+
+NARANJITO
+
+0.00
+
+2.48
+
+0.00
+
+SAMBORONDÓN
+
+0.00
+
+0.00
+
+0.62
+
+SANTA LUCIA
+
+0.00
+
+0.62
+
+0.00
+
+VELASCO IBARRA
+
+0.00
+
+0.62
+
+0.62
+
 \section{Gráficos y Visualización}\label{graficos-y-visualizacion}
+
+Para realizar gráficas R tiene algunos paquetes disponibles, sin embargo
+en este texto trabajaremos con el paquete \texttt{ggplot2}. Este paquete
+está basada en la gramática de los gráficos \citep{wilkinson2005}.
+
+\subsection{Histogramas}\label{histogramas}
+
+Los histogramas se utilizan para variables continuas. Un histograma es
+un gráfico de la distribución de frecuencia de una variable, en el eje
+vertical se representa la frecuencia (absoluta o relativa) y en el eje
+horizontal los rangos de los valores.
+
+En la figura \ref{fig:figura1} se muestra el histograma de la variable
+ventas en millones de dólares del archivo \emph{cap2\_big4\_size.csv} ya
+descrito en la sección \ref{primerR}, este primer histograma ha sido
+configurado para presentar 12 barras, que las barras sean de color azul
+con un contorno rojo. Antes de abordar los detalles mencionados
+discutiremos brevemente el funcionamiento de la gramática de
+\texttt{ggplot2}, una gráfica realizada en \texttt{ggplot2} empieza por
+\texttt{ggplot(data,\ aes())} dentro de \texttt{aes()} se indica las
+variables que van a intervenir en la gráfica, Luego se añade la
+\texttt{geom} con la que se va a trabajar en este caso se escogió
+\texttt{geom\_histogram()} puesto que se desea realizar un histograma.
+Como se indicó anteriormente se configuró el histograma con 12 barras
+(\texttt{bins=12}), la opción \texttt{color="red"} permite que el
+contorno de las barrras sea rojo y la opción \texttt{fill="blue"}hace
+que las barras sean de color azul.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\KeywordTok{ggplot}\NormalTok{(datos1, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{ VTAS}\OperatorTok{/}\DecValTok{1000000}\NormalTok{)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{bins=}\DecValTok{12}\NormalTok{, }\DataTypeTok{color=} \StringTok{"red"}\NormalTok{, }\DataTypeTok{fill=}\StringTok{"blue"}\NormalTok{ )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{estadistica_files/figure-latex/figura1-1.pdf}
+\caption{\label{fig:figura1}Histograma de las Ventas}
+\end{figure}
+
+Para configurar las etiquetas de los ejes podemos añadir las opciones
+\texttt{xlab(\ )} y \texttt{ylab(\ )}. En la figura \ref{fig:figura2} se
+aprecia el histograma con las etiquetas de los ejes añadidos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\KeywordTok{ggplot}\NormalTok{(datos1, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{ VTAS}\OperatorTok{/}\DecValTok{1000000}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{bins=}\DecValTok{12}\NormalTok{, }\DataTypeTok{color=} \StringTok{"red"}\NormalTok{,  }\DataTypeTok{fill=}\StringTok{"blue"}\NormalTok{ ) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Ventas en Millones de Dólares") + ylab("}\NormalTok{Frecuencia}\StringTok{")}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{estadistica_files/figure-latex/figura2-1.pdf}
+\caption{\label{fig:figura2}Histograma de las Ventas con Etiquetas en los
+Ejes}
+\end{figure}
 
 \subsection{Diagramas de Caja y valores
 atípicos}\label{diagramas-de-caja-y-valores-atipicos}
 
 \subsubsection{Intervalos de Confianza}\label{intervalos-de-confianza}
-
-\section{Medidas de dispersión}\label{medidas-de-dispersion}
 
 \chapter{Pruebas de Hipótesis}\label{pruebas-de-hipotesis}
 

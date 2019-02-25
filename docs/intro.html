@@ -119,15 +119,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.4.4" data-path="intro.html"><a href="intro.html#trabajamos-con-la-media-o-la-mediana"><i class="fa fa-check"></i><b>2.4.4</b> ¿trabajamos con la media o la mediana?</a></li>
 <li class="chapter" data-level="2.4.5" data-path="intro.html"><a href="intro.html#calculo-de-las-medidas-de-tendencia-central-en-r"><i class="fa fa-check"></i><b>2.4.5</b> Cálculo de las medidas de tendencia central en R</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#tablas-de-frecuencia"><i class="fa fa-check"></i><b>2.5</b> Tablas de frecuencia</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="intro.html"><a href="intro.html#variables-cualitativas"><i class="fa fa-check"></i><b>2.5.1</b> Variables Cualitativas</a></li>
-<li class="chapter" data-level="2.5.2" data-path="intro.html"><a href="intro.html#variables-cuantitativas"><i class="fa fa-check"></i><b>2.5.2</b> Variables Cuantitativas</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#medidas-de-posicion-cuantiles"><i class="fa fa-check"></i><b>2.5</b> Medidas de posición (Cuantiles)</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="intro.html"><a href="intro.html#tipos-de-cuantiles"><i class="fa fa-check"></i><b>2.5.1</b> Tipos de Cuantiles</a></li>
+<li class="chapter" data-level="2.5.2" data-path="intro.html"><a href="intro.html#calculo-de-cuantiles"><i class="fa fa-check"></i><b>2.5.2</b> Cálculo de cuantiles</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>2.6</b> Tablas de Contingencia</a></li>
-<li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#graficos-y-visualizacion"><i class="fa fa-check"></i><b>2.7</b> Gráficos y Visualización</a><ul>
-<li class="chapter" data-level="2.7.1" data-path="intro.html"><a href="intro.html#diagramas-de-caja-y-valores-atipicos"><i class="fa fa-check"></i><b>2.7.1</b> Diagramas de Caja y valores atípicos</a></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#medidas-de-dispersion"><i class="fa fa-check"></i><b>2.6</b> Medidas de dispersión</a></li>
+<li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#tablas-de-frecuencia"><i class="fa fa-check"></i><b>2.7</b> Tablas de frecuencia</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="intro.html"><a href="intro.html#variables-cualitativas"><i class="fa fa-check"></i><b>2.7.1</b> Variables Cualitativas</a></li>
+<li class="chapter" data-level="2.7.2" data-path="intro.html"><a href="intro.html#variables-cuantitativas"><i class="fa fa-check"></i><b>2.7.2</b> Variables Cuantitativas</a></li>
 </ul></li>
-<li class="chapter" data-level="2.8" data-path="intro.html"><a href="intro.html#medidas-de-dispersion"><i class="fa fa-check"></i><b>2.8</b> Medidas de dispersión</a></li>
+<li class="chapter" data-level="2.8" data-path="intro.html"><a href="intro.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>2.8</b> Tablas de Contingencia</a></li>
+<li class="chapter" data-level="2.9" data-path="intro.html"><a href="intro.html#graficos-y-visualizacion"><i class="fa fa-check"></i><b>2.9</b> Gráficos y Visualización</a><ul>
+<li class="chapter" data-level="2.9.1" data-path="intro.html"><a href="intro.html#histogramas"><i class="fa fa-check"></i><b>2.9.1</b> Histogramas</a></li>
+<li class="chapter" data-level="2.9.2" data-path="intro.html"><a href="intro.html#diagramas-de-caja-y-valores-atipicos"><i class="fa fa-check"></i><b>2.9.2</b> Diagramas de Caja y valores atípicos</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="pruebas-de-hipotesis.html"><a href="pruebas-de-hipotesis.html"><i class="fa fa-check"></i><b>3</b> Pruebas de Hipótesis</a></li>
 <li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Regresión</a></li>
@@ -587,11 +592,67 @@ Me = \begin{cases}
 ## 1     9190661</code></pre>
 </div>
 </div>
+<div id="medidas-de-posicion-cuantiles" class="section level2">
+<h2><span class="header-section-number">2.5</span> Medidas de posición (Cuantiles)</h2>
+<p>Las medidas de posición no central permiten conocer otros puntos característicos de la distribución que no son los valores centrales. Entre las medidas de posición no central más importantes están los cuantiles. El término cuantil fue usado por primera vez por Kendall en 1940.</p>
+<p>El cuantil de orden p de una distribución con <span class="math inline">\(0&lt;p&lt;1\)</span> es el valor <span class="math inline">\(x_{i}\)</span> de la variable <span class="math inline">\(X\)</span> que marca un corte de modo que una proporción <span class="math inline">\(p\)</span> o un porcentaje <span class="math inline">\(100p\)</span>% de valores de la población es menor o igual que <span class="math inline">\(x_{i}\)</span> Por ejemplo el cuantil de orden <span class="math inline">\(0.35\)</span> dejaría un 35% de valores por debajo de él.</p>
+<div id="tipos-de-cuantiles" class="section level3">
+<h3><span class="header-section-number">2.5.1</span> Tipos de Cuantiles</h3>
+<ul>
+<li><em>Cuartiles</em>: son 3 valores (<span class="math inline">\(Q_{1}, Q_{2}, Q_{3}\)</span>) que dividen a la distribución en 4 partes iguales.</li>
+<li><em>Quintiles</em>: son 4 valores (<span class="math inline">\(K_{1}, K_{2}, K_{3}, K_{4}\)</span>) que dividen a la distribución en 5 partes iguales.</li>
+<li><p><em>Deciles</em>: son 9 valores (<span class="math inline">\(D_1, D_2, D_3, D_4, D_5, D_6, D_7, D_8, D_9\)</span>) que dividen a la distribución en 10 partes iguales.</p></li>
+<li><p><em>Percentiles</em>, son 99 valores (<span class="math inline">\(P_1, P_2, \ldots P_{99}\)</span>) que dividen a la distribución en 100 partes iguales.</p></li>
+</ul>
+</div>
+<div id="calculo-de-cuantiles" class="section level3">
+<h3><span class="header-section-number">2.5.2</span> Cálculo de cuantiles</h3>
+<p>Es fácil darse cuenta que existen equivalencias importantes entre los cuantiles, algunos ejemplos de estas equivalencias:</p>
+<ul>
+<li><span class="math inline">\(D_5=Q_2=P_{50}\)</span></li>
+<li><span class="math inline">\(D_4=K_2=P_{40}\)</span></li>
+<li><span class="math inline">\(D_3=P_{30}\)</span></li>
+</ul>
+<p>Se deduce entonces que no es necesario tener una expresión para cada tipo de cuantiles, basta con conocer una expresión para calcular percentiles. Para esto debemos conocer dos cosas:</p>
+<ol style="list-style-type: decimal">
+<li>La posición del percentil en nuestro conjunto de datos.</li>
+<li>El valor del percentil tomando en cuenta su posición.</li>
+</ol>
+<p>Para calcular la posición del percentil <span class="math inline">\(i\)</span> que acumula el 100<span class="math inline">\(p\)</span>% en un conjunto de datos no agrupado <span class="math inline">\(X\)</span>, de tamaño <span class="math inline">\(n\)</span> y ordenado en forma ascendente primero determinamos la posición del percentil con la expresión:</p>
+<span class="math display" id="eq:posperc">\[\begin{equation} 
+  Posición = p(n-1)+1
+  \tag{2.6}
+\end{equation}\]</span>
+<p>Para determinar el valor <span class="math inline">\(X_{i.a}\)</span> utilizamos la expresión:</p>
+<span class="math display" id="eq:valperc">\[\begin{equation} 
+  X_{i.a}=X_{i}+0.a(X_{i+1}-X_{i})
+  \tag{2.7}
+\end{equation}\]</span>
+<p>Para calcular percentiles en R, se utiliza la función <code>quantile()</code>. Esta función recibe dos argumentos, la variable de la que se calcula el percentil y el porcentaje del percentil que se desea calcular. Se pueden calcular varios percentiles al mismo tiempo.</p>
+<p>Vamos a calcular el primer cuartil <span class="math inline">\(Q_{1}\)</span> de la variable <code>ACTIVOS</code> del conjunto de datos ya trabajado anteriormente. Vamos a llamar a esta variable utilizando la notación <code>$</code> esta notación se usa poniendo <code>data.frame$variable</code> en este caso nuestra variable está en el conjunto <code>datos1</code>y se llama <code>ACTIVOS</code> por lo que para llamar la variable desde la función escribimos <code>datos1$ACTIVOS</code>. Luego debemos recordar que <span class="math inline">\(Q_1=P_{25}\)</span> es decir que en la función <code>quantile</code> debemos anotar <span class="math inline">\(0.25\)</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(datos1<span class="op">$</span>ACTIVOS, <span class="fl">0.25</span>)</code></pre></div>
+<pre><code>##     25% 
+## 3184669</code></pre>
+<p>Ahora calculamos los tres cuartiles en este caso podemos escribir dentro de una lista los tres valores, para ingresar listas en R lo hacemos con <code>c(elemento1, elemento2, ... )</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(datos1<span class="op">$</span>ACTIVOS, <span class="kw">c</span>(<span class="fl">0.25</span>,<span class="fl">0.50</span>,<span class="fl">0.75</span>))</code></pre></div>
+<pre><code>##      25%      50%      75% 
+##  3184669 10326361 33192848</code></pre>
+<p>De los resultados obtenidos se interpreta que el 25% de los activos de las empresas es menor que <span class="math inline">\(3 184 669\)</span>. Supongamos que se quieren determinar los deciles, una forma de hacer la lista es con la función <code>seq</code>con las instrucciones <code>seq(inicial, final, by = aumento)</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(datos1<span class="op">$</span>ACTIVOS, <span class="kw">seq</span>(<span class="fl">0.1</span>,<span class="fl">0.9</span>, <span class="dt">by =</span> <span class="fl">0.1</span>))</code></pre></div>
+<pre><code>##      10%      20%      30%      40%      50%      60%      70%      80% 
+##  1621865  2561491  3882643  6187167 10326361 16883801 26613778 49838668 
+##      90% 
+## 93545755</code></pre>
+</div>
+</div>
+<div id="medidas-de-dispersion" class="section level2">
+<h2><span class="header-section-number">2.6</span> Medidas de dispersión</h2>
+</div>
 <div id="tablas-de-frecuencia" class="section level2">
-<h2><span class="header-section-number">2.5</span> Tablas de frecuencia</h2>
+<h2><span class="header-section-number">2.7</span> Tablas de frecuencia</h2>
 <p>Una tabla de frecuencia es una forma de describir los datos de forma resumida, las tablas de frecuencia pueden construirse para variables cualitativas y para variables cuantitativas.</p>
 <div id="variables-cualitativas" class="section level3">
-<h3><span class="header-section-number">2.5.1</span> Variables Cualitativas</h3>
+<h3><span class="header-section-number">2.7.1</span> Variables Cualitativas</h3>
 <p>Para las variables cualitativas una tabla de frecuencia basicámente tiene tres columnas: “Categoría”, “Frecuencia”, “Porcentaje”. Para aprender a realizar tablas de frecuencia para variables cualitativas, trabajaremos con el conjunto de datos <code>audit_bolsa</code>, Este conjunto de datos tiene información sobre las empresas que cotizan en la Bolsa de Valores de Guayaquil, se elaborará una tabla de frecuencias de las firmas auditoras que han trabajado para estas empresas. La variable en la que se almacena esta información es la variable <code>FIRMA</code>. La tabla de frecuencia se elabora usando el paquete <code>dplyr</code>. El comando <code>mutate( )</code> sirve para crear nuevas columnas, en este caso se crea la columna porcentaje.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/onava_000/OneDrive/libro_mc/estadistica&quot;</span>)
 audit_bolsa &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;audit_bolsa.csv&quot;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>,<span class="dt">sep=</span><span class="st">&quot;;&quot;</span>,<span class="dt">dec=</span><span class="st">&quot;,&quot;</span>)
@@ -820,7 +881,7 @@ tabla_firma =<span class="st"> </span><span class="kw">as.data.frame</span>(tabl
 <p>Nota: es importante tener fijado el directorio de trabajo, como se explicó en la sección <a href="intro.html#primerR">2.3</a>.</p>
 </div>
 <div id="variables-cuantitativas" class="section level3">
-<h3><span class="header-section-number">2.5.2</span> Variables Cuantitativas</h3>
+<h3><span class="header-section-number">2.7.2</span> Variables Cuantitativas</h3>
 <p>Una tabla de frecuencias para variables cualitativas tiene 6 columnas:</p>
 <ol style="list-style-type: decimal">
 <li>Clase: una clase es un intervalo del tipo <span class="math inline">\(\left[ menor, mayor \right)\)</span></li>
@@ -1122,9 +1183,9 @@ h3 =<span class="st"> </span><span class="kw">as.data.frame</span>(h3)
 </div>
 </div>
 <div id="tablas-de-contingencia" class="section level2">
-<h2><span class="header-section-number">2.6</span> Tablas de Contingencia</h2>
+<h2><span class="header-section-number">2.8</span> Tablas de Contingencia</h2>
 <p>Una tabla de contingencia es una forma útil para examinar relaciones entre dos variables categóricas. Los valores en las celdas de una tabla de contingencia pueden ser de frecuencia absoluta o frecuencia relativa.</p>
-<p>Para ejemplificar la construcción de una tabla de frecuencias vamos a trabajar con el archivo <code>Ranking2018Guayas.csv</code> este archivo contiene todas las empresas de la provincia del Guayas. Se analizará la relación entre la ciudad y el tamaño de las empresas.</p>
+<p>Para ejemplificar la construcción de una tabla de contingencia vamos a trabajar con el archivo <code>Ranking2018Guayas.csv</code> este archivo contiene información sobre una muestra de 162 empresas de la provincia del Guayas. Se analizará la relación entre la ciudad y el tamaño de las empresas.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/onava_000/OneDrive/libro_mc/estadistica&quot;</span>)
 datos =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Ranking2018Guayas.csv&quot;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)
 
@@ -1136,7 +1197,7 @@ ciudad.tama =<span class="st"> </span>datos <span class="op">%&gt;%</span><span 
 <span class="st">  </span><span class="kw">replace</span>(., <span class="kw">is.na</span>(.), <span class="dv">0</span>)</code></pre></div>
 <table>
 <caption>
-<span id="tab:tabla4">Tabla 2.4: </span>Tabla de Frecuencia de las Ventas
+<span id="tab:tabla4">Tabla 2.4: </span>Tabla de Contingencia de las empresas clasificadas por tamaño y ciudad
 </caption>
 <thead>
 <tr>
@@ -1269,19 +1330,190 @@ VELASCO IBARRA
 </tr>
 </tbody>
 </table>
+<p>En la tabla <a href="intro.html#tab:tabla4">2.4</a> se observa que de las 162 empresas 117 son microempresas y de la ciudad de Guayaquil, de la ciudad de Samborondón se ha tomada una empresa pequeña. Esta información, como se mencionó antes, puede también ser mostrada en porcentajes. En la tabla <a href="intro.html#tab:tabla5">2.5</a> se observa la tabla de contingencia con los porcentajes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ciudad.tama.porc =<span class="st"> </span>datos <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(CIUDAD, TAMAÑO)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Porc =</span> <span class="kw">round</span>(<span class="dv">100</span><span class="op">*</span><span class="kw">n</span>()<span class="op">/</span><span class="kw">nrow</span>(datos),<span class="dv">2</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">spread</span>(TAMAÑO, Porc) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">replace</span>(., <span class="kw">is.na</span>(.), <span class="dv">0</span>)</code></pre></div>
+<table>
+<caption>
+<span id="tab:tabla5">Tabla 2.5: </span>Tabla de Contingencia de las empresas clasificadas por tamaño y ciudad
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+CIUDAD
+</th>
+<th style="text-align:right;">
+MEDIANA
+</th>
+<th style="text-align:right;">
+MICROEMPRESA
+</th>
+<th style="text-align:right;">
+PEQUEÑA
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+DAULE
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ELOY ALFARO
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+1.24
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GUAYAQUIL
+</td>
+<td style="text-align:right;">
+1.24
+</td>
+<td style="text-align:right;">
+72.67
+</td>
+<td style="text-align:right;">
+17.39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MILAGRO
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+1.24
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NARANJITO
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+2.48
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SAMBORONDÓN
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTA LUCIA
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VELASCO IBARRA
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="graficos-y-visualizacion" class="section level2">
-<h2><span class="header-section-number">2.7</span> Gráficos y Visualización</h2>
-<div id="diagramas-de-caja-y-valores-atipicos" class="section level3">
-<h3><span class="header-section-number">2.7.1</span> Diagramas de Caja y valores atípicos</h3>
-<div id="intervalos-de-confianza" class="section level4">
-<h4><span class="header-section-number">2.7.1.1</span> Intervalos de Confianza</h4>
-</div>
-</div>
-</div>
-<div id="medidas-de-dispersion" class="section level2">
-<h2><span class="header-section-number">2.8</span> Medidas de dispersión</h2>
+<h2><span class="header-section-number">2.9</span> Gráficos y Visualización</h2>
+<p>Para realizar gráficas R tiene algunos paquetes disponibles, sin embargo en este texto trabajaremos con el paquete <code>ggplot2</code>. Este paquete está basada en la gramática de los gráficos <span class="citation">(Wilkinson <a href="#ref-wilkinson2005">2005</a>)</span>.</p>
+<div id="histogramas" class="section level3">
+<h3><span class="header-section-number">2.9.1</span> Histogramas</h3>
+<p>Los histogramas se utilizan para variables continuas. Un histograma es un gráfico de la distribución de frecuencia de una variable, en el eje vertical se representa la frecuencia (absoluta o relativa) y en el eje horizontal los rangos de los valores.</p>
+<p>En la figura <a href="intro.html#fig:figura1">2.3</a> se muestra el histograma de la variable ventas en millones de dólares del archivo <em>cap2_big4_size.csv</em> ya descrito en la sección <a href="intro.html#primerR">2.3</a>, este primer histograma ha sido configurado para presentar 12 barras, que las barras sean de color azul con un contorno rojo. Antes de abordar los detalles mencionados discutiremos brevemente el funcionamiento de la gramática de <code>ggplot2</code>, una gráfica realizada en <code>ggplot2</code> empieza por <code>ggplot(data, aes())</code> dentro de <code>aes()</code> se indica las variables que van a intervenir en la gráfica, Luego se añade la <code>geom</code> con la que se va a trabajar en este caso se escogió <code>geom_histogram()</code> puesto que se desea realizar un histograma. Como se indicó anteriormente se configuró el histograma con 12 barras (<code>bins=12</code>), la opción <code>color=&quot;red&quot;</code> permite que el contorno de las barrras sea rojo y la opción <code>fill=&quot;blue&quot;</code>hace que las barras sean de color azul.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 
+<span class="kw">ggplot</span>(datos1, <span class="kw">aes</span>(<span class="dt">x=</span> VTAS<span class="op">/</span><span class="dv">1000000</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">12</span>, <span class="dt">color=</span> <span class="st">&quot;red&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;blue&quot;</span> )</code></pre></div>
+<div class="figure"><span id="fig:figura1"></span>
+<img src="estadistica_files/figure-html/figura1-1.png" alt="Histograma de las Ventas" width="672" />
+<p class="caption">
+Figura 2.3: Histograma de las Ventas
+</p>
+</div>
+<p>Para configurar las etiquetas de los ejes podemos añadir las opciones <code>xlab( )</code> y <code>ylab( )</code>. En la figura <a href="intro.html#fig:figura2">2.4</a> se aprecia el histograma con las etiquetas de los ejes añadidos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+
+<span class="kw">ggplot</span>(datos1, <span class="kw">aes</span>(<span class="dt">x=</span> VTAS<span class="op">/</span><span class="dv">1000000</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">12</span>, <span class="dt">color=</span> <span class="st">&quot;red&quot;</span>,  <span class="dt">fill=</span><span class="st">&quot;blue&quot;</span> ) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Ventas en Millones de Dólares&quot;) + ylab(&quot;</span>Frecuencia<span class="st">&quot;)</span></code></pre></div>
+<div class="figure"><span id="fig:figura2"></span>
+<img src="estadistica_files/figure-html/figura2-1.png" alt="Histograma de las Ventas con Etiquetas en los Ejes" width="672" />
+<p class="caption">
+Figura 2.4: Histograma de las Ventas con Etiquetas en los Ejes
+</p>
+</div>
+</div>
+<div id="diagramas-de-caja-y-valores-atipicos" class="section level3">
+<h3><span class="header-section-number">2.9.2</span> Diagramas de Caja y valores atípicos</h3>
+<div id="intervalos-de-confianza" class="section level4">
+<h4><span class="header-section-number">2.9.2.1</span> Intervalos de Confianza</h4>
+
+</div>
+</div>
+</div>
+</div>
+<h3>Bibliografía</h3>
+<div id="refs" class="references">
+<div id="ref-wilkinson2005">
+<p>Wilkinson, Leland. 2005. <em>The Grammar of Graphics</em>. 2nd ed. New York: Springer-Verlag. <a href="https://www.springer.com/us/book/9780387245447" class="uri">https://www.springer.com/us/book/9780387245447</a>.</p>
 </div>
 </div>
             </section>

@@ -12,17 +12,21 @@
 \contentsline {subsection}{\numberline {2.4.3}Moda}{14}{subsection.2.4.3}
 \contentsline {subsection}{\numberline {2.4.4}¿trabajamos con la media o la mediana?}{14}{subsection.2.4.4}
 \contentsline {subsection}{\numberline {2.4.5}Cálculo de las medidas de tendencia central en R}{15}{subsection.2.4.5}
-\contentsline {section}{\numberline {2.5}Tablas de frecuencia}{15}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Variables Cualitativas}{15}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Variables Cuantitativas}{18}{subsection.2.5.2}
-\contentsline {section}{\numberline {2.6}Tablas de Contingencia}{21}{section.2.6}
-\contentsline {section}{\numberline {2.7}Gráficos y Visualización}{22}{section.2.7}
-\contentsline {subsection}{\numberline {2.7.1}Diagramas de Caja y valores atípicos}{22}{subsection.2.7.1}
-\contentsline {subsubsection}{\numberline {2.7.1.1}Intervalos de Confianza}{22}{subsubsection.2.7.1.1}
-\contentsline {section}{\numberline {2.8}Medidas de dispersión}{22}{section.2.8}
-\contentsline {chapter}{\numberline {3}Pruebas de Hipótesis}{23}{chapter.3}
-\contentsline {chapter}{\numberline {4}Regresión}{25}{chapter.4}
-\contentsline {chapter}{\numberline {5}Análisis Factorial}{27}{chapter.5}
-\contentsline {section}{\numberline {5.1}Análisis de Fiabilidad}{27}{section.5.1}
-\contentsline {section}{\numberline {5.2}Evaluación de Análisis Factorial}{27}{section.5.2}
-\contentsline {chapter}{\numberline {6}Algo de series de tiempo}{29}{chapter.6}
+\contentsline {section}{\numberline {2.5}Medidas de posición (Cuantiles)}{15}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Tipos de Cuantiles}{15}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Cálculo de cuantiles}{16}{subsection.2.5.2}
+\contentsline {section}{\numberline {2.6}Medidas de dispersión}{17}{section.2.6}
+\contentsline {section}{\numberline {2.7}Tablas de frecuencia}{17}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}Variables Cualitativas}{17}{subsection.2.7.1}
+\contentsline {subsection}{\numberline {2.7.2}Variables Cuantitativas}{19}{subsection.2.7.2}
+\contentsline {section}{\numberline {2.8}Tablas de Contingencia}{22}{section.2.8}
+\contentsline {section}{\numberline {2.9}Gráficos y Visualización}{25}{section.2.9}
+\contentsline {subsection}{\numberline {2.9.1}Histogramas}{25}{subsection.2.9.1}
+\contentsline {subsection}{\numberline {2.9.2}Diagramas de Caja y valores atípicos}{27}{subsection.2.9.2}
+\contentsline {subsubsection}{\numberline {2.9.2.1}Intervalos de Confianza}{27}{subsubsection.2.9.2.1}
+\contentsline {chapter}{\numberline {3}Pruebas de Hipótesis}{29}{chapter.3}
+\contentsline {chapter}{\numberline {4}Regresión}{31}{chapter.4}
+\contentsline {chapter}{\numberline {5}Análisis Factorial}{33}{chapter.5}
+\contentsline {section}{\numberline {5.1}Análisis de Fiabilidad}{33}{section.5.1}
+\contentsline {section}{\numberline {5.2}Evaluación de Análisis Factorial}{33}{section.5.2}
+\contentsline {chapter}{\numberline {6}Algo de series de tiempo}{35}{chapter.6}

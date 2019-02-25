@@ -232,6 +232,74 @@ datos1 %>%
             )
 ```
 
+## Medidas de posición (Cuantiles)
+
+Las medidas de posición no central permiten conocer otros puntos característicos de la distribución que no son los valores centrales. Entre las medidas de posición no central más importantes están los cuantiles. El término cuantil fue usado por primera vez por Kendall en 1940.
+
+El cuantil de orden p de una distribución con $0<p<1$ es el valor $x_{i}$ de la variable $X$ que marca un corte de modo que una proporción $p$ o un porcentaje $100p$% de valores de la población es menor o igual que $x_{i}$ Por ejemplo el cuantil de orden $0.35$ dejaría un 35% de valores por debajo de él. 
+
+### Tipos de Cuantiles
+
+- *Cuartiles*: son 3 valores ($Q_{1}, Q_{2}, Q_{3}$) que dividen a la distribución en 4 partes iguales.
+- *Quintiles*: son 4 valores ($K_{1}, K_{2}, K_{3}, K_{4}$) que dividen a la distribución en 5 partes iguales.
+- *Deciles*: son 9 valores ($D_1, D_2, D_3, D_4, D_5, D_6, D_7, D_8, D_9$) que dividen a la distribución en 10 partes iguales.
+
+- *Percentiles*, son 99 valores ($P_1, P_2, \ldots P_{99}$) que dividen a la distribución en 100 partes iguales.
+
+
+### Cálculo de cuantiles
+
+Es fácil darse cuenta que existen equivalencias importantes entre los cuantiles, algunos ejemplos de estas equivalencias:
+
+- $D_5=Q_2=P_{50}$
+- $D_4=K_2=P_{40}$
+- $D_3=P_{30}$
+
+Se deduce entonces que  no es necesario tener una expresión para cada tipo de cuantiles, basta con conocer una expresión para calcular percentiles. Para esto debemos conocer dos cosas:
+
+1. La posición del percentil en nuestro conjunto de datos.
+2. El valor del percentil tomando en cuenta su posición.
+
+Para calcular la posición del percentil $i$ que acumula el 100$p$% en un conjunto de datos no agrupado $X$, de tamaño $n$ y ordenado en forma ascendente primero determinamos la posición del percentil con la expresión:
+
+\begin{equation} 
+  Posición = p(n-1)+1
+  (\#eq:posperc)
+\end{equation} 
+
+Para determinar el valor $X_{i.a}$ utilizamos la expresión:
+
+\begin{equation} 
+  X_{i.a}=X_{i}+0.a(X_{i+1}-X_{i})
+  (\#eq:valperc)
+\end{equation} 
+
+Para calcular percentiles en R, se utiliza la función `quantile()`. Esta función recibe dos argumentos, la variable de la que se calcula el percentil y el porcentaje del percentil que se desea calcular. Se pueden calcular varios percentiles al mismo tiempo. 
+
+Vamos a calcular el primer cuartil $Q_{1}$ de la variable `ACTIVOS` del conjunto de datos ya trabajado anteriormente. Vamos a llamar a esta variable utilizando la notación `$` esta notación se usa poniendo `data.frame$variable` en este caso nuestra variable está en el conjunto `datos1`y se llama `ACTIVOS` por lo que para llamar la variable desde la función escribimos `datos1$ACTIVOS`. Luego debemos recordar que $Q_1=P_{25}$ es decir que en la función `quantile` debemos anotar $0.25$
+
+```{r echo=TRUE}
+quantile(datos1$ACTIVOS, 0.25)
+```
+
+Ahora calculamos los tres cuartiles en este caso podemos escribir dentro de una lista los tres valores, para ingresar listas en R lo hacemos con `c(elemento1, elemento2, ... )`
+
+```{r, echo=TRUE}
+quantile(datos1$ACTIVOS, c(0.25,0.50,0.75))
+```
+
+De los resultados obtenidos se interpreta que el 25% de los activos de las empresas es menor que $3 184 669$. Supongamos que se quieren determinar los deciles, una forma de hacer la lista es con la función `seq`con las instrucciones `seq(inicial, final, by = aumento)`.
+
+
+```{r, echo=TRUE}
+quantile(datos1$ACTIVOS, seq(0.1,0.9, by = 0.1))
+```
+
+
+## Medidas de dispersión
+
+
+
 ## Tablas de frecuencia
 
 Una tabla de frecuencia es una forma de describir los datos de forma resumida, las tablas de frecuencia pueden construirse para variables cualitativas y para variables cuantitativas. 
@@ -254,7 +322,7 @@ tabla_firma <- audit_bolsa %>%
  print(tabla_firma)
 ```
 
-```{r , echo=FALSE,eval=TRUE}
+```{r , echo=FALSE,eval=TRUE, results='markup'}
 setwd("C:/Users/onava_000/OneDrive/libro_mc/estadistica")
 audit_bolsa <- read.csv("audit_bolsa.csv",header=TRUE,sep=";",dec=",")
 
@@ -342,7 +410,7 @@ write.xlsx(h3, "tablas.xlsx", sheetName = "frec_ventas", row.names = FALSE,appen
 
 Una tabla de contingencia es una forma útil para examinar relaciones entre dos variables categóricas. Los valores en las celdas de una tabla de contingencia pueden ser de frecuencia absoluta o frecuencia relativa.
 
-Para ejemplificar la construcción de una tabla de frecuencias vamos a trabajar con el archivo `Ranking2018Guayas.csv` este archivo contiene todas las empresas de la provincia del Guayas. Se analizará la relación entre la ciudad y el tamaño de las empresas. 
+Para ejemplificar la construcción de una tabla de contingencia vamos a trabajar con el archivo `Ranking2018Guayas.csv` este archivo contiene información sobre una muestra de 162 empresas de la provincia del Guayas. Se analizará la relación entre la ciudad y el tamaño de las empresas. 
 
 ```{r, echo=TRUE, eval=TRUE}
 
@@ -360,11 +428,61 @@ ciudad.tama = datos %>%
 
 ```{r tabla4, echo=FALSE}
 knitr::kable(
-  ciudad.tama, caption = 'Tabla de Frecuencia de las Ventas',
+  ciudad.tama, caption = 'Tabla de Contingencia de las empresas \n clasificadas por tamaño y ciudad',
   booktabs = TRUE) 
 ```
 
+En la tabla \@ref(tab:tabla4) se observa que de las 162 empresas 117 son microempresas y de la ciudad de Guayaquil, de la ciudad de Samborondón se ha tomada una empresa pequeña. Esta información, como se mencionó antes, puede también ser mostrada en porcentajes. En la tabla \@ref(tab:tabla5) se observa la tabla de contingencia con los porcentajes. 
+
+```{r, echo=TRUE, eval=TRUE}
+ciudad.tama.porc = datos %>% 
+  group_by(CIUDAD, TAMAÑO)%>%
+  summarise(Porc = round(100*n()/nrow(datos),2)) %>%
+  spread(TAMAÑO, Porc) %>%
+  replace(., is.na(.), 0)
+
+```
+
+```{r tabla5, echo=FALSE}
+knitr::kable(
+  ciudad.tama.porc, caption = 'Tabla de Contingencia de las empresas \n clasificadas por tamaño y ciudad',
+  booktabs = TRUE) 
+```
+
+```{r include=FALSE}
+library(xlsx)
+ciudad.tama = as.data.frame(ciudad.tama)
+ciudad.tama.porc = as.data.frame(ciudad.tama.porc)
+write.xlsx(ciudad.tama, "tablas.xlsx", sheetName = "contingencia_abs", row.names = FALSE,append=TRUE)
+write.xlsx(ciudad.tama.porc, "tablas.xlsx", sheetName = "contingencia_rel", row.names = FALSE,append=TRUE)
+
+```
+
 ## Gráficos y Visualización
+
+Para realizar gráficas R tiene algunos paquetes disponibles, sin embargo en este texto trabajaremos con el paquete  `ggplot2`. Este paquete está basada en la gramática de los gráficos [@wilkinson2005].
+
+### Histogramas
+
+Los histogramas se utilizan para variables continuas. Un histograma es un gráfico de la distribución de frecuencia de una variable, en el eje vertical se representa la frecuencia (absoluta o relativa) y en el eje horizontal los rangos de los valores.
+
+En la figura \@ref(fig:figura1) se muestra el histograma de la variable ventas en millones de dólares del archivo *cap2_big4_size.csv* ya descrito en la sección \@ref(primerR), este primer histograma ha sido configurado para presentar 12 barras, que las barras sean de color azul con un contorno rojo. Antes de abordar los detalles mencionados discutiremos brevemente el funcionamiento de la gramática de `ggplot2`, una gráfica realizada en `ggplot2` empieza por `ggplot(data, aes())` dentro de `aes()` se indica las variables que van a intervenir en la gráfica, Luego se añade la `geom` con la que se va a trabajar en este caso se escogió `geom_histogram()`  puesto que se desea  realizar un histograma. Como se indicó anteriormente se configuró el histograma con 12 barras (`bins=12`), la opción `color="red"` permite que el contorno de las barrras sea rojo y la opción `fill="blue"`hace que las barras sean de color azul. 
+
+```{r figura1, echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Histograma de las Ventas"}
+library(ggplot2)
+
+ggplot(datos1, aes(x= VTAS/1000000)) + geom_histogram(bins=12, color= "red", fill="blue" )
+```
+
+Para configurar las etiquetas de los ejes podemos añadir las opciones `xlab( )` y `ylab( )`. En la figura \@ref(fig:figura2) se aprecia el histograma con las etiquetas de los ejes añadidos. 
+
+```{r figura2, results='asis', echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Histograma de las Ventas con Etiquetas en los Ejes"}
+library(ggplot2)
+
+ggplot(datos1, aes(x= VTAS/1000000)) + 
+  geom_histogram(bins=12, color= "red",  fill="blue" ) + 
+  xlab("Ventas en Millones de Dólares") + ylab("Frecuencia")
+```
 
 ### Diagramas de Caja y valores atípicos
 
@@ -375,6 +493,6 @@ knitr::kable(
 
 
 
-## Medidas de dispersión
+
 
 
