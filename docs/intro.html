@@ -1115,11 +1115,160 @@ Rel. Acu.
 </tr>
 </tbody>
 </table>
-<p>De la tabla <a href="intro.html#tab:tabla3">2.3</a> se obsserva que el <span class="math inline">\(93\%\)</span> de las empresas realiza ventas entre 0 y <span class="math inline">\(165.76\)</span> millones. El <span class="math inline">\(99\%\)</span> de las empresas es decir <span class="math inline">\(2234\)</span> tiene ventas menores a <span class="math inline">\(663.04\)</span> millones de dólares, esto se lo puede ver en la columna de frecuencias acumuladas relativas. Finalmente solo una empresa tiene ventas entre <span class="math inline">\(1823.36\)</span> y <span class="math inline">\(1989.12\)</span> millones.</p>
+<p>De la tabla <a href="intro.html#tab:tabla3">2.3</a> se obsserva que el <span class="math inline">\(93\%\)</span> de las empresas realiza ventas entre 0 y <span class="math inline">\(165.76\)</span> millones. El <span class="math inline">\(99\%\)</span> de las empresas es decir <span class="math inline">\(2234\)</span> tiene ventas menores a <span class="math inline">\(663.04\)</span> millones de dólares, esto se lo puede ver en la columna de frecuencias acumuladas relativas. Además, solo una empresa tiene ventas entre <span class="math inline">\(1823.36\)</span> y <span class="math inline">\(1989.12\)</span> millones. Finalmente vamos a exportar la tabla de frecuencia en el archivo <code>tablas.xlsx</code>. La opción <code>append = TRUE</code> sirve para añadir una nueva hoja de cálculo al libro.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(xlsx)
+h3 =<span class="st"> </span><span class="kw">as.data.frame</span>(h3)
+<span class="kw">write.xlsx</span>(h3, <span class="st">&quot;tablas.xlsx&quot;</span>, <span class="dt">sheetName =</span> <span class="st">&quot;frec_ventas&quot;</span>, <span class="dt">row.names =</span> <span class="ot">FALSE</span>,<span class="dt">append=</span><span class="ot">TRUE</span>)</code></pre></div>
 </div>
 </div>
 <div id="tablas-de-contingencia" class="section level2">
 <h2><span class="header-section-number">2.6</span> Tablas de Contingencia</h2>
+<p>Una tabla de contingencia es una forma útil para examinar relaciones entre dos variables categóricas. Los valores en las celdas de una tabla de contingencia pueden ser de frecuencia absoluta o frecuencia relativa.</p>
+<p>Para ejemplificar la construcción de una tabla de frecuencias vamos a trabajar con el archivo <code>Ranking2018Guayas.csv</code> este archivo contiene todas las empresas de la provincia del Guayas. Se analizará la relación entre la ciudad y el tamaño de las empresas.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/onava_000/OneDrive/libro_mc/estadistica&quot;</span>)
+datos =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Ranking2018Guayas.csv&quot;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)
+
+
+ciudad.tama =<span class="st"> </span>datos <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(CIUDAD, TAMAÑO)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">n</span>())<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">spread</span>(TAMAÑO, n) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">replace</span>(., <span class="kw">is.na</span>(.), <span class="dv">0</span>)</code></pre></div>
+<table>
+<caption>
+<span id="tab:tabla4">Tabla 2.4: </span>Tabla de Frecuencia de las Ventas
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+CIUDAD
+</th>
+<th style="text-align:right;">
+MEDIANA
+</th>
+<th style="text-align:right;">
+MICROEMPRESA
+</th>
+<th style="text-align:right;">
+PEQUEÑA
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+DAULE
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ELOY ALFARO
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GUAYAQUIL
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+117
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MILAGRO
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NARANJITO
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SAMBORONDÓN
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTA LUCIA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VELASCO IBARRA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="graficos-y-visualizacion" class="section level2">
 <h2><span class="header-section-number">2.7</span> Gráficos y Visualización</h2>

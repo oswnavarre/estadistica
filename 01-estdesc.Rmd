@@ -330,11 +330,39 @@ knitr::kable(
   booktabs = TRUE) 
 ```
 
-De la tabla \@ref(tab:tabla3) se obsserva que el $93\%$ de las empresas realiza ventas entre 0 y $165.76$ millones. El $99\%$  de las empresas es decir $2234$ tiene ventas menores a $663.04$ millones de dólares, esto se lo puede ver en la columna de frecuencias acumuladas relativas. Finalmente solo una empresa tiene ventas entre $1823.36$ y $1989.12$ millones. 
+De la tabla \@ref(tab:tabla3) se obsserva que el $93\%$ de las empresas realiza ventas entre 0 y $165.76$ millones. El $99\%$  de las empresas es decir $2234$ tiene ventas menores a $663.04$ millones de dólares, esto se lo puede ver en la columna de frecuencias acumuladas relativas. Además, solo una empresa tiene ventas entre $1823.36$ y $1989.12$ millones. Finalmente vamos a exportar la tabla de frecuencia en el archivo `tablas.xlsx`. La opción `append = TRUE` sirve para añadir una nueva hoja de cálculo al libro.
 
-
+```{r, echo=TRUE, eval=TRUE}
+library(xlsx)
+h3 = as.data.frame(h3)
+write.xlsx(h3, "tablas.xlsx", sheetName = "frec_ventas", row.names = FALSE,append=TRUE)
+```
 
 ## Tablas de Contingencia
+
+Una tabla de contingencia es una forma útil para examinar relaciones entre dos variables categóricas. Los valores en las celdas de una tabla de contingencia pueden ser de frecuencia absoluta o frecuencia relativa.
+
+Para ejemplificar la construcción de una tabla de frecuencias vamos a trabajar con el archivo `Ranking2018Guayas.csv` este archivo contiene todas las empresas de la provincia del Guayas. Se analizará la relación entre la ciudad y el tamaño de las empresas. 
+
+```{r, echo=TRUE, eval=TRUE}
+
+setwd("C:/Users/onava_000/OneDrive/libro_mc/estadistica")
+datos = read.csv("Ranking2018Guayas.csv",header=TRUE, sep=";")
+
+
+ciudad.tama = datos %>% 
+  group_by(CIUDAD, TAMAÑO)%>%
+  summarise(n=n())%>%
+  spread(TAMAÑO, n) %>%
+  replace(., is.na(.), 0)
+  
+```
+
+```{r tabla4, echo=FALSE}
+knitr::kable(
+  ciudad.tama, caption = 'Tabla de Frecuencia de las Ventas',
+  booktabs = TRUE) 
+```
 
 ## Gráficos y Visualización
 

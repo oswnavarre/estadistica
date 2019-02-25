@@ -1280,10 +1280,117 @@ De la tabla \ref{tab:tabla3} se obsserva que el \(93\%\) de las empresas
 realiza ventas entre 0 y \(165.76\) millones. El \(99\%\) de las
 empresas es decir \(2234\) tiene ventas menores a \(663.04\) millones de
 dólares, esto se lo puede ver en la columna de frecuencias acumuladas
-relativas. Finalmente solo una empresa tiene ventas entre \(1823.36\) y
-\(1989.12\) millones.
+relativas. Además, solo una empresa tiene ventas entre \(1823.36\) y
+\(1989.12\) millones. Finalmente vamos a exportar la tabla de frecuencia
+en el archivo \texttt{tablas.xlsx}. La opción \texttt{append\ =\ TRUE}
+sirve para añadir una nueva hoja de cálculo al libro.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(xlsx)}
+\NormalTok{h3 =}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(h3)}
+\KeywordTok{write.xlsx}\NormalTok{(h3, }\StringTok{"tablas.xlsx"}\NormalTok{, }\DataTypeTok{sheetName =} \StringTok{"frec_ventas"}\NormalTok{, }\DataTypeTok{row.names =} \OtherTok{FALSE}\NormalTok{,}\DataTypeTok{append=}\OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 \section{Tablas de Contingencia}\label{tablas-de-contingencia}
+
+Una tabla de contingencia es una forma útil para examinar relaciones
+entre dos variables categóricas. Los valores en las celdas de una tabla
+de contingencia pueden ser de frecuencia absoluta o frecuencia relativa.
+
+Para ejemplificar la construcción de una tabla de frecuencias vamos a
+trabajar con el archivo \texttt{Ranking2018Guayas.csv} este archivo
+contiene todas las empresas de la provincia del Guayas. Se analizará la
+relación entre la ciudad y el tamaño de las empresas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{setwd}\NormalTok{(}\StringTok{"C:/Users/onava_000/OneDrive/libro_mc/estadistica"}\NormalTok{)}
+\NormalTok{datos =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"Ranking2018Guayas.csv"}\NormalTok{,}\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{sep=}\StringTok{";"}\NormalTok{)}
+
+
+\NormalTok{ciudad.tama =}\StringTok{ }\NormalTok{datos }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(CIUDAD, TAMAÑO)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{n=}\KeywordTok{n}\NormalTok{())}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{spread}\NormalTok{(TAMAÑO, n) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{replace}\NormalTok{(., }\KeywordTok{is.na}\NormalTok{(.), }\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\label{tab:tabla4}Tabla de Frecuencia de las Ventas
+
+CIUDAD
+
+MEDIANA
+
+MICROEMPRESA
+
+PEQUEÑA
+
+DAULE
+
+1
+
+1
+
+0
+
+ELOY ALFARO
+
+0
+
+2
+
+0
+
+GUAYAQUIL
+
+2
+
+117
+
+28
+
+MILAGRO
+
+0
+
+2
+
+0
+
+NARANJITO
+
+0
+
+4
+
+0
+
+SAMBORONDÓN
+
+0
+
+0
+
+1
+
+SANTA LUCIA
+
+0
+
+1
+
+0
+
+VELASCO IBARRA
+
+0
+
+1
+
+1
 
 \section{Gráficos y Visualización}\label{graficos-y-visualizacion}
 
