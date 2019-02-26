@@ -61,9 +61,9 @@ El archivo que vamos a analizar contiene los activos, la utilidad, las ventas y 
 
 ```{r tabla1, echo=FALSE}
 setwd("C:/Users/onava_000/OneDrive/libro_mc/estadistica")
-datos1 <- read.csv("cap2_big4_size.csv",header=TRUE,sep=";",dec=",")
+big4size <- read.csv("cap2_big4_size.csv",header=TRUE,sep=";",dec=",")
 knitr::kable(
-  head(datos1, 10), caption = 'Primeras 10 observaciones',
+  head(big4size, 10), caption = 'Primeras 10 observaciones',
   booktabs = TRUE) 
 ```
 
@@ -71,8 +71,8 @@ Sin más preámbulos, empecemos a trabajar. Recapitulando, primero configuraremo
 
 ```{r}
 setwd("C:/Users/onava_000/OneDrive/libro_mc/estadistica")
-datos1 <- read.csv("cap2_big4_size.csv",header=TRUE,sep=";",dec=",")
-str(datos1)
+big4size <- read.csv("cap2_big4_size.csv",header=TRUE,sep=";",dec=",")
+str(big4size)
 ```
 
 
@@ -112,13 +112,13 @@ Una característica importante de `dplyr` es el uso del operador `%>%`. Cada tra
 
 ```{r}
 library(dplyr)
-datos1 <- datos1 %>%
+big4size <- big4size %>%
   mutate(
     ROA = UTILIDAD/ACTIVOS,
     ROS = UTILIDAD/VTAS,
     ROE = UTILIDAD/PAT
   )
-str(datos1)
+str(big4size)
 ```
 
 En las últimas líneas de la salida de R, se observa que ahora en el conjunto de datos existen ahora tres nuevas variables. En la próxima sección seguiremos trabajando con el mismo conjunto de datos.
@@ -213,16 +213,16 @@ Para calcular la media y la mediana se utilizan las funciones  `mean()` y `media
 En el siguiente ejemplo se obtiene la media de los activos de las empresas. como solamente necesitamos una variable del conjunto de datos usamos el operador `$`, el funcionamiento de este operador es `data.frame$variable` es decir indicamos el conjunto de datos del que llamamos la variable y después del operador `$` indicamos la variable que vamos a trabajar.
 
 ```{r, results='markup'}
-mean(datos1$ACTIVOS)
-median(datos1$ACTIVOS)
+mean(big4size$ACTIVOS)
+median(big4size$ACTIVOS)
 library(DescTools)
-Mode(datos1$ACTIVOS)
+Mode(big4size$ACTIVOS)
 ```
 
 En el resultado de la moda se obtienen 2 valores. Es decir que existen dos valores que se repiten más veces o tienen mayor frecuencia. Cuando se realiza investigación es común desear hacer una tabla con las estadísticas descriptivas de los datos. El paquete `dplyr` permite realizar tablas que resuman las variables de forma sencilla con la función `summarise()`.
 
 ```{r, results='markup'}
-datos1 %>%
+big4size %>%
   summarise(PROM.ACTIVOS = mean(ACTIVOS),
             PROM.UTILIDAD = mean(UTILIDAD),
             PROM.VTAS = mean(VTAS),
@@ -279,19 +279,19 @@ Para calcular percentiles en R, se utiliza la función `quantile()`. Esta funci�
 Vamos a calcular el primer cuartil $Q_{1}$ de la variable `ACTIVOS` del conjunto de datos ya trabajado anteriormente. Vamos a llamar a esta variable utilizando la notación `$` esta notación se usa poniendo `data.frame$variable` en este caso nuestra variable está en el conjunto `datos1`y se llama `ACTIVOS` por lo que para llamar la variable desde la función escribimos `datos1$ACTIVOS`. Luego debemos recordar que $Q_1=P_{25}$ es decir que en la función `quantile` debemos anotar $0.25$
 
 ```{r echo=TRUE}
-quantile(datos1$ACTIVOS, 0.25)
+quantile(big4size$ACTIVOS, 0.25)
 ```
 
 Ahora calculamos los tres cuartiles en este caso podemos escribir dentro de una lista los tres valores, para ingresar listas en R lo hacemos con `c(elemento1, elemento2, ... )`
 
 ```{r, echo=TRUE}
-quantile(datos1$ACTIVOS, c(0.25,0.50,0.75))
+quantile(big4size$ACTIVOS, c(0.25,0.50,0.75))
 ```
 
 De los resultados obtenidos se interpreta que el 25% de los activos de las empresas es menor que $3 184 669$. Supongamos que se quieren determinar los deciles, una forma de hacer la lista es con la función `seq` con las instrucciones `seq(inicial, final, by = aumento)` de esta manera nos evitamos escribir los nueve valores.
 
 ```{r, echo=TRUE}
-quantile(datos1$ACTIVOS, seq(0.1,0.9, by = 0.1))
+quantile(big4size$ACTIVOS, seq(0.1,0.9, by = 0.1))
 ```
 
 
@@ -373,11 +373,11 @@ Una tabla de frecuencias para variables cualitativas tiene 6 columnas:
 
 Una de las ventajas de usar R es que se pueden crear funciones para cada necesidad que el investigador tenga, en este caso el código que se muestra sirve para hacer tablas de frecuencia de cualquier variable cuantitativa. A manera de ejemplo se hará la tabla de frecuencia de la variable `VTAS` en millones de dólares, del conjunto de datos trabajado en la sección \@ref(primerR). 
 
-```{r,echo = TRUE,}
+```{r,echo = TRUE}
 library(agricolae)
 library(dplyr)
 
-h2<-with(datos1,graph.freq(VTAS/1000000,plot=FALSE));
+h2<-with(big4size,graph.freq(VTAS/1000000,plot=FALSE));
 
 h2 = table.freq(h2)
 
@@ -414,10 +414,10 @@ Para ejemplificar la construcción de una tabla de contingencia vamos a trabajar
 ```{r, echo=TRUE, eval=TRUE}
 
 setwd("C:/Users/onava_000/OneDrive/libro_mc/estadistica")
-datos = read.csv("Ranking2018Guayas.csv",header=TRUE, sep=";")
+rank2018 = read.csv("Ranking2018Guayas.csv",header=TRUE, sep=";")
 
 
-ciudad.tama = datos %>% 
+ciudad.tama = rank2018 %>% 
   group_by(CIUDAD, TAMAÑO)%>%
   summarise(n=n())%>%
   spread(TAMAÑO, n) %>%
@@ -434,9 +434,9 @@ knitr::kable(
 En la tabla \@ref(tab:tabla4) se observa que de las 162 empresas 117 son microempresas y de la ciudad de Guayaquil, de la ciudad de Samborondón se ha tomada una empresa pequeña. Esta información, como se mencionó antes, puede también ser mostrada en porcentajes. En la tabla \@ref(tab:tabla5) se observa la tabla de contingencia con los porcentajes. 
 
 ```{r, echo=TRUE, eval=TRUE}
-ciudad.tama.porc = datos %>% 
+ciudad.tama.porc = rank2018 %>% 
   group_by(CIUDAD, TAMAÑO)%>%
-  summarise(Porc = round(100*n()/nrow(datos),2)) %>%
+  summarise(Porc = round(100*n()/nrow(rank2018),2)) %>%
   spread(TAMAÑO, Porc) %>%
   replace(., is.na(.), 0)
 
@@ -470,7 +470,7 @@ En la figura \@ref(fig:figura1) se muestra el histograma de la variable ventas e
 ```{r figura1, echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Histograma de las Ventas"}
 library(ggplot2)
 
-ggplot(datos1, aes(x= VTAS/1000000)) + geom_histogram(bins=12, color= "red", fill="blue" )
+ggplot(big4size, aes(x= VTAS/1000000)) + geom_histogram(bins=12, color= "red", fill="blue" )
 ```
 
 Para configurar las etiquetas de los ejes podemos añadir las opciones `xlab( )` y `ylab( )`. En la figura \@ref(fig:figura2) se aprecia el histograma con las etiquetas de los ejes añadidos. 
@@ -478,10 +478,12 @@ Para configurar las etiquetas de los ejes podemos añadir las opciones `xlab( )`
 ```{r figura2, results='asis', echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Histograma de las Ventas con Etiquetas en los Ejes"}
 library(ggplot2)
 
-ggplot(datos1, aes(x= VTAS/1000000)) + 
+ggplot(big4size, aes(x= VTAS/1000000)) + 
   geom_histogram(bins=12, color= "red",  fill="blue" ) + 
   xlab("Ventas en Millones de Dólares") + ylab("Frecuencia")
 ```
+
+
 
 ### Diagramas de Caja y valores atípicos
 
