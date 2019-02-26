@@ -491,7 +491,7 @@ Para elaborar este histograma se tomaron en cuenta varias cosas, lo primero se e
 min(rank2018$VENTAS/1000)
 max(rank2018$VENTAS/1000)
 ```
-Los valores obtenidos para el máximo y el mínimo fueron $0$ y $1350$ respectivamente, por esta razón se decidió crear 10 clases y cada clase con una longitud de 150. Adicionalmente para obtener un gráfico agradable a la vista se cambia la orientación de las marcas en el eje $x$.  
+Los valores obtenidos para el máximo y el mínimo fueron $0$ y $1348$ respectivamente, por esta razón se decidió crear 10 clases y cada clase con una longitud de 150. Adicionalmente para obtener un gráfico agradable a la vista se cambia la orientación de las marcas en el eje $x$.  
 
 ```{r figura3, echo=TRUE,fig.cap="Histograma de las Ventas de Acuerdo al Tamaño de la empresa"}
 
