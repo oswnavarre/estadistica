@@ -502,8 +502,8 @@ permite obtener la descripción de la estructura de los datos.
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{setwd}\NormalTok{(}\StringTok{"C:/Users/onava_000/OneDrive/libro_mc/estadistica"}\NormalTok{)}
-\NormalTok{datos1 <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"cap2_big4_size.csv"}\NormalTok{,}\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{,}\DataTypeTok{sep=}\StringTok{";"}\NormalTok{,}\DataTypeTok{dec=}\StringTok{","}\NormalTok{)}
-\KeywordTok{str}\NormalTok{(datos1)}
+\NormalTok{big4size <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"cap2_big4_size.csv"}\NormalTok{,}\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{,}\DataTypeTok{sep=}\StringTok{";"}\NormalTok{,}\DataTypeTok{dec=}\StringTok{","}\NormalTok{)}
+\KeywordTok{str}\NormalTok{(big4size)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -605,13 +605,13 @@ esta función permite crear nuevas variables.
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(dplyr)}
-\NormalTok{datos1 <-}\StringTok{ }\NormalTok{datos1 }\OperatorTok{%>%}
+\NormalTok{big4size <-}\StringTok{ }\NormalTok{big4size }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}
     \DataTypeTok{ROA =}\NormalTok{ UTILIDAD}\OperatorTok{/}\NormalTok{ACTIVOS,}
     \DataTypeTok{ROS =}\NormalTok{ UTILIDAD}\OperatorTok{/}\NormalTok{VTAS,}
     \DataTypeTok{ROE =}\NormalTok{ UTILIDAD}\OperatorTok{/}\NormalTok{PAT}
 \NormalTok{  )}
-\KeywordTok{str}\NormalTok{(datos1)}
+\KeywordTok{str}\NormalTok{(big4size)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -812,7 +812,7 @@ indicamos la variable que vamos a trabajar.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{mean}\NormalTok{(datos1}\OperatorTok{$}\NormalTok{ACTIVOS)}
+\KeywordTok{mean}\NormalTok{(big4size}\OperatorTok{$}\NormalTok{ACTIVOS)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -822,7 +822,7 @@ indicamos la variable que vamos a trabajar.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{median}\NormalTok{(datos1}\OperatorTok{$}\NormalTok{ACTIVOS)}
+\KeywordTok{median}\NormalTok{(big4size}\OperatorTok{$}\NormalTok{ACTIVOS)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -833,7 +833,7 @@ indicamos la variable que vamos a trabajar.
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(DescTools)}
-\KeywordTok{Mode}\NormalTok{(datos1}\OperatorTok{$}\NormalTok{ACTIVOS)}
+\KeywordTok{Mode}\NormalTok{(big4size}\OperatorTok{$}\NormalTok{ACTIVOS)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -850,7 +850,7 @@ la función \texttt{summarise()}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{datos1 }\OperatorTok{%>%}
+\NormalTok{big4size }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{PROM.ACTIVOS =} \KeywordTok{mean}\NormalTok{(ACTIVOS),}
             \DataTypeTok{PROM.UTILIDAD =} \KeywordTok{mean}\NormalTok{(UTILIDAD),}
             \DataTypeTok{PROM.VTAS =} \KeywordTok{mean}\NormalTok{(VTAS),}
@@ -963,7 +963,7 @@ anotar \(0.25\)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{quantile}\NormalTok{(datos1}\OperatorTok{$}\NormalTok{ACTIVOS, }\FloatTok{0.25}\NormalTok{)}
+\KeywordTok{quantile}\NormalTok{(big4size}\OperatorTok{$}\NormalTok{ACTIVOS, }\FloatTok{0.25}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -978,7 +978,7 @@ de una lista los tres valores, para ingresar listas en R lo hacemos con
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{quantile}\NormalTok{(datos1}\OperatorTok{$}\NormalTok{ACTIVOS, }\KeywordTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.50}\NormalTok{,}\FloatTok{0.75}\NormalTok{))}
+\KeywordTok{quantile}\NormalTok{(big4size}\OperatorTok{$}\NormalTok{ACTIVOS, }\KeywordTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.50}\NormalTok{,}\FloatTok{0.75}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -990,12 +990,13 @@ de una lista los tres valores, para ingresar listas en R lo hacemos con
 De los resultados obtenidos se interpreta que el 25\% de los activos de
 las empresas es menor que \(3 184 669\). Supongamos que se quieren
 determinar los deciles, una forma de hacer la lista es con la función
-\texttt{seq}con las instrucciones
-\texttt{seq(inicial,\ final,\ by\ =\ aumento)}.
+\texttt{seq} con las instrucciones
+\texttt{seq(inicial,\ final,\ by\ =\ aumento)} de esta manera nos
+evitamos escribir los nueve valores.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{quantile}\NormalTok{(datos1}\OperatorTok{$}\NormalTok{ACTIVOS, }\KeywordTok{seq}\NormalTok{(}\FloatTok{0.1}\NormalTok{,}\FloatTok{0.9}\NormalTok{, }\DataTypeTok{by =} \FloatTok{0.1}\NormalTok{))}
+\KeywordTok{quantile}\NormalTok{(big4size}\OperatorTok{$}\NormalTok{ACTIVOS, }\KeywordTok{seq}\NormalTok{(}\FloatTok{0.1}\NormalTok{,}\FloatTok{0.9}\NormalTok{, }\DataTypeTok{by =} \FloatTok{0.1}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1243,7 +1244,7 @@ trabajado en la sección \ref{primerR}.
 \KeywordTok{library}\NormalTok{(agricolae)}
 \KeywordTok{library}\NormalTok{(dplyr)}
 
-\NormalTok{h2<-}\KeywordTok{with}\NormalTok{(datos1,}\KeywordTok{graph.freq}\NormalTok{(VTAS}\OperatorTok{/}\DecValTok{1000000}\NormalTok{,}\DataTypeTok{plot=}\OtherTok{FALSE}\NormalTok{));}
+\NormalTok{h2<-}\KeywordTok{with}\NormalTok{(big4size,}\KeywordTok{graph.freq}\NormalTok{(VTAS}\OperatorTok{/}\DecValTok{1000000}\NormalTok{,}\DataTypeTok{plot=}\OtherTok{FALSE}\NormalTok{));}
 
 \NormalTok{h2 =}\StringTok{ }\KeywordTok{table.freq}\NormalTok{(h2)}
 
@@ -1448,10 +1449,10 @@ empresas.
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{setwd}\NormalTok{(}\StringTok{"C:/Users/onava_000/OneDrive/libro_mc/estadistica"}\NormalTok{)}
-\NormalTok{datos =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"Ranking2018Guayas.csv"}\NormalTok{,}\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{sep=}\StringTok{";"}\NormalTok{)}
+\NormalTok{rank2018 =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"Ranking2018Guayas.csv"}\NormalTok{,}\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{sep=}\StringTok{";"}\NormalTok{)}
 
 
-\NormalTok{ciudad.tama =}\StringTok{ }\NormalTok{datos }\OperatorTok{%>%}\StringTok{ }
+\NormalTok{ciudad.tama =}\StringTok{ }\NormalTok{rank2018 }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(CIUDAD, TAMAÑO)}\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{n=}\KeywordTok{n}\NormalTok{())}\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{spread}\NormalTok{(TAMAÑO, n) }\OperatorTok{%>%}
@@ -1543,9 +1544,9 @@ porcentajes.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{ciudad.tama.porc =}\StringTok{ }\NormalTok{datos }\OperatorTok{%>%}\StringTok{ }
+\NormalTok{ciudad.tama.porc =}\StringTok{ }\NormalTok{rank2018 }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(CIUDAD, TAMAÑO)}\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{Porc =} \KeywordTok{round}\NormalTok{(}\DecValTok{100}\OperatorTok{*}\KeywordTok{n}\NormalTok{()}\OperatorTok{/}\KeywordTok{nrow}\NormalTok{(datos),}\DecValTok{2}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{Porc =} \KeywordTok{round}\NormalTok{(}\DecValTok{100}\OperatorTok{*}\KeywordTok{n}\NormalTok{()}\OperatorTok{/}\KeywordTok{nrow}\NormalTok{(rank2018),}\DecValTok{2}\NormalTok{)) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{spread}\NormalTok{(TAMAÑO, Porc) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{replace}\NormalTok{(., }\KeywordTok{is.na}\NormalTok{(.), }\DecValTok{0}\NormalTok{)}
 \end{Highlighting}
@@ -1659,7 +1660,7 @@ que las barras sean de color azul.
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(ggplot2)}
 
-\KeywordTok{ggplot}\NormalTok{(datos1, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{ VTAS}\OperatorTok{/}\DecValTok{1000000}\NormalTok{)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{bins=}\DecValTok{12}\NormalTok{, }\DataTypeTok{color=} \StringTok{"red"}\NormalTok{, }\DataTypeTok{fill=}\StringTok{"blue"}\NormalTok{ )}
+\KeywordTok{ggplot}\NormalTok{(big4size, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{ VTAS}\OperatorTok{/}\DecValTok{1000000}\NormalTok{)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{bins=}\DecValTok{12}\NormalTok{, }\DataTypeTok{color=} \StringTok{"red"}\NormalTok{, }\DataTypeTok{fill=}\StringTok{"blue"}\NormalTok{ )}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1677,7 +1678,7 @@ aprecia el histograma con las etiquetas de los ejes añadidos.
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(ggplot2)}
 
-\KeywordTok{ggplot}\NormalTok{(datos1, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{ VTAS}\OperatorTok{/}\DecValTok{1000000}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(big4size, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{ VTAS}\OperatorTok{/}\DecValTok{1000000}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{bins=}\DecValTok{12}\NormalTok{, }\DataTypeTok{color=} \StringTok{"red"}\NormalTok{,  }\DataTypeTok{fill=}\StringTok{"blue"}\NormalTok{ ) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Ventas en Millones de Dólares") + ylab("}\NormalTok{Frecuencia}\StringTok{")}
 \end{Highlighting}

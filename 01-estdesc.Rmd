@@ -288,8 +288,7 @@ Ahora calculamos los tres cuartiles en este caso podemos escribir dentro de una 
 quantile(datos1$ACTIVOS, c(0.25,0.50,0.75))
 ```
 
-De los resultados obtenidos se interpreta que el 25% de los activos de las empresas es menor que $3 184 669$. Supongamos que se quieren determinar los deciles, una forma de hacer la lista es con la función `seq`con las instrucciones `seq(inicial, final, by = aumento)`.
-
+De los resultados obtenidos se interpreta que el 25% de los activos de las empresas es menor que $3 184 669$. Supongamos que se quieren determinar los deciles, una forma de hacer la lista es con la función `seq` con las instrucciones `seq(inicial, final, by = aumento)` de esta manera nos evitamos escribir los nueve valores.
 
 ```{r, echo=TRUE}
 quantile(datos1$ACTIVOS, seq(0.1,0.9, by = 0.1))

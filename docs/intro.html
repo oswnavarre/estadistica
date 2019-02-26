@@ -436,8 +436,8 @@ PAT
 </table>
 <p>Sin más preámbulos, empecemos a trabajar. Recapitulando, primero configuraremos el directorio de trabajo, luego cargaremos el archivo indicado. Finalmente usamos la función <code>str()</code>, la que nos permite obtener la descripción de la estructura de los datos.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/onava_000/OneDrive/libro_mc/estadistica&quot;</span>)
-datos1 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;cap2_big4_size.csv&quot;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>,<span class="dt">sep=</span><span class="st">&quot;;&quot;</span>,<span class="dt">dec=</span><span class="st">&quot;,&quot;</span>)
-<span class="kw">str</span>(datos1)</code></pre></div>
+big4size &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;cap2_big4_size.csv&quot;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>,<span class="dt">sep=</span><span class="st">&quot;;&quot;</span>,<span class="dt">dec=</span><span class="st">&quot;,&quot;</span>)
+<span class="kw">str</span>(big4size)</code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    2256 obs. of  6 variables:
 ##  $ EXPMUESTRA: int  85 100121 45178 51193 47598 31720 46189 9731 4619 102434 ...
 ##  $ BIG4      : int  1 0 0 0 0 0 0 0 0 0 ...
@@ -471,13 +471,13 @@ datos1 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span clas
 \end{equation}\]</span>
 <p>Una característica importante de <code>dplyr</code> es el uso del operador <code>%&gt;%</code>. Cada transformación u operación en los datos se separa por el operador <code>%&gt;%</code>. La primera función de <code>dplyr</code> que usaremos es <code>mutate()</code>, básicamente esta función permite crear nuevas variables.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
-datos1 &lt;-<span class="st"> </span>datos1 <span class="op">%&gt;%</span>
+big4size &lt;-<span class="st"> </span>big4size <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(
     <span class="dt">ROA =</span> UTILIDAD<span class="op">/</span>ACTIVOS,
     <span class="dt">ROS =</span> UTILIDAD<span class="op">/</span>VTAS,
     <span class="dt">ROE =</span> UTILIDAD<span class="op">/</span>PAT
   )
-<span class="kw">str</span>(datos1)</code></pre></div>
+<span class="kw">str</span>(big4size)</code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    2256 obs. of  9 variables:
 ##  $ EXPMUESTRA: int  85 100121 45178 51193 47598 31720 46189 9731 4619 102434 ...
 ##  $ BIG4      : int  1 0 0 0 0 0 0 0 0 0 ...
@@ -570,15 +570,15 @@ Me = \begin{cases}
 <h3><span class="header-section-number">2.4.5</span> Cálculo de las medidas de tendencia central en R</h3>
 <p>Para calcular la media y la mediana se utilizan las funciones <code>mean()</code> y <code>median()</code> respectivamente, estas dos funciones vienen cargadas con los paquetes base de R. Para calcular la moda usaremos la función <code>Mode()</code> del paquete <code>DescTools</code>, recuerde que para instalar un paquete se utiliza la función <code>install.packages()</code>.</p>
 <p>En el siguiente ejemplo se obtiene la media de los activos de las empresas. como solamente necesitamos una variable del conjunto de datos usamos el operador <code>$</code>, el funcionamiento de este operador es <code>data.frame$variable</code> es decir indicamos el conjunto de datos del que llamamos la variable y después del operador <code>$</code> indicamos la variable que vamos a trabajar.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(datos1<span class="op">$</span>ACTIVOS)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(big4size<span class="op">$</span>ACTIVOS)</code></pre></div>
 <pre><code>## [1] 44064165</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(datos1<span class="op">$</span>ACTIVOS)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(big4size<span class="op">$</span>ACTIVOS)</code></pre></div>
 <pre><code>## [1] 10326361</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(DescTools)
-<span class="kw">Mode</span>(datos1<span class="op">$</span>ACTIVOS)</code></pre></div>
+<span class="kw">Mode</span>(big4size<span class="op">$</span>ACTIVOS)</code></pre></div>
 <pre><code>## [1]  55996406 628446149</code></pre>
 <p>En el resultado de la moda se obtienen 2 valores. Es decir que existen dos valores que se repiten más veces o tienen mayor frecuencia. Cuando se realiza investigación es común desear hacer una tabla con las estadísticas descriptivas de los datos. El paquete <code>dplyr</code> permite realizar tablas que resuman las variables de forma sencilla con la función <code>summarise()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datos1 <span class="op">%&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">big4size <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">summarise</span>(<span class="dt">PROM.ACTIVOS =</span> <span class="kw">mean</span>(ACTIVOS),
             <span class="dt">PROM.UTILIDAD =</span> <span class="kw">mean</span>(UTILIDAD),
             <span class="dt">PROM.VTAS =</span> <span class="kw">mean</span>(VTAS),
@@ -630,15 +630,15 @@ Me = \begin{cases}
 \end{equation}\]</span>
 <p>Para calcular percentiles en R, se utiliza la función <code>quantile()</code>. Esta función recibe dos argumentos, la variable de la que se calcula el percentil y el porcentaje del percentil que se desea calcular. Se pueden calcular varios percentiles al mismo tiempo.</p>
 <p>Vamos a calcular el primer cuartil <span class="math inline">\(Q_{1}\)</span> de la variable <code>ACTIVOS</code> del conjunto de datos ya trabajado anteriormente. Vamos a llamar a esta variable utilizando la notación <code>$</code> esta notación se usa poniendo <code>data.frame$variable</code> en este caso nuestra variable está en el conjunto <code>datos1</code>y se llama <code>ACTIVOS</code> por lo que para llamar la variable desde la función escribimos <code>datos1$ACTIVOS</code>. Luego debemos recordar que <span class="math inline">\(Q_1=P_{25}\)</span> es decir que en la función <code>quantile</code> debemos anotar <span class="math inline">\(0.25\)</span></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(datos1<span class="op">$</span>ACTIVOS, <span class="fl">0.25</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(big4size<span class="op">$</span>ACTIVOS, <span class="fl">0.25</span>)</code></pre></div>
 <pre><code>##     25% 
 ## 3184669</code></pre>
 <p>Ahora calculamos los tres cuartiles en este caso podemos escribir dentro de una lista los tres valores, para ingresar listas en R lo hacemos con <code>c(elemento1, elemento2, ... )</code></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(datos1<span class="op">$</span>ACTIVOS, <span class="kw">c</span>(<span class="fl">0.25</span>,<span class="fl">0.50</span>,<span class="fl">0.75</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(big4size<span class="op">$</span>ACTIVOS, <span class="kw">c</span>(<span class="fl">0.25</span>,<span class="fl">0.50</span>,<span class="fl">0.75</span>))</code></pre></div>
 <pre><code>##      25%      50%      75% 
 ##  3184669 10326361 33192848</code></pre>
-<p>De los resultados obtenidos se interpreta que el 25% de los activos de las empresas es menor que <span class="math inline">\(3 184 669\)</span>. Supongamos que se quieren determinar los deciles, una forma de hacer la lista es con la función <code>seq</code>con las instrucciones <code>seq(inicial, final, by = aumento)</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(datos1<span class="op">$</span>ACTIVOS, <span class="kw">seq</span>(<span class="fl">0.1</span>,<span class="fl">0.9</span>, <span class="dt">by =</span> <span class="fl">0.1</span>))</code></pre></div>
+<p>De los resultados obtenidos se interpreta que el 25% de los activos de las empresas es menor que <span class="math inline">\(3 184 669\)</span>. Supongamos que se quieren determinar los deciles, una forma de hacer la lista es con la función <code>seq</code> con las instrucciones <code>seq(inicial, final, by = aumento)</code> de esta manera nos evitamos escribir los nueve valores.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(big4size<span class="op">$</span>ACTIVOS, <span class="kw">seq</span>(<span class="fl">0.1</span>,<span class="fl">0.9</span>, <span class="dt">by =</span> <span class="fl">0.1</span>))</code></pre></div>
 <pre><code>##      10%      20%      30%      40%      50%      60%      70%      80% 
 ##  1621865  2561491  3882643  6187167 10326361 16883801 26613778 49838668 
 ##      90% 
@@ -895,7 +895,7 @@ tabla_firma =<span class="st"> </span><span class="kw">as.data.frame</span>(tabl
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(agricolae)
 <span class="kw">library</span>(dplyr)
 
-h2&lt;-<span class="kw">with</span>(datos1,<span class="kw">graph.freq</span>(VTAS<span class="op">/</span><span class="dv">1000000</span>,<span class="dt">plot=</span><span class="ot">FALSE</span>));
+h2&lt;-<span class="kw">with</span>(big4size,<span class="kw">graph.freq</span>(VTAS<span class="op">/</span><span class="dv">1000000</span>,<span class="dt">plot=</span><span class="ot">FALSE</span>));
 
 h2 =<span class="st"> </span><span class="kw">table.freq</span>(h2)
 
@@ -1187,10 +1187,10 @@ h3 =<span class="st"> </span><span class="kw">as.data.frame</span>(h3)
 <p>Una tabla de contingencia es una forma útil para examinar relaciones entre dos variables categóricas. Los valores en las celdas de una tabla de contingencia pueden ser de frecuencia absoluta o frecuencia relativa.</p>
 <p>Para ejemplificar la construcción de una tabla de contingencia vamos a trabajar con el archivo <code>Ranking2018Guayas.csv</code> este archivo contiene información sobre una muestra de 162 empresas de la provincia del Guayas. Se analizará la relación entre la ciudad y el tamaño de las empresas.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/onava_000/OneDrive/libro_mc/estadistica&quot;</span>)
-datos =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Ranking2018Guayas.csv&quot;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)
+rank2018 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Ranking2018Guayas.csv&quot;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)
 
 
-ciudad.tama =<span class="st"> </span>datos <span class="op">%&gt;%</span><span class="st"> </span>
+ciudad.tama =<span class="st"> </span>rank2018 <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">group_by</span>(CIUDAD, TAMAÑO)<span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">n</span>())<span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">spread</span>(TAMAÑO, n) <span class="op">%&gt;%</span>
@@ -1331,9 +1331,9 @@ VELASCO IBARRA
 </tbody>
 </table>
 <p>En la tabla <a href="intro.html#tab:tabla4">2.4</a> se observa que de las 162 empresas 117 son microempresas y de la ciudad de Guayaquil, de la ciudad de Samborondón se ha tomada una empresa pequeña. Esta información, como se mencionó antes, puede también ser mostrada en porcentajes. En la tabla <a href="intro.html#tab:tabla5">2.5</a> se observa la tabla de contingencia con los porcentajes.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ciudad.tama.porc =<span class="st"> </span>datos <span class="op">%&gt;%</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ciudad.tama.porc =<span class="st"> </span>rank2018 <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">group_by</span>(CIUDAD, TAMAÑO)<span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Porc =</span> <span class="kw">round</span>(<span class="dv">100</span><span class="op">*</span><span class="kw">n</span>()<span class="op">/</span><span class="kw">nrow</span>(datos),<span class="dv">2</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Porc =</span> <span class="kw">round</span>(<span class="dv">100</span><span class="op">*</span><span class="kw">n</span>()<span class="op">/</span><span class="kw">nrow</span>(rank2018),<span class="dv">2</span>)) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">spread</span>(TAMAÑO, Porc) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">replace</span>(., <span class="kw">is.na</span>(.), <span class="dv">0</span>)</code></pre></div>
 <table>
@@ -1481,7 +1481,7 @@ VELASCO IBARRA
 <p>En la figura <a href="intro.html#fig:figura1">2.3</a> se muestra el histograma de la variable ventas en millones de dólares del archivo <em>cap2_big4_size.csv</em> ya descrito en la sección <a href="intro.html#primerR">2.3</a>, este primer histograma ha sido configurado para presentar 12 barras, que las barras sean de color azul con un contorno rojo. Antes de abordar los detalles mencionados discutiremos brevemente el funcionamiento de la gramática de <code>ggplot2</code>, una gráfica realizada en <code>ggplot2</code> empieza por <code>ggplot(data, aes())</code> dentro de <code>aes()</code> se indica las variables que van a intervenir en la gráfica, Luego se añade la <code>geom</code> con la que se va a trabajar en este caso se escogió <code>geom_histogram()</code> puesto que se desea realizar un histograma. Como se indicó anteriormente se configuró el histograma con 12 barras (<code>bins=12</code>), la opción <code>color=&quot;red&quot;</code> permite que el contorno de las barrras sea rojo y la opción <code>fill=&quot;blue&quot;</code>hace que las barras sean de color azul.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 
-<span class="kw">ggplot</span>(datos1, <span class="kw">aes</span>(<span class="dt">x=</span> VTAS<span class="op">/</span><span class="dv">1000000</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">12</span>, <span class="dt">color=</span> <span class="st">&quot;red&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;blue&quot;</span> )</code></pre></div>
+<span class="kw">ggplot</span>(big4size, <span class="kw">aes</span>(<span class="dt">x=</span> VTAS<span class="op">/</span><span class="dv">1000000</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">12</span>, <span class="dt">color=</span> <span class="st">&quot;red&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;blue&quot;</span> )</code></pre></div>
 <div class="figure"><span id="fig:figura1"></span>
 <img src="estadistica_files/figure-html/figura1-1.png" alt="Histograma de las Ventas" width="672" />
 <p class="caption">
@@ -1491,7 +1491,7 @@ Figura 2.3: Histograma de las Ventas
 <p>Para configurar las etiquetas de los ejes podemos añadir las opciones <code>xlab( )</code> y <code>ylab( )</code>. En la figura <a href="intro.html#fig:figura2">2.4</a> se aprecia el histograma con las etiquetas de los ejes añadidos.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 
-<span class="kw">ggplot</span>(datos1, <span class="kw">aes</span>(<span class="dt">x=</span> VTAS<span class="op">/</span><span class="dv">1000000</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="kw">ggplot</span>(big4size, <span class="kw">aes</span>(<span class="dt">x=</span> VTAS<span class="op">/</span><span class="dv">1000000</span>)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">12</span>, <span class="dt">color=</span> <span class="st">&quot;red&quot;</span>,  <span class="dt">fill=</span><span class="st">&quot;blue&quot;</span> ) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Ventas en Millones de Dólares&quot;) + ylab(&quot;</span>Frecuencia<span class="st">&quot;)</span></code></pre></div>
 <div class="figure"><span id="fig:figura2"></span>
