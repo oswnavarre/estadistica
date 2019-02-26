@@ -1691,6 +1691,27 @@ aprecia el histograma con las etiquetas de los ejes añadidos.
 Ejes}
 \end{figure}
 
+Usando el archivo \texttt{Ranking2018Guayas.csv}, vamos ahora a hacer el
+histograma de las ventas de acuerdo al tamaño de la empresa. En la
+figura \ref{fig:figura3} se observa el histograma.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(rank2018, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{VENTAS}\OperatorTok{/}\DecValTok{1000}\NormalTok{, }\DataTypeTok{fill=}\NormalTok{TAMAÑO)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{alpha=}\FloatTok{0.3}\NormalTok{, }\DataTypeTok{color=}\StringTok{"black"}\NormalTok{,}\DataTypeTok{bins=}\DecValTok{9}\NormalTok{, }\DataTypeTok{binwidth =} \DecValTok{150}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{breaks =} \KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1350}\NormalTok{,}\DecValTok{150}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Ventas en Miles"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Frecuencia"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{estadistica_files/figure-latex/figura3-1.pdf}
+\caption{\label{fig:figura3}Histograma de las Ventas de Acuerdo al Tamaño de
+la empresa}
+\end{figure}
+
 \subsection{Diagramas de Caja y valores
 atípicos}\label{diagramas-de-caja-y-valores-atipicos}
 

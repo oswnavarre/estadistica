@@ -1500,6 +1500,18 @@ Figura 2.3: Histograma de las Ventas
 Figura 2.4: Histograma de las Ventas con Etiquetas en los Ejes
 </p>
 </div>
+<p>Usando el archivo <code>Ranking2018Guayas.csv</code>, vamos ahora a hacer el histograma de las ventas de acuerdo al tamaño de la empresa. En la figura <a href="intro.html#fig:figura3">2.5</a> se observa el histograma.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(rank2018, <span class="kw">aes</span>(<span class="dt">x=</span>VENTAS<span class="op">/</span><span class="dv">1000</span>, <span class="dt">fill=</span>TAMAÑO)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">alpha=</span><span class="fl">0.3</span>, <span class="dt">color=</span><span class="st">&quot;black&quot;</span>,<span class="dt">bins=</span><span class="dv">9</span>, <span class="dt">binwidth =</span> <span class="dv">150</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1350</span>,<span class="dv">150</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Ventas en Miles&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Frecuencia&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:figura3"></span>
+<img src="estadistica_files/figure-html/figura3-1.png" alt="Histograma de las Ventas de Acuerdo al Tamaño de la empresa" width="672" />
+<p class="caption">
+Figura 2.5: Histograma de las Ventas de Acuerdo al Tamaño de la empresa
+</p>
+</div>
 </div>
 <div id="diagramas-de-caja-y-valores-atipicos" class="section level3">
 <h3><span class="header-section-number">2.9.2</span> Diagramas de Caja y valores atípicos</h3>
