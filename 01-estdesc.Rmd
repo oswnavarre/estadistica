@@ -62,7 +62,7 @@ El archivo que vamos a analizar contiene los activos, la utilidad, las ventas y 
 setwd("C:/Users/onava_000/OneDrive/libro_mc/estadistica")
 big4size <- read.csv("cap2_big4_size.csv",header=TRUE,sep=";",dec=",")
 knitr::kable(
-  head(big4size, 10), caption = 'Primeras 10 observaciones',
+  head(big4size, 10), caption = 'Primeras 10 observaciones', longtable = TRUE,
   booktabs = TRUE) 
 ```
 
@@ -603,7 +603,7 @@ Un diagrama de caja está formado por 5 valores que lo resumen, estos 5 valores 
 knitr::include_graphics("boxplot3.png")
 ```
 
-En la figura \@ref(fig:figura4) se observan los diagramas de caja de las ventas según el tamaño de la empresa. Se puede notar que existen diferencias entre las ventas de las empresas medianas, las microempresas y las pequeñas. El $50\%$ de las empresas medianas vende más de $1250000$, mientras que todas las microempresas venden menos de $250000$. 
+En la figura \@ref(fig:figura4) se observan los diagramas de caja de las ventas según el tamaño de la empresa. Se puede notar que existen diferencias entre las ventas de las empresas medianas, las microempresas y las pequeñas. El $50\%$ de las empresas medianas vende más de $1250000$, mientras que todas las microempresas venden menos de $250000$. Las empresas pequeñas que venden más de $500000$ son atípicas, mientras que en las empresas medianas no se presentan valores atípicos. 
 
 ```{r figura4, echo=TRUE,fig.cap="Diagrama de Caja de las Ventas según el Tamaño de la empresa"}
 
@@ -612,7 +612,14 @@ ggplot(rank2018, aes(TAMAÑO, VENTAS/1000)) +
   ylab("Ventas en Miles de Dólares")
 ```
 
+Si se quisiera analizar con mayor detalle las microempresas se podría seleccionar solo las empresas con este tamaño y elaborar el diagrama de caja correspondiente, para lograr esto se utiliza la función `subset(df, cond)`. donde `df` corresponde al *data frame* usado y *cond* a la regla que deben cumplir los datos a ser analizados. 
 
+```{r figura5, echo=TRUE,fig.cap="Diagrama de Caja de las Ventas de las Microempresas"}
+
+ggplot(subset(rank2018, TAMAÑO == "MICROEMPRESA"), aes(TAMAÑO, VENTAS/1000)) + 
+  geom_boxplot() + xlab("") +
+  ylab("Ventas en Miles de Dólares")
+```
 
 
 

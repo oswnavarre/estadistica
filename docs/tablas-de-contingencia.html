@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Capítulo 3 Pruebas de Hipótesis | Análisis Estadístico de Datos Financieros con R</title>
+  <title>2.8 Tablas de Contingencia | Análisis Estadístico de Datos Financieros con R</title>
   <meta name="description" content="Libro de Análisis Estadístico de Datos Financieros con R">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Capítulo 3 Pruebas de Hipótesis | Análisis Estadístico de Datos Financieros con R" />
+  <meta property="og:title" content="2.8 Tablas de Contingencia | Análisis Estadístico de Datos Financieros con R" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 3 Pruebas de Hipótesis | Análisis Estadístico de Datos Financieros con R" />
+  <meta name="twitter:title" content="2.8 Tablas de Contingencia | Análisis Estadístico de Datos Financieros con R" />
   
   <meta name="twitter:description" content="Libro de Análisis Estadístico de Datos Financieros con R" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="graficos-y-visualizacion.html">
-<link rel="next" href="intervalos-de-confianza.html">
+<link rel="prev" href="tablas-de-frecuencia.html">
+<link rel="next" href="graficos-y-visualizacion.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -171,16 +171,303 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="pruebas-de-hipotesis" class="section level1">
-<h1><span class="header-section-number">Capítulo 3</span> Pruebas de Hipótesis</h1> 
+<div id="tablas-de-contingencia" class="section level2">
+<h2><span class="header-section-number">2.8</span> Tablas de Contingencia</h2>
+<p>Una tabla de contingencia es una forma útil para examinar relaciones entre dos variables categóricas. Los valores en las celdas de una tabla de contingencia pueden ser de frecuencia absoluta o frecuencia relativa.</p>
+<p>Para ejemplificar la construcción de una tabla de contingencia vamos a trabajar con el archivo <code>Ranking2018Guayas.csv</code> este archivo contiene información sobre una muestra de 162 empresas de la provincia del Guayas. Se analizará la relación entre la ciudad y el tamaño de las empresas.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/onava_000/OneDrive/libro_mc/estadistica&quot;</span>)
+rank2018 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Ranking2018Guayas.csv&quot;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)
+
+
+ciudad.tama =<span class="st"> </span>rank2018 <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(CIUDAD, TAMAÑO)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">n</span>())<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">spread</span>(TAMAÑO, n) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">replace</span>(., <span class="kw">is.na</span>(.), <span class="dv">0</span>)</code></pre></div>
+<table>
+<caption>
+<span id="tab:tabla4">Tabla 2.4: </span>Tabla de Contingencia de las empresas clasificadas por tamaño y ciudad
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+CIUDAD
+</th>
+<th style="text-align:right;">
+MEDIANA
+</th>
+<th style="text-align:right;">
+MICROEMPRESA
+</th>
+<th style="text-align:right;">
+PEQUEÑA
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+DAULE
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ELOY ALFARO
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GUAYAQUIL
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+117
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MILAGRO
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NARANJITO
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SAMBORONDÓN
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTA LUCIA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VELASCO IBARRA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+<p>En la tabla <a href="tablas-de-contingencia.html#tab:tabla4">2.4</a> se observa que de las 162 empresas 117 son microempresas y de la ciudad de Guayaquil, de la ciudad de Samborondón se ha tomada una empresa pequeña. Esta información, como se mencionó antes, puede también ser mostrada en porcentajes. En la tabla <a href="tablas-de-contingencia.html#tab:tabla5">2.5</a> se observa la tabla de contingencia con los porcentajes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ciudad.tama.porc =<span class="st"> </span>rank2018 <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(CIUDAD, TAMAÑO)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Porc =</span> <span class="kw">round</span>(<span class="dv">100</span><span class="op">*</span><span class="kw">n</span>()<span class="op">/</span><span class="kw">nrow</span>(rank2018),<span class="dv">2</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">spread</span>(TAMAÑO, Porc) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">replace</span>(., <span class="kw">is.na</span>(.), <span class="dv">0</span>)</code></pre></div>
+<table>
+<caption>
+<span id="tab:tabla5">Tabla 2.5: </span>Tabla de Contingencia de las empresas clasificadas por tamaño y ciudad
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+CIUDAD
+</th>
+<th style="text-align:right;">
+MEDIANA
+</th>
+<th style="text-align:right;">
+MICROEMPRESA
+</th>
+<th style="text-align:right;">
+PEQUEÑA
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+DAULE
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ELOY ALFARO
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+1.24
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GUAYAQUIL
+</td>
+<td style="text-align:right;">
+1.24
+</td>
+<td style="text-align:right;">
+72.67
+</td>
+<td style="text-align:right;">
+17.39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MILAGRO
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+1.24
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NARANJITO
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+2.48
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SAMBORONDÓN
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTA LUCIA
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VELASCO IBARRA
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+</tbody>
+</table>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="graficos-y-visualizacion.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="intervalos-de-confianza.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tablas-de-frecuencia.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graficos-y-visualizacion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

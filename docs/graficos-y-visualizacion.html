@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Capítulo 3 Pruebas de Hipótesis | Análisis Estadístico de Datos Financieros con R</title>
+  <title>2.9 Gráficos y Visualización | Análisis Estadístico de Datos Financieros con R</title>
   <meta name="description" content="Libro de Análisis Estadístico de Datos Financieros con R">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Capítulo 3 Pruebas de Hipótesis | Análisis Estadístico de Datos Financieros con R" />
+  <meta property="og:title" content="2.9 Gráficos y Visualización | Análisis Estadístico de Datos Financieros con R" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 3 Pruebas de Hipótesis | Análisis Estadístico de Datos Financieros con R" />
+  <meta name="twitter:title" content="2.9 Gráficos y Visualización | Análisis Estadístico de Datos Financieros con R" />
   
   <meta name="twitter:description" content="Libro de Análisis Estadístico de Datos Financieros con R" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="graficos-y-visualizacion.html">
-<link rel="next" href="intervalos-de-confianza.html">
+<link rel="prev" href="tablas-de-contingencia.html">
+<link rel="next" href="pruebas-de-hipotesis.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -171,16 +171,114 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="pruebas-de-hipotesis" class="section level1">
-<h1><span class="header-section-number">Capítulo 3</span> Pruebas de Hipótesis</h1> 
+<div id="graficos-y-visualizacion" class="section level2">
+<h2><span class="header-section-number">2.9</span> Gráficos y Visualización</h2>
+<p>Para realizar gráficas R tiene algunos paquetes disponibles, sin embargo en este texto trabajaremos con el paquete <code>ggplot2</code>. Este paquete está basada en la gramática de los gráficos <span class="citation">(Wilkinson <a href="#ref-wilkinson2005">2005</a>)</span>.</p>
+<div id="histogramas" class="section level3">
+<h3><span class="header-section-number">2.9.1</span> Histogramas</h3>
+<p>Los histogramas se utilizan para variables continuas. Un histograma es un gráfico de la distribución de frecuencia de una variable, en el eje vertical se representa la frecuencia (absoluta o relativa) y en el eje horizontal los rangos de los valores.</p>
+<p>En la figura <a href="graficos-y-visualizacion.html#fig:figura1">2.4</a> se muestra el histograma de la variable ventas en millones de dólares del archivo <em>cap2_big4_size.csv</em> ya descrito en la sección <a href="primerR.html#primerR">2.3</a>, este primer histograma ha sido configurado para presentar 12 barras, que las barras sean de color azul con un contorno rojo. Antes de abordar los detalles mencionados discutiremos brevemente el funcionamiento de la gramática de <code>ggplot2</code>, una gráfica realizada en <code>ggplot2</code> empieza por <code>ggplot(data, aes())</code> dentro de <code>aes()</code> se indica las variables que van a intervenir en la gráfica, Luego se añade la <code>geom</code> con la que se va a trabajar en este caso se escogió <code>geom_histogram()</code> puesto que se desea realizar un histograma. Como se indicó anteriormente se configuró el histograma con 12 barras (<code>bins=12</code>), la opción <code>color=&quot;red&quot;</code> permite que el contorno de las barrras sea rojo y la opción <code>fill=&quot;blue&quot;</code>hace que las barras sean de color azul.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+
+<span class="kw">ggplot</span>(big4size, <span class="kw">aes</span>(<span class="dt">x=</span> VTAS<span class="op">/</span><span class="dv">1000000</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">12</span>, <span class="dt">color=</span> <span class="st">&quot;red&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;blue&quot;</span> )</code></pre></div>
+<div class="figure"><span id="fig:figura1"></span>
+<img src="estadistica_files/figure-html/figura1-1.png" alt="Histograma de las Ventas" width="672" />
+<p class="caption">
+Figura 2.4: Histograma de las Ventas
+</p>
+</div>
+<p>Para configurar las etiquetas de los ejes podemos añadir las opciones <code>xlab( )</code> y <code>ylab( )</code>. En la figura <a href="graficos-y-visualizacion.html#fig:figura2">2.5</a> se aprecia el histograma con las etiquetas de los ejes añadidos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+
+<span class="kw">ggplot</span>(big4size, <span class="kw">aes</span>(<span class="dt">x=</span> VTAS<span class="op">/</span><span class="dv">1000000</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">12</span>, <span class="dt">color=</span> <span class="st">&quot;red&quot;</span>,  <span class="dt">fill=</span><span class="st">&quot;blue&quot;</span> ) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Ventas en Millones de Dólares&quot;) + ylab(&quot;</span>Frecuencia<span class="st">&quot;)</span></code></pre></div>
+<div class="figure"><span id="fig:figura2"></span>
+<img src="estadistica_files/figure-html/figura2-1.png" alt="Histograma de las Ventas con Etiquetas en los Ejes" width="672" />
+<p class="caption">
+Figura 2.5: Histograma de las Ventas con Etiquetas en los Ejes
+</p>
+</div>
+<p>Usando el archivo <code>Ranking2018Guayas.csv</code>, vamos ahora a hacer el histograma de las ventas en miles de acuerdo al tamaño de la empresa. En la figura <a href="graficos-y-visualizacion.html#fig:figura3">2.6</a> se observa el histograma.</p>
+<p>Para elaborar este histograma se tomaron en cuenta varias cosas, lo primero se estimaron los valores máximo y mínimo de la variable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(rank2018<span class="op">$</span>VENTAS<span class="op">/</span><span class="dv">1000</span>)
+## [1] 0
+<span class="kw">max</span>(rank2018<span class="op">$</span>VENTAS<span class="op">/</span><span class="dv">1000</span>)
+## [1] 1347.729</code></pre></div>
+<p>Los valores obtenidos para el máximo y el mínimo fueron <span class="math inline">\(0\)</span> y <span class="math inline">\(1348\)</span> respectivamente, por esta razón se decidió crear 10 clases y cada clase con una longitud de 150. Adicionalmente para obtener un gráfico agradable a la vista se cambia la orientación de las marcas de <span class="math inline">\(0^\circ\)</span> a <span class="math inline">\(90^\circ\)</span> en el eje <span class="math inline">\(x\)</span> con la instrucción <code>theme(axis.text.x = element_text(angle = 90, hjust = 1))</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(rank2018, <span class="kw">aes</span>(<span class="dt">x=</span>VENTAS<span class="op">/</span><span class="dv">1000</span>, <span class="dt">fill=</span>TAMAÑO)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">alpha=</span><span class="fl">0.3</span>, <span class="dt">color=</span><span class="st">&quot;black&quot;</span>,<span class="dt">bins=</span><span class="dv">10</span>, <span class="dt">binwidth =</span> <span class="dv">150</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1350</span>,<span class="dv">150</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Ventas en Miles&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Frecuencia&quot;</span>) </code></pre></div>
+<div class="figure"><span id="fig:figura3"></span>
+<img src="estadistica_files/figure-html/figura3-1.png" alt="Histograma de las Ventas de Acuerdo al Tamaño de la empresa" width="672" />
+<p class="caption">
+Figura 2.6: Histograma de las Ventas de Acuerdo al Tamaño de la empresa
+</p>
+</div>
+<p>Se puede observar en la <a href="graficos-y-visualizacion.html#fig:figura3">2.6</a> que algunas empresas medianas tienen mayores ventas que el resto de empresas. Una mejor forma de comparar la distribución de una variable de acuerdo a otra variable es usar los diagramas de caja que serán discutidos en profundidad en la sección <a href="graficos-y-visualizacion.html#boxes">2.9.2</a>.</p>
+</div>
+<div id="boxes" class="section level3">
+<h3><span class="header-section-number">2.9.2</span> Diagramas de Caja y valores atípicos</h3>
+<p>En la <a href="graficos-y-visualizacion.html#fig:figura3">2.6</a> se pretendía mostrar la distribución de las ventas de acuerdo al tamaño de la empresa. Sin embargo el histograma no mostraba claramente la distribución de acuerdo al tamaño de la empresa. una alternativa es usar un diagrama de caja.</p>
+<p>Un diagrama de caja está formado por 5 valores que lo resumen, estos 5 valores se muestran en la figura <a href="graficos-y-visualizacion.html#fig:caja1">2.7</a>. La distancia entre el primer y el tercer cuartil se la conoce como rango intercuartílico (IQR, por sus siglas en inglés). El límite superior es igual al tercer cuartil más 1.5 veces el rango intercuartílico, valores mayores a esta cantidad se consideran valores atípicos. Mientras que el límite inferior es igual al primer cuartil menos 1.5 veces el rango intercuartílico y valores menores a esta cantidad se consideran valores atípicos.</p>
+<span class="math display" id="eq:iqr">\[\begin{equation} 
+  IQR = Q_3 - Q_1
+  \tag{2.13}
+\end{equation}\]</span>
+<span class="math display" id="eq:ls">\[\begin{equation} 
+  LS = Q_3 + 1.5IQR
+  \tag{2.14}
+\end{equation}\]</span>
+<span class="math display" id="eq:li">\[\begin{equation} 
+  LI = Q_1 - 1.5IQR
+  \tag{2.15}
+\end{equation}\]</span>
+<div class="figure" style="text-align: center"><span id="fig:caja1"></span>
+<img src="boxplot3.png" alt="Partes de un Diagrama de Caja" width="40%" />
+<p class="caption">
+Figura 2.7: Partes de un Diagrama de Caja
+</p>
+</div>
+<p>En la figura <a href="graficos-y-visualizacion.html#fig:figura4">2.8</a> se observan los diagramas de caja de las ventas según el tamaño de la empresa. Se puede notar que existen diferencias entre las ventas de las empresas medianas, las microempresas y las pequeñas. El <span class="math inline">\(50\%\)</span> de las empresas medianas vende más de <span class="math inline">\(1250000\)</span>, mientras que todas las microempresas venden menos de <span class="math inline">\(250000\)</span>. Las empresas pequeñas que venden más de <span class="math inline">\(500000\)</span> son atípicas, mientras que en las empresas medianas no se presentan valores atípicos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(rank2018, <span class="kw">aes</span>(TAMAÑO, VENTAS<span class="op">/</span><span class="dv">1000</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tamaño de las empresas&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Ventas en Miles de Dólares&quot;)</span></code></pre></div>
+<div class="figure"><span id="fig:figura4"></span>
+<img src="estadistica_files/figure-html/figura4-1.png" alt="Diagrama de Caja de las Ventas según el Tamaño de la empresa" width="672" />
+<p class="caption">
+Figura 2.8: Diagrama de Caja de las Ventas según el Tamaño de la empresa
+</p>
+</div>
+<p>Si se quisiera analizar con mayor detalle las microempresas se podría seleccionar solo las empresas con este tamaño y elaborar el diagrama de caja correspondiente, para lograr esto se utiliza la función <code>subset(df, cond)</code>. donde <code>df</code> corresponde al <em>data frame</em> usado y <em>cond</em> a la regla que deben cumplir los datos a ser analizados.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">subset</span>(rank2018, TAMAÑO <span class="op">==</span><span class="st"> &quot;MICROEMPRESA&quot;</span>), <span class="kw">aes</span>(TAMAÑO, VENTAS<span class="op">/</span><span class="dv">1000</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Ventas en Miles de Dólares&quot;)</span></code></pre></div>
+<div class="figure"><span id="fig:figura5"></span>
+<img src="estadistica_files/figure-html/figura5-1.png" alt="Diagrama de Caja de las Ventas de las Microempresas" width="672" />
+<p class="caption">
+Figura 2.9: Diagrama de Caja de las Ventas de las Microempresas
+</p>
+</div>
+
+</div>
+</div>
+<!-- </div> -->
+<h3>Bibliografía</h3>
+<div id="refs" class="references">
+<div id="ref-wilkinson2005">
+<p>Wilkinson, Leland. 2005. <em>The Grammar of Graphics</em>. 2nd ed. New York: Springer-Verlag. <a href="https://www.springer.com/us/book/9780387245447" class="uri">https://www.springer.com/us/book/9780387245447</a>.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="graficos-y-visualizacion.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="intervalos-de-confianza.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tablas-de-contingencia.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="pruebas-de-hipotesis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

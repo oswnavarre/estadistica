@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>2.3 Primeros pasos en R | Análisis Estadístico de Datos Financieros con R</title>
+  <meta name="description" content="Libro de Análisis Estadístico de Datos Financieros con R">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="2.3 Primeros pasos en R | Análisis Estadístico de Datos Financieros con R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Libro de Análisis Estadístico de Datos Financieros con R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.3 Primeros pasos en R | Análisis Estadístico de Datos Financieros con R" />
+  
+  <meta name="twitter:description" content="Libro de Análisis Estadístico de Datos Financieros con R" />
+  
+
+<meta name="author" content="Oswaldo Navarrete Carreño, María Alexandra Chávez">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="tipos-de-variables.html">
+<link rel="next" href="medidas-de-tendencia-central.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Análisis Estadístico de Datos Financieros Con R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> ¿A quién va dirigido este libro?</a><ul>
+<li class="chapter" data-level="1.1" data-path="instalando-r-y-rstudio.html"><a href="instalando-r-y-rstudio.html"><i class="fa fa-check"></i><b>1.1</b> Instalando R Y Rstudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introducción</a><ul>
+<li class="chapter" data-level="2.1" data-path="estadistica-descriptiva-e-inferencial.html"><a href="estadistica-descriptiva-e-inferencial.html"><i class="fa fa-check"></i><b>2.1</b> Estadística descriptiva e inferencial</a></li>
+<li class="chapter" data-level="2.2" data-path="tipos-de-variables.html"><a href="tipos-de-variables.html"><i class="fa fa-check"></i><b>2.2</b> Tipos de Variables</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="tipos-de-variables.html"><a href="tipos-de-variables.html#niveles-de-medicion"><i class="fa fa-check"></i><b>2.2.1</b> Niveles de medición</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="primerR.html"><a href="primerR.html"><i class="fa fa-check"></i><b>2.3</b> Primeros pasos en R</a></li>
+<li class="chapter" data-level="2.4" data-path="medidas-de-tendencia-central.html"><a href="medidas-de-tendencia-central.html"><i class="fa fa-check"></i><b>2.4</b> Medidas de Tendencia Central</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="medidas-de-tendencia-central.html"><a href="medidas-de-tendencia-central.html#media"><i class="fa fa-check"></i><b>2.4.1</b> Media</a></li>
+<li class="chapter" data-level="2.4.2" data-path="medidas-de-tendencia-central.html"><a href="medidas-de-tendencia-central.html#mediana"><i class="fa fa-check"></i><b>2.4.2</b> Mediana</a></li>
+<li class="chapter" data-level="2.4.3" data-path="medidas-de-tendencia-central.html"><a href="medidas-de-tendencia-central.html#moda"><i class="fa fa-check"></i><b>2.4.3</b> Moda</a></li>
+<li class="chapter" data-level="2.4.4" data-path="medidas-de-tendencia-central.html"><a href="medidas-de-tendencia-central.html#trabajamos-con-la-media-o-la-mediana"><i class="fa fa-check"></i><b>2.4.4</b> ¿trabajamos con la media o la mediana?</a></li>
+<li class="chapter" data-level="2.4.5" data-path="medidas-de-tendencia-central.html"><a href="medidas-de-tendencia-central.html#calculo-de-las-medidas-de-tendencia-central-en-r"><i class="fa fa-check"></i><b>2.4.5</b> Cálculo de las medidas de tendencia central en R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="medidas-de-posicion-cuantiles.html"><a href="medidas-de-posicion-cuantiles.html"><i class="fa fa-check"></i><b>2.5</b> Medidas de posición (Cuantiles)</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="medidas-de-posicion-cuantiles.html"><a href="medidas-de-posicion-cuantiles.html#tipos-de-cuantiles"><i class="fa fa-check"></i><b>2.5.1</b> Tipos de Cuantiles</a></li>
+<li class="chapter" data-level="2.5.2" data-path="medidas-de-posicion-cuantiles.html"><a href="medidas-de-posicion-cuantiles.html#calculo-de-cuantiles"><i class="fa fa-check"></i><b>2.5.2</b> Cálculo de cuantiles</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html"><i class="fa fa-check"></i><b>2.6</b> Medidas de dispersión</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html#rango"><i class="fa fa-check"></i><b>2.6.1</b> Rango</a></li>
+<li class="chapter" data-level="2.6.2" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html#varianza"><i class="fa fa-check"></i><b>2.6.2</b> Varianza</a></li>
+<li class="chapter" data-level="2.6.3" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html#desviacion"><i class="fa fa-check"></i><b>2.6.3</b> Desviación</a></li>
+<li class="chapter" data-level="2.6.4" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html#medidas-de-dispersion-en-r"><i class="fa fa-check"></i><b>2.6.4</b> Medidas de dispersión en R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="tablas-de-frecuencia.html"><a href="tablas-de-frecuencia.html"><i class="fa fa-check"></i><b>2.7</b> Tablas de frecuencia</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="tablas-de-frecuencia.html"><a href="tablas-de-frecuencia.html#variables-cualitativas"><i class="fa fa-check"></i><b>2.7.1</b> Variables Cualitativas</a></li>
+<li class="chapter" data-level="2.7.2" data-path="tablas-de-frecuencia.html"><a href="tablas-de-frecuencia.html#variables-cuantitativas"><i class="fa fa-check"></i><b>2.7.2</b> Variables Cuantitativas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="tablas-de-contingencia.html"><a href="tablas-de-contingencia.html"><i class="fa fa-check"></i><b>2.8</b> Tablas de Contingencia</a></li>
+<li class="chapter" data-level="2.9" data-path="graficos-y-visualizacion.html"><a href="graficos-y-visualizacion.html"><i class="fa fa-check"></i><b>2.9</b> Gráficos y Visualización</a><ul>
+<li class="chapter" data-level="2.9.1" data-path="graficos-y-visualizacion.html"><a href="graficos-y-visualizacion.html#histogramas"><i class="fa fa-check"></i><b>2.9.1</b> Histogramas</a></li>
+<li class="chapter" data-level="2.9.2" data-path="graficos-y-visualizacion.html"><a href="graficos-y-visualizacion.html#boxes"><i class="fa fa-check"></i><b>2.9.2</b> Diagramas de Caja y valores atípicos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="pruebas-de-hipotesis.html"><a href="pruebas-de-hipotesis.html"><i class="fa fa-check"></i><b>3</b> Pruebas de Hipótesis</a><ul>
+<li class="chapter" data-level="3.1" data-path="intervalos-de-confianza.html"><a href="intervalos-de-confianza.html"><i class="fa fa-check"></i><b>3.1</b> Intervalos de Confianza</a></li>
+<li class="chapter" data-level="3.2" data-path="pruebas-de-hipotesis-para-la-media.html"><a href="pruebas-de-hipotesis-para-la-media.html"><i class="fa fa-check"></i><b>3.2</b> Pruebas de hipótesis para la media</a></li>
+<li class="chapter" data-level="3.3" data-path="pruebas-de-hipotesis-para-la-proporcion.html"><a href="pruebas-de-hipotesis-para-la-proporcion.html"><i class="fa fa-check"></i><b>3.3</b> Pruebas de hipótesis para la proporción</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Regresión</a></li>
+<li class="chapter" data-level="5" data-path="analisis-factorial.html"><a href="analisis-factorial.html"><i class="fa fa-check"></i><b>5</b> Análisis Factorial</a><ul>
+<li class="chapter" data-level="5.1" data-path="analisis-de-fiabilidad.html"><a href="analisis-de-fiabilidad.html"><i class="fa fa-check"></i><b>5.1</b> Análisis de Fiabilidad</a></li>
+<li class="chapter" data-level="5.2" data-path="evaluacion-de-analisis-factorial.html"><a href="evaluacion-de-analisis-factorial.html"><i class="fa fa-check"></i><b>5.2</b> Evaluación de Análisis Factorial</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="algo-de-series-de-tiempo.html"><a href="algo-de-series-de-tiempo.html"><i class="fa fa-check"></i><b>6</b> Algo de series de tiempo</a></li>
+<li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografía</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Análisis Estadístico de Datos Financieros con R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="primerR" class="section level2">
+<h2><span class="header-section-number">2.3</span> Primeros pasos en R</h2>
+<p>Una vez instalado R y RStudio, abrimos Rstudio para comenzar a trabajar. La ventana de RStudio se ve como se muestra en la figura <a href="primerR.html#fig:rstudio1">2.1</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:rstudio1"></span>
+<img src="rstudio1.png" alt="Ventana de RStudio" width="50%" />
+<p class="caption">
+Figura 2.1: Ventana de RStudio
+</p>
+</div>
+<p>Lo primero que debemos hacer es abrir un nuevo script, un script de R es simplemente un archivo de texto que contiene (casi) todos los comandos que se escribirían en la línea de comandos de R, para esto en la barra de menú seguimos la secuencia <strong>File, New File, R Script</strong> o desde el teclado con la combinación <em>Ctrl + Shift + N</em>, en este archivo iremos escribiendo todos los comandos que vamos a trabajar. En la figura <a href="primerR.html#fig:rstudio2">2.2</a> se aprecia un script abierto.</p>
+<div class="figure" style="text-align: center"><span id="fig:rstudio2"></span>
+<img src="rstudio2.png" alt="Ventana de RStudio con Script" width="50%" />
+<p class="caption">
+Figura 2.2: Ventana de RStudio con Script
+</p>
+</div>
+<p>Para empezar a aprender en el script vamos a escribir <code>3+2</code> y ejecutamos esto con la combinación de teclas <strong>Ctrl + Enter</strong> el resultado obviamente es 5. Ahora ingresaremos un conjunto de valores y los almacenaremos en una variable, para almacenar algo en una variable se puede usar <code>&lt;-</code> o <code>=</code>. En la variable <code>x</code> almacenaremos un conjunto de 8 observaciones escribiendo el código:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">10</span>) </code></pre></div>
+<p>Recuerde que este código se ejecuta con la combinación de teclas <strong>Ctrl + Enter</strong>. Para poder realizar análisis estadístico, es necesario cargar nuestros datos en el programa. R acepta algunos formatos de archivos, como por ejemplo archivos de Excel, archivos de valores separados por coma, archivos de texto e inclusive archivos de otros programas como SPSS. Lo más usual es trabajar con archvo de valores separados por coma es decir con extensión <code>.csv</code>, estos archivos <code>csv</code> se generan cuando el investigador recolecta la información, la almacena en un archivo de Excel o alguna otra hoja de cálculo y la guarda como un archivo de valores separados por coma.</p>
+<p>Para trabajar de forma eficiente con R, se recomienda comenzar por fijar un directorio de trabajo donde deben estar guardados nuestros archivos en el formato que sea de nuestra preferencia. Una forma de hacerlo es desde la barra de menú <strong>Session, Set Working Directory, Choose Directory</strong> o desde el teclado con la combinación <strong>Ctrl+Shift+H</strong>, o con la función <code>setwd(&quot;rutadelarchivo&quot;)</code>.</p>
+<p>En este primer ejercicio trabajaremos con el archivo <em>cap2_big4_size.csv</em>. Los datos serán guardados en una variable llamada <code>datos1</code>, usaremos la función <code>read.csv()</code> para leer los datos. La función <code>read.csv()</code> recibe las instrucciones <code>read.csv(&quot;archivo&quot;, header=T, sep=&quot;;&quot;,dec=&quot;,&quot;)</code>. La opción <code>&quot;archivo&quot;</code> indica el nombre del archivo, <code>header=T</code> o <code>header=F</code> permite indicar si las columnas tienen un encabezado que las identifique, <code>sep=&quot;;&quot;</code> sirve para indicar cual es el separador presente en nuestro archivo en algunas ocasiones ocurre que un archivo de valores separado por coma en realidad tiene sus valores separados por un punto y cona esto generalmente ocurre cuando el sistema utiliza, como en este caso, la coma como separador decimal y finalmente la opción <code>dec=&quot;,&quot;</code> sirve para indicar que el separador decimal es la coma.</p>
+<p>Una característica de R es que permite acceder a la ayuda sobre las funciones, esto se hace escribiendo <code>?funcion</code> por ejemplo si queremos la ayuda de la función <code>read.csv</code> simplemente escribimos <code>?read.csv</code> en el panel ubicado en la parte inferior derecha se desplegará la ayuda de la función. Con la particularidad de que la ayuda se despliega en inglés lo que no debería ser problema para un buen investigador.</p>
+<p>El archivo que vamos a analizar contiene los activos, la utilidad, las ventas y el patrimonio de una muestra de empresas tomada de los registros de la Superintendencia de Compañías. Además en el conjunto de datos se indica si la empresa ha sido auditada por una de las 4 firmas auditoras consideradas las más grandes o también llamadas <em><em>Big Four</em></em>. En la <a href="primerR.html#tab:tabla1">2.1</a> se muestran las 10 primeras observaciones de nuestro conjunto de datos.</p>
+<table>
+<caption>
+<span id="tab:tabla1">Tabla 2.1: </span>Primeras 10 observaciones
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+EXPMUESTRA
+</th>
+<th style="text-align:right;">
+BIG4
+</th>
+<th style="text-align:right;">
+ACTIVOS
+</th>
+<th style="text-align:right;">
+UTILIDAD
+</th>
+<th style="text-align:right;">
+VTAS
+</th>
+<th style="text-align:right;">
+PAT
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+73315618
+</td>
+<td style="text-align:right;">
+7522758.7
+</td>
+<td style="text-align:right;">
+191474544
+</td>
+<td style="text-align:right;">
+39382529
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+100121
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+21052702
+</td>
+<td style="text-align:right;">
+-122898.5
+</td>
+<td style="text-align:right;">
+132585022
+</td>
+<td style="text-align:right;">
+1577764
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+45178
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+10468672
+</td>
+<td style="text-align:right;">
+536876.9
+</td>
+<td style="text-align:right;">
+13974269
+</td>
+<td style="text-align:right;">
+4312094
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+51193
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4130483
+</td>
+<td style="text-align:right;">
+455759.4
+</td>
+<td style="text-align:right;">
+8670153
+</td>
+<td style="text-align:right;">
+1858990
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+47598
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+23507401
+</td>
+<td style="text-align:right;">
+266370.5
+</td>
+<td style="text-align:right;">
+18555609
+</td>
+<td style="text-align:right;">
+7137609
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+31720
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+7220312
+</td>
+<td style="text-align:right;">
+437718.3
+</td>
+<td style="text-align:right;">
+16097135
+</td>
+<td style="text-align:right;">
+4002154
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46189
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+14526822
+</td>
+<td style="text-align:right;">
+1206400.9
+</td>
+<td style="text-align:right;">
+12281188
+</td>
+<td style="text-align:right;">
+5015806
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9731
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+8539445
+</td>
+<td style="text-align:right;">
+367848.1
+</td>
+<td style="text-align:right;">
+10844918
+</td>
+<td style="text-align:right;">
+2232339
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4619
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2605059
+</td>
+<td style="text-align:right;">
+-22438.4
+</td>
+<td style="text-align:right;">
+6244589
+</td>
+<td style="text-align:right;">
+1366610
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+102434
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+23975816
+</td>
+<td style="text-align:right;">
+790265.6
+</td>
+<td style="text-align:right;">
+40612649
+</td>
+<td style="text-align:right;">
+8754369
+</td>
+</tr>
+</tbody>
+</table>
+<p>Sin más preámbulos, empecemos a trabajar. Recapitulando, primero configuraremos el directorio de trabajo, luego cargaremos el archivo indicado. Finalmente usamos la función <code>str()</code>, la que nos permite obtener la descripción de la estructura de los datos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/onava_000/OneDrive/libro_mc/estadistica&quot;</span>)
+big4size &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;cap2_big4_size.csv&quot;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>,<span class="dt">sep=</span><span class="st">&quot;;&quot;</span>,<span class="dt">dec=</span><span class="st">&quot;,&quot;</span>)
+<span class="kw">str</span>(big4size)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    2256 obs. of  6 variables:
+##  $ EXPMUESTRA: int  85 100121 45178 51193 47598 31720 46189 9731 4619 102434 ...
+##  $ BIG4      : int  1 0 0 0 0 0 0 0 0 0 ...
+##  $ ACTIVOS   : num  73315618 21052702 10468672 4130483 23507401 ...
+##  $ UTILIDAD  : num  7522759 -122898 536877 455759 266371 ...
+##  $ VTAS      : num  1.91e+08 1.33e+08 1.40e+07 8.67e+06 1.86e+07 ...
+##  $ PAT       : num  39382529 1577764 4312094 1858990 7137609 ...</code></pre>
+<p>En la primera línea de los resultados se observa la salida <code>'data.frame':    2256 obs. of  6 variables:</code> esto nos indica que nuestro <em>marco de datos (data frame)</em> tiene 2256 observaciones y 6 variables. Con respecto a las variables tenemos 6 variables que a continuación se describen y se explican los resultados obtenidos con la función.</p>
+<ul>
+<li><code>EXPMUESTRA</code>: esta variable es de tipo entera (INT) y almacena el expediente de la empresa. Aunque la variable tiene valores numéricos, no es una variable cuantitativa sino cualitativa “Expediente de la Empresa”</li>
+<li><code>BIG4</code>: esta variable es de tipo entera, y ha sido codificada con 1 si la empresa fue auditada por una Big Four y 0 si no. Podemos cambiar esta codificación por “Sí” y “No” en lugar de “1” y “0”, más adelante aprendemos como hacerlo. Al igual que la variable anterior aunque tiene valores numéricos, no es una variable cuantitativa sino cualitativa, dejamos al lector la reflexión en este particular.</li>
+<li><code>ACTIVOS</code>: contiene el valor de los activos totales de la empresa. Es de tipo <code>num</code> porque permite el uso de decimales. Corresponde a una variable cuantitativa continua.</li>
+<li><code>UTILIDAD</code>: contiene el valor de la utildad de la empresa.</li>
+<li><code>VTAS</code>: contiene el valor de las ventas de la empresa.</li>
+<li><code>PAT</code>: contiene el valor del patrimonio de la empresa.</li>
+</ul>
+<p>Los paquetes de R son colecciones de funciones y conjuntos de datos desarrollados por la comunidad de usuarios, los paquetes aumentan el poder de R mejorando las funcionalidades existentes en la base de R, o añadiendo nuevas funcionalidades. En este texto trabajaremos con algunos de los paquetes desarrollados por el equipo de RStudio, una descripción detallada de estos paquetes puede ser encontrada en <a href="https://www.rstudio.com/products/rpackages/" class="uri">https://www.rstudio.com/products/rpackages/</a>. . Comenzaremos por instalar el paquete <code>dplyr</code>, este paquete tiene funciones que permiten realizar facilmente manipulaciones de datos. Para instalar un paquete se utiliza la función <code>install.packages(&quot;paquete&quot;)</code>. Una vez instalado el paquete, se carga el paquete utilizando la función <code>library(paquete)</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</code></pre></div>
+<p>La primera manipulación que vamos a realizar es la creación de nuevas variables con el paquete <code>dplyr</code>. En nuestros datos cargados en el conjunto de datos <code>datos1</code> vamos a crear tres variables nuevas <strong>ROA</strong>, <strong>ROS</strong> y <strong>ROE</strong>. Recordemos que el <strong>Retorno sobre activos</strong> ( <strong>ROA</strong>, Return on Assets) se lo calcula como la razón entre la utilidad y los activos como se ve en la ecuación <a href="primerR.html#eq:roa">(2.1)</a>. En las ecuaciones <a href="primerR.html#eq:ros">(2.2)</a> y <a href="primerR.html#eq:roe">(2.3)</a> se dan las expresiones para calcular el <strong>Retorno sobre ventas</strong> ( <strong>ROS</strong> Return on Sales) y el <strong>Retorno sobre el Patrimonio</strong> ( <strong>ROE</strong> Return on Equity)</p>
+<span class="math display" id="eq:roa">\[\begin{equation} 
+  ROA = \dfrac{Utilidad}{Activos}
+  \tag{2.1}
+\end{equation}\]</span>
+<span class="math display" id="eq:ros">\[\begin{equation} 
+  ROS = \dfrac{Utilidad}{Ventas}
+  \tag{2.2}
+\end{equation}\]</span>
+<span class="math display" id="eq:roe">\[\begin{equation} 
+  ROE = \dfrac{Utilidad}{Patrimonio}
+  \tag{2.3}
+\end{equation}\]</span>
+<p>Una característica importante de <code>dplyr</code> es el uso del operador <code>%&gt;%</code>. Cada transformación u operación en los datos se separa por el operador <code>%&gt;%</code>. La primera función de <code>dplyr</code> que usaremos es <code>mutate()</code>, básicamente esta función permite crear nuevas variables.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+big4size &lt;-<span class="st"> </span>big4size <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(
+    <span class="dt">ROA =</span> UTILIDAD<span class="op">/</span>ACTIVOS,
+    <span class="dt">ROS =</span> UTILIDAD<span class="op">/</span>VTAS,
+    <span class="dt">ROE =</span> UTILIDAD<span class="op">/</span>PAT
+  )
+<span class="kw">str</span>(big4size)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    2256 obs. of  9 variables:
+##  $ EXPMUESTRA: int  85 100121 45178 51193 47598 31720 46189 9731 4619 102434 ...
+##  $ BIG4      : int  1 0 0 0 0 0 0 0 0 0 ...
+##  $ ACTIVOS   : num  73315618 21052702 10468672 4130483 23507401 ...
+##  $ UTILIDAD  : num  7522759 -122898 536877 455759 266371 ...
+##  $ VTAS      : num  1.91e+08 1.33e+08 1.40e+07 8.67e+06 1.86e+07 ...
+##  $ PAT       : num  39382529 1577764 4312094 1858990 7137609 ...
+##  $ ROA       : num  0.10261 -0.00584 0.05128 0.11034 0.01133 ...
+##  $ ROS       : num  0.039289 -0.000927 0.038419 0.052566 0.014355 ...
+##  $ ROE       : num  0.191 -0.0779 0.1245 0.2452 0.0373 ...</code></pre>
+<p>En las últimas líneas de la salida de R, se observa que ahora en el conjunto de datos existen ahora tres nuevas variables. En la próxima sección seguiremos trabajando con el mismo conjunto de datos.</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tipos-de-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="medidas-de-tendencia-central.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["estadistica.pdf", "estadistica.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

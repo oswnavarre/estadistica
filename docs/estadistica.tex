@@ -130,11 +130,13 @@
 \ifxetex
   \usepackage{polyglossia}
   \setmainlanguage{spanish}
+  \usepackage{longtable}
   % Tabla en lugar de cuadro
   \gappto\captionsspanish{\renewcommand{\tablename}{Tabla}  
           \renewcommand{\listtablename}{Índice de tablas}}
 \else
   \usepackage[spanish,es-tabla]{babel}
+  \usepackage{longtable}
 \fi
 
 \begin{document}
@@ -1075,10 +1077,11 @@ la desviación poblacional y muestral respectivamente.
 R}\label{medidas-de-dispersion-en-r}
 
 Es necesario saber que R defecto no tiene una función para calcular el
-rango, y que además por defecto R tiene una función para calcular la
-varianza muestral (\texttt{var()}) y otra para calcular la desviación
-muestral \texttt{sd()}, si se desea obtener la varianza y la desviación
-poblacional existen por lo menos 3 soluciones:
+rango sin embargo para calcular el rango vamos a usar
+\texttt{max()\ -\ min()}, y que además por defecto R tiene una función
+para calcular la varianza muestral (\texttt{var()}) y otra para calcular
+la desviación muestral \texttt{sd()}, si se desea obtener la varianza y
+la desviación poblacional existen por lo menos 3 soluciones:
 
 \begin{itemize}
 \tightlist
@@ -1100,15 +1103,15 @@ de la primera solución, la tercera solución es avanzada y será abordada
 más adelante.
 
 A manera de ejemplo vamos a calcular las medidas de dispersión de los
-activos de la base \texttt{cap2\_big4\_size.csv}. Se calculan la
-varianza y la desviación poblacional aunque, a menos de que tengamos
-todos los datos (población), siempre en el análisis estadístico de datos
-se calcula la varianza y la desviación muestral.
+activos en millones de dólares de la base \texttt{cap2\_big4\_size.csv}.
+Se calculan la varianza y la desviación poblacional aunque, a menos de
+que tengamos todos los datos (población), siempre en el análisis
+estadístico de datos se calcula la varianza y la desviación muestral.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{big4size }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{RANGO.ACTIVOS =} \KeywordTok{max}\NormalTok{(ACTIVOS}\OperatorTok{/}\DecValTok{100000}\NormalTok{)}\OperatorTok{-}\KeywordTok{min}\NormalTok{(ACTIVOS}\OperatorTok{/}\DecValTok{100000}\NormalTok{),}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{RANGO.ACTIVOS =} \KeywordTok{max}\NormalTok{(ACTIVOS}\OperatorTok{/}\DecValTok{1000000}\NormalTok{)}\OperatorTok{-}\KeywordTok{min}\NormalTok{(ACTIVOS}\OperatorTok{/}\DecValTok{1000000}\NormalTok{),}
             \DataTypeTok{VARM.ACTIVOS =} \KeywordTok{var}\NormalTok{(ACTIVOS}\OperatorTok{/}\DecValTok{1000000}\NormalTok{),}
             \DataTypeTok{DESVM.ACTIVOS =} \KeywordTok{sd}\NormalTok{(ACTIVOS}\OperatorTok{/}\DecValTok{1000000}\NormalTok{),}
             \DataTypeTok{n=}\KeywordTok{n}\NormalTok{()}
@@ -1121,7 +1124,7 @@ se calcula la varianza y la desviación muestral.
 
 \begin{verbatim}
 ##   RANGO.ACTIVOS VARM.ACTIVOS DESVM.ACTIVOS VARP.ACTIVOS DESVP.ACTIVOS
-## 1      13419.89     11327.34        106.43     11322.31      106.4064
+## 1      1341.989     11327.34        106.43     11322.31      106.4064
 \end{verbatim}
 
 \section{Tablas de frecuencia}\label{tablas-de-frecuencia}
@@ -1898,7 +1901,9 @@ ventas según el tamaño de la empresa. Se puede notar que existen
 diferencias entre las ventas de las empresas medianas, las microempresas
 y las pequeñas. El \(50\%\) de las empresas medianas vende más de
 \(1250000\), mientras que todas las microempresas venden menos de
-\(250000\).
+\(250000\). Las empresas pequeñas que venden más de \(500000\) son
+atípicas, mientras que en las empresas medianas no se presentan valores
+atípicos.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1913,6 +1918,28 @@ y las pequeñas. El \(50\%\) de las empresas medianas vende más de
 \includegraphics{estadistica_files/figure-latex/figura4-1.pdf}
 \caption{\label{fig:figura4}Diagrama de Caja de las Ventas según el Tamaño
 de la empresa}
+\end{figure}
+
+Si se quisiera analizar con mayor detalle las microempresas se podría
+seleccionar solo las empresas con este tamaño y elaborar el diagrama de
+caja correspondiente, para lograr esto se utiliza la función
+\texttt{subset(df,\ cond)}. donde \texttt{df} corresponde al \emph{data
+frame} usado y \emph{cond} a la regla que deben cumplir los datos a ser
+analizados.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{subset}\NormalTok{(rank2018, TAMAÑO }\OperatorTok{==}\StringTok{ "MICROEMPRESA"}\NormalTok{), }\KeywordTok{aes}\NormalTok{(TAMAÑO, VENTAS}\OperatorTok{/}\DecValTok{1000}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{xlab}\NormalTok{(}\StringTok{""}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Ventas en Miles de Dólares")}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{estadistica_files/figure-latex/figura5-1.pdf}
+\caption{\label{fig:figura5}Diagrama de Caja de las Ventas de las
+Microempresas}
 \end{figure}
 
 \chapter{Pruebas de Hipótesis}\label{pruebas-de-hipotesis}
