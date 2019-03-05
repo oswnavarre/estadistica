@@ -303,7 +303,7 @@ Si comparamos los conjuntos de datos $X=\left\{ 2,4,6,8 \right\}$ y $Y=\left\{1,
 knitr::include_graphics("rnl.png")
 ```
 
-## Rango
+### Rango
 El rango es la medida de dispersión más fácil de calcular. Se obtiene restando el máximo menos el mínimo. La expresión para calcularlo es:
 
 \begin{equation} 
@@ -311,7 +311,7 @@ El rango es la medida de dispersión más fácil de calcular. Se obtiene restand
   (\#eq:rg)
 \end{equation}
 
-## Varianza
+### Varianza
 
 La varianza es el promedio de la diferencia de la media cuadrática. Si se conocen todos los datos de una población se puede calcular la varianza poblacional:
 
@@ -329,7 +329,7 @@ Por otro lado si se conocen los datos de una población se puede calcular la var
 
 
 
-## Desviación
+### Desviación
 
 La desviación es la raíz cuadrada de la varianza, en las fórmulas \@ref(eq:desp) y \@ref(eq:desm) se muestran las expresiones para calcular la desviación poblacional y muestral respectivamente. 
 
@@ -343,7 +343,32 @@ La desviación es la raíz cuadrada de la varianza, en las fórmulas \@ref(eq:de
   (\#eq:desm)
 \end{equation}
 
+### Medidas de dispersión en R
 
+Es necesario saber que R defecto no tiene una función para calcular el rango sin embargo para calcular el rango vamos a usar `max() - min()`, y que además por defecto R tiene una función para calcular la varianza muestral (`var()`) y otra para calcular la desviación muestral `sd()`, si se desea obtener la varianza y la desviación poblacional existen por lo menos 3 soluciones:
+
+* Se puede multiplicar la varianza muestral por $\dfrac{n-1}{n}$ para obtener la varianza poblacional y la desviación muestral por $\sqrt{\dfrac{n-1}{n}}$ para obtener la desviación poblacional.
+* Se puede multiplicar la varianza muestral por $\dfrac{n-1}{n}$ para obtener la varianza poblacional y a ese resultado extraer la raíz cuadrada para obtener la desviación poblacional.
+* Crear funciones propias que calculen la varianza y la desviación muestral. 
+
+Vamos a trabajar con la segunda solución que es simplemente una mejora de la primera solución, la tercera solución es avanzada y será abordada más adelante.
+
+A manera de ejemplo vamos a calcular las medidas de dispersión de los activos en millones de dólares de la base `cap2_big4_size.csv`. Se calculan la varianza y la desviación poblacional aunque, a menos de que tengamos todos los datos (población), siempre en el análisis estadístico de datos se calcula la varianza y la desviación muestral.
+
+```{r, results='markup'}
+big4size %>%
+  summarise(RANGO.ACTIVOS = max(ACTIVOS/1000000)-min(ACTIVOS/1000000),
+            VARM.ACTIVOS = var(ACTIVOS/1000000),
+            DESVM.ACTIVOS = sd(ACTIVOS/1000000),
+            n=n()
+            ) %>%
+  mutate(VARP.ACTIVOS = VARM.ACTIVOS*((n-1)/n),
+         DESVP.ACTIVOS = sqrt(VARP.ACTIVOS)) %>%
+  select(RANGO.ACTIVOS, VARM.ACTIVOS, DESVM.ACTIVOS, VARP.ACTIVOS, DESVP.ACTIVOS)
+
+
+
+```
 ## Tablas de frecuencia
 
 Una tabla de frecuencia es una forma de describir los datos de forma resumida, las tablas de frecuencia pueden construirse para variables cualitativas y para variables cuantitativas.

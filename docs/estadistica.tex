@@ -1026,7 +1026,7 @@ discute las formas existentes para cuantificar la dispersión.
 \caption{Conjuntos graficados}\label{fig:rnl1}
 \end{figure}
 
-\section{Rango}\label{rango}
+\subsection{Rango}\label{rango}
 
 El rango es la medida de dispersión más fácil de calcular. Se obtiene
 restando el máximo menos el mínimo. La expresión para calcularlo es:
@@ -1036,7 +1036,7 @@ restando el máximo menos el mínimo. La expresión para calcularlo es:
   \label{eq:rg}
 \end{equation}
 
-\section{Varianza}\label{varianza}
+\subsection{Varianza}\label{varianza}
 
 La varianza es el promedio de la diferencia de la media cuadrática. Si
 se conocen todos los datos de una población se puede calcular la
@@ -1055,7 +1055,7 @@ la varianza muestral:
   \label{eq:varm}
 \end{equation}
 
-\section{Desviación}\label{desviacion}
+\subsection{Desviación}\label{desviacion}
 
 La desviación es la raíz cuadrada de la varianza, en las fórmulas
 \eqref{eq:desp} y \eqref{eq:desm} se muestran las expresiones para calcular
@@ -1070,6 +1070,59 @@ la desviación poblacional y muestral respectivamente.
   s = \sqrt{\dfrac{\sum_{i=1}^{n}\left(x- \bar{x} \right)^2}{n-1}}
   \label{eq:desm}
 \end{equation}
+
+\subsection{Medidas de dispersión en
+R}\label{medidas-de-dispersion-en-r}
+
+Es necesario saber que R defecto no tiene una función para calcular el
+rango, y que además por defecto R tiene una función para calcular la
+varianza muestral (\texttt{var()}) y otra para calcular la desviación
+muestral \texttt{sd()}, si se desea obtener la varianza y la desviación
+poblacional existen por lo menos 3 soluciones:
+
+\begin{itemize}
+\tightlist
+\item
+  Se puede multiplicar la varianza muestral por \(\dfrac{n-1}{n}\) para
+  obtener la varianza poblacional y la desviación muestral por
+  \(\sqrt{\dfrac{n-1}{n}}\) para obtener la desviación poblacional.
+\item
+  Se puede multiplicar la varianza muestral por \(\dfrac{n-1}{n}\) para
+  obtener la varianza poblacional y a ese resultado extraer la raíz
+  cuadrada para obtener la desviación poblacional.
+\item
+  Crear funciones propias que calculen la varianza y la desviación
+  muestral.
+\end{itemize}
+
+Vamos a trabajar con la segunda solución que es simplemente una mejora
+de la primera solución, la tercera solución es avanzada y será abordada
+más adelante.
+
+A manera de ejemplo vamos a calcular las medidas de dispersión de los
+activos de la base \texttt{cap2\_big4\_size.csv}. Se calculan la
+varianza y la desviación poblacional aunque, a menos de que tengamos
+todos los datos (población), siempre en el análisis estadístico de datos
+se calcula la varianza y la desviación muestral.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{big4size }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{RANGO.ACTIVOS =} \KeywordTok{max}\NormalTok{(ACTIVOS}\OperatorTok{/}\DecValTok{100000}\NormalTok{)}\OperatorTok{-}\KeywordTok{min}\NormalTok{(ACTIVOS}\OperatorTok{/}\DecValTok{100000}\NormalTok{),}
+            \DataTypeTok{VARM.ACTIVOS =} \KeywordTok{var}\NormalTok{(ACTIVOS}\OperatorTok{/}\DecValTok{1000000}\NormalTok{),}
+            \DataTypeTok{DESVM.ACTIVOS =} \KeywordTok{sd}\NormalTok{(ACTIVOS}\OperatorTok{/}\DecValTok{1000000}\NormalTok{),}
+            \DataTypeTok{n=}\KeywordTok{n}\NormalTok{()}
+\NormalTok{            ) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{VARP.ACTIVOS =}\NormalTok{ VARM.ACTIVOS}\OperatorTok{*}\NormalTok{((n}\OperatorTok{-}\DecValTok{1}\NormalTok{)}\OperatorTok{/}\NormalTok{n),}
+         \DataTypeTok{DESVP.ACTIVOS =} \KeywordTok{sqrt}\NormalTok{(VARP.ACTIVOS)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(RANGO.ACTIVOS, VARM.ACTIVOS, DESVM.ACTIVOS, VARP.ACTIVOS, DESVP.ACTIVOS)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   RANGO.ACTIVOS VARM.ACTIVOS DESVM.ACTIVOS VARP.ACTIVOS DESVP.ACTIVOS
+## 1      13419.89     11327.34        106.43     11322.31      106.4064
+\end{verbatim}
 
 \section{Tablas de frecuencia}\label{tablas-de-frecuencia}
 

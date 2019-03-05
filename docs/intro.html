@@ -123,18 +123,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.5.1" data-path="intro.html"><a href="intro.html#tipos-de-cuantiles"><i class="fa fa-check"></i><b>2.5.1</b> Tipos de Cuantiles</a></li>
 <li class="chapter" data-level="2.5.2" data-path="intro.html"><a href="intro.html#calculo-de-cuantiles"><i class="fa fa-check"></i><b>2.5.2</b> Cálculo de cuantiles</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#medidas-de-dispersion"><i class="fa fa-check"></i><b>2.6</b> Medidas de dispersión</a></li>
-<li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#rango"><i class="fa fa-check"></i><b>2.7</b> Rango</a></li>
-<li class="chapter" data-level="2.8" data-path="intro.html"><a href="intro.html#varianza"><i class="fa fa-check"></i><b>2.8</b> Varianza</a></li>
-<li class="chapter" data-level="2.9" data-path="intro.html"><a href="intro.html#desviacion"><i class="fa fa-check"></i><b>2.9</b> Desviación</a></li>
-<li class="chapter" data-level="2.10" data-path="intro.html"><a href="intro.html#tablas-de-frecuencia"><i class="fa fa-check"></i><b>2.10</b> Tablas de frecuencia</a><ul>
-<li class="chapter" data-level="2.10.1" data-path="intro.html"><a href="intro.html#variables-cualitativas"><i class="fa fa-check"></i><b>2.10.1</b> Variables Cualitativas</a></li>
-<li class="chapter" data-level="2.10.2" data-path="intro.html"><a href="intro.html#variables-cuantitativas"><i class="fa fa-check"></i><b>2.10.2</b> Variables Cuantitativas</a></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#medidas-de-dispersion"><i class="fa fa-check"></i><b>2.6</b> Medidas de dispersión</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="intro.html"><a href="intro.html#rango"><i class="fa fa-check"></i><b>2.6.1</b> Rango</a></li>
+<li class="chapter" data-level="2.6.2" data-path="intro.html"><a href="intro.html#varianza"><i class="fa fa-check"></i><b>2.6.2</b> Varianza</a></li>
+<li class="chapter" data-level="2.6.3" data-path="intro.html"><a href="intro.html#desviacion"><i class="fa fa-check"></i><b>2.6.3</b> Desviación</a></li>
+<li class="chapter" data-level="2.6.4" data-path="intro.html"><a href="intro.html#medidas-de-dispersion-en-r"><i class="fa fa-check"></i><b>2.6.4</b> Medidas de dispersión en R</a></li>
 </ul></li>
-<li class="chapter" data-level="2.11" data-path="intro.html"><a href="intro.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>2.11</b> Tablas de Contingencia</a></li>
-<li class="chapter" data-level="2.12" data-path="intro.html"><a href="intro.html#graficos-y-visualizacion"><i class="fa fa-check"></i><b>2.12</b> Gráficos y Visualización</a><ul>
-<li class="chapter" data-level="2.12.1" data-path="intro.html"><a href="intro.html#histogramas"><i class="fa fa-check"></i><b>2.12.1</b> Histogramas</a></li>
-<li class="chapter" data-level="2.12.2" data-path="intro.html"><a href="intro.html#boxes"><i class="fa fa-check"></i><b>2.12.2</b> Diagramas de Caja y valores atípicos</a></li>
+<li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#tablas-de-frecuencia"><i class="fa fa-check"></i><b>2.7</b> Tablas de frecuencia</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="intro.html"><a href="intro.html#variables-cualitativas"><i class="fa fa-check"></i><b>2.7.1</b> Variables Cualitativas</a></li>
+<li class="chapter" data-level="2.7.2" data-path="intro.html"><a href="intro.html#variables-cuantitativas"><i class="fa fa-check"></i><b>2.7.2</b> Variables Cuantitativas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="intro.html"><a href="intro.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>2.8</b> Tablas de Contingencia</a></li>
+<li class="chapter" data-level="2.9" data-path="intro.html"><a href="intro.html#graficos-y-visualizacion"><i class="fa fa-check"></i><b>2.9</b> Gráficos y Visualización</a><ul>
+<li class="chapter" data-level="2.9.1" data-path="intro.html"><a href="intro.html#histogramas"><i class="fa fa-check"></i><b>2.9.1</b> Histogramas</a></li>
+<li class="chapter" data-level="2.9.2" data-path="intro.html"><a href="intro.html#boxes"><i class="fa fa-check"></i><b>2.9.2</b> Diagramas de Caja y valores atípicos</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="pruebas-de-hipotesis.html"><a href="pruebas-de-hipotesis.html"><i class="fa fa-check"></i><b>3</b> Pruebas de Hipótesis</a><ul>
@@ -661,17 +663,16 @@ Me = \begin{cases}
 Figura 2.3: Conjuntos graficados
 </p>
 </div>
-</div>
-<div id="rango" class="section level2">
-<h2><span class="header-section-number">2.7</span> Rango</h2>
+<div id="rango" class="section level3">
+<h3><span class="header-section-number">2.6.1</span> Rango</h3>
 <p>El rango es la medida de dispersión más fácil de calcular. Se obtiene restando el máximo menos el mínimo. La expresión para calcularlo es:</p>
 <span class="math display" id="eq:rg">\[\begin{equation} 
   Rango = max - min
   \tag{2.8}
 \end{equation}\]</span>
 </div>
-<div id="varianza" class="section level2">
-<h2><span class="header-section-number">2.8</span> Varianza</h2>
+<div id="varianza" class="section level3">
+<h3><span class="header-section-number">2.6.2</span> Varianza</h3>
 <p>La varianza es el promedio de la diferencia de la media cuadrática. Si se conocen todos los datos de una población se puede calcular la varianza poblacional:</p>
 <span class="math display" id="eq:varp">\[\begin{equation} 
   \sigma^2 = \dfrac{\sum_{i=1}^{N}\left(x- \mu \right)^2}{N}
@@ -683,8 +684,8 @@ Figura 2.3: Conjuntos graficados
   \tag{2.10}
 \end{equation}\]</span>
 </div>
-<div id="desviacion" class="section level2">
-<h2><span class="header-section-number">2.9</span> Desviación</h2>
+<div id="desviacion" class="section level3">
+<h3><span class="header-section-number">2.6.3</span> Desviación</h3>
 <p>La desviación es la raíz cuadrada de la varianza, en las fórmulas <a href="intro.html#eq:desp">(2.11)</a> y <a href="intro.html#eq:desm">(2.12)</a> se muestran las expresiones para calcular la desviación poblacional y muestral respectivamente.</p>
 <span class="math display" id="eq:desp">\[\begin{equation} 
   \sigma = \sqrt{\dfrac{\sum_{i=1}^{N}\left(x- \mu \right)^2}{N}}
@@ -695,11 +696,34 @@ Figura 2.3: Conjuntos graficados
   \tag{2.12}
 \end{equation}\]</span>
 </div>
+<div id="medidas-de-dispersion-en-r" class="section level3">
+<h3><span class="header-section-number">2.6.4</span> Medidas de dispersión en R</h3>
+<p>Es necesario saber que R defecto no tiene una función para calcular el rango, y que además por defecto R tiene una función para calcular la varianza muestral (<code>var()</code>) y otra para calcular la desviación muestral <code>sd()</code>, si se desea obtener la varianza y la desviación poblacional existen por lo menos 3 soluciones:</p>
+<ul>
+<li>Se puede multiplicar la varianza muestral por <span class="math inline">\(\dfrac{n-1}{n}\)</span> para obtener la varianza poblacional y la desviación muestral por <span class="math inline">\(\sqrt{\dfrac{n-1}{n}}\)</span> para obtener la desviación poblacional.</li>
+<li>Se puede multiplicar la varianza muestral por <span class="math inline">\(\dfrac{n-1}{n}\)</span> para obtener la varianza poblacional y a ese resultado extraer la raíz cuadrada para obtener la desviación poblacional.</li>
+<li>Crear funciones propias que calculen la varianza y la desviación muestral.</li>
+</ul>
+<p>Vamos a trabajar con la segunda solución que es simplemente una mejora de la primera solución, la tercera solución es avanzada y será abordada más adelante.</p>
+<p>A manera de ejemplo vamos a calcular las medidas de dispersión de los activos de la base <code>cap2_big4_size.csv</code>. Se calculan la varianza y la desviación poblacional aunque, a menos de que tengamos todos los datos (población), siempre en el análisis estadístico de datos se calcula la varianza y la desviación muestral.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">big4size <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">RANGO.ACTIVOS =</span> <span class="kw">max</span>(ACTIVOS<span class="op">/</span><span class="dv">100000</span>)<span class="op">-</span><span class="kw">min</span>(ACTIVOS<span class="op">/</span><span class="dv">100000</span>),
+            <span class="dt">VARM.ACTIVOS =</span> <span class="kw">var</span>(ACTIVOS<span class="op">/</span><span class="dv">1000000</span>),
+            <span class="dt">DESVM.ACTIVOS =</span> <span class="kw">sd</span>(ACTIVOS<span class="op">/</span><span class="dv">1000000</span>),
+            <span class="dt">n=</span><span class="kw">n</span>()
+            ) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">VARP.ACTIVOS =</span> VARM.ACTIVOS<span class="op">*</span>((n<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span>n),
+         <span class="dt">DESVP.ACTIVOS =</span> <span class="kw">sqrt</span>(VARP.ACTIVOS)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(RANGO.ACTIVOS, VARM.ACTIVOS, DESVM.ACTIVOS, VARP.ACTIVOS, DESVP.ACTIVOS)</code></pre></div>
+<pre><code>##   RANGO.ACTIVOS VARM.ACTIVOS DESVM.ACTIVOS VARP.ACTIVOS DESVP.ACTIVOS
+## 1      13419.89     11327.34        106.43     11322.31      106.4064</code></pre>
+</div>
+</div>
 <div id="tablas-de-frecuencia" class="section level2">
-<h2><span class="header-section-number">2.10</span> Tablas de frecuencia</h2>
+<h2><span class="header-section-number">2.7</span> Tablas de frecuencia</h2>
 <p>Una tabla de frecuencia es una forma de describir los datos de forma resumida, las tablas de frecuencia pueden construirse para variables cualitativas y para variables cuantitativas.</p>
 <div id="variables-cualitativas" class="section level3">
-<h3><span class="header-section-number">2.10.1</span> Variables Cualitativas</h3>
+<h3><span class="header-section-number">2.7.1</span> Variables Cualitativas</h3>
 <p>Para las variables cualitativas una tabla de frecuencia basicámente tiene tres columnas: “Categoría”, “Frecuencia”, “Porcentaje”. Para aprender a realizar tablas de frecuencia para variables cualitativas, trabajaremos con el conjunto de datos <code>audit_bolsa</code>, Este conjunto de datos tiene información sobre las empresas que cotizan en la Bolsa de Valores de Guayaquil, se elaborará una tabla de frecuencias de las firmas auditoras que han trabajado para estas empresas. La variable en la que se almacena esta información es la variable <code>FIRMA</code>. La tabla de frecuencia se elabora usando el paquete <code>dplyr</code>. El comando <code>mutate( )</code> sirve para crear nuevas columnas, en este caso se crea la columna porcentaje.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/onava_000/OneDrive/libro_mc/estadistica&quot;</span>)
 audit_bolsa &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;audit_bolsa.csv&quot;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>,<span class="dt">sep=</span><span class="st">&quot;;&quot;</span>,<span class="dt">dec=</span><span class="st">&quot;,&quot;</span>)
@@ -928,7 +952,7 @@ tabla_firma =<span class="st"> </span><span class="kw">as.data.frame</span>(tabl
 <p>Nota: es importante tener fijado el directorio de trabajo, como se explicó en la sección <a href="intro.html#primerR">2.3</a>.</p>
 </div>
 <div id="variables-cuantitativas" class="section level3">
-<h3><span class="header-section-number">2.10.2</span> Variables Cuantitativas</h3>
+<h3><span class="header-section-number">2.7.2</span> Variables Cuantitativas</h3>
 <p>Una tabla de frecuencias para variables cualitativas tiene 6 columnas:</p>
 <ol style="list-style-type: decimal">
 <li>Clase: una clase es un intervalo del tipo <span class="math inline">\(\left[ menor, mayor \right)\)</span></li>
@@ -1230,7 +1254,7 @@ h3 =<span class="st"> </span><span class="kw">as.data.frame</span>(h3)
 </div>
 </div>
 <div id="tablas-de-contingencia" class="section level2">
-<h2><span class="header-section-number">2.11</span> Tablas de Contingencia</h2>
+<h2><span class="header-section-number">2.8</span> Tablas de Contingencia</h2>
 <p>Una tabla de contingencia es una forma útil para examinar relaciones entre dos variables categóricas. Los valores en las celdas de una tabla de contingencia pueden ser de frecuencia absoluta o frecuencia relativa.</p>
 <p>Para ejemplificar la construcción de una tabla de contingencia vamos a trabajar con el archivo <code>Ranking2018Guayas.csv</code> este archivo contiene información sobre una muestra de 162 empresas de la provincia del Guayas. Se analizará la relación entre la ciudad y el tamaño de las empresas.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/onava_000/OneDrive/libro_mc/estadistica&quot;</span>)
@@ -1520,10 +1544,10 @@ VELASCO IBARRA
 </table>
 </div>
 <div id="graficos-y-visualizacion" class="section level2">
-<h2><span class="header-section-number">2.12</span> Gráficos y Visualización</h2>
+<h2><span class="header-section-number">2.9</span> Gráficos y Visualización</h2>
 <p>Para realizar gráficas R tiene algunos paquetes disponibles, sin embargo en este texto trabajaremos con el paquete <code>ggplot2</code>. Este paquete está basada en la gramática de los gráficos <span class="citation">(Wilkinson <a href="#ref-wilkinson2005">2005</a>)</span>.</p>
 <div id="histogramas" class="section level3">
-<h3><span class="header-section-number">2.12.1</span> Histogramas</h3>
+<h3><span class="header-section-number">2.9.1</span> Histogramas</h3>
 <p>Los histogramas se utilizan para variables continuas. Un histograma es un gráfico de la distribución de frecuencia de una variable, en el eje vertical se representa la frecuencia (absoluta o relativa) y en el eje horizontal los rangos de los valores.</p>
 <p>En la figura <a href="intro.html#fig:figura1">2.4</a> se muestra el histograma de la variable ventas en millones de dólares del archivo <em>cap2_big4_size.csv</em> ya descrito en la sección <a href="intro.html#primerR">2.3</a>, este primer histograma ha sido configurado para presentar 12 barras, que las barras sean de color azul con un contorno rojo. Antes de abordar los detalles mencionados discutiremos brevemente el funcionamiento de la gramática de <code>ggplot2</code>, una gráfica realizada en <code>ggplot2</code> empieza por <code>ggplot(data, aes())</code> dentro de <code>aes()</code> se indica las variables que van a intervenir en la gráfica, Luego se añade la <code>geom</code> con la que se va a trabajar en este caso se escogió <code>geom_histogram()</code> puesto que se desea realizar un histograma. Como se indicó anteriormente se configuró el histograma con 12 barras (<code>bins=12</code>), la opción <code>color=&quot;red&quot;</code> permite que el contorno de las barrras sea rojo y la opción <code>fill=&quot;blue&quot;</code>hace que las barras sean de color azul.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
@@ -1566,10 +1590,10 @@ Figura 2.5: Histograma de las Ventas con Etiquetas en los Ejes
 Figura 2.6: Histograma de las Ventas de Acuerdo al Tamaño de la empresa
 </p>
 </div>
-<p>Se puede observar en la <a href="intro.html#fig:figura3">2.6</a> que algunas empresas medianas tienen mayores ventas que el resto de empresas. Una mejor forma de comparar la distribución de una variable de acuerdo a otra variable es usar los diagramas de caja que serán discutidos en profundidad en la sección <a href="intro.html#boxes">2.12.2</a>.</p>
+<p>Se puede observar en la <a href="intro.html#fig:figura3">2.6</a> que algunas empresas medianas tienen mayores ventas que el resto de empresas. Una mejor forma de comparar la distribución de una variable de acuerdo a otra variable es usar los diagramas de caja que serán discutidos en profundidad en la sección <a href="intro.html#boxes">2.9.2</a>.</p>
 </div>
 <div id="boxes" class="section level3">
-<h3><span class="header-section-number">2.12.2</span> Diagramas de Caja y valores atípicos</h3>
+<h3><span class="header-section-number">2.9.2</span> Diagramas de Caja y valores atípicos</h3>
 <p>En la <a href="intro.html#fig:figura3">2.6</a> se pretendía mostrar la distribución de las ventas de acuerdo al tamaño de la empresa. Sin embargo el histograma no mostraba claramente la distribución de acuerdo al tamaño de la empresa. una alternativa es usar un diagrama de caja.</p>
 <p>Un diagrama de caja está formado por 5 valores que lo resumen, estos 5 valores se muestran en la figura <a href="intro.html#fig:caja1">2.7</a>. La distancia entre el primer y el tercer cuartil se la conoce como rango intercuartílico (IQR, por sus siglas en inglés). El límite superior es igual al tercer cuartil más 1.5 veces el rango intercuartílico, valores mayores a esta cantidad se consideran valores atípicos. Mientras que el límite inferior es igual al primer cuartil menos 1.5 veces el rango intercuartílico y valores menores a esta cantidad se consideran valores atípicos.</p>
 <span class="math display" id="eq:iqr">\[\begin{equation} 

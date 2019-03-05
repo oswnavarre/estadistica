@@ -16,16 +16,17 @@
 \contentsline {subsection}{\numberline {2.5.1}Tipos de Cuantiles}{15}{subsection.2.5.1}
 \contentsline {subsection}{\numberline {2.5.2}Cálculo de cuantiles}{16}{subsection.2.5.2}
 \contentsline {section}{\numberline {2.6}Medidas de dispersión}{17}{section.2.6}
-\contentsline {section}{\numberline {2.7}Rango}{17}{section.2.7}
-\contentsline {section}{\numberline {2.8}Varianza}{17}{section.2.8}
-\contentsline {section}{\numberline {2.9}Desviación}{17}{section.2.9}
-\contentsline {section}{\numberline {2.10}Tablas de frecuencia}{18}{section.2.10}
-\contentsline {subsection}{\numberline {2.10.1}Variables Cualitativas}{18}{subsection.2.10.1}
-\contentsline {subsection}{\numberline {2.10.2}Variables Cuantitativas}{20}{subsection.2.10.2}
-\contentsline {section}{\numberline {2.11}Tablas de Contingencia}{23}{section.2.11}
-\contentsline {section}{\numberline {2.12}Gráficos y Visualización}{26}{section.2.12}
-\contentsline {subsection}{\numberline {2.12.1}Histogramas}{26}{subsection.2.12.1}
-\contentsline {subsection}{\numberline {2.12.2}Diagramas de Caja y valores atípicos}{30}{subsection.2.12.2}
+\contentsline {subsection}{\numberline {2.6.1}Rango}{17}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.2}Varianza}{17}{subsection.2.6.2}
+\contentsline {subsection}{\numberline {2.6.3}Desviación}{17}{subsection.2.6.3}
+\contentsline {subsection}{\numberline {2.6.4}Medidas de dispersión en R}{18}{subsection.2.6.4}
+\contentsline {section}{\numberline {2.7}Tablas de frecuencia}{18}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}Variables Cualitativas}{18}{subsection.2.7.1}
+\contentsline {subsection}{\numberline {2.7.2}Variables Cuantitativas}{21}{subsection.2.7.2}
+\contentsline {section}{\numberline {2.8}Tablas de Contingencia}{24}{section.2.8}
+\contentsline {section}{\numberline {2.9}Gráficos y Visualización}{26}{section.2.9}
+\contentsline {subsection}{\numberline {2.9.1}Histogramas}{27}{subsection.2.9.1}
+\contentsline {subsection}{\numberline {2.9.2}Diagramas de Caja y valores atípicos}{29}{subsection.2.9.2}
 \contentsline {chapter}{\numberline {3}Pruebas de Hipótesis}{33}{chapter.3}
 \contentsline {section}{\numberline {3.1}Intervalos de Confianza}{33}{section.3.1}
 \contentsline {section}{\numberline {3.2}Pruebas de hipótesis para la media}{33}{section.3.2}
