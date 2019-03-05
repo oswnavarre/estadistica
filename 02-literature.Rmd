@@ -1,3 +1,7 @@
 # Pruebas de Hipótesis
 
+## Intervalos de Confianza
 
+## Pruebas de hipótesis para la media
+
+## Pruebas de hipótesis para la proporción

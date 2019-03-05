@@ -31,7 +31,6 @@ Una vez instalado R y RStudio, abrimos Rstudio para comenzar a trabajar. La vent
 ```{r rstudio1, out.width = "50%",fig.cap="Ventana de RStudio",fig.align = 'center', echo=FALSE}
 
 knitr::include_graphics("rstudio1.png")
-
 ```
 
 Lo primero que debemos hacer es abrir un nuevo script, un script de R es simplemente un archivo de texto que contiene (casi) todos los comandos que se escribirían en la línea de comandos de R, para esto en la barra de menú seguimos la secuencia __File, New File, R Script__ o desde el teclado con la combinación _Ctrl + Shift + N_, en este archivo iremos escribiendo todos los comandos que vamos a trabajar. En la figura \@ref(fig:rstudio2) se aprecia un script abierto.
@@ -288,7 +287,7 @@ Ahora calculamos los tres cuartiles en este caso podemos escribir dentro de una 
 quantile(big4size$ACTIVOS, c(0.25,0.50,0.75))
 ```
 
-De los resultados obtenidos se interpreta que el 25% de los activos de las empresas es menor que $3 184 669$. Supongamos que se quieren determinar los deciles, una forma de hacer la lista es con la función `seq` con las instrucciones `seq(inicial, final, by = aumento)` de esta manera nos evitamos escribir los nueve valores.
+De los resultados obtenidos se interpreta que el 25% de los activos de las empresas es menor que $3 184 669$. Supongamos que se quieren determinar los deciles, una forma de hacer la lista es con la función `seq` con las instrucciones `seq(inicial, final, by = aumento)` de esta manera evitamos escribir los nueve valores.
 
 ```{r, echo=TRUE}
 quantile(big4size$ACTIVOS, seq(0.1,0.9, by = 0.1))
@@ -297,11 +296,57 @@ quantile(big4size$ACTIVOS, seq(0.1,0.9, by = 0.1))
 
 ## Medidas de dispersión
 
+Si comparamos los conjuntos de datos $X=\left\{ 2,4,6,8 \right\}$ y $Y=\left\{1,3,7,9\right\}$ se obtiene que las medias son iguels $\bar{X}= \bar{Y}=5$. En la figura \@ref(fig:rnl1) se ha graficado con color naranja los puntos del conjunto $X$ y de color azul los puntos del conjunto $Y$. Se observa que los valores del conjunto $Y$ están más dispersos que los valores del conjunto $X$. En esta sección se discute las formas existentes para cuantificar la dispersión.
+
+```{r rnl1, out.width = "50%",fig.cap="Conjuntos graficados",fig.align = 'center', echo=FALSE}
+
+knitr::include_graphics("rnl.png")
+```
+
+## Rango
+El rango es la medida de dispersión más fácil de calcular. Se obtiene restando el máximo menos el mínimo. La expresión para calcularlo es:
+
+\begin{equation} 
+  Rango = max - min
+  (\#eq:rg)
+\end{equation}
+
+## Varianza
+
+La varianza es el promedio de la diferencia de la media cuadrática. Si se conocen todos los datos de una población se puede calcular la varianza poblacional:
+
+\begin{equation} 
+  \sigma^2 = \dfrac{\sum_{i=1}^{N}\left(x- \mu \right)^2}{N}
+  (\#eq:varp)
+\end{equation}
+
+Por otro lado si se conocen los datos de una población se puede calcular la varianza muestral:
+
+\begin{equation} 
+  s^2 = \dfrac{\sum_{i=1}^{n}\left(x- \bar{x} \right)^2}{n-1}
+  (\#eq:varm)
+\end{equation}
+
+
+
+## Desviación
+
+La desviación es la raíz cuadrada de la varianza, en las fórmulas \@ref(eq:desp) y \@ref(eq:desm) se muestran las expresiones para calcular la desviación poblacional y muestral respectivamente. 
+
+\begin{equation} 
+  \sigma = \sqrt{\dfrac{\sum_{i=1}^{N}\left(x- \mu \right)^2}{N}}
+  (\#eq:desp)
+\end{equation}
+
+\begin{equation} 
+  s = \sqrt{\dfrac{\sum_{i=1}^{n}\left(x- \bar{x} \right)^2}{n-1}}
+  (\#eq:desm)
+\end{equation}
 
 
 ## Tablas de frecuencia
 
-Una tabla de frecuencia es una forma de describir los datos de forma resumida, las tablas de frecuencia pueden construirse para variables cualitativas y para variables cuantitativas. 
+Una tabla de frecuencia es una forma de describir los datos de forma resumida, las tablas de frecuencia pueden construirse para variables cualitativas y para variables cuantitativas.
 
 ### Variables Cualitativas
 
@@ -467,15 +512,16 @@ Los histogramas se utilizan para variables continuas. Un histograma es un gráfi
 
 En la figura \@ref(fig:figura1) se muestra el histograma de la variable ventas en millones de dólares del archivo *cap2_big4_size.csv* ya descrito en la sección \@ref(primerR), este primer histograma ha sido configurado para presentar 12 barras, que las barras sean de color azul con un contorno rojo. Antes de abordar los detalles mencionados discutiremos brevemente el funcionamiento de la gramática de `ggplot2`, una gráfica realizada en `ggplot2` empieza por `ggplot(data, aes())` dentro de `aes()` se indica las variables que van a intervenir en la gráfica, Luego se añade la `geom` con la que se va a trabajar en este caso se escogió `geom_histogram()`  puesto que se desea  realizar un histograma. Como se indicó anteriormente se configuró el histograma con 12 barras (`bins=12`), la opción `color="red"` permite que el contorno de las barrras sea rojo y la opción `fill="blue"`hace que las barras sean de color azul. 
 
-```{r figura1, echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Histograma de las Ventas"}
+```{r figura1, results='markup', echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Histograma de las Ventas"}
 library(ggplot2)
 
-ggplot(big4size, aes(x= VTAS/1000000)) + geom_histogram(bins=12, color= "red", fill="blue" )
+ggplot(big4size, aes(x= VTAS/1000000)) + 
+  geom_histogram(bins=12, color= "red", fill="blue" )
 ```
 
 Para configurar las etiquetas de los ejes podemos añadir las opciones `xlab( )` y `ylab( )`. En la figura \@ref(fig:figura2) se aprecia el histograma con las etiquetas de los ejes añadidos. 
 
-```{r figura2, results='asis', echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Histograma de las Ventas con Etiquetas en los Ejes"}
+```{r figura2, results='markup', echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Histograma de las Ventas con Etiquetas en los Ejes"}
 library(ggplot2)
 
 ggplot(big4size, aes(x= VTAS/1000000)) + 
@@ -491,7 +537,7 @@ Para elaborar este histograma se tomaron en cuenta varias cosas, lo primero se e
 min(rank2018$VENTAS/1000)
 max(rank2018$VENTAS/1000)
 ```
-Los valores obtenidos para el máximo y el mínimo fueron $0$ y $1348$ respectivamente, por esta razón se decidió crear 10 clases y cada clase con una longitud de 150. Adicionalmente para obtener un gráfico agradable a la vista se cambia la orientación de las marcas en el eje $x$.  
+Los valores obtenidos para el máximo y el mínimo fueron $0$ y $1348$ respectivamente, por esta razón se decidió crear 10 clases y cada clase con una longitud de 150. Adicionalmente para obtener un gráfico agradable a la vista se cambia la orientación de las marcas de $0^\circ$ a $90^\circ$ en el eje $x$ con la instrucción `theme(axis.text.x = element_text(angle = 90, hjust = 1))`.  
 
 ```{r figura3, echo=TRUE,fig.cap="Histograma de las Ventas de Acuerdo al Tamaño de la empresa"}
 
@@ -499,15 +545,49 @@ ggplot(rank2018, aes(x=VENTAS/1000, fill=TAMAÑO)) +
   geom_histogram(alpha=0.3, color="black",bins=10, binwidth = 150) +
   scale_x_continuous(breaks = seq(0,1350,150)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  xlab("Ventas en Miles") + ylab("Frecuencia")
+  xlab("Ventas en Miles") + ylab("Frecuencia") 
+```
 
+Se puede observar en la \@ref(fig:figura3) que algunas empresas medianas tienen mayores ventas que el resto de empresas. Una mejor forma de comparar la distribución de una variable de acuerdo a otra variable es usar los diagramas de caja que serán discutidos en profundidad en la sección \@ref(boxes). 
+
+
+
+### Diagramas de Caja y valores atípicos {#boxes}
+
+En la \@ref(fig:figura3) se pretendía mostrar la distribución de las ventas de acuerdo al tamaño de la empresa. Sin embargo el histograma no mostraba claramente la distribución de acuerdo al tamaño de la empresa. una alternativa es usar un diagrama de caja.
+
+Un diagrama de caja está formado por 5 valores que lo resumen, estos 5 valores se muestran en la figura \@ref(fig:caja1). La distancia entre el primer y el tercer cuartil se la conoce como rango intercuartílico (IQR, por sus siglas en inglés). El límite superior es igual al tercer cuartil más 1.5 veces el rango intercuartílico, valores mayores a esta cantidad se consideran valores atípicos. Mientras que el límite inferior es igual al primer cuartil menos 1.5 veces el rango intercuartílico y valores menores a esta cantidad se consideran valores atípicos. 
+
+\begin{equation} 
+  IQR = Q_3 - Q_1
+  (\#eq:iqr)
+\end{equation}
+
+\begin{equation} 
+  LS = Q_3 + 1.5IQR
+  (\#eq:ls)
+\end{equation}
+
+\begin{equation} 
+  LI = Q_1 - 1.5IQR
+  (\#eq:li)
+\end{equation}
+
+```{r caja1, out.width = "40%",fig.cap="Partes de un Diagrama de Caja",fig.align = 'center', echo=FALSE}
+
+knitr::include_graphics("boxplot3.png")
+```
+
+En la figura \@ref(fig:figura4) se observan los diagramas de caja de las ventas según el tamaño de la empresa. Se puede notar que existen diferencias entre las ventas de las empresas medianas, las microempresas y las pequeñas. El $50\%$ de las empresas medianas vende más de $1250000$, mientras que todas las microempresas venden menos de $250000$. 
+
+```{r figura4, echo=TRUE,fig.cap="Diagrama de Caja de las Ventas según el Tamaño de la empresa"}
+
+ggplot(rank2018, aes(TAMAÑO, VENTAS/1000)) + 
+  geom_boxplot() + xlab("Tamaño de las empresas") +
+  ylab("Ventas en Miles de Dólares")
 ```
 
 
-
-### Diagramas de Caja y valores atípicos
-
-#### Intervalos de Confianza
 
 
 
