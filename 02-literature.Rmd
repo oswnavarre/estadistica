@@ -1,7 +1,59 @@
-# Pruebas de Hipótesis
+# Intervalos de Confianza y Pruebas de Hipótesis
 
-## Intervalos de Confianza
+Imaginemos que se desea estimar el promedio de las ventas en miles de las empresas que son auditadas por firmas Big Four, sin embargo debemos recordar que en nuestro conjunto de datos no tenemos a todas las empresas sino a una muestra de las empresas, por lo que afirmar que el valor obtenido es el promedio de todas las empresas auditadas por Big  Four es el valor real es muy arriesgado. Sin embargo, podríamos dar un intervalo en el que posiblemente se encuentre el valor que deseamos estimar. 
 
-## Pruebas de hipótesis para la media
+Ahora supongamos que usted como investigador quiere probar que el promedio de las ventas en miles de las empresas que son auditadas por una Big Four es mayor a las empresas que no son auditadas por una Big Four. Una primera aproximación para resolver este problema es realizar una gráfica que le muestre las ventas de acuerdo al tipo de empresa auditora. 
 
-## Pruebas de hipótesis para la proporción
+Antes de elaborar el gráfico vamos a crear una nueva variable llamada `Big4`en la que si la variable ``BIG4` es igual a  1 la variable `Big4` tomará el valor de Sí, caso contrario tomará el valor de No. 
+
+```{r}
+big4size <- big4size %>%
+  mutate(
+    Big4 = ifelse(BIG4==1, "Sí","No")
+  )
+```
+
+En las figuras \@ref(fig:figura6) y \@ref(fig:figura7) se observa el histograma y el diagrama de caja de las ventas de acuerdo a la firma auditora. Al observar las gráficas se puede afirmar que evidentemente el promedio de las ventas de las empresas auditadas por firmas Big Four es mayor, sin embargo en estadística no se puede confirmar o negar una afirmación con solo ver un gráfico.
+
+```{r figura6, echo=TRUE,fig.cap="Histograma de las Ventas de Acuerdo al tipo de Firma Auditora"}
+
+ggplot(big4size, aes(x=VTAS/1000, fill=Big4)) + 
+  geom_histogram(alpha=0.3, color="black",bins=10, binwidth = 200000) +
+  scale_x_continuous(breaks = seq(0,2000000,200000)) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  xlab("Ventas en Miles") + ylab("Frecuencia") 
+```
+
+```{r figura7, echo=TRUE,fig.cap="Diagrama de Caja de las Ventas de Acuerdo al tipo de Firma Auditora"}
+
+ggplot(big4size, aes(Big4, VTAS/1000)) + 
+  geom_boxplot() + xlab("Tipo de Firma") +
+  ylab("Ventas en Miles de Dólares")
+```
+
+Los dos problemas citados serán abordados y resueltos en este capítulo. El primero en la sección \@ref(ic) y el segundo en la sección \@ref(ph)
+
+## Intervalos de Confianza {#ic}
+
+### Intervalo de Confianza para la media
+
+
+
+### Intervalo de Confianza para la proporción 
+
+
+
+### Intervalo de Confianza para la diferencia de medias
+
+
+
+### Intervalo de Confianza para la diferencia de proporciones
+
+
+
+
+## Pruebas de hipótesis {#ph}
+
+### Pruebas de hipótesis para la media
+
+### Pruebas de hipótesis para la proporción

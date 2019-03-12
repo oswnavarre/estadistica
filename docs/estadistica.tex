@@ -267,6 +267,35 @@ es la temperatura medida en grados Farenheit. Finalmente en el nivel de
 razón el 0 es significativo y la razón entre dos números es
 significativa, un ejemplo es la temperatura medida en grados Kelvin.
 
+\section{Otros conceptos importantes}\label{otros-conceptos-importantes}
+
+Existen algunos conceptos que son importantes y que se deben tener
+presentes en el análisis estadístico de datos.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Población}: una población es el conjunto de todos los sujetos
+  u objetos de interés en una investigación o análisis. Por ejemplo si
+  se desea analizar la intención de voto en una ciudad para las próximas
+  elecciones seccionales, la población serían todas las personas en edad
+  de votar empadronadas en la ciudad.
+\item
+  \textbf{Muestra}: es la parte de la población que es analizada.
+  Sigamos con el ejemplo de la intención de voto, aunque el investigador
+  quisiera no puede acceder a toda la población ya sea por cuestiones de
+  tiempo o dinero y por esta razón debe tomar una parte de la población.
+  La muestra debe representar lo mejor posible a la población. La parte
+  de la estadística que comprende los métodos estadísticos para obtener
+  muestras representativas de una población se llama \emph{muestreo}
+\item
+  \textbf{Parámetro}: un parámetro es una cantidad numérica que
+  caracteriza a una población.
+\item
+  \textbf{Estadístico}: un estadístico es una cantidad numérica que
+  caracteriza a una muestra.
+\end{itemize}
+
 \section{Primeros pasos en R}\label{primerR}
 
 Una vez instalado R y RStudio, abrimos Rstudio para comenzar a trabajar.
@@ -1942,14 +1971,101 @@ analizados.
 Microempresas}
 \end{figure}
 
-\chapter{Pruebas de Hipótesis}\label{pruebas-de-hipotesis}
+\chapter{Intervalos de Confianza y Pruebas de
+Hipótesis}\label{intervalos-de-confianza-y-pruebas-de-hipotesis}
 
-\section{Intervalos de Confianza}\label{intervalos-de-confianza}
+Imaginemos que se desea estimar el promedio de las ventas en miles de
+las empresas que son auditadas por firmas Big Four, sin embargo debemos
+recordar que en nuestro conjunto de datos no tenemos a todas las
+empresas sino a una muestra de las empresas, por lo que afirmar que el
+valor obtenido es el promedio de todas las empresas auditadas por Big
+Four es el valor real es muy arriesgado. Sin embargo, podríamos dar un
+intervalo en el que posiblemente se encuentre el valor que deseamos
+estimar.
 
-\section{Pruebas de hipótesis para la
+Ahora supongamos que usted como investigador quiere probar que el
+promedio de las ventas en miles de las empresas que son auditadas por
+una Big Four es mayor a las empresas que no son auditadas por una Big
+Four. Una primera aproximación para resolver este problema es realizar
+una gráfica que le muestre las ventas de acuerdo al tipo de empresa
+auditora.
+
+Antes de elaborar el gráfico vamos a crear una nueva variable llamada
+\texttt{Big4}en la que si la variable `\texttt{BIG4} es igual a 1 la
+variable \texttt{Big4} tomará el valor de Sí, caso contrario tomará el
+valor de No.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{big4size <-}\StringTok{ }\NormalTok{big4size }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}
+    \DataTypeTok{Big4 =} \KeywordTok{ifelse}\NormalTok{(BIG4}\OperatorTok{==}\DecValTok{1}\NormalTok{, }\StringTok{"Sí"}\NormalTok{,}\StringTok{"No"}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+En las figuras \ref{fig:figura6} y \ref{fig:figura7} se observa el
+histograma y el diagrama de caja de las ventas de acuerdo a la firma
+auditora. Al observar las gráficas se puede afirmar que evidentemente el
+promedio de las ventas de las empresas auditadas por firmas Big Four es
+mayor, sin embargo en estadística no se puede confirmar o negar una
+afirmación con solo ver un gráfico.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(big4size, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{VTAS}\OperatorTok{/}\DecValTok{1000}\NormalTok{, }\DataTypeTok{fill=}\NormalTok{Big4)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{alpha=}\FloatTok{0.3}\NormalTok{, }\DataTypeTok{color=}\StringTok{"black"}\NormalTok{,}\DataTypeTok{bins=}\DecValTok{10}\NormalTok{, }\DataTypeTok{binwidth =} \DecValTok{200000}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{breaks =} \KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{2000000}\NormalTok{,}\DecValTok{200000}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Ventas en Miles"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Frecuencia"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{estadistica_files/figure-latex/figura6-1.pdf}
+\caption{\label{fig:figura6}Histograma de las Ventas de Acuerdo al tipo de
+Firma Auditora}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(big4size, }\KeywordTok{aes}\NormalTok{(Big4, VTAS}\OperatorTok{/}\DecValTok{1000}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Tipo de Firma"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Ventas en Miles de Dólares")}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{estadistica_files/figure-latex/figura7-1.pdf}
+\caption{\label{fig:figura7}Diagrama de Caja de las Ventas de Acuerdo al
+tipo de Firma Auditora}
+\end{figure}
+
+Los dos problemas citados serán abordados y resueltos en este capítulo.
+El primero en la sección \ref{ic} y el segundo en la sección \ref{ph}
+
+\section{Intervalos de Confianza}\label{ic}
+
+\subsection{Intervalo de Confianza para la
+media}\label{intervalo-de-confianza-para-la-media}
+
+\subsection{Intervalo de Confianza para la
+proporción}\label{intervalo-de-confianza-para-la-proporcion}
+
+\subsection{Intervalo de Confianza para la diferencia de
+medias}\label{intervalo-de-confianza-para-la-diferencia-de-medias}
+
+\subsection{Intervalo de Confianza para la diferencia de
+proporciones}\label{intervalo-de-confianza-para-la-diferencia-de-proporciones}
+
+\section{Pruebas de hipótesis}\label{ph}
+
+\subsection{Pruebas de hipótesis para la
 media}\label{pruebas-de-hipotesis-para-la-media}
 
-\section{Pruebas de hipótesis para la
+\subsection{Pruebas de hipótesis para la
 proporción}\label{pruebas-de-hipotesis-para-la-proporcion}
 
 \chapter{Regresión}\label{methods}
