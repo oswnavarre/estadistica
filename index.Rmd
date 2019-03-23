@@ -1,7 +1,7 @@
 --- 
 title: "Análisis Estadístico de Datos Financieros con R"
 author: 
- - "Oswaldo Navarrete Carreño, María Alexandra Chávez"
+ - "Oswaldo Navarrete Carreño"
  
 date: "A quién aún no ha visto la luz y ya ilumina mi vida."
 site: bookdown::bookdown_site

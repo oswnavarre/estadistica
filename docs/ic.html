@@ -22,7 +22,7 @@
   <meta name="twitter:description" content="Libro de Análisis Estadístico de Datos Financieros con R" />
   
 
-<meta name="author" content="Oswaldo Navarrete Carreño, María Alexandra Chávez">
+<meta name="author" content="Oswaldo Navarrete Carreño">
 
 
 
@@ -107,7 +107,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.1" data-path="instalando-r-y-rstudio.html"><a href="instalando-r-y-rstudio.html"><i class="fa fa-check"></i><b>1.1</b> Instalando R Y Rstudio</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introducción</a><ul>
-<li class="chapter" data-level="2.1" data-path="estadistica-descriptiva-e-inferencial.html"><a href="estadistica-descriptiva-e-inferencial.html"><i class="fa fa-check"></i><b>2.1</b> Estadística descriptiva e inferencial</a></li>
+<li class="chapter" data-level="2.1" data-path="estypes.html"><a href="estypes.html"><i class="fa fa-check"></i><b>2.1</b> Estadística descriptiva e inferencial</a></li>
 <li class="chapter" data-level="2.2" data-path="tipos-de-variables.html"><a href="tipos-de-variables.html"><i class="fa fa-check"></i><b>2.2</b> Tipos de Variables</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="tipos-de-variables.html"><a href="tipos-de-variables.html#niveles-de-medicion"><i class="fa fa-check"></i><b>2.2.1</b> Niveles de medición</a></li>
 </ul></li>
@@ -142,10 +142,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3" data-path="intervalos-de-confianza-y-pruebas-de-hipotesis.html"><a href="intervalos-de-confianza-y-pruebas-de-hipotesis.html"><i class="fa fa-check"></i><b>3</b> Intervalos de Confianza y Pruebas de Hipótesis</a><ul>
 <li class="chapter" data-level="3.1" data-path="ic.html"><a href="ic.html"><i class="fa fa-check"></i><b>3.1</b> Intervalos de Confianza</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="ic.html"><a href="ic.html#intervalo-de-confianza-para-la-media"><i class="fa fa-check"></i><b>3.1.1</b> Intervalo de Confianza para la media</a></li>
-<li class="chapter" data-level="3.1.2" data-path="ic.html"><a href="ic.html#intervalo-de-confianza-para-la-proporcion"><i class="fa fa-check"></i><b>3.1.2</b> Intervalo de Confianza para la proporción</a></li>
-<li class="chapter" data-level="3.1.3" data-path="ic.html"><a href="ic.html#intervalo-de-confianza-para-la-diferencia-de-medias"><i class="fa fa-check"></i><b>3.1.3</b> Intervalo de Confianza para la diferencia de medias</a></li>
-<li class="chapter" data-level="3.1.4" data-path="ic.html"><a href="ic.html#intervalo-de-confianza-para-la-diferencia-de-proporciones"><i class="fa fa-check"></i><b>3.1.4</b> Intervalo de Confianza para la diferencia de proporciones</a></li>
+<li class="chapter" data-level="3.1.1" data-path="ic.html"><a href="ic.html#interpretacion-de-un-intervalo-de-confianza"><i class="fa fa-check"></i><b>3.1.1</b> Interpretación de un intervalo de confianza</a></li>
+<li class="chapter" data-level="3.1.2" data-path="ic.html"><a href="ic.html#intervalo-de-confianza-para-la-media-mu"><i class="fa fa-check"></i><b>3.1.2</b> Intervalo de Confianza para la media <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="3.1.3" data-path="ic.html"><a href="ic.html#intervalo-de-confianza-para-la-proporcion"><i class="fa fa-check"></i><b>3.1.3</b> Intervalo de Confianza para la proporción</a></li>
+<li class="chapter" data-level="3.1.4" data-path="ic.html"><a href="ic.html#intervalo-de-confianza-para-la-diferencia-de-medias"><i class="fa fa-check"></i><b>3.1.4</b> Intervalo de Confianza para la diferencia de medias</a></li>
+<li class="chapter" data-level="3.1.5" data-path="ic.html"><a href="ic.html#intervalo-de-confianza-para-la-diferencia-de-proporciones"><i class="fa fa-check"></i><b>3.1.5</b> Intervalo de Confianza para la diferencia de proporciones</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="ph.html"><a href="ph.html"><i class="fa fa-check"></i><b>3.2</b> Pruebas de hipótesis</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="ph.html"><a href="ph.html#pruebas-de-hipotesis-para-la-media"><i class="fa fa-check"></i><b>3.2.1</b> Pruebas de hipótesis para la media</a></li>
@@ -181,17 +182,50 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="ic" class="section level2">
 <h2><span class="header-section-number">3.1</span> Intervalos de Confianza</h2>
-<div id="intervalo-de-confianza-para-la-media" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> Intervalo de Confianza para la media</h3>
+<p>Un <em>estimador puntual</em> de un parámetro <span class="math inline">\(\theta\)</span> es un número <span class="math inline">\(\bar{\theta}\)</span> de un estadístico <span class="math inline">\(\Theta\)</span> que puede ser considerado un valor que se aproxima a <span class="math inline">\(\theta\)</span>. Por ejemplo <span class="math inline">\(\bar{x}\)</span> del estadístico <span class="math inline">\(\bar{X}\)</span>, calculado de una muestra de tamaño <span class="math inline">\(n\)</span> es un estimador puntual del parámetro poblacional <span class="math inline">\(\mu\)</span>. Debido a que un estimador puntual es un simple número, no da información por si solo sobre la precisión y la confiabilidad de la estimación.</p>
+<p>En cualquier estimación de un parámetro habrá un error asociado, por ejemplo <span class="math inline">\(\bar{X}\)</span> no debe estimar <span class="math inline">\(\mu\)</span> con exactitud, pero se espera que no esté muy lejos del valor real. Lo que se espera de un estimador es que sea insesgado y eficiente.</p>
+<p>La forma de un intervalo de confianza es:</p>
+<span class="math display" id="eq:ic">\[\begin{equation} 
+  \text{Estimador puntual} \pm \text{Margen de Error}
+  \tag{3.1}
+\end{equation}\]</span>
+<p>El estimador es el valor calculado a partir de la muestra para el parámetro desconocido. El <em>margen de error</em> es cuán preciso es nuestro cálculo, basados en la variabilidad del estimador, y de la confianza que tengamos en que el procedimiento detectará el valor real del parámetro de la población.</p>
+<div id="interpretacion-de-un-intervalo-de-confianza" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Interpretación de un intervalo de confianza</h3>
+<p>Un intervalo de confianza del <span class="math inline">\(C \%\)</span> indica que si construimos muchos de esos intervalos, entonces el <span class="math inline">\(C \%\)</span> de las veces el intervalo contendrá el valor real del parámetro.</p>
+<p>Por ejemplo en la figura <a href="ic.html#fig:ic">3.3</a> se muestran 100 intervalos construidos con el <span class="math inline">\(95 \%\)</span> de confianza para el promedio poblacional, para construir cada intervalo se tomaron muestras de 100 elementos. Los intervalos de color celeste son los que contienen el valor real del parámetro, los intervalos de color rojo son los que no contienen el valor real del parámetro. El lector puede verificar que <span class="math inline">\(5\)</span> intervalos es decir el <span class="math inline">\(5 \%\)</span> no contiene el valor real del parámetro lo que implica que el <span class="math inline">\(95 \%\)</span> de los intervalos sí contiene el valor real del parámetro.</p>
+<div class="figure" style="text-align: center"><span id="fig:ic"></span>
+<img src="ic.png" alt="Intervalos de Confianza simulados" width="70%" />
+<p class="caption">
+Figura 3.3: Intervalos de Confianza simulados
+</p>
+</div>
+</div>
+<div id="intervalo-de-confianza-para-la-media-mu" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Intervalo de Confianza para la media <span class="math inline">\(\mu\)</span></h3>
+<p>Para construir un intervalo de confianza para <span class="math inline">\(\mu\)</span> debemos tomar en cuenta el tamaño de la muestra, cuando el tamaño muestral <span class="math inline">\(n\)</span> es mayor o igual que <span class="math inline">\(30\)</span>, se puede usar la distribución Normal estàndar. Mientras que si el tamaño muestral no es lo suficientemente grande (<span class="math inline">\(n&lt;30\)</span>), debemos usar otra distribución como lo veremos en la sección <a href="ic.html#icsd">3.1.2.2</a>.</p>
+<div id="intervalo-de-confianza-para-mu-cuando-se-conoce-sigma" class="section level4">
+<h4><span class="header-section-number">3.1.2.1</span> Intervalo de confianza para <span class="math inline">\(\mu\)</span> cuando se conoce <span class="math inline">\(\sigma\)</span></h4>
+<p>Si <span class="math inline">\(\bar{x}\)</span> es la media de una muestra aleatoria de tamaño <span class="math inline">\(n\)</span> de una población con desviación conocida <span class="math inline">\(\sigma\)</span>, un intervalo con <span class="math inline">\(100\left(1-\alpha\right)\%\)</span> para la media <span class="math inline">\(\mu\)</span> está dado por:</p>
+<span class="math display" id="eq:icmusc">\[\begin{equation} 
+  \left(\bar{x} - Z_{\frac{\alpha}{2}}\dfrac{\sigma}{\sqrt{n}}, \bar{x} + Z_{\frac{\alpha}{2}}\dfrac{\sigma}{\sqrt{n}}  \right)
+  \tag{3.2}
+\end{equation}\]</span>
+<p>Donde <span class="math inline">\(Z_{\frac{\alpha}{2}}\)</span> es el valor correspondiente a una probabilidad de cola superior de <span class="math inline">\(\frac{\alpha}{2}\)</span> de la distribución normal estándar. El valor de <span class="math inline">\(Z_{\frac{\alpha}{2}}\)</span> que se usa para construir un intervalo de confianza recibe el nombre de <em>valor crítico</em>.</p>
+<p>Para utilizar la ecuación <a href="ic.html#eq:icmusc">(3.2)</a> es necesario conocer el valor de <span class="math inline">\(\sigma\)</span>. Pero conocer <span class="math inline">\(\sigma\)</span> implica conocer toodos los valores de la población. Y si se conocen todos los valores de la población se puede calcular el valor de la media poblacional que es lo que nos interesa estimar. En situaciones empresariales y financieras nunca se conoce la desviación estándar de la población y además las poblaciones son muy grandes lo que imposibilita poder examinar todos los valores. En la siguiente sección aprenderemos a abordar esta situación.</p>
+</div>
+<div id="icsd" class="section level4">
+<h4><span class="header-section-number">3.1.2.2</span> Intervalo de confianza para <span class="math inline">\(\mu\)</span> cuando no se conoce <span class="math inline">\(\sigma\)</span></h4>
+</div>
 </div>
 <div id="intervalo-de-confianza-para-la-proporcion" class="section level3">
-<h3><span class="header-section-number">3.1.2</span> Intervalo de Confianza para la proporción</h3>
+<h3><span class="header-section-number">3.1.3</span> Intervalo de Confianza para la proporción</h3>
 </div>
 <div id="intervalo-de-confianza-para-la-diferencia-de-medias" class="section level3">
-<h3><span class="header-section-number">3.1.3</span> Intervalo de Confianza para la diferencia de medias</h3>
+<h3><span class="header-section-number">3.1.4</span> Intervalo de Confianza para la diferencia de medias</h3>
 </div>
 <div id="intervalo-de-confianza-para-la-diferencia-de-proporciones" class="section level3">
-<h3><span class="header-section-number">3.1.4</span> Intervalo de Confianza para la diferencia de proporciones</h3>
+<h3><span class="header-section-number">3.1.5</span> Intervalo de Confianza para la diferencia de proporciones</h3>
 </div>
 </div>
             </section>

@@ -1,5 +1,7 @@
 # Intervalos de Confianza y Pruebas de Hipótesis
 
+En la sección \@ref(estypes) se habló de los típos de estadística, la estadística inferencial consiste de los métodos por medio de los cuales se  puede hacer inferencias o generalizaciones sobre una población. La inferencia estadística se puede dívidir en dos grandes áreas: **estimación** y **pruebas de hipótesis**.
+
 Imaginemos que se desea estimar el promedio de las ventas en miles de las empresas que son auditadas por firmas Big Four, sin embargo debemos recordar que en nuestro conjunto de datos no tenemos a todas las empresas sino a una muestra de las empresas, por lo que afirmar que el valor obtenido es el promedio de todas las empresas auditadas por Big  Four es el valor real es muy arriesgado. Sin embargo, podríamos dar un intervalo en el que posiblemente se encuentre el valor que deseamos estimar. 
 
 Ahora supongamos que usted como investigador quiere probar que el promedio de las ventas en miles de las empresas que son auditadas por una Big Four es mayor a las empresas que no son auditadas por una Big Four. Una primera aproximación para resolver este problema es realizar una gráfica que le muestre las ventas de acuerdo al tipo de empresa auditora. 
@@ -31,11 +33,54 @@ ggplot(big4size, aes(Big4, VTAS/1000)) +
   ylab("Ventas en Miles de Dólares")
 ```
 
-Los dos problemas citados serán abordados y resueltos en este capítulo. El primero en la sección \@ref(ic) y el segundo en la sección \@ref(ph)
+Los dos problemas citados serán abordados y resueltos en este capítulo. El primero en la sección \@ref(ic) y el segundo en la sección \@ref(ph). 
 
 ## Intervalos de Confianza {#ic}
 
-### Intervalo de Confianza para la media
+Un *estimador puntual* de un parámetro $\theta$ es un número $\bar{\theta}$ de un estadístico $\Theta$ que puede ser considerado un valor que se aproxima a $\theta$. Por ejemplo $\bar{x}$ del estadístico $\bar{X}$, calculado de una muestra de tamaño $n$ es un estimador puntual del parámetro poblacional $\mu$. Debido a que un estimador puntual es un simple número, no da información por si solo sobre la precisión y la confiabilidad de la estimación. 
+
+En cualquier estimación de un parámetro habrá un error asociado, por ejemplo $\bar{X}$ no debe estimar $\mu$ con exactitud, pero se espera que no esté muy lejos del valor real. Lo que se espera de un estimador es que sea insesgado y eficiente.
+
+La forma de un intervalo de confianza es:
+
+\begin{equation} 
+  \text{Estimador puntual} \pm \text{Margen de Error}
+  (\#eq:ic)
+\end{equation}
+
+El estimador es el valor calculado a partir de la muestra para el parámetro desconocido. El *margen de error* es cuán preciso es nuestro cálculo, basados en la variabilidad del estimador, y de la confianza que tengamos en que el procedimiento detectará el valor real del parámetro de la población. 
+
+### Interpretación de un intervalo de confianza
+
+Un intervalo de confianza del $C \%$ indica que si construimos muchos de esos intervalos, entonces el $C \%$ de las veces el intervalo contendrá el valor real del parámetro. 
+
+Por ejemplo en la figura \@ref(fig:ic) se muestran 100 intervalos construidos con el $95 \%$ de confianza para el promedio poblacional, para construir cada intervalo se tomaron muestras de 100 elementos. Los intervalos de color celeste son los que contienen el valor real del parámetro, los intervalos de color rojo son los que no contienen el valor real del parámetro. El lector puede verificar que $5$ intervalos es decir el $5 \%$ no contiene el valor real del parámetro lo que implica que el $95 \%$ de los intervalos sí contiene el valor real del parámetro.
+
+```{r ic, out.width = "70%",fig.cap="Intervalos de Confianza simulados",fig.align = 'center', echo=FALSE}
+
+knitr::include_graphics("ic.png")
+
+```
+
+### Intervalo de Confianza para la media $\mu$
+
+Para construir un intervalo de confianza para $\mu$ debemos tomar en cuenta el tamaño de la muestra, cuando el tamaño muestral $n$ es mayor o igual que $30$, se puede usar la distribución Normal estàndar. Mientras que si el tamaño muestral no es lo suficientemente grande ($n<30$), debemos usar otra distribución como lo veremos en la sección \@ref(icsd).
+
+#### Intervalo de confianza para $\mu$ cuando se conoce $\sigma$
+
+Si $\bar{x}$ es la media de una muestra aleatoria de tamaño $n$ de una población con desviación conocida $\sigma$, un intervalo con $100\left(1-\alpha\right)\%$ para la media $\mu$ está dado por:
+
+\begin{equation} 
+  \left(\bar{x} - Z_{\frac{\alpha}{2}}\dfrac{\sigma}{\sqrt{n}}, \bar{x} + Z_{\frac{\alpha}{2}}\dfrac{\sigma}{\sqrt{n}}  \right)
+  (\#eq:icmusc)
+\end{equation}
+
+Donde $Z_{\frac{\alpha}{2}}$ es el valor correspondiente a una probabilidad de cola superior de $\frac{\alpha}{2}$ de la distribución normal estándar. El valor de $Z_{\frac{\alpha}{2}}$ que se usa para construir un intervalo de confianza recibe el nombre de *valor crítico*.
+
+Para utilizar la ecuación \@ref(eq:icmusc) es necesario conocer el valor de $\sigma$. Pero conocer $\sigma$ implica conocer toodos los valores de la población. Y si se conocen todos los valores de la población se puede calcular el valor de la media poblacional que es lo que nos interesa estimar. En situaciones empresariales y financieras nunca se conoce la desviación estándar de la población y además las poblaciones son muy grandes lo que imposibilita poder examinar todos los valores. En la siguiente sección aprenderemos a abordar esta situación.
+
+
+#### Intervalo de confianza para $\mu$ cuando no se conoce $\sigma$ {#icsd}
 
 
 
