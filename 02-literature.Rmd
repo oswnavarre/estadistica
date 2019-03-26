@@ -64,9 +64,9 @@ knitr::include_graphics("ic.png")
 
 ### Intervalo de Confianza para la media $\mu$
 
-Para construir un intervalo de confianza para $\mu$ debemos tomar en cuenta el tamaño de la muestra, cuando el tamaño muestral $n$ es mayor o igual que $30$, se puede usar la distribución Normal estàndar. Mientras que si el tamaño muestral no es lo suficientemente grande ($n<30$), debemos usar otra distribución como lo veremos en la sección \@ref(icsd).
+Para construir un intervalo de confianza para $\mu$ existen dos casos, el primero es cuando se conoce la desviación poblacional $\sigma$ y el segundo cuando no se conoce la desviación poblacional $\sigma$.El primer caso es hipotético y puede ser considerado un caso para ejemplificar el concepto de intervalo de confianza, en la sección \@ref(jt) se explica en detalle por qué consideramos este un caso hipotético. Para el primer caso usamos la distribución normal y para el segundo debemos usar otra distribución como lo veremos en la sección \@ref(icsd).
 
-#### Intervalo de confianza para $\mu$ cuando se conoce $\sigma$
+#### Intervalo de confianza para $\mu$ cuando se conoce $\sigma$ {#jt}
 
 Si $\bar{x}$ es la media de una muestra aleatoria de tamaño $n$ de una población con desviación conocida $\sigma$, un intervalo con $100\left(1-\alpha\right)\%$ para la media $\mu$ está dado por:
 
@@ -82,14 +82,78 @@ Para utilizar la ecuación \@ref(eq:icmusc) es necesario conocer el valor de $\s
 
 #### Intervalo de confianza para $\mu$ cuando no se conoce $\sigma$ {#icsd}
 
+Si $\bar{x}$ es la media de una muestra aleatoria de tamaño $n$ con desviación muestral $s$, un intervalo con $100\left(1-\alpha\right)\%$ para la media $\mu$ está dado por:
+
+\begin{equation} 
+  \left(\bar{x} - t_{\frac{\alpha}{2}}\dfrac{s}{\sqrt{n}}, \bar{x} + t_{\frac{\alpha}{2}}\dfrac{s}{\sqrt{n}}  \right)
+  (\#eq:icmusd)
+\end{equation}
+
+donde $t_{\dfrac{\alpha}{2}}$ es el valor crítico correspondiente a una probabilidad de cola superior de $\dfrac{\alpha}{2}$ de la distribución $t$ con $n-1$ grados de libertad.
 
 
 ### Intervalo de Confianza para la proporción 
 
+Los dos intervalos de confianza vistos en las secciones anteriores son usados para variables cuantitativas, también se puede crear intervalos de confianza para variables categóricas. Por ejemplo, es posible que queramos estimar la proporción de elementos en una población que poseen cierta propiedad de interés. El parámetro de la proporción poblacional lo vamos a representar con la letra griega $\pi$. El estimador puntual para $\pi$ es la proporción muestral $p=\frac{X}{n}$, donde $n$ es el tamaño muestral y $X$ es el número de elementos de la muestra que poseen la catacterística que interesa. 
 
+
+\begin{equation} 
+  \left(p - Z_{\frac{\alpha}{2}}\sqrt{\dfrac{p\left(1-p\right)}{n}}, p + Z_{\frac{\alpha}{2}}\sqrt{\dfrac{p\left(1-p\right)}{n}}  \right)
+  (\#eq:icprop)
+\end{equation}
+
+Donde
+
+* $\small p=\text{ proporción muestral }= \dfrac{X}{n} = \dfrac{\text{Número de elementos con la característica}}{\text{Tamaño muestral}{}}$
+
+* $n= \text{ tamaño muestral}$
 
 ### Intervalo de Confianza para la diferencia de medias
 
+Si tenemos dos poblaciones con media $\mu_1$ y $\mu_2$ y desviaciones $\sigma_1$ y $\sigma_2$ respectivamente un estimador puntual de la diferencia entre $\mu_1$ y $\mu_2$ viene dado por el estadístico $\bar{X_1}-\bar{X_2}$. Es decir que para obtener un estimador puntual de $\mu_1-\mu_2$ debemos escoger dos muestras independientes, una muestra de cada población, de tamaños $n_1$ y $n_2$. 
+
+De acuerdo al teorema del límite central $\bar{X_1}-\bar{X_2}$ debe estar distribuida normalmente con media $\mu_1 - \mu_2$ y desviación $\sqrt{\dfrac{\sigma_1^2}{n_1} + \dfrac{\sigma_2^2}{n_2}}$.
+
+#### Desviaciones conocidas
+
+Si $\bar{x_1}$ y $\bar{x_2}$ son medias de muestras aleatorias independientes de tamaños $n_1$ y $n_2$ de poblaciones con desviaciones conocidas $\sigma_1$ y $\sigma_2$, respectivamente, un intervalo de confianza al $100\left(1-\alpha\right)\%$ para $\mu_1-\mu_2$ está dado por:
+
+\begin{equation} 
+\left( \left( \bar{x}_1 - \bar{x}_2 \right) - z_{\frac{\alpha}{2}}\sqrt{\dfrac{\sigma_1^2}{n_1} + \dfrac{\sigma_2^2}{n_2}} , \left( \bar{x}_1 - \bar{x}_2 \right) + z_{\frac{\alpha}{2}}\sqrt{\dfrac{\sigma_1^2}{n_1} + \dfrac{\sigma_2^2}{n_2}} \right) 
+(\#eq:ic2msc)
+\end{equation}
+
+#### Desviaciones desconocidas e iguales
+
+Si $\bar{x}_1$ y $\bar{x}_2$ son las medias de muestras aleatorias independientes, de tamaños muestrales $n_1$ y $n_2$ respectivamente, de poblaciones aproximadamente normales con desviaciones desconocidas pero iguales un intervalo de confianza del $100\left(1-\alpha \right)\%$ para $\mu_1 - \mu_2$ está dado por
+
+\begin{equation} 
+\left( \left( \bar{x}_1 - \bar{x}_2 \right) - t_{\frac{\alpha}{2}}s_p\sqrt{\dfrac{1}{n_1} + \dfrac{1}{n_2}} , \left( \bar{x}_1 - \bar{x}_2 \right) + t_{\frac{\alpha}{2}}s_p\sqrt{\dfrac{1}{n_1} + \dfrac{1}{n_2}} \right) 
+(\#eq:ic2msd)
+\end{equation}
+
+donde $s_p$ es el estimador de la desviación conjunta y se calcula a partir de la expresión \@ref(eq:sp) y $t_{\frac{\alpha}{2}}$ es el valor $t$ con $v=n_1+n_2-2$ grados de libertad, con una probabilidad de $\frac{\alpha}{2}$. dejando un área de $\frac{\alpha}{2}$ a la derecha.
+
+\begin{equation} 
+s_p^2 = \dfrac{\left(n_1 - 1 \right)s_1^2+\left(n_2 - 1 \right)s_2^2}{n_1 +n_2 -2} 
+(\#eq:sp)
+\end{equation}
+
+#### Desviaciones desconocidas y diferentes
+
+Si $\bar{x}_1$, $s_1$, $\bar{x}_2$ y $s_2$ son las medias y desviaciones de muestras aleatorias independientes de tamaños muestrales $n_1$ y $n_2$, respectivamente de poblaciones aproximadamente normales con varianzas desconocidas y diferentes un intervalo de confianza del $100\left(1-\alpha \right)\%$ para $\mu_1 - \mu_2$ está dado por:
+
+\begin{equation} 
+\left( \left( \bar{x}_1 - \bar{x}_2 \right) - t_{\frac{\alpha}{2}}\sqrt{\dfrac{s_1^2}{n_1} + \dfrac{s_2^2}{n_2}} , \left( \bar{x}_1 - \bar{x}_2 \right) + t_{\frac{\alpha}{2}}\sqrt{\dfrac{s_1^2}{n_1} + \dfrac{s_2^2}{n_2}} \right) 
+(\#eq:ic2msdd)
+\end{equation}
+
+donde $t_{\frac{\alpha}{2}}$ es el valor t con 
+
+\begin{equation} 
+v = \left\lfloor\dfrac{\left(\dfrac{s_1^2}{n_1} + \dfrac{s_2^2}{n_2} \right)^2}{\dfrac{\left( \dfrac{s_1^2}{n_1} \right)^2}{n_1-1}+\dfrac{\left( \dfrac{s_2^2}{n_2} \right)^2}{n_2-1}}\right\rfloor
+(\#eq:dfsdd)
+\end{equation}
 
 
 ### Intervalo de Confianza para la diferencia de proporciones
@@ -99,6 +163,9 @@ Para utilizar la ecuación \@ref(eq:icmusc) es necesario conocer el valor de $\s
 
 ## Pruebas de hipótesis {#ph}
 
+
 ### Pruebas de hipótesis para la media
 
 ### Pruebas de hipótesis para la proporción
+
+
