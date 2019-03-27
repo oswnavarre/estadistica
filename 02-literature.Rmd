@@ -148,20 +148,30 @@ Si $\bar{x}_1$, $s_1$, $\bar{x}_2$ y $s_2$ son las medias y desviaciones de mues
 (\#eq:ic2msdd)
 \end{equation}
 
-donde $t_{\frac{\alpha}{2}}$ es el valor t con 
+donde $t_{\frac{\alpha}{2}}$ es el valor $t$ con 
 
 \begin{equation} 
 v = \left\lfloor\dfrac{\left(\dfrac{s_1^2}{n_1} + \dfrac{s_2^2}{n_2} \right)^2}{\dfrac{\left( \dfrac{s_1^2}{n_1} \right)^2}{n_1-1}+\dfrac{\left( \dfrac{s_2^2}{n_2} \right)^2}{n_2-1}}\right\rfloor
 (\#eq:dfsdd)
 \end{equation}
 
+grados de libertad, con un área de $\frac{\alpha}{2}$ a la derecha.
+
 
 ### Intervalo de Confianza para la diferencia de proporciones
 
+Si $p_1$ y $p_2$ son las proporciones de éxitos en muestras aleatorias de tamaño $n_1$ y $n_2$, respectivamente, $q_1 = 1- p_1$, y $q_2 = 1- p_2$ un intervalo de confianza del $100\left(1- \alpha \right)\%$ para la diferencia de dos proporciones poblacionales $\pi_1-\pi_2$, está dado por 
+
+\begin{equation} 
+\left( \left( p_1 - p_2 \right) - z_{\frac{\alpha}{2}}\sqrt{\dfrac{p_1q_1}{n_1} + \dfrac{p_2q_2}{n_2}} , \left( p_1 - p_2 \right) + z_{\frac{\alpha}{2}}\sqrt{\dfrac{p_1q_1}{n_1} + \dfrac{p_2q_2}{n_2}}  \right)
+(\#eq:icprop2)
+\end{equation}
 
 
 
 ## Pruebas de hipótesis {#ph}
+
+Los intervalos de confianza pueden ayudar a contestar preguntas tales como "¿es razonable que la media de los ingresos es igual a cierto valor?" y podrìamos verificar si el valor en cuestión está dentro del intervalo, de ser así podríamos contestar afirmativamente a la pregunta. Este procedimiento que acabamos de enunciar tiene mucho sentido pero puede resultar "muy débil" para contestar la pregunta. Preguntas como la mencionada anteriormente se pueden contestar usando pruebas de hipótesis. Una hipótesis, en términos estadísticos, es una suposición o afirmación sobre un parámetro de la población y una prueba de hipótesis es un procedimiento basado en evidencia de la muestra y la teoría de la probabilidad para determinar si la hipótesis es una afirmación razonable. 
 
 
 ### Pruebas de hipótesis para la media
