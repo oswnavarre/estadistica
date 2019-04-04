@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6500 64-bit) (preloaded format=xelatex 2019.2.9)  3 APR 2019 23:37
+This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6500 64-bit) (preloaded format=xelatex 2019.2.9)  4 APR 2019 10:38
 entering extended mode
 **./estadistica.tex
 (estadistica.tex
@@ -1078,11 +1078,24 @@ File: phtest.png Graphic file (type bmp)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[42] [43] [44
+[42]
+File: phless.png Graphic file (type bmp)
+<phless.png>
+File: phmore.png Graphic file (type bmp)
+<phmore.png>
 
-]
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: ph2c.png Graphic file (type bmp)
+<ph2c.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[43] [44]
 Capítulo 4.
-[45] [46
+[45
+
+] [46
 
 ]
 Capítulo 5.
@@ -1093,20 +1106,20 @@ Capítulo 6.
 (estadistica.bbl [49] [50
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2432.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2491.
 [51]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2432.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2491.
 (estadistica.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2432.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2432.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2491.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2491.
  ) 
 Here is how much of TeX's memory you used:
- 23137 strings out of 427835
- 424213 string characters out of 3152455
- 573813 words of memory out of 3000000
- 26839 multiletter control sequences out of 15000+200000
+ 23152 strings out of 427835
+ 424398 string characters out of 3152455
+ 573915 words of memory out of 3000000
+ 26851 multiletter control sequences out of 15000+200000
  559081 words of font info for 77 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
- 45i,10n,68p,10454b,382s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 45i,10n,68p,10454b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on estadistica.pdf (51 pages).

@@ -226,12 +226,39 @@ H_1: \mu \neq 500
 \end{equation}\]</span>
 <p>Una <em>regla de decisión</em> podría ser escoger un punto o puntos límites en el eje <span class="math inline">\(x\)</span>´como en la figura <a href="ph.html#fig:pht">3.4</a>. La gráfica de color rojo representa <span class="math inline">\(H_0\)</span> y las de color celeste representan <span class="math inline">\(H_1\)</span>. En este caso vamos a escoger dos puntos límites porque si la media muestral se encuentra a la izquierda o a la derecha de estos límites, se rechaza <span class="math inline">\(H_0\)</span>. En cualquiera de los dos casos la media muestral está demasiado lejos de <span class="math inline">\(H_0\)</span> para ser creíble. Si la media muestral <span class="math inline">\(\bar{x}\)</span> está entre los valores límite se acepta <span class="math inline">\(H_0\)</span>. La región entre los puntos límite es la <em>región de no rechazo</em> y hacía la izquierda o derecha de los puntos límite se encuentra la <em>región de rechazo</em>.</p>
 <div class="figure" style="text-align: center"><span id="fig:pht"></span>
-<img src="phtest.png" alt="Errores Tipo I y II" width="60%" />
+<img src="phtest.png" alt="Errores Tipo I y II" width="50%" />
 <p class="caption">
 Figura 3.4: Errores Tipo I y II
 </p>
 </div>
-<p>Partiendo de lo anterior, se pueden ver los errores de tipo I y II. El área de color verde bajo la distribución de <span class="math inline">\(H_0\)</span> muestra la probabilidad de rechazar <span class="math inline">\(H_0\)</span> cuando en realidad es verdadera, es decir un error de tipo I. El área de color celeste bajo la distribución de <span class="math inline">\(H_1\)</span> muestra la probabilidad de no rechazar <span class="math inline">\(H_0\)</span> cuando en realidad es falsa. En una prueba de hipótesis el investigador decide la probabilidad <span class="math inline">\(\alpha\)</span> de un error de tipo I, este valor de <span class="math inline">\(\alpha\)</span> es conocido como la significancia.</p>
+<p>Partiendo de lo anterior, se pueden ver los errores de tipo I y II. El área de color verde bajo la distribución de <span class="math inline">\(H_0\)</span> muestra la probabilidad de rechazar <span class="math inline">\(H_0\)</span> cuando en realidad es verdadera, es decir un error de tipo I. El área de color celeste bajo la distribución de <span class="math inline">\(H_1\)</span> muestra la probabilidad de no rechazar <span class="math inline">\(H_0\)</span> cuando en realidad es falsa. En una prueba de hipótesis el investigador decide la probabilidad <span class="math inline">\(\alpha\)</span> de un error de tipo I, este valor de <span class="math inline">\(\alpha\)</span> es conocido como la <strong>significancia</strong>.</p>
+<p>Los puntos lìmites son conocidos como <strong>valores críticos</strong>. Un procedimiento muy usado en pruebas de hipótesis es calcular el valor <span class="math inline">\(z\)</span> de la media muestral, conocido como <strong>estadìstico de prueba</strong> y luego comparar el valor crìtico con este estadístico. Podrìamos resumir el procedimiento de prueba de hipótesis en 5 pasos:</p>
+<ol style="list-style-type: decimal">
+<li>Determinar las hipótesis nula y alternativa.</li>
+<li>Escoger la significancia, generalmente se escoge el <span class="math inline">\(5\%\)</span> o <span class="math inline">\(0.05\)</span>.</li>
+<li>Determinar el estadístico</li>
+<li>Calcular el valor crítico y establecer la regla de decisión</li>
+<li>Tomar la decisión.</li>
+</ol>
+<p>Una forma sencilla de entender cómo establecer la regla de decisión es ver la hipótesis alternativa. La hipótesis alternativa puede tener los símbolos <span class="math inline">\(&lt;\)</span>, <span class="math inline">\(&gt;\)</span> o <span class="math inline">\(\neq\)</span>. La región de rechazo de cada una se sombrea de color verde en las figuras <a href="ph.html#fig:phless">3.5</a>, <a href="ph.html#fig:phmore">3.6</a> y <a href="ph.html#fig:ph2c">3.7</a> respectivamente, al igual que en la figura <a href="ph.html#fig:pht">3.4</a> la distribución de rojo corresponde a <span class="math inline">\(H_0\)</span> y la de azul a <span class="math inline">\(H_1\)</span>. Las figuras <a href="ph.html#fig:phless">3.5</a> y <a href="ph.html#fig:phmore">3.6</a> corresponden a pruebas de hipótesis de <strong>una cola</strong> y la figura <a href="ph.html#fig:ph2c">3.7</a> corresponde a una prueba de hipótesis de <strong>dos colas</strong></p>
+<div class="figure" style="text-align: center"><span id="fig:phless"></span>
+<img src="phless.png" alt="$H_1:&lt;$" width="50%" />
+<p class="caption">
+Figura 3.5: <span class="math inline">\(H_1:&lt;\)</span>
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:phmore"></span>
+<img src="phmore.png" alt="$H_1:&gt;$" width="50%" />
+<p class="caption">
+Figura 3.6: <span class="math inline">\(H_1:&gt;\)</span>
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:ph2c"></span>
+<img src="ph2c.png" alt="$H_1:\neq$" width="50%" />
+<p class="caption">
+Figura 3.7: <span class="math inline">\(H_1:\neq\)</span>
+</p>
+</div>
 <div id="pruebas-de-hipotesis-para-la-media" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> Pruebas de hipótesis para la media</h3>
 </div>

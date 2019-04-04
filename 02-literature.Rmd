@@ -211,13 +211,41 @@ H_1: \mu \neq 500
 
 Una *regla de decisión* podría ser escoger un punto o puntos límites en el eje $x$´como en la figura \@ref(fig:pht). La gráfica de color rojo representa $H_0$ y las de color celeste representan $H_1$. En este caso vamos a escoger dos puntos límites porque si la media muestral se encuentra a la izquierda o a la derecha de estos límites, se rechaza $H_0$. En cualquiera de los dos casos la media muestral está demasiado lejos de $H_0$ para ser creíble. Si la media muestral $\bar{x}$ está entre los valores límite se acepta $H_0$. La región entre los puntos límite es la *región de no rechazo* y hacía la izquierda o derecha de los puntos límite se encuentra la *región de rechazo*.
 
-```{r pht, out.width = "60%",fig.cap="Errores Tipo I y II",fig.align = 'center', echo=FALSE}
+```{r pht, out.width = "50%",fig.cap="Errores Tipo I y II",fig.align = 'center', echo=FALSE}
 
 knitr::include_graphics("phtest.png")
 
 ```
 
-Partiendo de lo anterior, se pueden ver los errores de tipo I y II. El área de color verde bajo la distribución de $H_0$ muestra la probabilidad de rechazar $H_0$ cuando en realidad es verdadera, es decir un error de tipo I. El área de color celeste bajo la distribución de $H_1$ muestra la probabilidad de no rechazar $H_0$ cuando en realidad es falsa. En una prueba de hipótesis el investigador decide la probabilidad $\alpha$ de un error de tipo I, este valor de $\alpha$ es conocido como la significancia. 
+Partiendo de lo anterior, se pueden ver los errores de tipo I y II. El área de color verde bajo la distribución de $H_0$ muestra la probabilidad de rechazar $H_0$ cuando en realidad es verdadera, es decir un error de tipo I. El área de color celeste bajo la distribución de $H_1$ muestra la probabilidad de no rechazar $H_0$ cuando en realidad es falsa. En una prueba de hipótesis el investigador decide la probabilidad $\alpha$ de un error de tipo I, este valor de $\alpha$ es conocido como la **significancia**. 
+
+Los puntos lìmites son conocidos como **valores críticos**. Un procedimiento muy usado en pruebas de hipótesis es calcular el valor $z$ de la media muestral, conocido como **estadìstico de prueba** y luego comparar el valor crìtico con este estadístico. Podrìamos resumir el procedimiento de prueba de hipótesis en 5 pasos:
+
+1. Determinar las hipótesis nula y alternativa.
+2. Escoger la significancia, generalmente se escoge  el $5\%$ o $0.05$.
+3. Determinar el estadístico
+4. Calcular el valor crítico y establecer la regla de decisión
+5. Tomar la decisión.
+
+Una forma sencilla de entender cómo establecer la regla de decisión es ver la hipótesis alternativa. La hipótesis alternativa puede tener los símbolos $<$, $>$ o $\neq$. La región de rechazo de cada una se sombrea de color verde en las figuras \@ref(fig:phless), \@ref(fig:phmore) y \@ref(fig:ph2c) respectivamente, al igual que en la figura \@ref(fig:pht) la distribución de rojo corresponde a $H_0$ y la de azul a $H_1$. Las figuras \@ref(fig:phless) y \@ref(fig:phmore) corresponden a pruebas de hipótesis de **una cola** y la figura \@ref(fig:ph2c) corresponde a una prueba de hipótesis de **dos colas**
+
+```{r phless, out.width = "50%",fig.cap="$H_1:<$",fig.align = 'center', echo=FALSE}
+
+knitr::include_graphics("phless.png")
+
+```
+
+```{r phmore, out.width = "50%",fig.cap="$H_1:>$",fig.align = 'center', echo=FALSE}
+
+knitr::include_graphics("phmore.png")
+
+```
+
+```{r ph2c, out.width = "50%",fig.cap="$H_1:\\neq$",fig.align = 'center', echo=FALSE}
+
+knitr::include_graphics("ph2c.png")
+
+```
 
 ### Pruebas de hipótesis para la media
 

@@ -2393,7 +2393,7 @@ de rechazo}.
 
 \begin{figure}[h]
 
-{\centering \includegraphics[width=0.6\linewidth]{phtest} 
+{\centering \includegraphics[width=0.5\linewidth]{phtest} 
 
 }
 
@@ -2407,7 +2407,66 @@ decir un error de tipo I. El área de color celeste bajo la distribución
 de \(H_1\) muestra la probabilidad de no rechazar \(H_0\) cuando en
 realidad es falsa. En una prueba de hipótesis el investigador decide la
 probabilidad \(\alpha\) de un error de tipo I, este valor de \(\alpha\)
-es conocido como la significancia.
+es conocido como la \textbf{significancia}.
+
+Los puntos lìmites son conocidos como \textbf{valores críticos}. Un
+procedimiento muy usado en pruebas de hipótesis es calcular el valor
+\(z\) de la media muestral, conocido como \textbf{estadìstico de prueba}
+y luego comparar el valor crìtico con este estadístico. Podrìamos
+resumir el procedimiento de prueba de hipótesis en 5 pasos:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Determinar las hipótesis nula y alternativa.
+\item
+  Escoger la significancia, generalmente se escoge el \(5\%\) o
+  \(0.05\).
+\item
+  Determinar el estadístico
+\item
+  Calcular el valor crítico y establecer la regla de decisión
+\item
+  Tomar la decisión.
+\end{enumerate}
+
+Una forma sencilla de entender cómo establecer la regla de decisión es
+ver la hipótesis alternativa. La hipótesis alternativa puede tener los
+símbolos \(<\), \(>\) o \(\neq\). La región de rechazo de cada una se
+sombrea de color verde en las figuras \ref{fig:phless}, \ref{fig:phmore}
+y \ref{fig:ph2c} respectivamente, al igual que en la figura
+\ref{fig:pht} la distribución de rojo corresponde a \(H_0\) y la de azul
+a \(H_1\). Las figuras \ref{fig:phless} y \ref{fig:phmore} corresponden
+a pruebas de hipótesis de \textbf{una cola} y la figura \ref{fig:ph2c}
+corresponde a una prueba de hipótesis de \textbf{dos colas}
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.5\linewidth]{phless} 
+
+}
+
+\caption{$H_1:<$}\label{fig:phless}
+\end{figure}
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.5\linewidth]{phmore} 
+
+}
+
+\caption{$H_1:>$}\label{fig:phmore}
+\end{figure}
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.5\linewidth]{ph2c} 
+
+}
+
+\caption{$H_1:\neq$}\label{fig:ph2c}
+\end{figure}
 
 \subsection{Pruebas de hipótesis para la
 media}\label{pruebas-de-hipotesis-para-la-media}
