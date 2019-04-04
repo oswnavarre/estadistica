@@ -2284,17 +2284,130 @@ poblacionales \(\pi_1-\pi_2\), está dado por
 \section{Pruebas de hipótesis}\label{ph}
 
 Los intervalos de confianza pueden ayudar a contestar preguntas tales
-como ``¿es razonable que la media de los ingresos es igual a cierto
-valor?'' y podrìamos verificar si el valor en cuestión está dentro del
-intervalo, de ser así podríamos contestar afirmativamente a la pregunta.
-Este procedimiento que acabamos de enunciar tiene mucho sentido pero
-puede resultar ``muy débil'' para contestar la pregunta. Preguntas como
-la mencionada anteriormente se pueden contestar usando pruebas de
-hipótesis. Una hipótesis, en términos estadísticos, es una suposición o
-afirmación sobre un parámetro de la población y una prueba de hipótesis
-es un procedimiento basado en evidencia de la muestra y la teoría de la
-probabilidad para determinar si la hipótesis es una afirmación
-razonable.
+como ``¿es razonable concluir que la media de los ingresos de las
+pequeñas empresas durante el año anterior es igual a medio millón de
+dólares?'' y podrìamos verificar si el valor en cuestión está dentro del
+intervalo de confianza, de ser así podríamos contestar afirmativamente a
+la pregunta. Este procedimiento que acabamos de enunciar tiene mucho
+sentido pero puede resultar ``muy débil'' para contestar la pregunta.
+Preguntas como la mencionada anteriormente se pueden contestar usando
+pruebas de hipótesis. Una hipótesis, en términos estadísticos, es una
+suposición o afirmación sobre un parámetro de la población y una prueba
+de hipótesis es un procedimiento basado en evidencia de la muestra y la
+teoría de la probabilidad para determinar si la hipótesis es una
+afirmación razonable.
+
+Toda prueba de hipótesis parte de un enunciado que se asume verdadero
+hasta probar lo contrario, esta hipótesis que se asume cierta es
+conocida como \textbf{hipótesis nula}. El nombre de \emph{nula} proviene
+de la esperanza de que no exista diferencia significativa entre los
+grupos de prueba. La \textbf{hipótesis alternativa} es lo opuesto a la
+hipótesis nula. La hipótesis alternativa en la mayoría de los casos se
+condidera como una hipótesis de investigación.
+
+La hipótesis nula se denota con \(H_0\) y la alternativa con \(H_1\)
+aunque algunos autores utilizan la notación \(H_a\). Al final de una
+prueba de hipótesis se acepta o se rechaza la hipótesis nula, pero
+debemos tener claro que el procedimiento para probar hipótesis incluye
+la probabilidad de una conclusión incorrecta. Es decir que el
+investigador debe comprender que el rechazo de una hipótesis implica que
+la evidencia proporcionada por la muestra es la que rechaza la
+hipótesis, dicho de otra forma rechazar una hipótesis significa que
+existe una pequeña probabilidad de obtener la información muestral
+observada cuando, en realidad la hipótesis es verdadera.
+
+Existen dos tipos de errores posibles en un procedimiento de prueba de
+hipótesis: rechazar la hipótesis nula cuando esta es verdadera y no
+rechazarla cuando esta es falsa.
+
+Tabla: \label{tab:nula} Error Tipo I y II
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+& \(H_0\) es verdadera & \(H_0\) es falsa\tabularnewline
+\midrule
+\endhead
+No rechazar \(H_0\) & Decisión Correcta & \emph{Error Tipo
+II}\tabularnewline
+Rechazar \(H_0\) & \emph{Error Tipo I} & Decisión
+Correcta\tabularnewline
+\bottomrule
+\end{longtable}
+
+El error de tipo I también se conoce como falso positivo y el error de
+tipo II como falso negativo. La probabilidad de cometer un error de tipo
+I se denota con \(\alpha\) y la probabilidad de cometer un error de tipo
+II se denota con \(\beta\).
+
+Existen algunas propiedades importantes que se deben conocer sobre los
+errores de tipo I y tipo II.
+
+\begin{itemize}
+\tightlist
+\item
+  Los errores de tipo I y de tipo II están relacionados. Si la
+  probabilidad de uno aumenta la probabilidad del otro disminuye.
+\item
+  La probabilidad de cometer un error de tipo I se puede reducir
+  ajustando el o los valores críticos.
+\item
+  Un incremento del tamaño muestral \(n\), reducirá \(\alpha\) y
+  \(\beta\).
+\item
+  Si la hipótesis nula es falsa, \(\beta\) tiene un máximo cuando el
+  verdadero valor de un parámetro se aproxima al valor hipotético. A
+  mayor distancia entre el verdadero valor y el hipotético, el valor de
+  \(\beta\) sera menor.
+\end{itemize}
+
+Si se establece una buena regla de decisión, tendríamos una alta
+oportunidad de tomar una decisión correcta. Desafortunadamente no es
+posible eliminar completamente la posibilidad de errores, pues como se
+dijo anteriormente reducir la probabilidad de cometer el error de un
+tipo implica aumentar el error de otro tipo.
+
+Retomemos la pregunta planteada al inicio de esta sección, tomemos como
+hipótesis nula que la media es igual a \(500000\) y como alternativa que
+la media es diferente de \(500000\), por el momento no entraremos en
+detalles de como escoger las hipótesis; las hipótesis serán expresadas
+en miles de dólares:
+
+\begin{equation} 
+\begin{cases} 
+H_0: \mu = 500 \\ 
+H_1: \mu \neq 500
+\end{cases} 
+\end{equation}
+
+Una \emph{regla de decisión} podría ser escoger un punto o puntos
+límites en el eje \(x\)´como en la figura \ref{fig:pht}. La gráfica de
+color rojo representa \(H_0\) y las de color celeste representan
+\(H_1\). En este caso vamos a escoger dos puntos límites porque si la
+media muestral se encuentra a la izquierda o a la derecha de estos
+límites, se rechaza \(H_0\). En cualquiera de los dos casos la media
+muestral está demasiado lejos de \(H_0\) para ser creíble. Si la media
+muestral \(\bar{x}\) está entre los valores límite se acepta \(H_0\). La
+región entre los puntos límite es la \emph{región de no rechazo} y hacía
+la izquierda o derecha de los puntos límite se encuentra la \emph{región
+de rechazo}.
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.6\linewidth]{phtest} 
+
+}
+
+\caption{Errores Tipo I y II}\label{fig:pht}
+\end{figure}
+
+Partiendo de lo anterior, se pueden ver los errores de tipo I y II. El
+área de color verde bajo la distribución de \(H_0\) muestra la
+probabilidad de rechazar \(H_0\) cuando en realidad es verdadera, es
+decir un error de tipo I. El área de color celeste bajo la distribución
+de \(H_1\) muestra la probabilidad de no rechazar \(H_0\) cuando en
+realidad es falsa. En una prueba de hipótesis el investigador decide la
+probabilidad \(\alpha\) de un error de tipo I, este valor de \(\alpha\)
+es conocido como la significancia.
 
 \subsection{Pruebas de hipótesis para la
 media}\label{pruebas-de-hipotesis-para-la-media}
