@@ -149,8 +149,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.1.5" data-path="ic.html"><a href="ic.html#intervalo-de-confianza-para-la-diferencia-de-proporciones"><i class="fa fa-check"></i><b>3.1.5</b> Intervalo de Confianza para la diferencia de proporciones</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="ph.html"><a href="ph.html"><i class="fa fa-check"></i><b>3.2</b> Pruebas de hipótesis</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="ph.html"><a href="ph.html#pruebas-de-hipotesis-para-la-media"><i class="fa fa-check"></i><b>3.2.1</b> Pruebas de hipótesis para la media</a></li>
-<li class="chapter" data-level="3.2.2" data-path="ph.html"><a href="ph.html#pruebas-de-hipotesis-para-la-proporcion"><i class="fa fa-check"></i><b>3.2.2</b> Pruebas de hipótesis para la proporción</a></li>
+<li class="chapter" data-level="3.2.1" data-path="ph.html"><a href="ph.html#significancia-tamano-del-efecto-y-potencia-de-la-prueba"><i class="fa fa-check"></i><b>3.2.1</b> Significancia, tamaño del efecto y potencia de la prueba</a></li>
+<li class="chapter" data-level="3.2.2" data-path="ph.html"><a href="ph.html#el-valor-p"><i class="fa fa-check"></i><b>3.2.2</b> El valor <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="3.2.3" data-path="ph.html"><a href="ph.html#estadisticos"><i class="fa fa-check"></i><b>3.2.3</b> Estadísticos</a></li>
+<li class="chapter" data-level="3.2.4" data-path="ph.html"><a href="ph.html#pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-media-en-r"><i class="fa fa-check"></i><b>3.2.4</b> Pruebas de hipótesis e Intervalos de Confianza para la media en R</a></li>
+<li class="chapter" data-level="3.2.5" data-path="ph.html"><a href="ph.html#pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-proporcion-en-r"><i class="fa fa-check"></i><b>3.2.5</b> Pruebas de hipótesis e Intervalos de Confianza para la proporción en R</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Regresión</a></li>
@@ -185,8 +188,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Los intervalos de confianza pueden ayudar a contestar preguntas tales como “¿es razonable concluir que la media de los ingresos de las pequeñas empresas durante el año anterior es igual a medio millón de dólares?” y podrìamos verificar si el valor en cuestión está dentro del intervalo de confianza, de ser así podríamos contestar afirmativamente a la pregunta. Este procedimiento que acabamos de enunciar tiene mucho sentido pero puede resultar “muy débil” para contestar la pregunta. Preguntas como la mencionada anteriormente se pueden contestar usando pruebas de hipótesis. Una hipótesis, en términos estadísticos, es una suposición o afirmación sobre un parámetro de la población y una prueba de hipótesis es un procedimiento basado en evidencia de la muestra y la teoría de la probabilidad para determinar si la hipótesis es una afirmación razonable.</p>
 <p>Toda prueba de hipótesis parte de un enunciado que se asume verdadero hasta probar lo contrario, esta hipótesis que se asume cierta es conocida como <strong>hipótesis nula</strong>. El nombre de <em>nula</em> proviene de la esperanza de que no exista diferencia significativa entre los grupos de prueba. La <strong>hipótesis alternativa</strong> es lo opuesto a la hipótesis nula. La hipótesis alternativa en la mayoría de los casos se condidera como una hipótesis de investigación.</p>
 <p>La hipótesis nula se denota con <span class="math inline">\(H_0\)</span> y la alternativa con <span class="math inline">\(H_1\)</span> aunque algunos autores utilizan la notación <span class="math inline">\(H_a\)</span>. Al final de una prueba de hipótesis se acepta o se rechaza la hipótesis nula, pero debemos tener claro que el procedimiento para probar hipótesis incluye la probabilidad de una conclusión incorrecta. Es decir que el investigador debe comprender que el rechazo de una hipótesis implica que la evidencia proporcionada por la muestra es la que rechaza la hipótesis, dicho de otra forma rechazar una hipótesis significa que existe una pequeña probabilidad de obtener la información muestral observada cuando, en realidad la hipótesis es verdadera.</p>
-<p>Existen dos tipos de errores posibles en un procedimiento de prueba de hipótesis: rechazar la hipótesis nula cuando esta es verdadera y no rechazarla cuando esta es falsa.</p>
-<p>Tabla: (#tab:nula) Error Tipo I y II</p>
+<p>Existen dos tipos de errores posibles en un procedimiento de prueba de hipótesis: rechazar la hipótesis nula cuando esta es verdadera y no rechazarla cuando esta es falsa, en la <a href="ph.html#tab:err">3.1</a> se resume la relación entre las decisiones y los errores.</p>
+<caption>
+<span id="tab:err">Tabla 3.1: </span> Error Tipo I y II
+</caption>
 <table>
 <thead>
 <tr class="header">
@@ -259,11 +264,108 @@ Figura 3.6: <span class="math inline">\(H_1:&gt;\)</span>
 Figura 3.7: <span class="math inline">\(H_1:\neq\)</span>
 </p>
 </div>
-<div id="pruebas-de-hipotesis-para-la-media" class="section level3">
-<h3><span class="header-section-number">3.2.1</span> Pruebas de hipótesis para la media</h3>
+<div id="significancia-tamano-del-efecto-y-potencia-de-la-prueba" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Significancia, tamaño del efecto y potencia de la prueba</h3>
+<p>Los investigadores generalmente buscan resultados “significativos”, es común encontrar en los artículos académicos, investigaciones y reportes expresiones como “los resultados son significativos”, “el coeficiente es significativamente diferente de cero”. Es importante entender que la palabra “significativo” se usa en términos estadisticos y no en el sentido de <em>importante</em> o <em>relevante</em>. Es decir que algo puede ser estadisticamente significativo pero no relevante.</p>
+<p>Supongamos que en el ejemplo desarrollado en la sección anterior tenemos una media muestral de 496 y que ese valor nos lleva a rechazar la hipótesis nula. Para nosotros esa diferencia puede no ser relevante, sin embargo esa diferencia es significativa en el sentido estadístico. Es decir que no solo deberíamos interpretar los resultados estadísticos solamente en términos de la significancia sino también considerar el tamaño de la diferencia esto es conocido como el <strong>tamaño del efecto</strong> y preguntarse si es importante o no.</p>
+<p>Otro concepto relacionado a las probabilidades de error es la <strong>potencia de una prueba</strong> que es la probabilidad de rechazar <span class="math inline">\(H_0\)</span> cuando esta es falsa. Si la prueba fuera de una cola con hipótesis alternativa <span class="math inline">\(&gt;\)</span>, la potencia de la prueba viene dada entonces por el área bajo <span class="math inline">\(H_1\)</span> a la derecha de la línea de decisión.</p>
+<span class="math display" id="eq:power">\[\begin{equation} 
+\text{Potencia de una Prueba}=1-P\left(\text{Error Tipo II}\right)=1-\beta
+\tag{3.11}
+\end{equation}\]</span>
+<div class="figure" style="text-align: center"><span id="fig:power"></span>
+<img src="power.png" alt="Potencia de una prueba de Hipótesis" width="50%" />
+<p class="caption">
+Figura 3.8: Potencia de una prueba de Hipótesis
+</p>
 </div>
-<div id="pruebas-de-hipotesis-para-la-proporcion" class="section level3">
-<h3><span class="header-section-number">3.2.2</span> Pruebas de hipótesis para la proporción</h3>
+</div>
+<div id="el-valor-p" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> El valor <span class="math inline">\(p\)</span></h3>
+<p>El valor <span class="math inline">\(p\)</span> es la probabilidad, calculada suponiendo que la hipótesis nula es cierta, de obtener un valor del estadístico de prueba al menos tan contradictorio para <span class="math inline">\(H_0\)</span> como el valor calculado a partir de la muestra disponible. Dicho de otra forma el valor <span class="math inline">\(p\)</span> es el nivel más bajo de significancia en el que el valor observado del estadístico de prueba es significativo.</p>
+<p>El criterio para rechazar <span class="math inline">\(H_0\)</span> utilizando el valor <span class="math inline">\(p\)</span> es, si <span class="math inline">\(p&lt;\alpha\)</span> se rechaza <span class="math inline">\(H_0\)</span>. Es un criterio ampliamente usado, sin embargo en los últimos años ha tenido muchas críticas.</p>
+</div>
+<div id="estadisticos" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Estadísticos</h3>
+<p>Aunque el objetivo de este libro es trabajar con R, es necesario que el lector conozca los estadísticos usados en las diferentes pruebas de hipótesis que se trabajarán en las siguientes secciones,</p>
+<caption>
+<span id="tab:estadisticos">Tabla 3.2: </span> Estadísticos
+</caption>
+<table style="width:28%;">
+<colgroup>
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parámetro</th>
+<th>Muestra</th>
+<th>Varianza(s)</th>
+<th>Estadístico</th>
+<th>Distribución</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Media</td>
+<td>Grande</td>
+<td>Conocida</td>
+<td><span class="math inline">\(\dfrac{\bar{x}-\mu_0}{\dfrac{\sigma}{\sqrt{n}}}\)</span></td>
+<td><span class="math inline">\(Z\)</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Pequeña</td>
+<td>Desconocida</td>
+<td><span class="math inline">\(\dfrac{\bar{x}-\mu_0}{\dfrac{s}{\sqrt{n}}}\)</span></td>
+<td><span class="math inline">\(t\)</span> con <span class="math inline">\(n-1\)</span> grados de libertad</td>
+</tr>
+<tr class="odd">
+<td>Diferencia de Medias</td>
+<td>Grande</td>
+<td>Conocidas</td>
+<td><span class="math inline">\(\dfrac{\left( \bar{X}_1-\bar{X}_2 \right)- \left(\mu_1 - \mu_2 \right)}{\sqrt{\frac{\sigma_1}{n_1}+ \frac{\sigma_2}{n_2} }}\)</span></td>
+<td><span class="math inline">\(Z\)</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Pequeña</td>
+<td>Desconocidas e iguales</td>
+<td><span class="math inline">\(\dfrac{\left( \bar{X}_1-\bar{X}_2 \right)- \left(\mu_1 - \mu_2 \right)}{s_p\sqrt{\frac{1}{n_1}+ \frac{1}{n_2} }}\)</span> <br> donde <span class="math inline">\(s^2_p=\frac{s^2_1\left(n_1-1\right)+s^2_2\left(n_2-1\right)}{n_1+n_2-2}\)</span></td>
+<td><span class="math inline">\(t\)</span> con <span class="math inline">\(n_1+n_2-2\)</span> grados de libertad</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>Desconocidas y diferentes</td>
+<td><span class="math inline">\(\dfrac{\left( \bar{X}_1-\bar{X}_2 \right)- \left(\mu_1 - \mu_2 \right)}{\sqrt{\frac{s^2_1}{n_1}+ \frac{s_2^2}{n_2} }}\)</span></td>
+<td><span class="math inline">\(t\)</span> con grados de libertad definidos como en la ecuación <a href="ic.html#eq:dfsdd">(3.9)</a></td>
+</tr>
+<tr class="even">
+<td>Proporción</td>
+<td>No Aplica</td>
+<td>No Aplica</td>
+<td><span class="math inline">\(\dfrac{p-\pi}{\sqrt{\frac{\pi\left(1-\pi\right)}{n}}}\)</span></td>
+<td><span class="math inline">\(Z\)</span></td>
+</tr>
+<tr class="odd">
+<td>Diferencia de proporciones</td>
+<td>No Aplica</td>
+<td>No Aplica</td>
+<td><span class="math inline">\(\dfrac{p_1-p_2}{\sqrt{\hat{p}\hat{q}\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}\)</span></td>
+<td><span class="math inline">\(Z\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-media-en-r" class="section level3">
+<h3><span class="header-section-number">3.2.4</span> Pruebas de hipótesis e Intervalos de Confianza para la media en R</h3>
+</div>
+<div id="pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-proporcion-en-r" class="section level3">
+<h3><span class="header-section-number">3.2.5</span> Pruebas de hipótesis e Intervalos de Confianza para la proporción en R</h3>
 
 </div>
 </div>

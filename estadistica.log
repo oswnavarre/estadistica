@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6500 64-bit) (preloaded format=xelatex 2019.2.9)  4 APR 2019 10:38
+This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6500 64-bit) (preloaded format=xelatex 2019.2.9)  5 APR 2019 17:05
 entering extended mode
 **./estadistica.tex
 (estadistica.tex
@@ -1091,35 +1091,224 @@ File: ph2c.png Graphic file (type bmp)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[43] [44]
-Capítulo 4.
-[45
+[43]
+File: power.png Graphic file (type bmp)
+<power.png>
 
-] [46
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[44]
+Overfull \hbox (22.54082pt too wide) in paragraph at lines 2536--2538
+[]|\TU/lmr/m/n/10 Parámetro|  
+ []
+
+
+Overfull \hbox (12.43082pt too wide) in paragraph at lines 2538--2540
+[]|\TU/lmr/m/n/10 Muestra|  
+ []
+
+
+Overfull \hbox (26.60081pt too wide) in paragraph at lines 2540--2542
+[]|\TU/lmr/m/n/10 Varianza(s)|  
+ []
+
+
+Overfull \hbox (24.54082pt too wide) in paragraph at lines 2542--2544
+[]|\TU/lmr/m/n/10 Estadístico|  
+ []
+
+
+Overfull \hbox (30.36082pt too wide) in paragraph at lines 2544--2546
+[]|\TU/lmr/m/n/10 Distribución|  
+ []
+
+
+Overfull \hbox (3.46082pt too wide) in paragraph at lines 2549--2551
+[]|\TU/lmr/m/n/10 Media|  
+ []
+
+
+Overfull \hbox (8.84082pt too wide) in paragraph at lines 2551--2553
+[]|\TU/lmr/m/n/10 Grande|  
+ []
+
+
+Overfull \hbox (17.35081pt too wide) in paragraph at lines 2553--2555
+[]|\TU/lmr/m/n/10 Conocida|  
+ []
+
+
+Overfull \hbox (7.3597pt too wide) in paragraph at lines 2555--2557
+[]|$[]$|  
+ []
+
+
+Overfull \hbox (13.32082pt too wide) in paragraph at lines 2562--2564
+[]|\TU/lmr/m/n/10 Pequeña|  
+ []
+
+
+Overfull \hbox (30.59082pt too wide) in paragraph at lines 2564--2566
+[]|\TU/lmr/m/n/10 Desconocida|  
+ []
+
+
+Overfull \hbox (7.3597pt too wide) in paragraph at lines 2566--2568
+[]|$[]$|  
+ []
+
+
+Overfull \hbox (10.72083pt too wide) in paragraph at lines 2568--2570
+\TU/lmr/m/n/10 libertad|  
+ []
+
+
+Overfull \hbox (20.57082pt too wide) in paragraph at lines 2571--2573
+[]|\TU/lmr/m/n/10 Diferencia 
+ []
+
+
+Overfull \hbox (7.40082pt too wide) in paragraph at lines 2571--2573
+\TU/lmr/m/n/10 Medias|  
+ []
+
+
+Overfull \hbox (8.84082pt too wide) in paragraph at lines 2573--2575
+[]|\TU/lmr/m/n/10 Grande|  
+ []
+
+
+Overfull \hbox (21.29082pt too wide) in paragraph at lines 2575--2577
+[]|\TU/lmr/m/n/10 Conocidas|  
+ []
+
+
+Overfull \hbox (79.08635pt too wide) in paragraph at lines 2577--2579
+[]|$[]$|  
+ []
+
+
+Overfull \hbox (13.32082pt too wide) in paragraph at lines 2584--2586
+[]|\TU/lmr/m/n/10 Pequeña|  
+ []
+
+
+Overfull \hbox (34.53082pt too wide) in paragraph at lines 2586--2588
+[]|\TU/lmr/m/n/10 Desconocidas 
+ []
+
+
+Overfull \hbox (6.01082pt too wide) in paragraph at lines 2586--2588
+\TU/lmr/m/n/10 iguales|  
+ []
+
+
+Overfull \hbox (79.08635pt too wide) in paragraph at lines 2588--2592
+[]|$[]$ 
+ []
+
+
+Overfull \hbox (51.06906pt too wide) in paragraph at lines 2588--2592
+[]$|  
+ []
+
+
+Overfull \hbox (10.72083pt too wide) in paragraph at lines 2592--2594
+\TU/lmr/m/n/10 libertad|  
+ []
+
+
+Overfull \hbox (34.53082pt too wide) in paragraph at lines 2599--2601
+[]|\TU/lmr/m/n/10 Desconocidas 
+ []
+
+
+Overfull \hbox (18.26082pt too wide) in paragraph at lines 2599--2601
+\TU/lmr/m/n/10 diferentes|  
+ []
+
+
+Overfull \hbox (79.08635pt too wide) in paragraph at lines 2601--2603
+[]|$[]$|  
+ []
+
+
+Overfull \hbox (24.78082pt too wide) in paragraph at lines 2607--2609
+[]|\TU/lmr/m/n/10 Proporción|  
+ []
+
+
+Overfull \hbox (4.19081pt too wide) in paragraph at lines 2609--2611
+\TU/lmr/m/n/10 Aplica|  
+ []
+
+
+Overfull \hbox (4.19081pt too wide) in paragraph at lines 2611--2613
+\TU/lmr/m/n/10 Aplica|  
+ []
+
+
+Overfull \hbox (17.65175pt too wide) in paragraph at lines 2613--2615
+[]|$[]$|  
+ []
+
+
+Overfull \hbox (20.57082pt too wide) in paragraph at lines 2618--2620
+[]|\TU/lmr/m/n/10 Diferencia 
+ []
+
+
+Overfull \hbox (31.91083pt too wide) in paragraph at lines 2618--2620
+\TU/lmr/m/n/10 proporciones|  
+ []
+
+
+Overfull \hbox (4.19081pt too wide) in paragraph at lines 2620--2622
+\TU/lmr/m/n/10 Aplica|  
+ []
+
+
+Overfull \hbox (4.19081pt too wide) in paragraph at lines 2622--2624
+\TU/lmr/m/n/10 Aplica|  
+ []
+
+
+Overfull \hbox (47.09103pt too wide) in paragraph at lines 2624--2626
+[]|$[]$|  
+ []
+
+[45] [46]
+Capítulo 4.
+[47
+
+] [48
 
 ]
 Capítulo 5.
-[47] [48
+[49] [50
 
 ]
 Capítulo 6.
-(estadistica.bbl [49] [50
+(estadistica.bbl [51] [52
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2491.
-[51]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2491.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2654.
+[53]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2654.
 (estadistica.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2491.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2491.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2654.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2654.
  ) 
 Here is how much of TeX's memory you used:
- 23152 strings out of 427835
- 424398 string characters out of 3152455
- 573915 words of memory out of 3000000
- 26851 multiletter control sequences out of 15000+200000
+ 23163 strings out of 427835
+ 424635 string characters out of 3152455
+ 579452 words of memory out of 3000000
+ 26861 multiletter control sequences out of 15000+200000
  559081 words of font info for 77 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
- 45i,10n,68p,10454b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 45i,11n,68p,10454b,438s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on estadistica.pdf (51 pages).
+Output written on estadistica.pdf (53 pages).
+ 5000i,500n,10000p,200000b,50000s
+
+Output written on estadistica.pdf (53 pages).

@@ -2318,9 +2318,10 @@ observada cuando, en realidad la hipótesis es verdadera.
 
 Existen dos tipos de errores posibles en un procedimiento de prueba de
 hipótesis: rechazar la hipótesis nula cuando esta es verdadera y no
-rechazarla cuando esta es falsa.
+rechazarla cuando esta es falsa, en la \ref{tab:err} se resume la
+relación entre las decisiones y los errores.
 
-Tabla: \label{tab:nula} Error Tipo I y II
+\label{tab:err} Error Tipo I y II
 
 \begin{longtable}[]{@{}lll@{}}
 \toprule
@@ -2468,11 +2469,173 @@ corresponde a una prueba de hipótesis de \textbf{dos colas}
 \caption{$H_1:\neq$}\label{fig:ph2c}
 \end{figure}
 
-\subsection{Pruebas de hipótesis para la
-media}\label{pruebas-de-hipotesis-para-la-media}
+\subsection{Significancia, tamaño del efecto y potencia de la
+prueba}\label{significancia-tamano-del-efecto-y-potencia-de-la-prueba}
 
-\subsection{Pruebas de hipótesis para la
-proporción}\label{pruebas-de-hipotesis-para-la-proporcion}
+Los investigadores generalmente buscan resultados ``significativos'', es
+común encontrar en los artículos académicos, investigaciones y reportes
+expresiones como ``los resultados son significativos'', ``el coeficiente
+es significativamente diferente de cero''. Es importante entender que la
+palabra ``significativo'' se usa en términos estadisticos y no en el
+sentido de \emph{importante} o \emph{relevante}. Es decir que algo puede
+ser estadisticamente significativo pero no relevante.
+
+Supongamos que en el ejemplo desarrollado en la sección anterior tenemos
+una media muestral de 496 y que ese valor nos lleva a rechazar la
+hipótesis nula. Para nosotros esa diferencia puede no ser relevante, sin
+embargo esa diferencia es significativa en el sentido estadístico. Es
+decir que no solo deberíamos interpretar los resultados estadísticos
+solamente en términos de la significancia sino también considerar el
+tamaño de la diferencia esto es conocido como el \textbf{tamaño del
+efecto} y preguntarse si es importante o no.
+
+Otro concepto relacionado a las probabilidades de error es la
+\textbf{potencia de una prueba} que es la probabilidad de rechazar
+\(H_0\) cuando esta es falsa. Si la prueba fuera de una cola con
+hipótesis alternativa \(>\), la potencia de la prueba viene dada
+entonces por el área bajo \(H_1\) a la derecha de la línea de decisión.
+
+\begin{equation} 
+\text{Potencia de una Prueba}=1-P\left(\text{Error Tipo II}\right)=1-\beta
+\label{eq:power}
+\end{equation}
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.5\linewidth]{power} 
+
+}
+
+\caption{Potencia de una prueba de Hipótesis}\label{fig:power}
+\end{figure}
+
+\subsection{\texorpdfstring{El valor
+\(p\)}{El valor p}}\label{el-valor-p}
+
+El valor \(p\) es la probabilidad, calculada suponiendo que la hipótesis
+nula es cierta, de obtener un valor del estadístico de prueba al menos
+tan contradictorio para \(H_0\) como el valor calculado a partir de la
+muestra disponible. Dicho de otra forma el valor \(p\) es el nivel más
+bajo de significancia en el que el valor observado del estadístico de
+prueba es significativo.
+
+El criterio para rechazar \(H_0\) utilizando el valor \(p\) es, si
+\(p<\alpha\) se rechaza \(H_0\). Es un criterio ampliamente usado, sin
+embargo en los últimos años ha tenido muchas críticas.
+
+\subsection{Estadísticos}\label{estadisticos}
+
+Aunque el objetivo de este libro es trabajar con R, es necesario que el
+lector conozca los estadísticos usados en las diferentes pruebas de
+hipótesis que se trabajarán en las siguientes secciones,
+
+\label{tab:estadisticos} Estadísticos
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule
+\begin{minipage}[b]{0.05\columnwidth}\raggedright\strut
+Parámetro\strut
+\end{minipage} & \begin{minipage}[b]{0.05\columnwidth}\raggedright\strut
+Muestra\strut
+\end{minipage} & \begin{minipage}[b]{0.05\columnwidth}\raggedright\strut
+Varianza(s)\strut
+\end{minipage} & \begin{minipage}[b]{0.05\columnwidth}\raggedright\strut
+Estadístico\strut
+\end{minipage} & \begin{minipage}[b]{0.05\columnwidth}\raggedright\strut
+Distribución\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Media\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Grande\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Conocida\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\(\dfrac{\bar{x}-\mu_0}{\dfrac{\sigma}{\sqrt{n}}}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\(Z\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Pequeña\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Desconocida\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\(\dfrac{\bar{x}-\mu_0}{\dfrac{s}{\sqrt{n}}}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\(t\) con \(n-1\) grados de libertad\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Diferencia de Medias\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Grande\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Conocidas\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\(\dfrac{\left( \bar{X}_1-\bar{X}_2 \right)- \left(\mu_1 - \mu_2 \right)}{\sqrt{\frac{\sigma_1}{n_1}+ \frac{\sigma_2}{n_2} }}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\(Z\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Pequeña\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Desconocidas e iguales\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\(\dfrac{\left( \bar{X}_1-\bar{X}_2 \right)- \left(\mu_1 - \mu_2 \right)}{s_p\sqrt{\frac{1}{n_1}+ \frac{1}{n_2} }}\)
+donde
+\(s^2_p=\frac{s^2_1\left(n_1-1\right)+s^2_2\left(n_2-1\right)}{n_1+n_2-2}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\(t\) con \(n_1+n_2-2\) grados de libertad\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Desconocidas y diferentes\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\(\dfrac{\left( \bar{X}_1-\bar{X}_2 \right)- \left(\mu_1 - \mu_2 \right)}{\sqrt{\frac{s^2_1}{n_1}+ \frac{s_2^2}{n_2} }}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\(t\) con grados de libertad definidos como en la ecuación
+\eqref{eq:dfsdd}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Proporción\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+No Aplica\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+No Aplica\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\(\dfrac{p-\pi}{\sqrt{\frac{\pi\left(1-\pi\right)}{n}}}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\(Z\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Diferencia de proporciones\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+No Aplica\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+No Aplica\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\(\dfrac{p_1-p_2}{\sqrt{\hat{p}\hat{q}\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\(Z\)\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{Pruebas de hipótesis e Intervalos de Confianza para la media
+en
+R}\label{pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-media-en-r}
+
+\subsection{Pruebas de hipótesis e Intervalos de Confianza para la
+proporción en
+R}\label{pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-proporcion-en-r}
 
 \chapter{Regresión}\label{methods}
 
