@@ -289,7 +289,7 @@ Aunque el objetivo de este libro es trabajar con R, es necesario que el lector c
 |                     | Pequeña | Desconocidas e iguales | $\dfrac{\left( \bar{X}_1-\bar{X}_2 \right)- \left(\mu_1 - \mu_2 \right)}{s_p\sqrt{\frac{1}{n_1}+ \frac{1}{n_2} }}$ <br> donde $s^2_p=\frac{s^2_1\left(n_1-1\right)+s^2_2\left(n_2-1\right)}{n_1+n_2-2}$| $t$ con $n_1+n_2-2$ grados de libertad |
 |                     |         | Desconocidas y diferentes | $\dfrac{\left( \bar{X}_1-\bar{X}_2 \right)- \left(\mu_1 - \mu_2 \right)}{\sqrt{\frac{s^2_1}{n_1}+ \frac{s_2^2}{n_2} }}$  | $t$ con grados de libertad definidos como en la ecuación \@ref(eq:dfsdd) |
 | Proporción | No Aplica  | No Aplica | $\dfrac{p-\pi}{\sqrt{\frac{\pi\left(1-\pi\right)}{n}}}$   | $Z$ |
-| Diferencia de proporciones | No Aplica | No Aplica  | $\dfrac{p_1-p_2}{\sqrt{\hat{p}\hat{q}\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}$  | $Z$ |
+| Diferencia de proporciones | No Aplica | No Aplica  | $\dfrac{p_1-p_2}{\sqrt{\hat{p}\hat{q}\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}$ <br> donde $\hat{p}=\dfrac{x_1+x_2}{n_1+n_2} \quad \hat{q}=1-\hat{p}$  | $Z$ |
 
 ### Pruebas de hipótesis e Intervalos de Confianza para la media en R
 
