@@ -10,6 +10,7 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 description: "Libro de Análisis Estadístico de Datos Financieros con R"
+cover-image: "images/cover.png"
 ---
 
 ```{r global_options, include=FALSE}

@@ -73,7 +73,7 @@ setwd("C:/Users/onava_000/OneDrive/libro_mc/estadistica")
 big4size <- read.csv("cap2_big4_size.csv",header=TRUE,sep=";",dec=",")
 knitr::kable(
   head(big4size, 10), caption = 'Primeras 10 observaciones', longtable = TRUE,
-  booktabs = TRUE) 
+  booktabs = TRUE,format = "pandoc") 
 ```
 
 Sin más preámbulos, empecemos a trabajar. Recapitulando, primero configuraremos el directorio de trabajo, luego cargaremos el archivo indicado. Finalmente usamos la función `str()`, la que nos permite obtener la descripción de la estructura de los datos. 
@@ -417,7 +417,7 @@ tabla_firma <- audit_bolsa %>%
 ```{r tabla2, echo=FALSE}
 knitr::kable(
   tabla_firma, caption = 'Tabla de Frecuencia de Firmas Auditoras',
-  booktabs = TRUE) 
+  booktabs = TRUE,format = "pandoc") 
 ```
 
 En la tabla \@ref(tab:tabla2) se aprecia el resultado obtenido y formateado para ser publicado. El resultado de R, puede ser exportado a un archivo Excel con la finalidad de luego tomar esa tabla y llevarla a un documento donde se presentará toda la información analizada. Para exportar la información a un archivo excel se puede trabajar con el paquete `xlsx`. Para exportar los resultados a Excel se puede proceder de la siguiente forma.
@@ -474,7 +474,7 @@ h3 <- h2 %>%
 ```{r tabla3, echo=FALSE}
 knitr::kable(
   h3, caption = 'Tabla de Frecuencia de las Ventas',
-  booktabs = TRUE) 
+  booktabs = TRUE,format = "pandoc") 
 ```
 
 De la tabla \@ref(tab:tabla3) se obsserva que el $93\%$ de las empresas realiza ventas entre 0 y $165.76$ millones. El $99\%$  de las empresas es decir $2234$ tiene ventas menores a $663.04$ millones de dólares, esto se lo puede ver en la columna de frecuencias acumuladas relativas. Además, solo una empresa tiene ventas entre $1823.36$ y $1989.12$ millones. Finalmente vamos a exportar la tabla de frecuencia en el archivo `tablas.xlsx`. La opción `append = TRUE` sirve para añadir una nueva hoja de cálculo al libro.
@@ -508,7 +508,7 @@ ciudad.tama = rank2018 %>%
 ```{r tabla4, echo=FALSE}
 knitr::kable(
   ciudad.tama, caption = 'Tabla de Contingencia de las empresas \n clasificadas por tamaño y ciudad',
-  booktabs = TRUE) 
+  booktabs = TRUE,format = "pandoc") 
 ```
 
 En la tabla \@ref(tab:tabla4) se observa que de las 162 empresas 117 son microempresas y de la ciudad de Guayaquil, de la ciudad de Samborondón se ha tomada una empresa pequeña. Esta información, como se mencionó antes, puede también ser mostrada en porcentajes. En la tabla \@ref(tab:tabla5) se observa la tabla de contingencia con los porcentajes. 
@@ -525,7 +525,7 @@ ciudad.tama.porc = rank2018 %>%
 ```{r tabla5, echo=FALSE}
 knitr::kable(
   ciudad.tama.porc, caption = 'Tabla de Contingencia de las empresas \n clasificadas por tamaño y ciudad',
-  booktabs = TRUE) 
+  booktabs = TRUE,format = "pandoc") 
 ```
 
 ```{r include=FALSE}

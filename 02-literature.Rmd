@@ -294,6 +294,7 @@ Aunque el objetivo de este libro es trabajar con R, es necesario que el lector c
 ### Pruebas de hipótesis e Intervalos de Confianza para la media en R
 
 
+
 ### Pruebas de hipótesis e Intervalos de Confianza para la proporción en R
 
 

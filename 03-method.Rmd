@@ -1,2 +1,13 @@
 # Regresión {#methods}
 
+Supongamos que se quisiera analizar la relación entre las ventas y la utilidad de una empresa, para tratar de explicar de qué forma las ventas afectan la utilidad de las empresas. La existencia de la relación entre variables puede ser analizada usando un gráfico, una medida numérica o una ecuación. 
+El gráfico utilizado para analizar la relación entre dos variables se llama *gráfico de dispersión* o *diagrama de dispersión*,
+
+```{r corr, out.width = "70%",fig.cap="Gráficos de dispersión",fig.align = 'center', echo=FALSE}
+
+knitr::include_graphics("corr.png")
+
+```
+
+
+

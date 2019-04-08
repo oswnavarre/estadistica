@@ -12,7 +12,7 @@
   <meta property="og:title" content="2.4 Primeros pasos en R | Análisis Estadístico de Datos Financieros con R" />
   <meta property="og:type" content="book" />
   
-  
+  <meta property="og:image" content="images/cover.png" />
   <meta property="og:description" content="Libro de Análisis Estadístico de Datos Financieros con R" />
   
 
@@ -20,7 +20,7 @@
   <meta name="twitter:title" content="2.4 Primeros pasos en R | Análisis Estadístico de Datos Financieros con R" />
   
   <meta name="twitter:description" content="Libro de Análisis Estadístico de Datos Financieros con R" />
-  
+  <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Oswaldo Navarrete Carreño">
 
@@ -207,231 +207,97 @@ Figura 2.2: Ventana de RStudio con Script
 <p>Una característica de R es que permite acceder a la ayuda sobre las funciones, esto se hace escribiendo <code>?funcion</code> por ejemplo si queremos la ayuda de la función <code>read.csv</code> simplemente escribimos <code>?read.csv</code> en el panel ubicado en la parte inferior derecha se desplegará la ayuda de la función. Con la particularidad de que la ayuda se despliega en inglés lo que no debería ser problema para un buen investigador.</p>
 <p>El archivo que vamos a analizar contiene los activos, la utilidad, las ventas y el patrimonio de una muestra de empresas tomada de los registros de la Superintendencia de Compañías. Además en el conjunto de datos se indica si la empresa ha sido auditada por una de las 4 firmas auditoras consideradas las más grandes o también llamadas <em><em>Big Four</em></em>. En la <a href="primerR.html#tab:tabla1">2.1</a> se muestran las 10 primeras observaciones de nuestro conjunto de datos.</p>
 <table>
-<caption>
-<span id="tab:tabla1">Tabla 2.1: </span>Primeras 10 observaciones
-</caption>
+<caption><span id="tab:tabla1">Tabla 2.1: </span>Primeras 10 observaciones</caption>
 <thead>
-<tr>
-<th style="text-align:right;">
-EXPMUESTRA
-</th>
-<th style="text-align:right;">
-BIG4
-</th>
-<th style="text-align:right;">
-ACTIVOS
-</th>
-<th style="text-align:right;">
-UTILIDAD
-</th>
-<th style="text-align:right;">
-VTAS
-</th>
-<th style="text-align:right;">
-PAT
-</th>
+<tr class="header">
+<th align="right">EXPMUESTRA</th>
+<th align="right">BIG4</th>
+<th align="right">ACTIVOS</th>
+<th align="right">UTILIDAD</th>
+<th align="right">VTAS</th>
+<th align="right">PAT</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-85
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-73315618
-</td>
-<td style="text-align:right;">
-7522758.7
-</td>
-<td style="text-align:right;">
-191474544
-</td>
-<td style="text-align:right;">
-39382529
-</td>
+<tr class="odd">
+<td align="right">85</td>
+<td align="right">1</td>
+<td align="right">73315618</td>
+<td align="right">7522758.7</td>
+<td align="right">191474544</td>
+<td align="right">39382529</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-100121
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-21052702
-</td>
-<td style="text-align:right;">
--122898.5
-</td>
-<td style="text-align:right;">
-132585022
-</td>
-<td style="text-align:right;">
-1577764
-</td>
+<tr class="even">
+<td align="right">100121</td>
+<td align="right">0</td>
+<td align="right">21052702</td>
+<td align="right">-122898.5</td>
+<td align="right">132585022</td>
+<td align="right">1577764</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-45178
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-10468672
-</td>
-<td style="text-align:right;">
-536876.9
-</td>
-<td style="text-align:right;">
-13974269
-</td>
-<td style="text-align:right;">
-4312094
-</td>
+<tr class="odd">
+<td align="right">45178</td>
+<td align="right">0</td>
+<td align="right">10468672</td>
+<td align="right">536876.9</td>
+<td align="right">13974269</td>
+<td align="right">4312094</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-51193
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-4130483
-</td>
-<td style="text-align:right;">
-455759.4
-</td>
-<td style="text-align:right;">
-8670153
-</td>
-<td style="text-align:right;">
-1858990
-</td>
+<tr class="even">
+<td align="right">51193</td>
+<td align="right">0</td>
+<td align="right">4130483</td>
+<td align="right">455759.4</td>
+<td align="right">8670153</td>
+<td align="right">1858990</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-47598
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-23507401
-</td>
-<td style="text-align:right;">
-266370.5
-</td>
-<td style="text-align:right;">
-18555609
-</td>
-<td style="text-align:right;">
-7137609
-</td>
+<tr class="odd">
+<td align="right">47598</td>
+<td align="right">0</td>
+<td align="right">23507401</td>
+<td align="right">266370.5</td>
+<td align="right">18555609</td>
+<td align="right">7137609</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-31720
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-7220312
-</td>
-<td style="text-align:right;">
-437718.3
-</td>
-<td style="text-align:right;">
-16097135
-</td>
-<td style="text-align:right;">
-4002154
-</td>
+<tr class="even">
+<td align="right">31720</td>
+<td align="right">0</td>
+<td align="right">7220312</td>
+<td align="right">437718.3</td>
+<td align="right">16097135</td>
+<td align="right">4002154</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-46189
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-14526822
-</td>
-<td style="text-align:right;">
-1206400.9
-</td>
-<td style="text-align:right;">
-12281188
-</td>
-<td style="text-align:right;">
-5015806
-</td>
+<tr class="odd">
+<td align="right">46189</td>
+<td align="right">0</td>
+<td align="right">14526822</td>
+<td align="right">1206400.9</td>
+<td align="right">12281188</td>
+<td align="right">5015806</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-9731
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-8539445
-</td>
-<td style="text-align:right;">
-367848.1
-</td>
-<td style="text-align:right;">
-10844918
-</td>
-<td style="text-align:right;">
-2232339
-</td>
+<tr class="even">
+<td align="right">9731</td>
+<td align="right">0</td>
+<td align="right">8539445</td>
+<td align="right">367848.1</td>
+<td align="right">10844918</td>
+<td align="right">2232339</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4619
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2605059
-</td>
-<td style="text-align:right;">
--22438.4
-</td>
-<td style="text-align:right;">
-6244589
-</td>
-<td style="text-align:right;">
-1366610
-</td>
+<tr class="odd">
+<td align="right">4619</td>
+<td align="right">0</td>
+<td align="right">2605059</td>
+<td align="right">-22438.4</td>
+<td align="right">6244589</td>
+<td align="right">1366610</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-102434
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-23975816
-</td>
-<td style="text-align:right;">
-790265.6
-</td>
-<td style="text-align:right;">
-40612649
-</td>
-<td style="text-align:right;">
-8754369
-</td>
+<tr class="even">
+<td align="right">102434</td>
+<td align="right">0</td>
+<td align="right">23975816</td>
+<td align="right">790265.6</td>
+<td align="right">40612649</td>
+<td align="right">8754369</td>
 </tr>
 </tbody>
 </table>

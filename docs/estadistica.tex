@@ -109,7 +109,7 @@
 \usepackage{titling}
 
 % Create subtitle command for use in maketitle
-\newcommand{\subtitle}[1]{
+\providecommand{\subtitle}[1]{
   \posttitle{
     \begin{center}\large#1\end{center}
     }
@@ -390,139 +390,28 @@ auditoras consideradas las más grandes o también llamadas
 \emph{\emph{Big Four}}. En la \ref{tab:tabla1} se muestran las 10
 primeras observaciones de nuestro conjunto de datos.
 
-\label{tab:tabla1}Primeras 10 observaciones
-
-EXPMUESTRA
-
-BIG4
-
-ACTIVOS
-
-UTILIDAD
-
-VTAS
-
-PAT
-
-85
-
-1
-
-73315618
-
-7522758.7
-
-191474544
-
-39382529
-
-100121
-
-0
-
-21052702
-
--122898.5
-
-132585022
-
-1577764
-
-45178
-
-0
-
-10468672
-
-536876.9
-
-13974269
-
-4312094
-
-51193
-
-0
-
-4130483
-
-455759.4
-
-8670153
-
-1858990
-
-47598
-
-0
-
-23507401
-
-266370.5
-
-18555609
-
-7137609
-
-31720
-
-0
-
-7220312
-
-437718.3
-
-16097135
-
-4002154
-
-46189
-
-0
-
-14526822
-
-1206400.9
-
-12281188
-
-5015806
-
-9731
-
-0
-
-8539445
-
-367848.1
-
-10844918
-
-2232339
-
-4619
-
-0
-
-2605059
-
--22438.4
-
-6244589
-
-1366610
-
-102434
-
-0
-
-23975816
-
-790265.6
-
-40612649
-
-8754369
+\begin{longtable}[]{@{}rrrrrr@{}}
+\caption{\label{tab:tabla1}Primeras 10 observaciones}\tabularnewline
+\toprule
+EXPMUESTRA & BIG4 & ACTIVOS & UTILIDAD & VTAS & PAT\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+EXPMUESTRA & BIG4 & ACTIVOS & UTILIDAD & VTAS & PAT\tabularnewline
+\midrule
+\endhead
+85 & 1 & 73315618 & 7522758.7 & 191474544 & 39382529\tabularnewline
+100121 & 0 & 21052702 & -122898.5 & 132585022 & 1577764\tabularnewline
+45178 & 0 & 10468672 & 536876.9 & 13974269 & 4312094\tabularnewline
+51193 & 0 & 4130483 & 455759.4 & 8670153 & 1858990\tabularnewline
+47598 & 0 & 23507401 & 266370.5 & 18555609 & 7137609\tabularnewline
+31720 & 0 & 7220312 & 437718.3 & 16097135 & 4002154\tabularnewline
+46189 & 0 & 14526822 & 1206400.9 & 12281188 & 5015806\tabularnewline
+9731 & 0 & 8539445 & 367848.1 & 10844918 & 2232339\tabularnewline
+4619 & 0 & 2605059 & -22438.4 & 6244589 & 1366610\tabularnewline
+102434 & 0 & 23975816 & 790265.6 & 40612649 & 8754369\tabularnewline
+\bottomrule
+\end{longtable}
 
 Sin más preámbulos, empecemos a trabajar. Recapitulando, primero
 configuraremos el directorio de trabajo, luego cargaremos el archivo
@@ -1211,103 +1100,34 @@ caso se crea la columna porcentaje.
 ## 15 NGV                                          1       0.47
 \end{verbatim}
 
-\label{tab:tabla2}Tabla de Frecuencia de Firmas Auditoras
-
-FIRMA
-
-Frecuencia
-
-Porcentaje
-
-DELOITTE
-
-103
-
-48.58
-
-MOORE STEPHENS
-
-29
-
-13.68
-
-PWC PRICE WATER HOUSE COOPERS
-
-24
-
-11.32
-
-HANSEN HOLM \& CO. CIA. LTDA.
-
-15
-
-7.08
-
-KPMG
-
-13
-
-6.13
-
-ERNST \& YOUNG
-
-7
-
-3.30
-
-BDO
-
-6
-
-2.83
-
-ALTAMIRANO HIDALGO MARIO ROBERTO
-
-3
-
-1.42
-
-KRESTON
-
-3
-
-1.42
-
-PKF
-
-3
-
-1.42
-
-BATALLAS \& BATALLAS
-
-2
-
-0.94
-
-ASE + ASESORANDO MAS
-
-1
-
-0.47
-
-CONSULTORES MORAN CEDILLO CIA. LTDA
-
-1
-
-0.47
-
-HERRERA CHANG 6 ASOCIADOS
-
-1
-
-0.47
-
-NGV
-
-1
-
-0.47
+\begin{longtable}[]{@{}lrr@{}}
+\caption{\label{tab:tabla2}Tabla de Frecuencia de Firmas
+Auditoras}\tabularnewline
+\toprule
+FIRMA & Frecuencia & Porcentaje\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+FIRMA & Frecuencia & Porcentaje\tabularnewline
+\midrule
+\endhead
+DELOITTE & 103 & 48.58\tabularnewline
+MOORE STEPHENS & 29 & 13.68\tabularnewline
+PWC PRICE WATER HOUSE COOPERS & 24 & 11.32\tabularnewline
+HANSEN HOLM \& CO. CIA. LTDA. & 15 & 7.08\tabularnewline
+KPMG & 13 & 6.13\tabularnewline
+ERNST \& YOUNG & 7 & 3.30\tabularnewline
+BDO & 6 & 2.83\tabularnewline
+ALTAMIRANO HIDALGO MARIO ROBERTO & 3 & 1.42\tabularnewline
+KRESTON & 3 & 1.42\tabularnewline
+PKF & 3 & 1.42\tabularnewline
+BATALLAS \& BATALLAS & 2 & 0.94\tabularnewline
+ASE + ASESORANDO MAS & 1 & 0.47\tabularnewline
+CONSULTORES MORAN CEDILLO CIA. LTDA & 1 & 0.47\tabularnewline
+HERRERA CHANG 6 ASOCIADOS & 1 & 0.47\tabularnewline
+NGV & 1 & 0.47\tabularnewline
+\bottomrule
+\end{longtable}
 
 En la tabla \ref{tab:tabla2} se aprecia el resultado obtenido y
 formateado para ser publicado. El resultado de R, puede ser exportado a
@@ -1405,163 +1225,33 @@ trabajado en la sección \ref{primerR}.
 \end{Highlighting}
 \end{Shaded}
 
-\label{tab:tabla3}Tabla de Frecuencia de las Ventas
-
-Clase
-
-Marca de Clase
-
-Frec.
-
-Frec. Rel.
-
-Frec. Acu.
-
-Rel. Acu.
-
-{[} 0 , 165.76 )
-
-82.88
-
-2099
-
-93.0
-
-2099
-
-93.0
-
-{[} 165.76 , 331.52 )
-
-248.64
-
-83
-
-3.7
-
-2182
-
-96.7
-
-{[} 331.52 , 497.28 )
-
-414.40
-
-35
-
-1.6
-
-2217
-
-98.3
-
-{[} 497.28 , 663.04 )
-
-580.16
-
-17
-
-0.8
-
-2234
-
-99.0
-
-{[} 663.04 , 828.8 )
-
-745.92
-
-0
-
-0.0
-
-2234
-
-99.0
-
-{[} 828.8 , 994.56 )
-
-911.68
-
-7
-
-0.3
-
-2241
-
-99.3
-
-{[} 994.56 , 1160.32 )
-
-1077.44
-
-12
-
-0.5
-
-2253
-
-99.9
-
-{[} 1160.32 , 1326.08 )
-
-1243.20
-
-0
-
-0.0
-
-2253
-
-99.9
-
-{[} 1326.08 , 1491.84 )
-
-1408.96
-
-0
-
-0.0
-
-2253
-
-99.9
-
-{[} 1491.84 , 1657.6 )
-
-1574.72
-
-0
-
-0.0
-
-2253
-
-99.9
-
-{[} 1657.6 , 1823.36 )
-
-1740.48
-
-2
-
-0.1
-
-2255
-
-100.0
-
-{[} 1823.36 , 1989.12 )
-
-1906.24
-
-1
-
-0.0
-
-2256
-
-100.0
+\begin{longtable}[]{@{}lrrrrr@{}}
+\caption{\label{tab:tabla3}Tabla de Frecuencia de las Ventas}\tabularnewline
+\toprule
+Clase & Marca de Clase & Frec. & Frec. Rel. & Frec. Acu. & Rel.
+Acu.\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Clase & Marca de Clase & Frec. & Frec. Rel. & Frec. Acu. & Rel.
+Acu.\tabularnewline
+\midrule
+\endhead
+{[} 0 , 165.76 ) & 82.88 & 2099 & 93.0 & 2099 & 93.0\tabularnewline
+{[} 165.76 , 331.52 ) & 248.64 & 83 & 3.7 & 2182 & 96.7\tabularnewline
+{[} 331.52 , 497.28 ) & 414.40 & 35 & 1.6 & 2217 & 98.3\tabularnewline
+{[} 497.28 , 663.04 ) & 580.16 & 17 & 0.8 & 2234 & 99.0\tabularnewline
+{[} 663.04 , 828.8 ) & 745.92 & 0 & 0.0 & 2234 & 99.0\tabularnewline
+{[} 828.8 , 994.56 ) & 911.68 & 7 & 0.3 & 2241 & 99.3\tabularnewline
+{[} 994.56 , 1160.32 ) & 1077.44 & 12 & 0.5 & 2253 & 99.9\tabularnewline
+{[} 1160.32 , 1326.08 ) & 1243.20 & 0 & 0.0 & 2253 & 99.9\tabularnewline
+{[} 1326.08 , 1491.84 ) & 1408.96 & 0 & 0.0 & 2253 & 99.9\tabularnewline
+{[} 1491.84 , 1657.6 ) & 1574.72 & 0 & 0.0 & 2253 & 99.9\tabularnewline
+{[} 1657.6 , 1823.36 ) & 1740.48 & 2 & 0.1 & 2255 & 100.0\tabularnewline
+{[} 1823.36 , 1989.12 ) & 1906.24 & 1 & 0.0 & 2256 &
+100.0\tabularnewline
+\bottomrule
+\end{longtable}
 
 De la tabla \ref{tab:tabla3} se obsserva que el \(93\%\) de las empresas
 realiza ventas entre 0 y \(165.76\) millones. El \(99\%\) de las
@@ -1606,80 +1296,27 @@ empresas.
 \end{Highlighting}
 \end{Shaded}
 
-\label{tab:tabla4}Tabla de Contingencia de las empresas clasificadas por
-tamaño y ciudad
-
-CIUDAD
-
-MEDIANA
-
-MICROEMPRESA
-
-PEQUEÑA
-
-DAULE
-
-1
-
-1
-
-0
-
-ELOY ALFARO
-
-0
-
-2
-
-0
-
-GUAYAQUIL
-
-2
-
-117
-
-28
-
-MILAGRO
-
-0
-
-2
-
-0
-
-NARANJITO
-
-0
-
-4
-
-0
-
-SAMBORONDÓN
-
-0
-
-0
-
-1
-
-SANTA LUCIA
-
-0
-
-1
-
-0
-
-VELASCO IBARRA
-
-0
-
-1
-
-1
+\begin{longtable}[]{@{}lrrr@{}}
+\caption{\label{tab:tabla4}Tabla de Contingencia de las empresas
+clasificadas por tamaño y ciudad}\tabularnewline
+\toprule
+CIUDAD & MEDIANA & MICROEMPRESA & PEQUEÑA\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+CIUDAD & MEDIANA & MICROEMPRESA & PEQUEÑA\tabularnewline
+\midrule
+\endhead
+DAULE & 1 & 1 & 0\tabularnewline
+ELOY ALFARO & 0 & 2 & 0\tabularnewline
+GUAYAQUIL & 2 & 117 & 28\tabularnewline
+MILAGRO & 0 & 2 & 0\tabularnewline
+NARANJITO & 0 & 4 & 0\tabularnewline
+SAMBORONDÓN & 0 & 0 & 1\tabularnewline
+SANTA LUCIA & 0 & 1 & 0\tabularnewline
+VELASCO IBARRA & 0 & 1 & 1\tabularnewline
+\bottomrule
+\end{longtable}
 
 En la tabla \ref{tab:tabla4} se observa que de las 162 empresas 117 son
 microempresas y de la ciudad de Guayaquil, de la ciudad de Samborondón
@@ -1698,80 +1335,27 @@ porcentajes.
 \end{Highlighting}
 \end{Shaded}
 
-\label{tab:tabla5}Tabla de Contingencia de las empresas clasificadas por
-tamaño y ciudad
-
-CIUDAD
-
-MEDIANA
-
-MICROEMPRESA
-
-PEQUEÑA
-
-DAULE
-
-0.62
-
-0.62
-
-0.00
-
-ELOY ALFARO
-
-0.00
-
-1.24
-
-0.00
-
-GUAYAQUIL
-
-1.24
-
-72.67
-
-17.39
-
-MILAGRO
-
-0.00
-
-1.24
-
-0.00
-
-NARANJITO
-
-0.00
-
-2.48
-
-0.00
-
-SAMBORONDÓN
-
-0.00
-
-0.00
-
-0.62
-
-SANTA LUCIA
-
-0.00
-
-0.62
-
-0.00
-
-VELASCO IBARRA
-
-0.00
-
-0.62
-
-0.62
+\begin{longtable}[]{@{}lrrr@{}}
+\caption{\label{tab:tabla5}Tabla de Contingencia de las empresas
+clasificadas por tamaño y ciudad}\tabularnewline
+\toprule
+CIUDAD & MEDIANA & MICROEMPRESA & PEQUEÑA\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+CIUDAD & MEDIANA & MICROEMPRESA & PEQUEÑA\tabularnewline
+\midrule
+\endhead
+DAULE & 0.62 & 0.62 & 0.00\tabularnewline
+ELOY ALFARO & 0.00 & 1.24 & 0.00\tabularnewline
+GUAYAQUIL & 1.24 & 72.67 & 17.39\tabularnewline
+MILAGRO & 0.00 & 1.24 & 0.00\tabularnewline
+NARANJITO & 0.00 & 2.48 & 0.00\tabularnewline
+SAMBORONDÓN & 0.00 & 0.00 & 0.62\tabularnewline
+SANTA LUCIA & 0.00 & 0.62 & 0.00\tabularnewline
+VELASCO IBARRA & 0.00 & 0.62 & 0.62\tabularnewline
+\bottomrule
+\end{longtable}
 
 \section{Gráficos y Visualización}\label{graficos-y-visualizacion}
 
@@ -2639,6 +2223,23 @@ proporción en
 R}\label{pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-proporcion-en-r}
 
 \chapter{Regresión}\label{methods}
+
+Supongamos que se quisiera analizar la relación entre las ventas y la
+utilidad de una empresa, para tratar de explicar de qué forma las ventas
+afectan la utilidad de las empresas. La existencia de la relación entre
+variables puede ser analizada usando un gráfico, una medida numérica o
+una ecuación. El gráfico utilizado para analizar la relación entre dos
+variables se llama \emph{gráfico de dispersión} o \emph{diagrama de
+dispersión},
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.7\linewidth]{corr} 
+
+}
+
+\caption{Gráficos de dispersión}\label{fig:corr}
+\end{figure}
 
 \chapter{Análisis Factorial}\label{analisis-factorial}
 
