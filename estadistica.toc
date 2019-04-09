@@ -46,8 +46,9 @@
 \contentsline {subsection}{\numberline {3.2.3}Estadísticos}{39}{subsection.3.2.3}
 \contentsline {subsection}{\numberline {3.2.4}Pruebas de hipótesis e Intervalos de Confianza para la media en R}{40}{subsection.3.2.4}
 \contentsline {subsection}{\numberline {3.2.5}Pruebas de hipótesis e Intervalos de Confianza para la proporción en R}{40}{subsection.3.2.5}
-\contentsline {chapter}{\numberline {4}Regresión}{41}{chapter.4}
-\contentsline {chapter}{\numberline {5}Análisis Factorial}{43}{chapter.5}
-\contentsline {section}{\numberline {5.1}Análisis de Fiabilidad}{43}{section.5.1}
-\contentsline {section}{\numberline {5.2}Evaluación de Análisis Factorial}{43}{section.5.2}
-\contentsline {chapter}{\numberline {6}Algo de series de tiempo}{45}{chapter.6}
+\contentsline {chapter}{\numberline {4}Distribuciones Continuas}{41}{chapter.4}
+\contentsline {chapter}{\numberline {5}Regresión}{43}{chapter.5}
+\contentsline {chapter}{\numberline {6}Análisis Factorial}{45}{chapter.6}
+\contentsline {section}{\numberline {6.1}Análisis de Fiabilidad}{45}{section.6.1}
+\contentsline {section}{\numberline {6.2}Evaluación de Análisis Factorial}{45}{section.6.2}
+\contentsline {chapter}{\numberline {7}Algo de series de tiempo}{47}{chapter.7}

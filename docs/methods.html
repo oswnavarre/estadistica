@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Capítulo 4 Regresión | Análisis Estadístico de Datos Financieros con R</title>
+  <title>Capítulo 5 Regresión | Análisis Estadístico de Datos Financieros con R</title>
   <meta name="description" content="Libro de Análisis Estadístico de Datos Financieros con R">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Capítulo 4 Regresión | Análisis Estadístico de Datos Financieros con R" />
+  <meta property="og:title" content="Capítulo 5 Regresión | Análisis Estadístico de Datos Financieros con R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="oswnavarre/estadistica" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 4 Regresión | Análisis Estadístico de Datos Financieros con R" />
+  <meta name="twitter:title" content="Capítulo 5 Regresión | Análisis Estadístico de Datos Financieros con R" />
   
   <meta name="twitter:description" content="Libro de Análisis Estadístico de Datos Financieros con R" />
   <meta name="twitter:image" content="images/cover.png" />
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="ph.html">
+<link rel="prev" href="distr.html">
 <link rel="next" href="analisis-factorial.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -156,12 +156,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.2.5" data-path="ph.html"><a href="ph.html#pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-proporcion-en-r"><i class="fa fa-check"></i><b>3.2.5</b> Pruebas de hipótesis e Intervalos de Confianza para la proporción en R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Regresión</a></li>
-<li class="chapter" data-level="5" data-path="analisis-factorial.html"><a href="analisis-factorial.html"><i class="fa fa-check"></i><b>5</b> Análisis Factorial</a><ul>
-<li class="chapter" data-level="5.1" data-path="analisis-de-fiabilidad.html"><a href="analisis-de-fiabilidad.html"><i class="fa fa-check"></i><b>5.1</b> Análisis de Fiabilidad</a></li>
-<li class="chapter" data-level="5.2" data-path="evaluacion-de-analisis-factorial.html"><a href="evaluacion-de-analisis-factorial.html"><i class="fa fa-check"></i><b>5.2</b> Evaluación de Análisis Factorial</a></li>
+<li class="chapter" data-level="4" data-path="distr.html"><a href="distr.html"><i class="fa fa-check"></i><b>4</b> Distribuciones Continuas</a></li>
+<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Regresión</a></li>
+<li class="chapter" data-level="6" data-path="analisis-factorial.html"><a href="analisis-factorial.html"><i class="fa fa-check"></i><b>6</b> Análisis Factorial</a><ul>
+<li class="chapter" data-level="6.1" data-path="analisis-de-fiabilidad.html"><a href="analisis-de-fiabilidad.html"><i class="fa fa-check"></i><b>6.1</b> Análisis de Fiabilidad</a></li>
+<li class="chapter" data-level="6.2" data-path="evaluacion-de-analisis-factorial.html"><a href="evaluacion-de-analisis-factorial.html"><i class="fa fa-check"></i><b>6.2</b> Evaluación de Análisis Factorial</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="algo-de-series-de-tiempo.html"><a href="algo-de-series-de-tiempo.html"><i class="fa fa-check"></i><b>6</b> Algo de series de tiempo</a></li>
+<li class="chapter" data-level="7" data-path="algo-de-series-de-tiempo.html"><a href="algo-de-series-de-tiempo.html"><i class="fa fa-check"></i><b>7</b> Algo de series de tiempo</a></li>
 <li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -184,12 +185,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="methods" class="section level1">
-<h1><span class="header-section-number">Capítulo 4</span> Regresión</h1>
+<h1><span class="header-section-number">Capítulo 5</span> Regresión</h1>
 <p>Supongamos que se quisiera analizar la relación entre las ventas y la utilidad de una empresa, para tratar de explicar de qué forma las ventas afectan la utilidad de las empresas. La existencia de la relación entre variables puede ser analizada usando un gráfico, una medida numérica o una ecuación. El gráfico utilizado para analizar la relación entre dos variables se llama <em>gráfico de dispersión</em> o <em>diagrama de dispersión</em>,</p>
 <div class="figure" style="text-align: center"><span id="fig:corr"></span>
 <img src="corr.png" alt="Gráficos de dispersión" width="70%" />
 <p class="caption">
-Figura 4.1: Gráficos de dispersión
+Figura 5.1: Gráficos de dispersión
 </p>
 </div>
 
@@ -199,7 +200,7 @@ Figura 4.1: Gráficos de dispersión
           </div>
         </div>
       </div>
-<a href="ph.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="distr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="analisis-factorial.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
