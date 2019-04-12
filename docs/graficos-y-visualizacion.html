@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="tablas-de-contingencia.html">
-<link rel="next" href="intervalos-de-confianza-y-pruebas-de-hipotesis.html">
+<link rel="next" href="distr.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,41 +50,67 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -140,23 +166,27 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.10.2" data-path="graficos-y-visualizacion.html"><a href="graficos-y-visualizacion.html#boxes"><i class="fa fa-check"></i><b>2.10.2</b> Diagramas de Caja y valores atípicos</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="intervalos-de-confianza-y-pruebas-de-hipotesis.html"><a href="intervalos-de-confianza-y-pruebas-de-hipotesis.html"><i class="fa fa-check"></i><b>3</b> Intervalos de Confianza y Pruebas de Hipótesis</a><ul>
-<li class="chapter" data-level="3.1" data-path="ic.html"><a href="ic.html"><i class="fa fa-check"></i><b>3.1</b> Intervalos de Confianza</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="ic.html"><a href="ic.html#interpretacion-de-un-intervalo-de-confianza"><i class="fa fa-check"></i><b>3.1.1</b> Interpretación de un intervalo de confianza</a></li>
-<li class="chapter" data-level="3.1.2" data-path="ic.html"><a href="ic.html#intervalo-de-confianza-para-la-media-mu"><i class="fa fa-check"></i><b>3.1.2</b> Intervalo de Confianza para la media <span class="math inline">\(\mu\)</span></a></li>
-<li class="chapter" data-level="3.1.3" data-path="ic.html"><a href="ic.html#intervalo-de-confianza-para-la-proporcion"><i class="fa fa-check"></i><b>3.1.3</b> Intervalo de Confianza para la proporción</a></li>
-<li class="chapter" data-level="3.1.4" data-path="ic.html"><a href="ic.html#intervalo-de-confianza-para-la-diferencia-de-medias"><i class="fa fa-check"></i><b>3.1.4</b> Intervalo de Confianza para la diferencia de medias</a></li>
-<li class="chapter" data-level="3.1.5" data-path="ic.html"><a href="ic.html#intervalo-de-confianza-para-la-diferencia-de-proporciones"><i class="fa fa-check"></i><b>3.1.5</b> Intervalo de Confianza para la diferencia de proporciones</a></li>
+<li class="chapter" data-level="3" data-path="distr.html"><a href="distr.html"><i class="fa fa-check"></i><b>3</b> Distribuciones de probabilidad</a><ul>
+<li class="chapter" data-level="3.1" data-path="variable-aleatoria-y-distribucion-de-probabilidad.html"><a href="variable-aleatoria-y-distribucion-de-probabilidad.html"><i class="fa fa-check"></i><b>3.1</b> Variable aleatoria y distribución de probabilidad</a></li>
+<li class="chapter" data-level="3.2" data-path="funciones-de-densidad-de-probabilidad.html"><a href="funciones-de-densidad-de-probabilidad.html"><i class="fa fa-check"></i><b>3.2</b> Funciones de Densidad de Probabilidad</a></li>
+<li class="chapter" data-level="3.3" data-path="distribucion-de-probabilidad-normal.html"><a href="distribucion-de-probabilidad-normal.html"><i class="fa fa-check"></i><b>3.3</b> Distribución de Probabilidad Normal</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="ph.html"><a href="ph.html"><i class="fa fa-check"></i><b>3.2</b> Pruebas de hipótesis</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="ph.html"><a href="ph.html#significancia-tamano-del-efecto-y-potencia-de-la-prueba"><i class="fa fa-check"></i><b>3.2.1</b> Significancia, tamaño del efecto y potencia de la prueba</a></li>
-<li class="chapter" data-level="3.2.2" data-path="ph.html"><a href="ph.html#el-valor-p"><i class="fa fa-check"></i><b>3.2.2</b> El valor <span class="math inline">\(p\)</span></a></li>
-<li class="chapter" data-level="3.2.3" data-path="ph.html"><a href="ph.html#estadisticos"><i class="fa fa-check"></i><b>3.2.3</b> Estadísticos</a></li>
-<li class="chapter" data-level="3.2.4" data-path="ph.html"><a href="ph.html#pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-media-en-r"><i class="fa fa-check"></i><b>3.2.4</b> Pruebas de hipótesis e Intervalos de Confianza para la media en R</a></li>
-<li class="chapter" data-level="3.2.5" data-path="ph.html"><a href="ph.html#pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-proporcion-en-r"><i class="fa fa-check"></i><b>3.2.5</b> Pruebas de hipótesis e Intervalos de Confianza para la proporción en R</a></li>
+<li class="chapter" data-level="4" data-path="intervalos-de-confianza-y-pruebas-de-hipotesis.html"><a href="intervalos-de-confianza-y-pruebas-de-hipotesis.html"><i class="fa fa-check"></i><b>4</b> Intervalos de Confianza y Pruebas de Hipótesis</a><ul>
+<li class="chapter" data-level="4.1" data-path="ic.html"><a href="ic.html"><i class="fa fa-check"></i><b>4.1</b> Intervalos de Confianza</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="ic.html"><a href="ic.html#interpretacion-de-un-intervalo-de-confianza"><i class="fa fa-check"></i><b>4.1.1</b> Interpretación de un intervalo de confianza</a></li>
+<li class="chapter" data-level="4.1.2" data-path="ic.html"><a href="ic.html#intervalo-de-confianza-para-la-media-mu"><i class="fa fa-check"></i><b>4.1.2</b> Intervalo de Confianza para la media <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="4.1.3" data-path="ic.html"><a href="ic.html#intervalo-de-confianza-para-la-proporcion"><i class="fa fa-check"></i><b>4.1.3</b> Intervalo de Confianza para la proporción</a></li>
+<li class="chapter" data-level="4.1.4" data-path="ic.html"><a href="ic.html#intervalo-de-confianza-para-la-diferencia-de-medias"><i class="fa fa-check"></i><b>4.1.4</b> Intervalo de Confianza para la diferencia de medias</a></li>
+<li class="chapter" data-level="4.1.5" data-path="ic.html"><a href="ic.html#intervalo-de-confianza-para-la-diferencia-de-proporciones"><i class="fa fa-check"></i><b>4.1.5</b> Intervalo de Confianza para la diferencia de proporciones</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ph.html"><a href="ph.html"><i class="fa fa-check"></i><b>4.2</b> Pruebas de hipótesis</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="ph.html"><a href="ph.html#significancia-tamano-del-efecto-y-potencia-de-la-prueba"><i class="fa fa-check"></i><b>4.2.1</b> Significancia, tamaño del efecto y potencia de la prueba</a></li>
+<li class="chapter" data-level="4.2.2" data-path="ph.html"><a href="ph.html#el-valor-p"><i class="fa fa-check"></i><b>4.2.2</b> El valor <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="4.2.3" data-path="ph.html"><a href="ph.html#estadisticos"><i class="fa fa-check"></i><b>4.2.3</b> Estadísticos</a></li>
+<li class="chapter" data-level="4.2.4" data-path="ph.html"><a href="ph.html#pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-media-en-r"><i class="fa fa-check"></i><b>4.2.4</b> Pruebas de hipótesis e Intervalos de Confianza para la media en R</a></li>
+<li class="chapter" data-level="4.2.5" data-path="ph.html"><a href="ph.html#pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-proporcion-en-r"><i class="fa fa-check"></i><b>4.2.5</b> Pruebas de hipótesis e Intervalos de Confianza para la proporción en R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="distr.html"><a href="distr.html"><i class="fa fa-check"></i><b>4</b> Distribuciones Continuas</a></li>
 <li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Regresión</a></li>
 <li class="chapter" data-level="6" data-path="analisis-factorial.html"><a href="analisis-factorial.html"><i class="fa fa-check"></i><b>6</b> Análisis Factorial</a><ul>
 <li class="chapter" data-level="6.1" data-path="analisis-de-fiabilidad.html"><a href="analisis-de-fiabilidad.html"><i class="fa fa-check"></i><b>6.1</b> Análisis de Fiabilidad</a></li>
@@ -190,24 +220,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="histogramas" class="section level3">
 <h3><span class="header-section-number">2.10.1</span> Histogramas</h3>
 <p>Los histogramas se utilizan para variables continuas. Un histograma es un gráfico de la distribución de frecuencia de una variable, en el eje vertical se representa la frecuencia (absoluta o relativa) y en el eje horizontal los rangos de los valores.</p>
-<p>En la figura <a href="graficos-y-visualizacion.html#fig:figura1">2.4</a> se muestra el histograma de la variable ventas en millones de dólares del archivo <em>cap2_big4_size.csv</em> ya descrito en la sección <a href="primerR.html#primerR">2.4</a>, este primer histograma ha sido configurado para presentar 12 barras, que las barras sean de color azul con un contorno rojo. Antes de abordar los detalles mencionados discutiremos brevemente el funcionamiento de la gramática de <code>ggplot2</code>, una gráfica realizada en <code>ggplot2</code> empieza por <code>ggplot(data, aes())</code> dentro de <code>aes()</code> se indica las variables que van a intervenir en la gráfica, Luego se añade la <code>geom</code> con la que se va a trabajar en este caso se escogió <code>geom_histogram()</code> puesto que se desea realizar un histograma. Como se indicó anteriormente se configuró el histograma con 12 barras (<code>bins=12</code>), la opción <code>color=&quot;red&quot;</code> permite que el contorno de las barrras sea rojo y la opción <code>fill=&quot;blue&quot;</code>hace que las barras sean de color azul.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<p>En la figura <a href="graficos-y-visualizacion.html#fig:figura1">2.4</a> se muestra el histograma de la variable ventas en millones de dólares del archivo <em>cap2_big4_size.csv</em> ya descrito en la sección <a href="primerR.html#primerR">2.4</a>, este primer histograma ha sido configurado para presentar 12 barras, que las barras sean de color azul con un contorno rojo. Antes de abordar los detalles mencionados discutiremos brevemente el funcionamiento de la gramática de <code>ggplot2</code>, una gráfica realizada en <code>ggplot2</code> empieza por <code>ggplot(data, aes())</code> dentro de <code>aes()</code> se indica las variables que van a intervenir en la gráfica, Luego se añade la <code>geom</code> con la que se va a trabajar en este caso se escogió <code>geom_histogram()</code> puesto que se desea realizar un histograma. Como se indicó anteriormente se configuró el histograma con 12 barras (<code>bins=12</code>), la opción <code>color="red"</code> permite que el contorno de las barrras sea rojo y la opción <code>fill="blue"</code>hace que las barras sean de color azul.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 
 <span class="kw">ggplot</span>(big4size, <span class="kw">aes</span>(<span class="dt">x=</span> VTAS<span class="op">/</span><span class="dv">1000000</span>)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">12</span>, <span class="dt">color=</span> <span class="st">&quot;red&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;blue&quot;</span> )</code></pre></div>
-<div class="figure"><span id="fig:figura1"></span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">12</span>, <span class="dt">color=</span> <span class="st">&quot;red&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;blue&quot;</span> )</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:figura1"></span>
 <img src="estadistica_files/figure-html/figura1-1.png" alt="Histograma de las Ventas" width="672" />
 <p class="caption">
 Figura 2.4: Histograma de las Ventas
 </p>
 </div>
 <p>Para configurar las etiquetas de los ejes podemos añadir las opciones <code>xlab( )</code> y <code>ylab( )</code>. En la figura <a href="graficos-y-visualizacion.html#fig:figura2">2.5</a> se aprecia el histograma con las etiquetas de los ejes añadidos.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 
 <span class="kw">ggplot</span>(big4size, <span class="kw">aes</span>(<span class="dt">x=</span> VTAS<span class="op">/</span><span class="dv">1000000</span>)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">12</span>, <span class="dt">color=</span> <span class="st">&quot;red&quot;</span>,  <span class="dt">fill=</span><span class="st">&quot;blue&quot;</span> ) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Ventas en Millones de Dólares&quot;) + ylab(&quot;</span>Frecuencia<span class="st">&quot;)</span></code></pre></div>
-<div class="figure"><span id="fig:figura2"></span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Ventas en Millones de Dólares&quot;) + ylab(&quot;</span>Frecuencia<span class="st">&quot;)</span></code></pre>
+<div class="figure" style="text-align: center"><span id="fig:figura2"></span>
 <img src="estadistica_files/figure-html/figura2-1.png" alt="Histograma de las Ventas con Etiquetas en los Ejes" width="672" />
 <p class="caption">
 Figura 2.5: Histograma de las Ventas con Etiquetas en los Ejes
@@ -215,17 +245,17 @@ Figura 2.5: Histograma de las Ventas con Etiquetas en los Ejes
 </div>
 <p>Usando el archivo <code>Ranking2018Guayas.csv</code>, vamos ahora a hacer el histograma de las ventas en miles de acuerdo al tamaño de la empresa. En la figura <a href="graficos-y-visualizacion.html#fig:figura3">2.6</a> se observa el histograma.</p>
 <p>Para elaborar este histograma se tomaron en cuenta varias cosas, lo primero se estimaron los valores máximo y mínimo de la variable.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(rank2018<span class="op">$</span>VENTAS<span class="op">/</span><span class="dv">1000</span>)
-## [1] 0
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(rank2018<span class="op">$</span>VENTAS<span class="op">/</span><span class="dv">1000</span>)
+<span class="co">## [1] 0</span>
 <span class="kw">max</span>(rank2018<span class="op">$</span>VENTAS<span class="op">/</span><span class="dv">1000</span>)
-## [1] 1347.729</code></pre></div>
+<span class="co">## [1] 1347.729</span></code></pre>
 <p>Los valores obtenidos para el máximo y el mínimo fueron <span class="math inline">\(0\)</span> y <span class="math inline">\(1348\)</span> respectivamente, por esta razón se decidió crear 10 clases y cada clase con una longitud de 150. Adicionalmente para obtener un gráfico agradable a la vista se cambia la orientación de las marcas de <span class="math inline">\(0^\circ\)</span> a <span class="math inline">\(90^\circ\)</span> en el eje <span class="math inline">\(x\)</span> con la instrucción <code>theme(axis.text.x = element_text(angle = 90, hjust = 1))</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(rank2018, <span class="kw">aes</span>(<span class="dt">x=</span>VENTAS<span class="op">/</span><span class="dv">1000</span>, <span class="dt">fill=</span>TAMAÑO)) <span class="op">+</span><span class="st"> </span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(rank2018, <span class="kw">aes</span>(<span class="dt">x=</span>VENTAS<span class="op">/</span><span class="dv">1000</span>, <span class="dt">fill=</span>TAMAÑO)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">alpha=</span><span class="fl">0.3</span>, <span class="dt">color=</span><span class="st">&quot;black&quot;</span>,<span class="dt">bins=</span><span class="dv">10</span>, <span class="dt">binwidth =</span> <span class="dv">150</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1350</span>,<span class="dv">150</span>)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Ventas en Miles&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Frecuencia&quot;</span>) </code></pre></div>
-<div class="figure"><span id="fig:figura3"></span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Ventas en Miles&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Frecuencia&quot;</span>) </code></pre>
+<div class="figure" style="text-align: center"><span id="fig:figura3"></span>
 <img src="estadistica_files/figure-html/figura3-1.png" alt="Histograma de las Ventas de Acuerdo al Tamaño de la empresa" width="672" />
 <p class="caption">
 Figura 2.6: Histograma de las Ventas de Acuerdo al Tamaño de la empresa
@@ -237,18 +267,18 @@ Figura 2.6: Histograma de las Ventas de Acuerdo al Tamaño de la empresa
 <h3><span class="header-section-number">2.10.2</span> Diagramas de Caja y valores atípicos</h3>
 <p>En la <a href="graficos-y-visualizacion.html#fig:figura3">2.6</a> se pretendía mostrar la distribución de las ventas de acuerdo al tamaño de la empresa. Sin embargo el histograma no mostraba claramente la distribución de acuerdo al tamaño de la empresa. una alternativa es usar un diagrama de caja.</p>
 <p>Un diagrama de caja está formado por 5 valores que lo resumen, estos 5 valores se muestran en la figura <a href="graficos-y-visualizacion.html#fig:caja1">2.7</a>. La distancia entre el primer y el tercer cuartil se la conoce como rango intercuartílico (IQR, por sus siglas en inglés). El límite superior es igual al tercer cuartil más 1.5 veces el rango intercuartílico, valores mayores a esta cantidad se consideran valores atípicos. Mientras que el límite inferior es igual al primer cuartil menos 1.5 veces el rango intercuartílico y valores menores a esta cantidad se consideran valores atípicos.</p>
-<span class="math display" id="eq:iqr">\[\begin{equation} 
+<p><span class="math display" id="eq:iqr">\[\begin{equation} 
   IQR = Q_3 - Q_1
   \tag{2.13}
-\end{equation}\]</span>
-<span class="math display" id="eq:ls">\[\begin{equation} 
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:ls">\[\begin{equation} 
   LS = Q_3 + 1.5IQR
   \tag{2.14}
-\end{equation}\]</span>
-<span class="math display" id="eq:li">\[\begin{equation} 
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:li">\[\begin{equation} 
   LI = Q_1 - 1.5IQR
   \tag{2.15}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <div class="figure" style="text-align: center"><span id="fig:caja1"></span>
 <img src="boxplot3.png" alt="Partes de un Diagrama de Caja" width="40%" />
 <p class="caption">
@@ -256,20 +286,20 @@ Figura 2.7: Partes de un Diagrama de Caja
 </p>
 </div>
 <p>En la figura <a href="graficos-y-visualizacion.html#fig:figura4">2.8</a> se observan los diagramas de caja de las ventas según el tamaño de la empresa. Se puede notar que existen diferencias entre las ventas de las empresas medianas, las microempresas y las pequeñas. El <span class="math inline">\(50\%\)</span> de las empresas medianas vende más de <span class="math inline">\(1250000\)</span>, mientras que todas las microempresas venden menos de <span class="math inline">\(250000\)</span>. Las empresas pequeñas que venden más de <span class="math inline">\(500000\)</span> son atípicas, mientras que en las empresas medianas no se presentan valores atípicos.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(rank2018, <span class="kw">aes</span>(TAMAÑO, VENTAS<span class="op">/</span><span class="dv">1000</span>)) <span class="op">+</span><span class="st"> </span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(rank2018, <span class="kw">aes</span>(TAMAÑO, VENTAS<span class="op">/</span><span class="dv">1000</span>)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tamaño de las empresas&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Ventas en Miles de Dólares&quot;)</span></code></pre></div>
-<div class="figure"><span id="fig:figura4"></span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Ventas en Miles de Dólares&quot;)</span></code></pre>
+<div class="figure" style="text-align: center"><span id="fig:figura4"></span>
 <img src="estadistica_files/figure-html/figura4-1.png" alt="Diagrama de Caja de las Ventas según el Tamaño de la empresa" width="672" />
 <p class="caption">
 Figura 2.8: Diagrama de Caja de las Ventas según el Tamaño de la empresa
 </p>
 </div>
 <p>Si se quisiera analizar con mayor detalle las microempresas se podría seleccionar solo las empresas con este tamaño y elaborar el diagrama de caja correspondiente, para lograr esto se utiliza la función <code>subset(df, cond)</code>. donde <code>df</code> corresponde al <em>data frame</em> usado y <em>cond</em> a la regla que deben cumplir los datos a ser analizados.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">subset</span>(rank2018, TAMAÑO <span class="op">==</span><span class="st"> &quot;MICROEMPRESA&quot;</span>), <span class="kw">aes</span>(TAMAÑO, VENTAS<span class="op">/</span><span class="dv">1000</span>)) <span class="op">+</span><span class="st"> </span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">subset</span>(rank2018, TAMAÑO <span class="op">==</span><span class="st"> &quot;MICROEMPRESA&quot;</span>), <span class="kw">aes</span>(TAMAÑO, VENTAS<span class="op">/</span><span class="dv">1000</span>)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Ventas en Miles de Dólares&quot;)</span></code></pre></div>
-<div class="figure"><span id="fig:figura5"></span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Ventas en Miles de Dólares&quot;)</span></code></pre>
+<div class="figure" style="text-align: center"><span id="fig:figura5"></span>
 <img src="estadistica_files/figure-html/figura5-1.png" alt="Diagrama de Caja de las Ventas de las Microempresas" width="672" />
 <p class="caption">
 Figura 2.9: Diagrama de Caja de las Ventas de las Microempresas
@@ -282,7 +312,7 @@ Figura 2.9: Diagrama de Caja de las Ventas de las Microempresas
 <h3>Bibliografía</h3>
 <div id="refs" class="references">
 <div id="ref-wilkinson2005">
-<p>Wilkinson, Leland. 2005. <em>The Grammar of Graphics</em>. 2nd ed. New York: Springer-Verlag. <a href="https://www.springer.com/us/book/9780387245447" class="uri">https://www.springer.com/us/book/9780387245447</a>.</p>
+<p>Wilkinson, Leland. 2005. <em>The Grammar of Graphics</em>. 2nd ed. New York: Springer-Verlag. <a href="https://www.springer.com/us/book/9780387245447">https://www.springer.com/us/book/9780387245447</a>.</p>
 </div>
 </div>
             </section>
@@ -291,7 +321,7 @@ Figura 2.9: Diagrama de Caja de las Ventas de las Microempresas
         </div>
       </div>
 <a href="tablas-de-contingencia.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="intervalos-de-confianza-y-pruebas-de-hipotesis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="distr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -341,7 +371,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

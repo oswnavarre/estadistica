@@ -15,9 +15,11 @@ cover-image: "images/cover.png"
 ---
 
 ```{r global_options, include=FALSE}
-knitr::opts_chunk$set(fig.pos = 'h')
+knitr::opts_chunk$set(fig.pos = 'h',fig.align = 'center')
 library(kableExtra)
 library(tidyverse)
+library(gridExtra)
+library(latex2exp)
 ```
 
 # ¿A quién va dirigido este libro?

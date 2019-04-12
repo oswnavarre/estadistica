@@ -38,14 +38,14 @@ Existen algunos conceptos que son importantes y que se deben tener presentes en 
 
 Una vez instalado R y RStudio, abrimos Rstudio para comenzar a trabajar. La ventana de RStudio se ve como se muestra en la figura \@ref(fig:rstudio1).
 
-```{r rstudio1, out.width = "50%",fig.cap="Ventana de RStudio",fig.align = 'center', echo=FALSE}
+```{r rstudio1, out.width = "50%",fig.cap="Ventana de RStudio",fig.align = 'center', echo=FALSE,fig.pos='h!'}
 
 knitr::include_graphics("rstudio1.png")
 ```
 
 Lo primero que debemos hacer es abrir un nuevo script, un script de R es simplemente un archivo de texto que contiene (casi) todos los comandos que se escribirían en la línea de comandos de R, para esto en la barra de menú seguimos la secuencia __File, New File, R Script__ o desde el teclado con la combinación _Ctrl + Shift + N_, en este archivo iremos escribiendo todos los comandos que vamos a trabajar. En la figura \@ref(fig:rstudio2) se aprecia un script abierto.
 
-```{r rstudio2, out.width = "50%",fig.cap="Ventana de RStudio con Script",fig.align = 'center', echo=FALSE}
+```{r rstudio2, out.width = "50%",fig.cap="Ventana de RStudio con Script",fig.align = 'center', echo=FALSE,fig.pos='h!'}
 
 knitr::include_graphics("rstudio2.png")
 
@@ -547,7 +547,7 @@ Los histogramas se utilizan para variables continuas. Un histograma es un gráfi
 
 En la figura \@ref(fig:figura1) se muestra el histograma de la variable ventas en millones de dólares del archivo *cap2_big4_size.csv* ya descrito en la sección \@ref(primerR), este primer histograma ha sido configurado para presentar 12 barras, que las barras sean de color azul con un contorno rojo. Antes de abordar los detalles mencionados discutiremos brevemente el funcionamiento de la gramática de `ggplot2`, una gráfica realizada en `ggplot2` empieza por `ggplot(data, aes())` dentro de `aes()` se indica las variables que van a intervenir en la gráfica, Luego se añade la `geom` con la que se va a trabajar en este caso se escogió `geom_histogram()`  puesto que se desea  realizar un histograma. Como se indicó anteriormente se configuró el histograma con 12 barras (`bins=12`), la opción `color="red"` permite que el contorno de las barrras sea rojo y la opción `fill="blue"`hace que las barras sean de color azul. 
 
-```{r figura1, results='markup', echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Histograma de las Ventas"}
+```{r figura1, results='markup', echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Histograma de las Ventas", fig.pos='h!'}
 library(ggplot2)
 
 ggplot(big4size, aes(x= VTAS/1000000)) + 
@@ -556,7 +556,7 @@ ggplot(big4size, aes(x= VTAS/1000000)) +
 
 Para configurar las etiquetas de los ejes podemos añadir las opciones `xlab( )` y `ylab( )`. En la figura \@ref(fig:figura2) se aprecia el histograma con las etiquetas de los ejes añadidos. 
 
-```{r figura2, results='markup', echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Histograma de las Ventas con Etiquetas en los Ejes"}
+```{r figura2, results='markup', echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Histograma de las Ventas con Etiquetas en los Ejes", fig.pos='h!'}
 library(ggplot2)
 
 ggplot(big4size, aes(x= VTAS/1000000)) + 
@@ -574,7 +574,7 @@ max(rank2018$VENTAS/1000)
 ```
 Los valores obtenidos para el máximo y el mínimo fueron $0$ y $1348$ respectivamente, por esta razón se decidió crear 10 clases y cada clase con una longitud de 150. Adicionalmente para obtener un gráfico agradable a la vista se cambia la orientación de las marcas de $0^\circ$ a $90^\circ$ en el eje $x$ con la instrucción `theme(axis.text.x = element_text(angle = 90, hjust = 1))`.  
 
-```{r figura3, echo=TRUE,fig.cap="Histograma de las Ventas de Acuerdo al Tamaño de la empresa"}
+```{r figura3, echo=TRUE,fig.cap="Histograma de las Ventas de Acuerdo al Tamaño de la empresa", fig.pos='h!'}
 
 ggplot(rank2018, aes(x=VENTAS/1000, fill=TAMAÑO)) + 
   geom_histogram(alpha=0.3, color="black",bins=10, binwidth = 150) +
@@ -608,14 +608,14 @@ Un diagrama de caja está formado por 5 valores que lo resumen, estos 5 valores 
   (\#eq:li)
 \end{equation}
 
-```{r caja1, out.width = "40%",fig.cap="Partes de un Diagrama de Caja",fig.align = 'center', echo=FALSE}
+```{r caja1, out.width = "40%",fig.cap="Partes de un Diagrama de Caja",fig.align = 'center', echo=FALSE,fig.pos='h!'}
 
 knitr::include_graphics("boxplot3.png")
 ```
 
 En la figura \@ref(fig:figura4) se observan los diagramas de caja de las ventas según el tamaño de la empresa. Se puede notar que existen diferencias entre las ventas de las empresas medianas, las microempresas y las pequeñas. El $50\%$ de las empresas medianas vende más de $1250000$, mientras que todas las microempresas venden menos de $250000$. Las empresas pequeñas que venden más de $500000$ son atípicas, mientras que en las empresas medianas no se presentan valores atípicos. 
 
-```{r figura4, echo=TRUE,fig.cap="Diagrama de Caja de las Ventas según el Tamaño de la empresa"}
+```{r figura4, echo=TRUE,fig.cap="Diagrama de Caja de las Ventas según el Tamaño de la empresa",fig.pos='h!'}
 
 ggplot(rank2018, aes(TAMAÑO, VENTAS/1000)) + 
   geom_boxplot() + xlab("Tamaño de las empresas") +
@@ -624,7 +624,7 @@ ggplot(rank2018, aes(TAMAÑO, VENTAS/1000)) +
 
 Si se quisiera analizar con mayor detalle las microempresas se podría seleccionar solo las empresas con este tamaño y elaborar el diagrama de caja correspondiente, para lograr esto se utiliza la función `subset(df, cond)`. donde `df` corresponde al *data frame* usado y *cond* a la regla que deben cumplir los datos a ser analizados. 
 
-```{r figura5, echo=TRUE,fig.cap="Diagrama de Caja de las Ventas de las Microempresas"}
+```{r figura5, echo=TRUE,fig.cap="Diagrama de Caja de las Ventas de las Microempresas", fig.pos='h!'}
 
 ggplot(subset(rank2018, TAMAÑO == "MICROEMPRESA"), aes(TAMAÑO, VENTAS/1000)) + 
   geom_boxplot() + xlab("") +
