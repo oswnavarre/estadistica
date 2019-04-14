@@ -1283,7 +1283,7 @@ f\left(x\right)=\dfrac{1}{\sigma\sqrt{2\pi}}e^{\dfrac{-\left(x-\mu\right)^2}{2\s
 \label{eq:normalpdf}
 \end{equation}
 
-como se puede observar en la ecuación \eqref{eq:normalpdf}, la distribución normal tiene dos parámetros la media \(\mu\) y la desviación \(\sigma\), y se observan las siguientes propiedades de acuerdo a estos parámetros.
+como se puede observar en la ecuación \eqref{eq:normalpdf}, la distribución normal tiene dos parámetros la media \(\mu\) y la desviación \(\sigma\) cuando una variable aleatoria \(X\) tiene una distribución normal se escribe \(X \sim \mathcal{N}\left(\mu,\sigma \right)\), y se observan las siguientes propiedades de acuerdo a estos parámetros.
 
 \begin{itemize}
 \tightlist
@@ -1360,8 +1360,57 @@ como se puede observar en la ecuación \eqref{eq:normalpdf}, la distribución no
 \caption{Porcentaje a 3 desviaciones de la media}\label{fig:tressd}
 \end{figure}
 
-\hypertarget{intervalos-de-confianza-y-pruebas-de-hipotesis}{%
-\chapter{Intervalos de Confianza y Pruebas de Hipótesis}\label{intervalos-de-confianza-y-pruebas-de-hipotesis}}
+\hypertarget{distribucion-normal-estandar}{%
+\subsection{Distribución Normal Estándar}\label{distribucion-normal-estandar}}
+
+Supongamos que el tiempo para llenar la declaración del impuesto a la renta se distribuye normalmente con media \(80\) y desviación \(20\) y que nos interesa determinar la probabilidad de que una declaración sea correctamente llenada entre 50 y 90 minutos. Formalmente si definimos a \(X=\text{Tiempo para llenar una declaración}\) podemos decir que \(X \sim \mathcal{N}\left(80,20\right)\), nuestro interés es calcular \(P\left(50< X <90\right)\) si hacemos el cálculo a mano debemos determinar el área bajo la función definida en la ecuación \eqref{eq:normalpdf} enttre \(50\) y \(90\) para \(\mu=80\) y \(\sigma=20\) esto requeriría de un trabajo fuerte desde el punto de vista matemático. Otra solución sería tener una tabla que contenga las probabilidades de la distribución normal, sin embargo existe una cantidad infinita de distribuciones normales tomando en cuenta las combinaciones posibles de \(\mu\) y \(\sigma\). La solución es tener una distribución normal que represente a todas las distribuciones normales, dicha distribución recibe el nombre de \textbf{distribución normal estándar}.
+
+La distribución normal estándar se caracteriza por tener media \(0\) y desviacion \(1\), y se representa con la letra \(Z\). Dicho de otra forma \(Z \sim \mathcal{N}\left(0,1\right)\). En la figura \ref{fig:normalz} se presenta el gráfico de la normal estándar. Cualquier variable normal \(X\) se puede transformar a una normal estándar (estandarizar) realizando la operación \(z=\dfrac{x-\mu}{\sigma}\). Una vez estandarizado se puede determinar la probabilidad deseada usando cualquier tabla de la normal estándar. En este texto no hacemos uso de tablas puesto que los cálculos de probabilidades los haremos utilizando R, sin embargo es importante que el lector aprenda o refresque la noción de la distribución normal estandar ya que aparecerá constantemente en los siguientes capítulos.
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.5\linewidth]{estadistica_files/figure-latex/normalz-1} 
+
+}
+
+\caption{Normal Estándar}\label{fig:normalz}
+\end{figure}
+
+\hypertarget{distribucion-t-de-student}{%
+\section{\texorpdfstring{Distribución \(t\) de Student}{Distribución t de Student}}\label{distribucion-t-de-student}}
+
+La distribución \(t\) de Student fue obtenida por William S. Gosset en 1908, quien publicó sus hallazgos bajo el seudónimo ``Student'' y usó la letra \(t\) para representar la variable aleatoria, de aquí la \textbf{distribución \(t\) de Student} o \textbf{\(t\) de Student} simplemente. La función de densidad de la distribución \(t\) se define
+
+\begin{equation}
+f\left(t\right)=\dfrac{\Gamma\left[\dfrac{\nu+1}{2}\right]}{\sqrt{\nu \pi} \; \Gamma\left(\dfrac{\nu}{2}\right)}\left[1 + \dfrac{t^2}{\nu} \right]^{\frac{\nu+1}{2}}
+\label{eq:studentpdf}
+\end{equation}
+
+donde \(\nu\), (la letra griega \emph{nu}) representa el parámetro de la distribución \(t\) llamado \textbf{grados de libertad} y \(\Gamma\) es la función Gamma cuya definición no será abordada en este texto.
+En la figura \ref{fig:tstudent} se muestra el gráfico de dos distribuciones \(t\) de Student para dos valores diferentes de grados de libertad, la curva de color rojo representa una \(t\) con 3 grados de libertad y la de color verde con \(9\) grados de libertad. Se puede observar que la distribución \(t\) tiene una forma similar a la normal estándar porque es simétrica respecto a \(0\) (lo que implica que la media es \(0\)) y tiene forma de campana.
+
+En la figura \ref{fig:tz} se muestra de color azul la curva de la normal estándar junto con las distribuciones \(t\) mostradas anteriormente se observa que las \(t\) tienen más probabilidad en las colas y menos en el centro. Además se puede observar que \(t\) se aproxima a \(z\) a medida que aumentan los grados de libertad, los grados de libertad están relacionados al tamaño muestral es decir que \(t\) converge a \(z\) para tamaños muestrales grandes. En el capítulo \ref{icph} se hace uso de esta distribución.
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.5\linewidth]{estadistica_files/figure-latex/tstudent-1} 
+
+}
+
+\caption{$t$ de Student}\label{fig:tstudent}
+\end{figure}
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.5\linewidth]{estadistica_files/figure-latex/tz-1} 
+
+}
+
+\caption{$t$ de Student comparada con la Normal Estándar}\label{fig:tz}
+\end{figure}
+
+\hypertarget{icph}{%
+\chapter{Intervalos de Confianza y Pruebas de Hipótesis}\label{icph}}
 
 En la sección \ref{estypes} se habló de los típos de estadística, la estadística inferencial consiste de los métodos por medio de los cuales se puede hacer inferencias o generalizaciones sobre una población. La inferencia estadística se puede dívidir en dos grandes áreas: \textbf{estimación} y \textbf{pruebas de hipótesis}.
 

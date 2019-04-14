@@ -18,6 +18,7 @@ language:
     remark: 'Nota: '
     solution: 'Solución. '
     sec: 'Sección '
+    cha: 'Capítulo '
   ui:
     chapter_name: 'Capítulo '
 delete_merged_file: true

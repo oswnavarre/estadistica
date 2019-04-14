@@ -1,4 +1,4 @@
-# Intervalos de Confianza y Pruebas de Hipótesis
+# Intervalos de Confianza y Pruebas de Hipótesis {#icph}
 
 En la sección \@ref(estypes) se habló de los típos de estadística, la estadística inferencial consiste de los métodos por medio de los cuales se  puede hacer inferencias o generalizaciones sobre una población. La inferencia estadística se puede dívidir en dos grandes áreas: **estimación** y **pruebas de hipótesis**.
 
