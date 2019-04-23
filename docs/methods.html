@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Capítulo 5 Regresión | Análisis Estadístico de Datos Financieros con R</title>
+  <title>Capítulo 5 Regresión Lineal Simple y Correlación | Análisis Estadístico de Datos Financieros con R</title>
   <meta name="description" content="Libro de Análisis Estadístico de Datos Financieros con R">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Capítulo 5 Regresión | Análisis Estadístico de Datos Financieros con R" />
+  <meta property="og:title" content="Capítulo 5 Regresión Lineal Simple y Correlación | Análisis Estadístico de Datos Financieros con R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="oswnavarre/estadistica" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 5 Regresión | Análisis Estadístico de Datos Financieros con R" />
+  <meta name="twitter:title" content="Capítulo 5 Regresión Lineal Simple y Correlación | Análisis Estadístico de Datos Financieros con R" />
   
   <meta name="twitter:description" content="Libro de Análisis Estadístico de Datos Financieros con R" />
   <meta name="twitter:image" content="images/cover.png" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="ph.html">
-<link rel="next" href="analisis-factorial.html">
+<link rel="next" href="correl.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -150,11 +150,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.6.1" data-path="medidas-de-posicion-cuantiles.html"><a href="medidas-de-posicion-cuantiles.html#tipos-de-cuantiles"><i class="fa fa-check"></i><b>2.6.1</b> Tipos de Cuantiles</a></li>
 <li class="chapter" data-level="2.6.2" data-path="medidas-de-posicion-cuantiles.html"><a href="medidas-de-posicion-cuantiles.html#calculo-de-cuantiles"><i class="fa fa-check"></i><b>2.6.2</b> Cálculo de cuantiles</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html"><i class="fa fa-check"></i><b>2.7</b> Medidas de dispersión</a><ul>
-<li class="chapter" data-level="2.7.1" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html#rango"><i class="fa fa-check"></i><b>2.7.1</b> Rango</a></li>
-<li class="chapter" data-level="2.7.2" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html#varianza"><i class="fa fa-check"></i><b>2.7.2</b> Varianza</a></li>
-<li class="chapter" data-level="2.7.3" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html#desviacion"><i class="fa fa-check"></i><b>2.7.3</b> Desviación</a></li>
-<li class="chapter" data-level="2.7.4" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html#medidas-de-dispersion-en-r"><i class="fa fa-check"></i><b>2.7.4</b> Medidas de dispersión en R</a></li>
+<li class="chapter" data-level="2.7" data-path="dispersion.html"><a href="dispersion.html"><i class="fa fa-check"></i><b>2.7</b> Medidas de dispersión</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="dispersion.html"><a href="dispersion.html#rango"><i class="fa fa-check"></i><b>2.7.1</b> Rango</a></li>
+<li class="chapter" data-level="2.7.2" data-path="dispersion.html"><a href="dispersion.html#varianza"><i class="fa fa-check"></i><b>2.7.2</b> Varianza</a></li>
+<li class="chapter" data-level="2.7.3" data-path="dispersion.html"><a href="dispersion.html#desviacion"><i class="fa fa-check"></i><b>2.7.3</b> Desviación</a></li>
+<li class="chapter" data-level="2.7.4" data-path="dispersion.html"><a href="dispersion.html#medidas-de-dispersion-en-r"><i class="fa fa-check"></i><b>2.7.4</b> Medidas de dispersión en R</a></li>
 </ul></li>
 <li class="chapter" data-level="2.8" data-path="tablas-de-frecuencia.html"><a href="tablas-de-frecuencia.html"><i class="fa fa-check"></i><b>2.8</b> Tablas de frecuencia</a><ul>
 <li class="chapter" data-level="2.8.1" data-path="tablas-de-frecuencia.html"><a href="tablas-de-frecuencia.html#variables-cualitativas"><i class="fa fa-check"></i><b>2.8.1</b> Variables Cualitativas</a></li>
@@ -163,7 +163,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.9" data-path="tablas-de-contingencia.html"><a href="tablas-de-contingencia.html"><i class="fa fa-check"></i><b>2.9</b> Tablas de Contingencia</a></li>
 <li class="chapter" data-level="2.10" data-path="graficos-y-visualizacion.html"><a href="graficos-y-visualizacion.html"><i class="fa fa-check"></i><b>2.10</b> Gráficos y Visualización</a><ul>
 <li class="chapter" data-level="2.10.1" data-path="graficos-y-visualizacion.html"><a href="graficos-y-visualizacion.html#histogramas"><i class="fa fa-check"></i><b>2.10.1</b> Histogramas</a></li>
-<li class="chapter" data-level="2.10.2" data-path="graficos-y-visualizacion.html"><a href="graficos-y-visualizacion.html#boxes"><i class="fa fa-check"></i><b>2.10.2</b> Diagramas de Caja y valores atípicos</a></li>
+<li class="chapter" data-level="2.10.2" data-path="graficos-y-visualizacion.html"><a href="graficos-y-visualizacion.html#diagrama-de-barras"><i class="fa fa-check"></i><b>2.10.2</b> Diagrama de barras</a></li>
+<li class="chapter" data-level="2.10.3" data-path="graficos-y-visualizacion.html"><a href="graficos-y-visualizacion.html#boxes"><i class="fa fa-check"></i><b>2.10.3</b> Diagramas de Caja y valores atípicos</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="distr.html"><a href="distr.html"><i class="fa fa-check"></i><b>3</b> Distribuciones de probabilidad</a><ul>
@@ -184,13 +185,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="ph.html"><a href="ph.html"><i class="fa fa-check"></i><b>4.2</b> Pruebas de hipótesis</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="ph.html"><a href="ph.html#significancia-tamano-del-efecto-y-potencia-de-la-prueba"><i class="fa fa-check"></i><b>4.2.1</b> Significancia, tamaño del efecto y potencia de la prueba</a></li>
-<li class="chapter" data-level="4.2.2" data-path="ph.html"><a href="ph.html#el-valor-p"><i class="fa fa-check"></i><b>4.2.2</b> El valor <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="4.2.2" data-path="ph.html"><a href="ph.html#pvalor"><i class="fa fa-check"></i><b>4.2.2</b> El valor <span class="math inline">\(p\)</span></a></li>
 <li class="chapter" data-level="4.2.3" data-path="ph.html"><a href="ph.html#estadisticos"><i class="fa fa-check"></i><b>4.2.3</b> Estadísticos</a></li>
 <li class="chapter" data-level="4.2.4" data-path="ph.html"><a href="ph.html#pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-media-en-r"><i class="fa fa-check"></i><b>4.2.4</b> Pruebas de hipótesis e Intervalos de Confianza para la media en R</a></li>
 <li class="chapter" data-level="4.2.5" data-path="ph.html"><a href="ph.html#pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-proporcion-en-r"><i class="fa fa-check"></i><b>4.2.5</b> Pruebas de hipótesis e Intervalos de Confianza para la proporción en R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Regresión</a></li>
+<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Regresión Lineal Simple y Correlación</a><ul>
+<li class="chapter" data-level="5.1" data-path="correl.html"><a href="correl.html"><i class="fa fa-check"></i><b>5.1</b> Coeficiente de Correlación</a></li>
+<li class="chapter" data-level="5.2" data-path="regresion-lineal.html"><a href="regresion-lineal.html"><i class="fa fa-check"></i><b>5.2</b> Regresión lineal</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="regresion-lineal.html"><a href="regresion-lineal.html#regresion-linear-en-r"><i class="fa fa-check"></i><b>5.2.1</b> Regresión linear en R</a></li>
+<li class="chapter" data-level="5.2.2" data-path="regresion-lineal.html"><a href="regresion-lineal.html#coefregre"><i class="fa fa-check"></i><b>5.2.2</b> Interpretación de los coeficientes de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="bondad-de-ajuste-del-modelo-de-regresion.html"><a href="bondad-de-ajuste-del-modelo-de-regresion.html"><i class="fa fa-check"></i><b>5.3</b> Bondad de Ajuste del modelo de regresión</a></li>
+<li class="chapter" data-level="5.4" data-path="pruebas-de-hipotesis-para-los-coeficientes-de-la-regresion.html"><a href="pruebas-de-hipotesis-para-los-coeficientes-de-la-regresion.html"><i class="fa fa-check"></i><b>5.4</b> Pruebas de Hipótesis para los coeficientes de la regresión</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="analisis-factorial.html"><a href="analisis-factorial.html"><i class="fa fa-check"></i><b>6</b> Análisis Factorial</a><ul>
 <li class="chapter" data-level="6.1" data-path="analisis-de-fiabilidad.html"><a href="analisis-de-fiabilidad.html"><i class="fa fa-check"></i><b>6.1</b> Análisis de Fiabilidad</a></li>
 <li class="chapter" data-level="6.2" data-path="evaluacion-de-analisis-factorial.html"><a href="evaluacion-de-analisis-factorial.html"><i class="fa fa-check"></i><b>6.2</b> Evaluación de Análisis Factorial</a></li>
@@ -218,16 +227,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="methods" class="section level1">
-<h1><span class="header-section-number">Capítulo 5</span> Regresión</h1>
+<h1><span class="header-section-number">Capítulo 5</span> Regresión Lineal Simple y Correlación</h1>
 <p>Supongamos que se quisiera analizar la relación entre las ventas y la utilidad de una empresa, para tratar de explicar de qué forma las ventas afectan la utilidad de las empresas. La existencia de la relación entre variables puede ser analizada usando un gráfico, una medida numérica o una ecuación.
-El gráfico utilizado para analizar la relación entre dos variables se llama <em>gráfico de dispersión</em> o <em>diagrama de dispersión</em>,</p>
+El gráfico utilizado para analizar la relación entre dos variables se llama <em>gráfico de dispersión</em> o <em>diagrama de dispersión</em>, en la figura <a href="methods.html#fig:corr">5.1</a> se muestran algunos diagramas de dispersión.</p>
+<p>Un diagrama de dispersión muestra la relación entre dos variables cuantitativas medidas para las mismas observaciones. Los valores de una variable aparecen en el eje horizontal, y los valores de la otra variable aparecen en el eje verticcal. Cada observación aparece como el punto en el gráfico fijado por los valores de ambas variables para esa observación.</p>
+<p>En un diagrama de dispersión podemos encontrar tres aspectos de la asociación entre dos variables.</p>
+<ol style="list-style-type: decimal">
+<li>La dirección de la relación. La relación entre dos variables puede no existir o ser negativa o positiva. Retomemos la figura <a href="methods.html#fig:corr">5.1</a> para entender la dirección de la relación. Cuando los valores de <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> aumentan al mismo tiempo se dice que es positiva las gráficas con los puntos de color azul muestran una relación positiva. Cuando los valores de <span class="math inline">\(x\)</span> aumentan y los de <span class="math inline">\(y\)</span> disminuyen, o viceversa se dice que la relación es negativa, las gráficas con los puntos de color rojo presentan una relación negativa. Cuando no existen patrones claros como en la gráfica donde los puntos se presentan de color negro, se dice que no existe relación.</li>
+</ol>
 <div class="figure" style="text-align: center"><span id="fig:corr"></span>
-<img src="corr.png" alt="Gráficos de dispersión" width="70%" />
+<img src="corr.png" alt="Gráficos de dispersión" width="50%" />
 <p class="caption">
 Figura 5.1: Gráficos de dispersión
 </p>
 </div>
-
+<ol start="2" style="list-style-type: decimal">
+<li>La forma de la relación que puede ser lineal o no lineal. En la figura <a href="methods.html#fig:corr2">5.2</a> se observa que la relación es lineal, mientras que en la figura <a href="methods.html#fig:corr3">5.3</a> se observa una relación no lineal.</li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:corr2"></span>
+<img src="corr2.png" alt="Relación Lineal" width="50%" />
+<p class="caption">
+Figura 5.2: Relación Lineal
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:corr3"></span>
+<img src="estadistica_files/figure-html/corr3-1.png" alt="Relación No Lineal" width="50%" />
+<p class="caption">
+Figura 5.3: Relación No Lineal
+</p>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li>La fuerza de la relación lineal. Imaginemos que trazamos una recta por el centro de la nube de puntos, la fuerza de la relación se puede medir por la proximidad de los datos a esa linea, a mayor cercanía a la recta mayor fuerza de la relación. En la figura <a href="methods.html#fig:corr2">5.2</a> se observa que en las dos primeras y en las dos últimas gráficas las nubes de puntos se acercan hacia la recta, lo que nos indica que en esos casos la fuerza de la relación lineal es alta.</li>
+</ol>
+<p>En los dos gráficos centrales dn la figura <a href="methods.html#fig:corr4">5.4</a> la nube de puntos está más dispersa que en los otros gráficos la dispersión de la nube de puntos es menor. En términos de la fuerza de la relación lineal podemos decir que en los dos gráficos centrales esta es muy débil. Pero ¿cuán fuerte o débil es la relación en cada gráfica? La gráfica por si sola no nos indica que tan fuerte o débil es la relación, se hace necesario entonces medir de alguna forma la fuerza de la relación lineal. La fuerza de la relación lineal se mide con la correlación.</p>
+<div class="figure" style="text-align: center"><span id="fig:corr4"></span>
+<img src="corr3.png" alt="Fuerza de la relación lineal" width="50%" />
+<p class="caption">
+Figura 5.4: Fuerza de la relación lineal
+</p>
+</div> 
 </div>
             </section>
 
@@ -235,7 +273,7 @@ Figura 5.1: Gráficos de dispersión
         </div>
       </div>
 <a href="ph.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="analisis-factorial.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="correl.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="medidas-de-tendencia-central.html">
-<link rel="next" href="medidas-de-dispersion.html">
+<link rel="next" href="dispersion.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -150,11 +150,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.6.1" data-path="medidas-de-posicion-cuantiles.html"><a href="medidas-de-posicion-cuantiles.html#tipos-de-cuantiles"><i class="fa fa-check"></i><b>2.6.1</b> Tipos de Cuantiles</a></li>
 <li class="chapter" data-level="2.6.2" data-path="medidas-de-posicion-cuantiles.html"><a href="medidas-de-posicion-cuantiles.html#calculo-de-cuantiles"><i class="fa fa-check"></i><b>2.6.2</b> Cálculo de cuantiles</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html"><i class="fa fa-check"></i><b>2.7</b> Medidas de dispersión</a><ul>
-<li class="chapter" data-level="2.7.1" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html#rango"><i class="fa fa-check"></i><b>2.7.1</b> Rango</a></li>
-<li class="chapter" data-level="2.7.2" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html#varianza"><i class="fa fa-check"></i><b>2.7.2</b> Varianza</a></li>
-<li class="chapter" data-level="2.7.3" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html#desviacion"><i class="fa fa-check"></i><b>2.7.3</b> Desviación</a></li>
-<li class="chapter" data-level="2.7.4" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html#medidas-de-dispersion-en-r"><i class="fa fa-check"></i><b>2.7.4</b> Medidas de dispersión en R</a></li>
+<li class="chapter" data-level="2.7" data-path="dispersion.html"><a href="dispersion.html"><i class="fa fa-check"></i><b>2.7</b> Medidas de dispersión</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="dispersion.html"><a href="dispersion.html#rango"><i class="fa fa-check"></i><b>2.7.1</b> Rango</a></li>
+<li class="chapter" data-level="2.7.2" data-path="dispersion.html"><a href="dispersion.html#varianza"><i class="fa fa-check"></i><b>2.7.2</b> Varianza</a></li>
+<li class="chapter" data-level="2.7.3" data-path="dispersion.html"><a href="dispersion.html#desviacion"><i class="fa fa-check"></i><b>2.7.3</b> Desviación</a></li>
+<li class="chapter" data-level="2.7.4" data-path="dispersion.html"><a href="dispersion.html#medidas-de-dispersion-en-r"><i class="fa fa-check"></i><b>2.7.4</b> Medidas de dispersión en R</a></li>
 </ul></li>
 <li class="chapter" data-level="2.8" data-path="tablas-de-frecuencia.html"><a href="tablas-de-frecuencia.html"><i class="fa fa-check"></i><b>2.8</b> Tablas de frecuencia</a><ul>
 <li class="chapter" data-level="2.8.1" data-path="tablas-de-frecuencia.html"><a href="tablas-de-frecuencia.html#variables-cualitativas"><i class="fa fa-check"></i><b>2.8.1</b> Variables Cualitativas</a></li>
@@ -163,7 +163,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.9" data-path="tablas-de-contingencia.html"><a href="tablas-de-contingencia.html"><i class="fa fa-check"></i><b>2.9</b> Tablas de Contingencia</a></li>
 <li class="chapter" data-level="2.10" data-path="graficos-y-visualizacion.html"><a href="graficos-y-visualizacion.html"><i class="fa fa-check"></i><b>2.10</b> Gráficos y Visualización</a><ul>
 <li class="chapter" data-level="2.10.1" data-path="graficos-y-visualizacion.html"><a href="graficos-y-visualizacion.html#histogramas"><i class="fa fa-check"></i><b>2.10.1</b> Histogramas</a></li>
-<li class="chapter" data-level="2.10.2" data-path="graficos-y-visualizacion.html"><a href="graficos-y-visualizacion.html#boxes"><i class="fa fa-check"></i><b>2.10.2</b> Diagramas de Caja y valores atípicos</a></li>
+<li class="chapter" data-level="2.10.2" data-path="graficos-y-visualizacion.html"><a href="graficos-y-visualizacion.html#diagrama-de-barras"><i class="fa fa-check"></i><b>2.10.2</b> Diagrama de barras</a></li>
+<li class="chapter" data-level="2.10.3" data-path="graficos-y-visualizacion.html"><a href="graficos-y-visualizacion.html#boxes"><i class="fa fa-check"></i><b>2.10.3</b> Diagramas de Caja y valores atípicos</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="distr.html"><a href="distr.html"><i class="fa fa-check"></i><b>3</b> Distribuciones de probabilidad</a><ul>
@@ -184,13 +185,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="ph.html"><a href="ph.html"><i class="fa fa-check"></i><b>4.2</b> Pruebas de hipótesis</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="ph.html"><a href="ph.html#significancia-tamano-del-efecto-y-potencia-de-la-prueba"><i class="fa fa-check"></i><b>4.2.1</b> Significancia, tamaño del efecto y potencia de la prueba</a></li>
-<li class="chapter" data-level="4.2.2" data-path="ph.html"><a href="ph.html#el-valor-p"><i class="fa fa-check"></i><b>4.2.2</b> El valor <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="4.2.2" data-path="ph.html"><a href="ph.html#pvalor"><i class="fa fa-check"></i><b>4.2.2</b> El valor <span class="math inline">\(p\)</span></a></li>
 <li class="chapter" data-level="4.2.3" data-path="ph.html"><a href="ph.html#estadisticos"><i class="fa fa-check"></i><b>4.2.3</b> Estadísticos</a></li>
 <li class="chapter" data-level="4.2.4" data-path="ph.html"><a href="ph.html#pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-media-en-r"><i class="fa fa-check"></i><b>4.2.4</b> Pruebas de hipótesis e Intervalos de Confianza para la media en R</a></li>
 <li class="chapter" data-level="4.2.5" data-path="ph.html"><a href="ph.html#pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-proporcion-en-r"><i class="fa fa-check"></i><b>4.2.5</b> Pruebas de hipótesis e Intervalos de Confianza para la proporción en R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Regresión</a></li>
+<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Regresión Lineal Simple y Correlación</a><ul>
+<li class="chapter" data-level="5.1" data-path="correl.html"><a href="correl.html"><i class="fa fa-check"></i><b>5.1</b> Coeficiente de Correlación</a></li>
+<li class="chapter" data-level="5.2" data-path="regresion-lineal.html"><a href="regresion-lineal.html"><i class="fa fa-check"></i><b>5.2</b> Regresión lineal</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="regresion-lineal.html"><a href="regresion-lineal.html#regresion-linear-en-r"><i class="fa fa-check"></i><b>5.2.1</b> Regresión linear en R</a></li>
+<li class="chapter" data-level="5.2.2" data-path="regresion-lineal.html"><a href="regresion-lineal.html#coefregre"><i class="fa fa-check"></i><b>5.2.2</b> Interpretación de los coeficientes de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="bondad-de-ajuste-del-modelo-de-regresion.html"><a href="bondad-de-ajuste-del-modelo-de-regresion.html"><i class="fa fa-check"></i><b>5.3</b> Bondad de Ajuste del modelo de regresión</a></li>
+<li class="chapter" data-level="5.4" data-path="pruebas-de-hipotesis-para-los-coeficientes-de-la-regresion.html"><a href="pruebas-de-hipotesis-para-los-coeficientes-de-la-regresion.html"><i class="fa fa-check"></i><b>5.4</b> Pruebas de Hipótesis para los coeficientes de la regresión</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="analisis-factorial.html"><a href="analisis-factorial.html"><i class="fa fa-check"></i><b>6</b> Análisis Factorial</a><ul>
 <li class="chapter" data-level="6.1" data-path="analisis-de-fiabilidad.html"><a href="analisis-de-fiabilidad.html"><i class="fa fa-check"></i><b>6.1</b> Análisis de Fiabilidad</a></li>
 <li class="chapter" data-level="6.2" data-path="evaluacion-de-analisis-factorial.html"><a href="evaluacion-de-analisis-factorial.html"><i class="fa fa-check"></i><b>6.2</b> Evaluación de Análisis Factorial</a></li>
@@ -220,7 +229,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="medidas-de-posicion-cuantiles" class="section level2">
 <h2><span class="header-section-number">2.6</span> Medidas de posición (Cuantiles)</h2>
 <p>Las medidas de posición no central permiten conocer otros puntos característicos de la distribución que no son los valores centrales. Entre las medidas de posición no central más importantes están los cuantiles. El término cuantil fue usado por primera vez por Kendall en 1940.</p>
-<p>El cuantil de orden p de una distribución con <span class="math inline">\(0&lt;p&lt;1\)</span> es el valor <span class="math inline">\(x_{i}\)</span> de la variable <span class="math inline">\(X\)</span> que marca un corte de modo que una proporción <span class="math inline">\(p\)</span> o un porcentaje <span class="math inline">\(100p\)</span>% de valores de la población es menor o igual que <span class="math inline">\(x_{i}\)</span> Por ejemplo el cuantil de orden <span class="math inline">\(0.35\)</span> dejaría un 35% de valores por debajo de él.</p>
+<p>El cuantil de orden <span class="math inline">\(p\)</span> de una distribución con <span class="math inline">\(0&lt;p&lt;1\)</span> es el valor <span class="math inline">\(x_{i}\)</span> de la variable <span class="math inline">\(X\)</span> que marca un corte de modo que una proporción <span class="math inline">\(p\)</span> o un porcentaje <span class="math inline">\(100p\)</span>% de valores de la población es menor o igual que <span class="math inline">\(x_{i}\)</span> Por ejemplo el cuantil de orden <span class="math inline">\(0.35\)</span> dejaría un 35% de valores por debajo de él.</p>
 <div id="tipos-de-cuantiles" class="section level3">
 <h3><span class="header-section-number">2.6.1</span> Tipos de Cuantiles</h3>
 <ul>
@@ -254,15 +263,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   \tag{2.7}
 \end{equation}\]</span></p>
 <p>Para calcular percentiles en R, se utiliza la función <code>quantile()</code>. Esta función recibe dos argumentos, la variable de la que se calcula el percentil y el porcentaje del percentil que se desea calcular. Se pueden calcular varios percentiles al mismo tiempo.</p>
-<p>Vamos a calcular el primer cuartil <span class="math inline">\(Q_{1}\)</span> de la variable <code>ACTIVOS</code> del conjunto de datos ya trabajado anteriormente. Vamos a llamar a esta variable utilizando la notación <code>$</code> esta notación se usa poniendo <code>data.frame$variable</code> en este caso nuestra variable está en el conjunto <code>datos1</code>y se llama <code>ACTIVOS</code> por lo que para llamar la variable desde la función escribimos <code>datos1$ACTIVOS</code>. Luego debemos recordar que <span class="math inline">\(Q_1=P_{25}\)</span> es decir que en la función <code>quantile</code> debemos anotar <span class="math inline">\(0.25\)</span></p>
+<p>Vamos a calcular el primer cuartil <span class="math inline">\(Q_{1}\)</span> de la variable <code>ACTIVOS</code> del conjunto de datos ya trabajado anteriormente. Vamos a llamar a esta variable utilizando la notación <code>$</code> esta notación se usa poniendo <code>data.frame$variable</code> en este caso nuestra variable está en el conjunto <code>big4size</code> y se llama <code>ACTIVOS</code> por lo que para llamar la variable desde la función escribimos <code>big4size$ACTIVOS</code>. Luego debemos recordar que <span class="math inline">\(Q_1=P_{25}\)</span> es decir que en la función <code>quantile</code> debemos anotar <span class="math inline">\(0.25\)</span></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(big4size<span class="op">$</span>ACTIVOS, <span class="fl">0.25</span>)</code></pre>
 <pre><code>##     25% 
 ## 3184669</code></pre>
-<p>Ahora calculamos los tres cuartiles en este caso podemos escribir dentro de una lista los tres valores, para ingresar listas en R lo hacemos con <code>c(elemento1, elemento2, ... )</code></p>
+<p>Ahora calculamos los tres cuartiles en este caso podemos escribir dentro de una lista los tres valores, para ingresar listas en R lo hacemos con <code>c(elemento1, elemento2, ... )</code> como ya lo habíamos indicado antes.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(big4size<span class="op">$</span>ACTIVOS, <span class="kw">c</span>(<span class="fl">0.25</span>,<span class="fl">0.50</span>,<span class="fl">0.75</span>))</code></pre>
 <pre><code>##      25%      50%      75% 
 ##  3184669 10326361 33192848</code></pre>
-<p>De los resultados obtenidos se interpreta que el 25% de los activos de las empresas es menor que <span class="math inline">\(3 184 669\)</span>. Supongamos que se quieren determinar los deciles, una forma de hacer la lista es con la función <code>seq</code> con las instrucciones <code>seq(inicial, final, by = aumento)</code> de esta manera evitamos escribir los nueve valores.</p>
+<p>De los resultados obtenidos se interpreta que el 25% de los activos de las empresas es menor que <span class="math inline">\(3\;184\;669\)</span>. Supongamos que se quieren determinar los deciles, una forma de hacer la lista es con la función <code>seq</code> con las instrucciones <code>seq(inicial, final, by = aumento)</code> de esta manera evitamos escribir los nueve valores.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(big4size<span class="op">$</span>ACTIVOS, <span class="kw">seq</span>(<span class="fl">0.1</span>,<span class="fl">0.9</span>, <span class="dt">by =</span> <span class="fl">0.1</span>))</code></pre>
 <pre><code>##      10%      20%      30%      40%      50%      60%      70%      80% 
 ##  1621865  2561491  3882643  6187167 10326361 16883801 26613778 49838668 
@@ -276,7 +285,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="medidas-de-tendencia-central.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="medidas-de-dispersion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="dispersion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

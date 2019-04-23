@@ -1,13 +1,324 @@
-# Regresión {#methods}
+```{r include = FALSE}
+if(!knitr:::is_html_output())
+{
+  knitr::opts_chunk$set(fig.pos = 'h')
+}
+```
+
+# Regresión Lineal Simple y Correlación {#methods}
 
 Supongamos que se quisiera analizar la relación entre las ventas y la utilidad de una empresa, para tratar de explicar de qué forma las ventas afectan la utilidad de las empresas. La existencia de la relación entre variables puede ser analizada usando un gráfico, una medida numérica o una ecuación. 
-El gráfico utilizado para analizar la relación entre dos variables se llama *gráfico de dispersión* o *diagrama de dispersión*,
+El gráfico utilizado para analizar la relación entre dos variables se llama *gráfico de dispersión* o *diagrama de dispersión*, en la figura \@ref(fig:corr) se muestran algunos diagramas de dispersión. 
 
-```{r corr, out.width = "70%",fig.cap="Gráficos de dispersión",fig.align = 'center', echo=FALSE}
+Un diagrama de dispersión muestra la relación entre dos variables cuantitativas medidas para las mismas observaciones. Los valores de una variable aparecen en el eje horizontal, y los valores de la otra variable aparecen en el eje verticcal. Cada observación aparece como el punto en el gráfico fijado por los valores de ambas variables para esa observación.
+
+
+En un diagrama de dispersión podemos encontrar tres aspectos de la asociación entre dos variables. 
+
+1. La dirección de la relación. La relación entre dos variables puede no existir o ser negativa o positiva. Retomemos la figura \@ref(fig:corr) para entender la dirección de la relación.  Cuando los valores de $x$ e $y$ aumentan al mismo tiempo se dice que es positiva las gráficas con los puntos de color azul muestran una relación positiva. Cuando los valores de $x$ aumentan y los de $y$ disminuyen, o viceversa se dice que la relación es negativa, las gráficas con los puntos de color rojo presentan una relación negativa. Cuando no existen patrones claros como en la gráfica donde los puntos se presentan de color negro, se dice que no existe relación. 
+
+```{r corr, out.width = "50%",fig.cap="Gráficos de dispersión",fig.align = 'center', echo=FALSE}
 
 knitr::include_graphics("corr.png")
 
+``` 
+
+2. La forma de la relación que puede ser lineal o no lineal. En la figura \@ref(fig:corr2) se observa que la relación es lineal, mientras que en la figura \@ref(fig:corr3) se observa una relación no lineal. 
+
+```{r corr2, out.width = "50%",fig.cap="Relación Lineal",fig.align = 'center', echo=FALSE}
+
+knitr::include_graphics("corr2.png")
 ```
+
+
+```{r corr3, out.width = "50%",fig.cap="Relación No Lineal",fig.align = 'center', echo=FALSE}
+
+x1 <- 1:100
+y1 <- 1 + x1^0.15 + rnorm(100, 0, 0.01)
+data <- cbind(x1,y1)
+data <- as.data.frame(data)
+ggplot(data, aes(x = x1, y = y1)) + geom_point() +
+  stat_smooth(method ="loess", formula = y ~ x, size = 1,se = FALSE) +
+  theme_light()
+```
+
+3. La fuerza de la relación lineal. Imaginemos que trazamos una recta por el centro de la nube de puntos, la fuerza de la relación se puede medir por la proximidad de los datos a esa linea, a mayor cercanía a la recta mayor fuerza de la relación. En la figura \@ref(fig:corr2) se observa que en las dos primeras y en las dos últimas gráficas las nubes de puntos se acercan hacia la recta, lo que nos indica que en esos casos la fuerza de la relación lineal es alta. 
+
+En los dos gráficos centrales dn la figura \@ref(fig:corr4)  la nube de puntos está más dispersa que en los otros gráficos la dispersión de la nube de puntos es menor. En términos de la fuerza de la relación lineal podemos decir que en los dos gráficos centrales esta es muy débil. Pero ¿cuán fuerte o débil es la relación en cada gráfica? La  gráfica por si sola no nos indica que tan fuerte o débil es la relación, se hace necesario entonces medir de alguna forma la fuerza de la relación lineal. La fuerza de la relación lineal se mide con la correlación. 
+
+
+```{r corr4, out.width = "50%",fig.cap="Fuerza de la relación lineal",fig.align = 'center', echo=FALSE}
+
+knitr::include_graphics("corr3.png")
+```
+
+## Coeficiente de Correlación {#correl}
+
+El *coeficiente de correlación de Pearson* es una medida que puede tomar valores entre $-1$ y $1$. Es igual a $1$ cuando dos variables cuantitativas tienen una relación lineal perfecta positiva y cuando las variables tienen una relación lineal negativa la correlación es igual a $-1$ como se observa en la figura \@ref(fig:corr5).  
+
+```{r corr5, out.width = "50%",fig.cap="Relaciones lineales perfectas",fig.align = 'center', echo=FALSE}
+
+knitr::include_graphics("corr4.png")
+```
+
+Para entender el coeficiente de correlación de Pearson, debemos empezar por definir la *covarianza*. La varianza la definimos en la sección \@ref(dispersion) como el promedio de la desviación cuadrática de todas las observaciones de una variable. Cuando trabajamos con dos variables debemos usar la **covarianza** que es la medida distancia entre cada par ordenado del centroide en un diagrama de dispersión. El centroide de un conjunto de puntos $\left(x,y\right)$ es el punto $\left(\bar{x},\bar{y}\right)$. 
+
+En la figura \@ref(fig:vtaspub) se presenta el diagrama de dispersión del gasto en Publicidad contra el ingreso por ventas de 100 empresas, estos datos han sido simulados. En la figura \@ref(fig:centroide) se muestra la ubicación del centroide de los datos. Es fácil observar que el punto del centroide es el centro de un sistema de coordenadas con cuatro cuadrantes, como se muestra en la figura \@ref(fig:centroide). La desviación de cualquier punto desde el centroide se calcula con la expresión $\left(x-\bar{x}\right)\left(y-\bar{y}\right)$. 
+
+Todos los puntos en el cuadrante I tienen publicidad y ventas mayores al promedio y cuando se reemplazan en la expresión $\left(x-\bar{x}\right)\left(y-\bar{y}\right)$ siempre se obtiene un resultado positivo. Los puntos en el cuadrante II tienen publicidad menor al promedio y ventas mayores al promedio al reemplazarlos en la expresión $\left(x-\bar{x}\right)\left(y-\bar{y}\right)$ se obtiene un resultado negativo puesto que negativo multiplicado por positivo es negativo, para los cuadrantes III y IV los resultados de reemplazar en $\left(x-\bar{x}\right)\left(y-\bar{y}\right)$ son positivo y negativo respectivamente (¿por que?). 
+
+Para comparar las ventas con la publicidad se debe comparar la suma de los positivos obtenidos en los cuadrantes I y III con los negativos que resultan de los cuadrantes II y IV, Si la suma de los positivos es mayor a la de los negativos estamos ante una asociación positiva, pero si la suma de los negativos es mayor que la de los positivos la asociación es negativa y si la suma de los positivos es casi igual a la suma de los positivos, la sumatoria será cercana a $0$ por lo que  no existe asociación entre las variables.
+
+```{r vtaspub, out.width = "50%",fig.cap="Diagrama de Dispersión del gasto en Publicidad contra el ingreso en Ventas",fig.align = 'center', echo=FALSE}
+
+set.seed(1.8)
+Publicidad <- rnorm(100, mean=80, sd=10)
+Ventas <- 30 + rnorm(100,mean=4,sd=0.30)*Publicidad + rnorm(100,mean = 0,sd=1)
+datos <- cbind(Publicidad,Ventas)
+datos <- as.data.frame(datos)
+media.p <- mean(Publicidad)
+media.v <- mean(Ventas)
+
+
+ggplot(datos, aes(x=Publicidad,y=Ventas))+
+  geom_point( ) + xlim(min(Publicidad),max(Publicidad)) + ylim(0,600) + 
+  theme_light()
+
+
+```
+
+```{r centroide, out.width = "50%",fig.cap="Ubicación del centroide de los datos",fig.align = 'center', echo=FALSE}
+
+set.seed(1.8)
+Publicidad <- rnorm(100, mean=80, sd=10)
+Ventas <- 30 + rnorm(100,mean=4,sd=0.3)*Publicidad + rnorm(100,mean = 0,sd=1)
+datos <- cbind(Publicidad,Ventas)
+datos <- as.data.frame(datos)
+media.p <- mean(Publicidad)
+media.v <- mean(Ventas)
+
+
+ggplot(datos, aes(x=Publicidad,y=Ventas))+
+  geom_point( ) + 
+  geom_segment(aes(x=media.p, y=0, xend = media.p, yend = 600), colour="blue",size =1.20, linetype ="dashed" ) +
+  geom_segment(aes(x=min(Publicidad), y=media.v, xend = max(Publicidad), yend = media.v), colour="blue",size =1.20, linetype ="dashed" ) +
+  geom_point(aes(x=media.p, y=media.v), colour="red",size=4) + xlim(min(Publicidad),max(Publicidad)) + ylim(0,600) +
+  annotate("text", x = 95, y = 550, label = "Cuadrante I") +
+  annotate("text", x = 65, y = 550, label = "Cuadrante II") +
+  annotate("text", x = 65, y = 150, label = "Cuadrante III") +
+  annotate("text", x = 95, y = 150, label = "Cuadrante IV") +
+  theme_light()
+```
+
+
+Es decir que la suma de las distancias entre los puntos y el centroide proporciona una medida de la relación entre las variables y si se divide este valor para el número de observaciones obtenemos la desviación promedio de los datos respecto al centroide, conocido como covarianza. Formalmente la covarianza se calcula con:
+
+\begin{equation} 
+  cov(x,y) = S_{xy} = \dfrac{1}{n} \sum_{i=1}^{n}\left(x_i-\bar{x}\right)\left(y_i-\bar{y}\right)
+  (\#eq:covar)
+\end{equation}
+
+La ecuación \@ref(eq:covar) puede ser reescrita como 
+
+\begin{equation} 
+  S_{xy} = \dfrac{1}{n}\sum_{i=1}^{n}{x_iy_i}-\bar{x}\bar{y}
+  (\#eq:covar2)
+\end{equation}
+
+Si la covarianza es positiva, la relación entre las variables es positiva. Si la covarianza es negativa, la relación entre las variables puede ser negativa. Y si es $0$ o cercana a $0$ entonces no hay relación lineal entre las variables. Es decir que basta con conocer el signo de la covarianza para saber el sentido de la relación. Un problema de la covarianza es que su valor depende de las unidades de medida que están siendo usadas. Una forma de corregir esto es dividiendo para las desviaciones de $x$ y $y$. El resultado de dividir la covarianza para las desviaciones recibe el nombre de **coeficiente de correlación de Pearson** 
+\begin{equation} 
+  r=\dfrac{s_{xy}}{s_xs_y}=\dfrac{\dfrac{1}{n} \sum_{i=1}^{n}\left(x_i-\bar{x}\right)\left(y_i-\bar{y}\right)}{\sqrt{\left(\dfrac{1}{n} \sum_{i=1}^{n}\left(x_i-\bar{x}\right)^2\right)\left(\dfrac{1}{n} \sum_{i=1}^{n}\left(y_i-\bar{y}\right)^2\right)}}
+  (\#eq:covar3)
+\end{equation}
+
+
+En R se utiliza la función `cor()`, vamos a hacer un ejemplo con los datos de la figura \@ref(fig:vtaspub)
+
+
+```{r cor, echo=TRUE}
+set.seed(1.8)
+Publicidad <- rnorm(100, mean=80, sd=10)
+Ventas <- 30 + rnorm(100,mean=4,sd=0.3)*Publicidad + rnorm(100,mean = 0,sd=1)
+
+cor(Publicidad, Ventas)
+
+```
+
+El valor obtenido  de la correlación es `r round(cor(Publicidad, Ventas),4)` pero ¿cómo saber qué tan bueno o malo es este valor de correlación? Es ampliamente aceptada la interpretación de acuerdo al intervalo en el que cae el valor de la correlación:
+
+* $-1$: La relación lineal negativa es perfecta
+* $-1<r \leq -0.70$ La relación lineal negativa es fuerte
+* $-0.70<r \leq -0.50$ La relación lineal negativa es moderada
+* $-0.50<r \leq -0.30$ La relación lineal negativa es débil
+* $-0.30<r < 0$ La relación lineal es casi inexistente
+* $0$ No existe relación lineal
+* $0<r < 0.30$ La relación lineal es casi inexistente
+* $0.30 \leq r < 0.50$ La relación lineal positiva es débil
+* $0.50 \leq r < 0.70$ La relación lineal positiva es moderada
+* $0.70 \leq r < 1$ La relación lineal positiva es fuerte
+* $1$ La relación lineal positiva es perfecta
+
+## Regresión lineal
+
+Al inicio de este capítulo usamos diagramas de dispersión o gráficos de dispersión para analizar la relación entre dos variables. Luego en la seccion \@ref(correl) se analizó la relaciónentre la publicidad y las ventas de 100 empresas utilizando el coeficiente de correlación. La correlación no contesta preguntas como ¿influye la publicidad sobre las ventas? Si la publicidad aumenta ¿cuánto aumentarán las ventas? En esta sección utilizaremos el análisis de regresión para analizar la relación entre la publicidad y las ventas. 
+
+El análisis de regresión es una forma más avanzada que la correlación para analizar la relación entre variables. Las principales diferencias entre la correlación y la regresión son:
+
+* La regresión puede investigar las relaciones entre dos o más variables.
+* Se estima una relación de causalidad entre la o las variables explicativas y la variable dependiente.
+* Se mide la influencia de cada variable explicativa sobre la variable dependiente.
+* Se puede medir la significancia de cada variable explicativa.
+
+Se espera que la publicidad explique las ventas. Es decir que la publicidad es la variable explicativa o independiente  y se ubica sobre el eje de las $X$, y el nivel de ventas es una variable explicada o dependiente y se ubica sobre el eje de las $y$. El análisis de regresión describe esta relación causal ajustando una línea recta a los datos como se observa en la figura \@ref(fig:regre1). Esta recta de regresión es creciente, lo que se relaciona con el valor del coeficiente de correlación previamente calculado cuyo signo es positivo, es decir que altos niveles de publicidad se asocian con altos niveles de ventas y viceversa. 
+
+```{r regre1, out.width = "50%",fig.cap="Recta de regresión",fig.align = 'center', echo=FALSE}
+set.seed(1.8)
+Publicidad <- rnorm(100, mean=80, sd=10)
+Ventas <- 30 + rnorm(100,mean=4,sd=0.3)*Publicidad + rnorm(100,mean = 0,sd=1)
+datos <- cbind(Publicidad,Ventas)
+datos <- as.data.frame(datos)
+
+ggplot(datos, aes(x=Publicidad,y=Ventas))+
+  geom_point( ) + stat_smooth(method="lm", se=FALSE) + ylim(0,600)
+```
+
+```{r include=FALSE}
+
+m1 <- lm(Ventas~Publicidad)
+coeficientes <-  coef(m1)
+names(coeficientes) <- NULL
+b0 <- coeficientes[1]
+b1 <- coeficientes[2]
+estimado = b0 + b1*64.76433
+```
+
+En los datos cuando la publicidad es $64.76$ las ventas son $250.35$, sin embargo para la recta de regresión cuando la publicidad es igual a $64.76$ ventas son iguales a `r round(estimado,2)`. Este valor es cercano pero no igual al valor real, la diferencia refleja la ausencia de una correlación perfecta entre las dos variables. La diferencia entre el valor real $Y$ y el valor predicho $\hat{Y}$ recibe el nombre de **error** o **residual**, en la figura \@ref(fig:error1) se observa el error. 
+
+```{r error1, out.width = "60%",fig.cap="Error en la estimación",fig.align = 'center', echo=FALSE}
+
+knitr::include_graphics("error.png")
+```
+
+El error puede provenir de diversas fuentes y deberse a varios factores por ejemplo en el contexto que estamos analizando, la diferencia entre las ventas predichas y las ventas reales se puede deber a errores de medición, a condiciones externas a la empresa como la situación política o a condiciones internas como problemas en la producción, etc. Todos los factores están dentro del término de error y esto significa que las observaciones caen alrededor de la recta de regresión y no en ella. Si hay muchos de estos factores, sin uno en particular que predomine y además existe independencia entre los factores se puede asumir que los errores se distribuyen normalmente alrededor de la recta de regresión.
+
+\begin{equation}
+\hat{Y}_i = \beta_0 + \beta_1 X_i
+    (\#eq:regre2)
+\end{equation}
+
+donde:
+
+* $\hat{Y}_i$ es el valor predicho de $Y$ para la observación $i$
+* $X_i$ es el valor de la variable explicativa para la observación $i$
+* $\beta_0$ y $\beta_1$ son los coeficientes fijos que serán estimados; $\beta_0$ representa el intercepto de la recta de regresión con el eje de las $Y$ y $\beta_1$ mide la pendiente. En la figura \@ref(fig:rectareg) se aprecia el intercepto y la pendiente de la recta de regresión lineal. 
+
+```{r rectareg, out.width = "50%",fig.cap="Intercepto y pendiente en la recta de regresión",fig.align = 'center', echo=FALSE}
+
+knitr::include_graphics("regre3.png")
+```
+
+Lo primordial del análisis de regresión consiste en determinar los valores de $\beta_0$ y $\beta_1$. Para esto se parte de que la diferencia entre el valor real y el valor predicho es igual al error o dicho de otra forma el valor real es igual al valor predicho más el error es decir:
+
+
+\begin{equation}
+Y_i=\hat{Y}_i+e_i 
+    (\#eq:regre3)
+\end{equation}
+
+Reemplazando la ecuación \@ref(eq:regre3) en \@ref(eq:regre2) se obtiene:
+
+\begin{equation}
+Y_i=\beta_0 + \beta_1 X_i+e_i 
+    (\#eq:regre4)
+\end{equation}
+
+Con la ecuación \@ref(eq:regre4) se puede entender que las ventas observadas están conformadas de dos componentes:
+
+1. La parte que se explica por la publicidad $\beta_0 + \beta_1 X_i$
+2. El error $e_i$
+
+La recta de mejor ajuste se determina encontrando los valores $\beta_0$ y $\beta_1$ que **minimizan** la suma de los **errores cuadráticos** es decir $\sum_{i=1}^{n}{e_i^2}$, este método se lo conoce como **mínimos cuadrados ordinarios**. Intuitivamente la primera idea sería minimizar la suma de los errores $\sum_{i=1}^{n}{e_i}$ sin embargo $\sum_{i=1}^{n}{e_i}=0$.
+
+De la ecuación \@ref(eq:regre4) se obtiene que
+
+\begin{equation}
+e_i = Y_i-\beta_0 - \beta_1 X_i
+    (\#eq:regre5)
+\end{equation}
+
+Entonces la suma de los errores cuadráticos equivale a:
+
+\begin{equation}
+\sum_{i=1}^{n}{e_i^2} = \sum_{i=1}^{n}{\left(Y_i-\beta_0 - \beta_1 X_i\right)^2}
+    (\#eq:regre6)
+\end{equation}
+
+La expresión de la ecuación \@ref(eq:regre6) se minimiza utilizando derivadas, el resultado obtenido de esa minimización se muestra en las ecuaciones \@ref(eq:pendiente) y \@ref(eq:inter)
+
+\begin{equation}
+\beta_1 = \dfrac{n\sum_{i=1}^{n}{X_iY_i}-\sum_{i=1}^{n}{X_i}\sum_{i=1}^{n}{Y_i}}{n\sum_{i=1}^{n}{X_i^2}-\left(\sum_{i=1}^{n}{X_i}\right)^2}
+    (\#eq:pendiente)
+\end{equation}
+
+\begin{equation}
+\beta_0 = \bar{Y}-\beta_1\bar{X}
+    (\#eq:inter)
+\end{equation}
+
+### Regresión linear en R
+
+Para realizar regresión lineal en R se puede usar la función `lm( )`, el uso de la función es `lm(formula, datos)`.
+
+```{r linreg, echo=TRUE}
+set.seed(1.8)
+Publicidad <- rnorm(100, mean=80, sd=10)
+Ventas <- 30 + rnorm(100,mean=4,sd=0.3)*Publicidad + rnorm(100,mean = 0,sd=1)
+
+m1 = lm(Ventas ~ Publicidad)
+summary(m1)
+```
+
+
+### Interpretación de los coeficientes de regresión {#coefregre}
+
+El primer coeficiente a interpretar es el de la pendiente en este caso $\beta_1$ es igual a `r round(b1,2)` esto se lo observa en la salida de R en la sección `Coefficients:` el valor estimado para la publicidad, de manera general el valor de $\beta_1$ se interpreta como el cambio en la variable dependiente ($Y$) por cada aumento de $1$ unidad en la variable independiente ($X$). Es decir que en este caso por cada aumento de $1$ dólar en la inversión en publicidad, el nivel de ventas sube en promedio `r round(b1,2)`.
+
+Por otro lado $\beta_0$ es igual a `r round(b0,2)`, $\beta_0$ se interpreta como el valor que toma la variable dependiente cuando la variable independiente es igual a $0$. En este caso cuando la inversión en publicidad es igual a $0$ las ventas son en promedio iguales a `r round(b0,2)`. 
+
+## Bondad de Ajuste del modelo de regresión
+
+Una vez calculada la recta de regresión quizás nos preguntemos si esta da un buen ajuste a los datos, es decir si las observaciones se alejan o se acercan de la recta. Si el ajuste es pobre, quizás el efecto de la variable independiente en la dependiente no es lo suficientemente fuerte. El lector debe fijarse en que, aún cuando no haya efecto de $X$ sobre $Y$ se puede calcular la recta de regresión. Medir la bondad de ajuste de una regresión nos permite discriminar entre un buen y un mal modelo de regresión.
+
+La bondad de ajuste se calcula comparando dos rectas, la recta de regresión y la recta promedio de $Y$ que es una recta horizontal dibujada en el promedio de $Y$, como se observa en la figura \@ref(fig:determinacion) la linea punteada de negro representa el valor promedio de $Y$, se ilustra además una observación $\left(X_i,Y_i\right)$. La diferencia entre $Y$ y $\bar{Y}$ está dividida en dos partes la primera parte es la parte que explica la recta de regresión $\hat{Y}-\bar{Y}$. y la segunda parte es el término de error $Y-\hat{Y}$
+
+```{r determinacion, out.width = "50%",fig.cap="Bondad de Ajuste de un Modelo de Regresión Lineal",fig.align = 'center', echo=FALSE}
+
+knitr::include_graphics("error5.png")
+```
+
+Un buen modelo de regresión debería explicar una gran porción de las diferencias entre $Y$ y $\bar{Y}$, por lo tanto la longitud $\hat{Y}-\bar{Y}$ debería ser más grande respecto a $Y-\bar{Y}$. Entonces una medida de ajuste puede ser $\frac{\hat{Y}-\bar{Y}}{Y_i-\bar{Y}}$, esto lo deberíamos usar para todas las observaciones por lo que deberiamos sumar estas expresiones sin embargo en el caso de $\sum_{i=1}^{n}{Y_i-\bar{Y}}$ esto es igual a $0$, para saltar este problema usamos el cuadrado de las expresiones para que se hagan positivas. De esta forma definimos:
+
+1. $\sum_{i=1}^{n}{\left(Y_i-\bar{Y}\right)^2}$, conocido como la suma total de cuadrados (STC).
+2. $\sum_{i=1}^{n}{\left(Y_i-\hat{Y}\right)^2}$, suma cuadrática del error (SCE)
+
+
+La bondad de ajuste $R^2$ se define como:
+
+\begin{equation}
+R^2 = \dfrac{STC-SCE}{STC} = 1 - \dfrac{SCE}{STC}
+    (\#eq:rscuared)
+\end{equation}
+
+
+El $R^2$ se lo interpreta como la proporción de la variabilidad de $Y$ explicada por $X$. En el modelo obtenido en la sección \@ref(coefregre) se obtuvo un $R^2$ de `r round(summary(m1)$r.squared,4)` este valor se observa en las últimas líneas del resumen del modelo donde dice `Multiple R-squared`, se interpreta que el `r 100*round(summary(m1)$r.squared,4)`% de la variabilidad de las ventas son explicadas por la inversión en publicidad.
+
+## Pruebas de Hipótesis para los coeficientes de la regresión
+
+El resumen de R muestra los valores *p* para las hipótesis nulas $\beta_0=0$ y $\beta_1=0$, el criterio que se usa para aceptar o rechazar la hipótesis nula es el criterio que se explica en la sección \@ref(pvalor).
+
+En este caso se puede ver en el resumen que para el intercepto $\beta_0$ el valor *p* es $0.109$ y para la pendiente $\beta_1$ el valor *p* es $<2 \times 10^{-16}$ junto a los valores *p* hay unos códigos de significancia
+lo mejor es simplemnte usar el criterio ya mencionado, en este caso el valor *p* del intercepto nos indica que no se puede rechazar $H_0: \beta_0=0$ a un nivel de significancia de $0.05$, mientras que para el caso de la pendiente el valor *p* nos indica que rechazamos $H_0:  \beta_1=0$ a un nivel de significancia de $0.05$. 
+
 
 
 
