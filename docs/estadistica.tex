@@ -176,7 +176,7 @@ En las empresas la estadística es usada para tomar decisiones como los producto
 
 El uso de la estadística puede ser de dos formas. La primera, cuando se describen y se presentan los datos. Y la segunda es cuando los datos son utilizados para hacer inferencias sobre características del ambiente o entorno de donde se seleccionaron los datos o sobre el mecanismo subyacente que generó los datos. La primera forma recibe el nombre de \textbf{estadística descriptiva} y la segunda se conoce como \textbf{estadística inferencial}
 
-En la estadística descriptiva se utilizan métodos numéricos y gráficos para encontrar patrones y características de los datos a fin de resumir la información y presentarla de una forma significativa. Mientras que en la estadística inferencial se utilizan los daots para tomar decisiones, hacer estimaciones, pronósticos o predicciones y generalizaciones sobre el entorno del que fueron obtenidos los datos o el proceso que los generó.
+En la estadística descriptiva se utilizan métodos numéricos y gráficos para encontrar patrones y características de los datos a fin de resumir la información y presentarla de una forma significativa. Mientras que en la estadística inferencial se utilizan los datos para tomar decisiones, hacer estimaciones, pronósticos o predicciones y generalizaciones sobre el entorno del que fueron obtenidos los datos o el proceso que los generó.
 
 Sea en estadística descriptiva o en estadística inferencial, el primer paso siempre va a ser obtener información de alguna característica, medida o valor que nos interese de un grupo de elementos. Esa característica, medida o valor de interés para el investigador recibe el nombre de \textbf{variable}.
 
@@ -190,7 +190,7 @@ Las variables cuantitativas se clasifican a la vez en \textbf{continuas} que se 
 \hypertarget{niveles-de-medicion}{%
 \subsection{Niveles de medición}\label{niveles-de-medicion}}
 
-Hay cuatro niveles de medición \textbf{ordinal}, \textbf{nominal}, \textbf{intervalo} y de \textbf{radio}. En el nivel ordinal las observaciones toman valores que se ordenan o clasifican de forma lógica, por ejemplo las tallas de ropa (pequeña, media, grande, extra grande), la frecuencia con la que se hace una actividad (nunca, casi nunca, a veces, casi siempre, siempre). Por otro lado, en el nivel nominal las observaciones toman valores que no se pueden organizar de forna lógica, por ejemplo el sexo, el color de ojos, la marca de ropa favorita.
+Hay cuatro niveles de medición \textbf{ordinal}, \textbf{nominal}, \textbf{intervalo} y de \textbf{razón}. En el nivel ordinal las observaciones toman valores que se ordenan o clasifican de forma lógica, por ejemplo las tallas de ropa (pequeña, media, grande, extra grande), la frecuencia con la que se hace una actividad (nunca, casi nunca, a veces, casi siempre, siempre). Por otro lado, en el nivel nominal las observaciones toman valores que no se pueden organizar de forna lógica, por ejemplo el sexo, el color de ojos, la marca de ropa favorita.
 
 En el nivel de intervalo existe diferencia significativa entre valores pero el cero no representa la ausencia de la característica un ejemplo es la temperatura medida en grados Farenheit. Finalmente en el nivel de razón el 0 es significativo y la razón entre dos números es significativa, un ejemplo es la temperatura medida en grados Kelvin.
 
@@ -214,7 +214,7 @@ Existen algunos conceptos que son importantes y que se deben tener presentes en 
 \hypertarget{primerR}{%
 \section{Primeros pasos en R}\label{primerR}}
 
-Una vez instalado R y RStudio, abrimos Rstudio para comenzar a trabajar. La ventana de RStudio se ve como se muestra en la figura \ref{fig:rstudio1}.
+Una vez instalado R y RStudio, abrimos Rstudio para comenzar a trabajar. La ventana de RStudio tiene la apariencia que se muestra en la figura \ref{fig:rstudio1}.
 
 \begin{figure}[h!]
 
@@ -225,7 +225,7 @@ Una vez instalado R y RStudio, abrimos Rstudio para comenzar a trabajar. La vent
 \caption{Ventana de RStudio}\label{fig:rstudio1}
 \end{figure}
 
-Lo primero que debemos hacer es abrir un nuevo script, un script de R es simplemente un archivo de texto que contiene (casi) todos los comandos que se escribirían en la línea de comandos de R, para esto en la barra de menú seguimos la secuencia \textbf{File, New File, R Script} o desde el teclado con la combinación \emph{Ctrl + Shift + N}, en este archivo iremos escribiendo todos los comandos que vamos a trabajar. En la figura \ref{fig:rstudio2} se aprecia un script abierto.
+Lo primero que debemos hacer es abrir un nuevo ``script'', un script de R es simplemente un archivo de texto que contiene (casi) todos los comandos que se escribirían en la línea de comandos de R, para esto en la barra de menú seguimos la secuencia \textbf{File, New File, R Script} o desde el teclado con la combinación \emph{Ctrl + Shift + N}, en este archivo iremos escribiendo todos los comandos que vamos a trabajar. En la figura \ref{fig:rstudio2} se aprecia un script abierto.
 
 \begin{figure}[h!]
 
@@ -236,8 +236,9 @@ Lo primero que debemos hacer es abrir un nuevo script, un script de R es simplem
 \caption{Ventana de RStudio con Script}\label{fig:rstudio2}
 \end{figure}
 
-Para empezar a aprender en el script vamos a escribir \texttt{3+2} y ejecutamos esto con la combinación de teclas \textbf{Ctrl + Enter} el resultado obviamente es 5. Ahora ingresaremos un conjunto de valores y los almacenaremos en una variable, para almacenar algo en una variable se puede usar \texttt{\textless{}-} o \texttt{=}.
-En la variable \texttt{x} almacenaremos un conjunto de 8 observaciones escribiendo el código:
+Para empezar a aprender, en el script vamos a escribir \texttt{3+2} y ejecutamos esto con la combinación de teclas \textbf{Ctrl + Enter} el resultado obviamente es 5. Ahora ingresaremos un conjunto de valores y los almacenaremos en una variable, para almacenar algo en una variable se puede usar \texttt{\textless{}-} o \texttt{=}.
+
+En el código que se muestra a continuación en la variable \texttt{x} almacenaremos un conjunto de 8 observaciones, es importante observar que la lista de datos es ingresada con el comando \texttt{c(elem1,elem2,elem3,...)} si los elementos de la lista fueran cadenas de texto o caracteres cada elemento se encierra entre comillas \texttt{"\ "}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -247,9 +248,9 @@ En la variable \texttt{x} almacenaremos un conjunto de 8 observaciones escribien
 
 Recuerde que este código se ejecuta con la combinación de teclas \textbf{Ctrl + Enter}. Para poder realizar análisis estadístico, es necesario cargar nuestros datos en el programa. R acepta algunos formatos de archivos, como por ejemplo archivos de Excel, archivos de valores separados por coma, archivos de texto e inclusive archivos de otros programas como SPSS. Lo más usual es trabajar con archvo de valores separados por coma es decir con extensión \texttt{.csv}, estos archivos \texttt{csv} se generan cuando el investigador recolecta la información, la almacena en un archivo de Excel o alguna otra hoja de cálculo y la guarda como un archivo de valores separados por coma.
 
-Para trabajar de forma eficiente con R, se recomienda comenzar por fijar un directorio de trabajo donde deben estar guardados nuestros archivos en el formato que sea de nuestra preferencia. Una forma de hacerlo es desde la barra de menú \textbf{Session, Set Working Directory, Choose Directory} o desde el teclado con la combinación \textbf{Ctrl+Shift+H}, o con la función \texttt{setwd("rutadelarchivo")}.
+Para trabajar de forma eficiente con R, se recomienda comenzar por fijar un directorio de trabajo donde deben estar guardados nuestros archivos en el formato que sea de nuestra preferencia. Una forma de hacerlo es desde la barra de menú escoger las opciones \textbf{Session, Set Working Directory, Choose Directory} o desde el teclado con la combinación \textbf{Ctrl+Shift+H}, o con la función \texttt{setwd("rutadelarchivo")}.
 
-En este primer ejercicio trabajaremos con el archivo \emph{cap2\_big4\_size.csv}. Los datos serán guardados en una variable llamada \texttt{datos1}, usaremos la función \texttt{read.csv()} para leer los datos. La función \texttt{read.csv()} recibe las instrucciones \texttt{read.csv("archivo",\ header=T,\ sep=";",dec=",")}. La opción \texttt{"archivo"} indica el nombre del archivo, \texttt{header=T} o \texttt{header=F} permite indicar si las columnas tienen un encabezado que las identifique, \texttt{sep=";"} sirve para indicar cual es el separador presente en nuestro archivo en algunas ocasiones ocurre que un archivo de valores separado por coma en realidad tiene sus valores separados por un punto y cona esto generalmente ocurre cuando el sistema utiliza, como en este caso, la coma como separador decimal y finalmente la opción \texttt{dec=","} sirve para indicar que el separador decimal es la coma.
+En este primer ejercicio trabajaremos con el archivo \emph{cap2\_big4\_size.csv}. Los datos serán guardados en una variable llamada \texttt{big4size}, usaremos la función \texttt{read.csv()} para leer los datos. La función \texttt{read.csv()} recibe las instrucciones \texttt{read.csv("archivo",\ header=T,\ sep=";",dec=",")}. La opción \texttt{"archivo"} indica el nombre del archivo, \texttt{header=T} o \texttt{header=F} permite indicar si las columnas tienen o no un encabezado que las identifique, \texttt{sep=";"} sirve para indicar cual es el separador presente en nuestro archivo en algunas ocasiones ocurre que un archivo de valores separado por coma en realidad tiene sus valores separados por un punto y cona esto generalmente ocurre cuando el sistema operativo utiliza, como en este caso, la coma como separador decimal y finalmente la opción \texttt{dec=","} sirve para indicar que el separador decimal es la coma.
 
 Una característica de R es que permite acceder a la ayuda sobre las funciones, esto se hace escribiendo \texttt{?funcion} por ejemplo si queremos la ayuda de la función \texttt{read.csv} simplemente escribimos \texttt{?read.csv} en el panel ubicado en la parte inferior derecha se desplegará la ayuda de la función. Con la particularidad de que la ayuda se despliega en inglés lo que no debería ser problema para un buen investigador.
 
@@ -278,7 +279,18 @@ EXPMUESTRA & BIG4 & ACTIVOS & UTILIDAD & VTAS & PAT\tabularnewline
 \bottomrule
 \end{longtable}
 
-Sin más preámbulos, empecemos a trabajar. Recapitulando, primero configuraremos el directorio de trabajo, luego cargaremos el archivo indicado. Finalmente usamos la función \texttt{str()}, la que nos permite obtener la descripción de la estructura de los datos.
+Sin más preámbulos, empecemos a trabajar. Recapitulando nuestro flujo de trabajo es:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Configurar el directorio de trabajo
+\item
+  Cargar el archivo indicado.
+\item
+  Finalmente usamos la función \texttt{str()}, que nos permite obtener la descripción de la estructura de los datos.
+\end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -298,16 +310,16 @@ Sin más preámbulos, empecemos a trabajar. Recapitulando, primero configuraremo
 ##  $ PAT       : num  39382529 1577764 4312094 1858990 7137609 ...
 \end{verbatim}
 
-En la primera línea de los resultados se observa la salida \texttt{\textquotesingle{}data.frame\textquotesingle{}:\ \ \ \ 2256\ obs.\ of\ \ 6\ variables:} esto nos indica que nuestro \emph{marco de datos (data frame)} tiene 2256 observaciones y 6 variables. Con respecto a las variables tenemos 6 variables que a continuación se describen y se explican los resultados obtenidos con la función.
+En la primera línea de los resultados se observa la salida \texttt{\textquotesingle{}data.frame\textquotesingle{}:\ 2256\ obs.\ of\ \ 6\ variables:} esto nos indica que nuestro \emph{marco de datos (data frame)} tiene 2256 observaciones y 6 variables. Con respecto a las variables tenemos 6 variables que a continuación se describen y se explican los resultados obtenidos con la función.
 
 \begin{itemize}
 \tightlist
 \item
-  \texttt{EXPMUESTRA}: esta variable es de tipo entera (INT) y almacena el expediente de la empresa. Aunque la variable tiene valores numéricos, no es una variable cuantitativa sino cualitativa ``Expediente de la Empresa''
+  \texttt{EXPMUESTRA}: esta variable es de tipo entera \texttt{(INT)} (por el inglés \emph{integer}) y almacena el expediente de la empresa. Aunque la variable tiene valores numéricos, no es una variable cuantitativa sino cualitativa ``Expediente de la Empresa''
 \item
-  \texttt{BIG4}: esta variable es de tipo entera, y ha sido codificada con 1 si la empresa fue auditada por una Big Four y 0 si no. Podemos cambiar esta codificación por ``Sí'' y ``No'' en lugar de ``1'' y ``0'', más adelante aprendemos como hacerlo. Al igual que la variable anterior aunque tiene valores numéricos, no es una variable cuantitativa sino cualitativa, dejamos al lector la reflexión en este particular.
+  \texttt{BIG4}: esta variable es de tipo entera, y ha sido codificada con 1 si la empresa fue auditada por una Big Four y 0 si no. Podemos cambiar esta codificación por ``Sí'' y ``No'' en lugar de ``1'' y ``0'', más adelante aprenderemos como hacerlo. Al igual que la variable anterior aunque tiene valores numéricos, no es una variable cuantitativa sino cualitativa, dejamos al lector la reflexión en este particular.
 \item
-  \texttt{ACTIVOS}: contiene el valor de los activos totales de la empresa. Es de tipo \texttt{num} porque permite el uso de decimales. Corresponde a una variable cuantitativa continua.
+  \texttt{ACTIVOS}: contiene el valor de los activos totales de la empresa. Es de tipo \texttt{NUM} es decir una variable cuantitativa continua porque permite el uso de decimales.
 \item
   \texttt{UTILIDAD}: contiene el valor de la utildad de la empresa.
 \item
@@ -316,7 +328,9 @@ En la primera línea de los resultados se observa la salida \texttt{\textquotesi
   \texttt{PAT}: contiene el valor del patrimonio de la empresa.
 \end{itemize}
 
-Los paquetes de R son colecciones de funciones y conjuntos de datos desarrollados por la comunidad de usuarios, los paquetes aumentan el poder de R mejorando las funcionalidades existentes en la base de R, o añadiendo nuevas funcionalidades. En este texto trabajaremos con algunos de los paquetes desarrollados por el equipo de RStudio, una descripción detallada de estos paquetes puede ser encontrada en \url{https://www.rstudio.com/products/rpackages/}. . Comenzaremos por instalar el paquete \texttt{dplyr}, este paquete tiene funciones que permiten realizar facilmente manipulaciones de datos. Para instalar un paquete se utiliza la función \texttt{install.packages("paquete")}. Una vez instalado el paquete, se carga el paquete utilizando la función \texttt{library(paquete)}.
+Los paquetes de R son colecciones de funciones y conjuntos de datos desarrollados por la comunidad de usuarios, los paquetes aumentan el poder de R mejorando las funcionalidades existentes en la base de R, o añadiendo nuevas funcionalidades. En este texto trabajaremos con algunos de los paquetes desarrollados por el equipo de RStudio como `\texttt{ggplot2}, \texttt{dplyr} y otros una descripción detallada de estos paquetes puede ser encontrada en \url{https://www.rstudio.com/products/rpackages/}. Trabajaremos también con paquetes desarrollados por otros colaboradores de la comunidad de usuarios de R.
+
+Comenzaremos por instalar el paquete \texttt{dplyr}, este paquete tiene funciones que permiten realizar facilmente manipulaciones de datos. Para instalar un paquete se utiliza la función \texttt{install.packages("paquete")}. Una vez instalado el paquete, se carga el paquete utilizando la función \texttt{library(paquete)}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -324,7 +338,7 @@ Los paquetes de R son colecciones de funciones y conjuntos de datos desarrollado
 \end{Highlighting}
 \end{Shaded}
 
-La primera manipulación que vamos a realizar es la creación de nuevas variables con el paquete \texttt{dplyr}. En nuestros datos cargados en el conjunto de datos \texttt{datos1} vamos a crear tres variables nuevas \textbf{ROA}, \textbf{ROS} y \textbf{ROE}. Recordemos que el \textbf{Retorno sobre activos} ( \textbf{ROA}, Return on Assets) se lo calcula como la razón entre la utilidad y los activos como se ve en la ecuación \eqref{eq:roa}. En las ecuaciones \eqref{eq:ros} y \eqref{eq:roe} se dan las expresiones para calcular el \textbf{Retorno sobre ventas} ( \textbf{ROS} Return on Sales) y el \textbf{Retorno sobre el Patrimonio} ( \textbf{ROE} Return on Equity)
+La primera manipulación que vamos a realizar es la creación de nuevas variables con el paquete \texttt{dplyr}. En nuestros datos cargados en el conjunto de datos \texttt{big4size} vamos a crear tres variables nuevas \textbf{ROA}, \textbf{ROS} y \textbf{ROE}. Recordemos que el \textbf{Retorno sobre activos} ( \textbf{ROA}, Return on Assets) se lo calcula como la razón entre la utilidad y los activos como se ve en la ecuación \eqref{eq:roa}. En las ecuaciones \eqref{eq:ros} y \eqref{eq:roe} se dan las expresiones para calcular el \textbf{Retorno sobre ventas} ( \textbf{ROS} Return on Sales) y el \textbf{Retorno sobre el Patrimonio} ( \textbf{ROE} Return on Equity)
 
 \begin{equation} 
   ROA = \dfrac{Utilidad}{Activos}
@@ -369,7 +383,7 @@ Una característica importante de \texttt{dplyr} es el uso del operador \texttt{
 ##  $ ROE       : num  0.191 -0.0779 0.1245 0.2452 0.0373 ...
 \end{verbatim}
 
-En las últimas líneas de la salida de R, se observa que ahora en el conjunto de datos existen ahora tres nuevas variables. En la próxima sección seguiremos trabajando con el mismo conjunto de datos.
+En las últimas líneas de la salida de R, se observa que ahora en el conjunto de datos existen tres nuevas variables. En la próxima sección seguiremos trabajando con el mismo conjunto de datos.
 
 \hypertarget{medidas-de-tendencia-central}{%
 \section{Medidas de Tendencia Central}\label{medidas-de-tendencia-central}}
@@ -387,6 +401,8 @@ La media se la calcula como la suma de todos los valores de una variable dividid
   \bar{x} = \dfrac{\sum_{i=1}^{n}x_i}{n}
   \label{eq:mean}
 \end{equation}
+
+La expresión \(\sum_{i=1}^{n}\) se interpreta como la suma desde el primer hasta el último elemento del conjunto de datos.
 
 La media tiene algunas propiedades que a continuación se detallan:
 
@@ -561,12 +577,17 @@ En el resultado de la moda se obtienen 2 valores. Es decir que existen dos valor
 ## 1     9190661
 \end{verbatim}
 
+\hypertarget{cuando-usar-mutate-y-cuando-usar-summarise}{%
+\subsubsection{\texorpdfstring{¿Cuándo usar \texttt{mutate()} y cuándo usar \texttt{summarise()}?}{¿Cuándo usar mutate() y cuándo usar summarise()?}}\label{cuando-usar-mutate-y-cuando-usar-summarise}}
+
+Note que cuando usamos la función \texttt{summarise()} creamos nuevas variables en el conjunto de datos, al igual que cuando se usa la función \texttt{mutate()} la principal diferencia entre \texttt{summarise()}y \texttt{mutate()} es que la primera resume los datos es decir devuelve un nuevo conjunto de datos con menos filas, mientras que \texttt{mutate()} devuelve el conjunto de datos con el mismo número de observaciones es decir con el mismo número de filas.
+
 \hypertarget{medidas-de-posicion-cuantiles}{%
 \section{Medidas de posición (Cuantiles)}\label{medidas-de-posicion-cuantiles}}
 
 Las medidas de posición no central permiten conocer otros puntos característicos de la distribución que no son los valores centrales. Entre las medidas de posición no central más importantes están los cuantiles. El término cuantil fue usado por primera vez por Kendall en 1940.
 
-El cuantil de orden p de una distribución con \(0<p<1\) es el valor \(x_{i}\) de la variable \(X\) que marca un corte de modo que una proporción \(p\) o un porcentaje \(100p\)\% de valores de la población es menor o igual que \(x_{i}\) Por ejemplo el cuantil de orden \(0.35\) dejaría un 35\% de valores por debajo de él.
+El cuantil de orden \(p\) de una distribución con \(0<p<1\) es el valor \(x_{i}\) de la variable \(X\) que marca un corte de modo que una proporción \(p\) o un porcentaje \(100p\)\% de valores de la población es menor o igual que \(x_{i}\) Por ejemplo el cuantil de orden \(0.35\) dejaría un 35\% de valores por debajo de él.
 
 \hypertarget{tipos-de-cuantiles}{%
 \subsection{Tipos de Cuantiles}\label{tipos-de-cuantiles}}
@@ -624,7 +645,7 @@ Para determinar el valor \(X_{i.a}\) utilizamos la expresión:
 
 Para calcular percentiles en R, se utiliza la función \texttt{quantile()}. Esta función recibe dos argumentos, la variable de la que se calcula el percentil y el porcentaje del percentil que se desea calcular. Se pueden calcular varios percentiles al mismo tiempo.
 
-Vamos a calcular el primer cuartil \(Q_{1}\) de la variable \texttt{ACTIVOS} del conjunto de datos ya trabajado anteriormente. Vamos a llamar a esta variable utilizando la notación \texttt{\$} esta notación se usa poniendo \texttt{data.frame\$variable} en este caso nuestra variable está en el conjunto \texttt{datos1}y se llama \texttt{ACTIVOS} por lo que para llamar la variable desde la función escribimos \texttt{datos1\$ACTIVOS}. Luego debemos recordar que \(Q_1=P_{25}\) es decir que en la función \texttt{quantile} debemos anotar \(0.25\)
+Vamos a calcular el primer cuartil \(Q_{1}\) de la variable \texttt{ACTIVOS} del conjunto de datos ya trabajado anteriormente. Vamos a llamar a esta variable utilizando la notación \texttt{\$} esta notación se usa poniendo \texttt{data.frame\$variable} en este caso nuestra variable está en el conjunto \texttt{big4size} y se llama \texttt{ACTIVOS} por lo que para llamar la variable desde la función escribimos \texttt{big4size\$ACTIVOS}. Luego debemos recordar que \(Q_1=P_{25}\) es decir que en la función \texttt{quantile} debemos anotar \(0.25\)
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -637,7 +658,7 @@ Vamos a calcular el primer cuartil \(Q_{1}\) de la variable \texttt{ACTIVOS} del
 ## 3184669
 \end{verbatim}
 
-Ahora calculamos los tres cuartiles en este caso podemos escribir dentro de una lista los tres valores, para ingresar listas en R lo hacemos con \texttt{c(elemento1,\ elemento2,\ ...\ )}
+Ahora calculamos los tres cuartiles en este caso podemos escribir dentro de una lista los tres valores, para ingresar listas en R lo hacemos con \texttt{c(elemento1,\ elemento2,\ ...\ )} como ya lo habíamos indicado antes.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -650,7 +671,7 @@ Ahora calculamos los tres cuartiles en este caso podemos escribir dentro de una 
 ##  3184669 10326361 33192848
 \end{verbatim}
 
-De los resultados obtenidos se interpreta que el 25\% de los activos de las empresas es menor que \(3 184 669\). Supongamos que se quieren determinar los deciles, una forma de hacer la lista es con la función \texttt{seq} con las instrucciones \texttt{seq(inicial,\ final,\ by\ =\ aumento)} de esta manera evitamos escribir los nueve valores.
+De los resultados obtenidos se interpreta que el 25\% de los activos de las empresas es menor que \(3\;184\;669\). Supongamos que se quieren determinar los deciles, una forma de hacer la lista es con la función \texttt{seq} con las instrucciones \texttt{seq(inicial,\ final,\ by\ =\ aumento)} de esta manera evitamos escribir los nueve valores.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -665,14 +686,14 @@ De los resultados obtenidos se interpreta que el 25\% de los activos de las empr
 ## 93545755
 \end{verbatim}
 
-\hypertarget{medidas-de-dispersion}{%
-\section{Medidas de dispersión}\label{medidas-de-dispersion}}
+\hypertarget{dispersion}{%
+\section{Medidas de dispersión}\label{dispersion}}
 
-Si comparamos los conjuntos de datos \(X=\left\{ 2,4,6,8 \right\}\) y \(Y=\left\{1,3,7,9\right\}\) se obtiene que las medias son iguels \(\bar{X}= \bar{Y}=5\). En la figura \ref{fig:rnl1} se ha graficado con color naranja los puntos del conjunto \(X\) y de color azul los puntos del conjunto \(Y\). Se observa que los valores del conjunto \(Y\) están más dispersos que los valores del conjunto \(X\). En esta sección se discute las formas existentes para cuantificar la dispersión.
+Si comparamos los conjuntos de datos \(X=\left\{ 2,4,6,8 \right\}\) y \(Y=\left\{1,3,7,9\right\}\) se obtiene que las medias son iguales \(\bar{X}= \bar{Y}=5\). En la figura \ref{fig:rnl1} se han graficado con color rojo los puntos del conjunto \(X\) y de color celeste los puntos del conjunto \(Y\). Se observa que los valores del conjunto \(Y\) están más dispersos que los valores del conjunto \(X\), es fácil observar que los valores del conjunto \(X\) están más cercanos a la media. En esta sección se discute las formas existentes para cuantificar la dispersión.
 
 \begin{figure}[h]
 
-{\centering \includegraphics[width=0.5\linewidth]{rnl} 
+{\centering \includegraphics[width=0.5\linewidth]{estadistica_files/figure-latex/rnl1-1} 
 
 }
 
@@ -691,6 +712,22 @@ El rango es la medida de dispersión más fácil de calcular. Se obtiene restand
 
 \hypertarget{varianza}{%
 \subsection{Varianza}\label{varianza}}
+
+La dispersión en un conjunto \(x\) se puede entender como una medida de la distancia que tiene cada dato \(x_i\) a la media de los datos. En el caso del conjunto \(X\) descrito al inicio de esta sección se puede verificar que para cada dato la distancia del dato a la media (\(x_i-\bar{x}\)) es:
+
+\begin{itemize}
+\tightlist
+\item
+  \(2-5=-3\)
+\item
+  \(4-5=-1\)
+\item
+  \(6-5=1\)
+\item
+  \(8-5=3\)
+\end{itemize}
+
+Sin embargo si sumamos estos valores el resultado es \(0\). Para cualquier conjunto de datos \(X\) se verifica que \(\sum_{i=1}^n{x_i-\bar{x}}=0\) por esta razón para calcular la dispersión se trabaja con la distancia cuadrática \(\left(x-\bar{x}\right)^2\).
 
 La varianza es el promedio de la diferencia de la media cuadrática. Si se conocen todos los datos de una población se puede calcular la varianza poblacional:
 
@@ -724,7 +761,7 @@ La desviación es la raíz cuadrada de la varianza, en las fórmulas \eqref{eq:d
 \hypertarget{medidas-de-dispersion-en-r}{%
 \subsection{Medidas de dispersión en R}\label{medidas-de-dispersion-en-r}}
 
-Es necesario saber que R defecto no tiene una función para calcular el rango sin embargo para calcular el rango vamos a usar \texttt{max()\ -\ min()}, y que además por defecto R tiene una función para calcular la varianza muestral (\texttt{var()}) y otra para calcular la desviación muestral \texttt{sd()}, si se desea obtener la varianza y la desviación poblacional existen por lo menos 3 soluciones:
+Es necesario saber que R defecto no tiene una función para calcular el rango sin embargo para calcular el rango vamos a usar \texttt{max()\ -\ min()}, y que además por defecto R tiene una función para calcular la varianza muestral (\texttt{var()}) y otra para calcular la desviación muestral (\texttt{sd()}), si se desea obtener la varianza y la desviación poblacional existen por lo menos 3 soluciones:
 
 \begin{itemize}
 \tightlist
@@ -767,7 +804,7 @@ Una tabla de frecuencia es una forma de describir los datos de forma resumida, l
 \hypertarget{variables-cualitativas}{%
 \subsection{Variables Cualitativas}\label{variables-cualitativas}}
 
-Para las variables cualitativas una tabla de frecuencia basicámente tiene tres columnas: ``Categoría'', ``Frecuencia'', ``Porcentaje''. Para aprender a realizar tablas de frecuencia para variables cualitativas, trabajaremos con el conjunto de datos \texttt{audit\_bolsa}, Este conjunto de datos tiene información sobre las empresas que cotizan en la Bolsa de Valores de Guayaquil, se elaborará una tabla de frecuencias de las firmas auditoras que han trabajado para estas empresas. La variable en la que se almacena esta información es la variable \texttt{FIRMA}. La tabla de frecuencia se elabora usando el paquete \texttt{dplyr}. El comando \texttt{mutate(\ )} sirve para crear nuevas columnas, en este caso se crea la columna porcentaje.
+Para las variables cualitativas una tabla de frecuencia basicámente tiene tres columnas: ``Categoría'', ``Frecuencia'', ``Porcentaje''. Para aprender a realizar tablas de frecuencia para variables cualitativas, trabajaremos con el conjunto de datos \texttt{audit\_bolsa}, Este conjunto de datos tiene información sobre las empresas que cotizan en la Bolsa de Valores de Guayaquil, se elaborará una tabla de frecuencias de las firmas auditoras que han trabajado para estas empresas. La variable en la que se almacena esta información es la variable \texttt{FIRMA}. La tabla de frecuencia se elabora usando el paquete \texttt{dplyr}. Recordemos que la función \texttt{mutate(\ )} sirve para crear nuevas columnas, en este caso se crea la columna porcentaje.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -863,7 +900,7 @@ Nota: es importante tener fijado el directorio de trabajo, como se explicó en l
 \hypertarget{variables-cuantitativas}{%
 \subsection{Variables Cuantitativas}\label{variables-cuantitativas}}
 
-Una tabla de frecuencias para variables cualitativas tiene 6 columnas:
+Una tabla de frecuencias para variables cuantitativas tiene 6 columnas:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1030,10 +1067,9 @@ En la figura \ref{fig:figura1} se muestra el histograma de la variable ventas en
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(ggplot2)}
-
 \KeywordTok{ggplot}\NormalTok{(big4size, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{ VTAS}\OperatorTok{/}\DecValTok{1000000}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{bins=}\DecValTok{12}\NormalTok{, }\DataTypeTok{color=} \StringTok{"red"}\NormalTok{, }\DataTypeTok{fill=}\StringTok{"blue"}\NormalTok{ )}
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{bins=}\DecValTok{12}\NormalTok{, }\DataTypeTok{color=} \StringTok{"red"}\NormalTok{, }\DataTypeTok{fill=}\StringTok{"blue"}\NormalTok{ ) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_light}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1050,11 +1086,10 @@ Para configurar las etiquetas de los ejes podemos añadir las opciones \texttt{x
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(ggplot2)}
-
 \KeywordTok{ggplot}\NormalTok{(big4size, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{ VTAS}\OperatorTok{/}\DecValTok{1000000}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{bins=}\DecValTok{12}\NormalTok{, }\DataTypeTok{color=} \StringTok{"red"}\NormalTok{,  }\DataTypeTok{fill=}\StringTok{"blue"}\NormalTok{ ) }\OperatorTok{+}\StringTok{ }
-\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Ventas en Millones de Dólares") + ylab("}\NormalTok{Frecuencia}\StringTok{")}
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Ventas en Millones de Dólares") + ylab("}\NormalTok{Frecuencia}\StringTok{") +}
+\StringTok{  theme_light()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1087,14 +1122,14 @@ Los valores obtenidos para el máximo y el mínimo fueron \(0\) y \(1348\) respe
 \KeywordTok{ggplot}\NormalTok{(rank2018, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{VENTAS}\OperatorTok{/}\DecValTok{1000}\NormalTok{, }\DataTypeTok{fill=}\NormalTok{TAMAÑO)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{alpha=}\FloatTok{0.3}\NormalTok{, }\DataTypeTok{color=}\StringTok{"black"}\NormalTok{,}\DataTypeTok{bins=}\DecValTok{10}\NormalTok{, }\DataTypeTok{binwidth =} \DecValTok{150}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{breaks =} \KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1350}\NormalTok{,}\DecValTok{150}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{), }\DataTypeTok{panel.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill=}\StringTok{"white"}\NormalTok{)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Ventas en Miles"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Frecuencia"}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}[h!]
 
-{\centering \includegraphics{estadistica_files/figure-latex/figura3-1} 
+{\centering \includegraphics[width=0.6\linewidth]{estadistica_files/figure-latex/figura3-1} 
 
 }
 
@@ -1102,6 +1137,153 @@ Los valores obtenidos para el máximo y el mínimo fueron \(0\) y \(1348\) respe
 \end{figure}
 
 Se puede observar en la \ref{fig:figura3} que algunas empresas medianas tienen mayores ventas que el resto de empresas. Una mejor forma de comparar la distribución de una variable de acuerdo a otra variable es usar los diagramas de caja que serán discutidos en profundidad en la sección \ref{boxes}.
+
+\hypertarget{diagrama-de-barras}{%
+\subsection{Diagrama de barras}\label{diagrama-de-barras}}
+
+Los histogramas se usan para variables cuantitativas, mientras que los gráficos o diagramas de barras se utilizan para variables cualitativas. Al igual que los histogramas los diagramas de barras se elaboran para las frecuencias absolutas o las relativas.
+
+Para ejemplificar la elaboración de diagrama de barras, vamos a trabajar con el conjunto de datos\texttt{Ranking2018Comercio.csv} que contiene una muestra de 507 empresas de Ecuador dedicadas al comercio.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rank2018com =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"Ranking2018Comercio.csv"}\NormalTok{,}\DataTypeTok{header =}\NormalTok{ T,}\DataTypeTok{sep=}\StringTok{";"}\NormalTok{,}\DataTypeTok{dec=}\StringTok{","}\NormalTok{)}
+\KeywordTok{str}\NormalTok{(rank2018com)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    507 obs. of  12 variables:
+##  $ EXPEDIENTE: int  11069 103998 23140 165341 49377 93937 64400 134199 13963 95267 ...
+##  $ TIPO      : Factor w/ 3 levels "ANÓNIMA","RESPONSABILIDAD LIMITADA",..: 1 1 2 1 1 2 1 1 2 2 ...
+##  $ ACTIVIDAD : Factor w/ 112 levels "G4510.01","G4520.01",..: 69 69 71 69 42 1 4 26 60 76 ...
+##  $ REGIÓN    : Factor w/ 4 levels "COSTA","GALAPAGOS",..: 4 1 1 1 4 4 4 1 4 4 ...
+##  $ PROVINCIA : Factor w/ 16 levels "AZUAY","BOLIVAR",..: 12 7 5 7 12 14 12 7 12 1 ...
+##  $ TAMAÑO    : Factor w/ 4 levels "GRANDE","MEDIANA",..: 1 1 1 1 1 1 1 1 2 1 ...
+##  $ SECTOR    : Factor w/ 2 levels "MERCADO DE VALORES",..: 2 2 2 2 2 1 2 2 2 2 ...
+##  $ EMPLEADOS : int  560 145 65 108 65 84 127 45 72 20 ...
+##  $ ACTIVO    : num  19013933 16498975 13759911 13015775 12664280 ...
+##  $ PATRIMONIO: num  5441046 11084842 1854108 4353938 4547432 ...
+##  $ VENTAS    : num  27523262 54939461 16703973 20409277 19232071 ...
+##  $ UTILIDAD  : num  2935434 1180875 229199 81757 -900404 ...
+\end{verbatim}
+
+El conjunto de datos tiene 507 observaciones con 12 variables. Las variables presentes en este conjunto de datos son:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{EXPEDIENTE} variable cualitativa que almacena el número de expediente asignado por la Superintendencia de Compañías.
+\item
+  \texttt{TIPO} es una variable cualitativa con un nivel de medición nominal que almacena el tipo de compañía. En esta variable existen 3 niveles.
+\item
+  \texttt{ACTIVIDAD} variable cualitativa con nivel de medición nominal que almacena la actividad económica de la empresa, estas actividades se rigen por un catalógo dado por la superintendencia.
+\item
+  \texttt{REGIÓN} variable cualittativa con nivel de medición nominal que almacena la región del país a la que pertenece la empresa.
+\item
+  \texttt{PROVINCIA} variable cualitativa con nivel de medición nominal que almacena la provincia a la que pertenece la empresa.
+\item
+  \texttt{TAMAÑO} variable cualitativa con nivel de medición ordinal que almacena el tamaño de la empresa.
+\item
+  \texttt{SECTOR} variable cualitativa con nivel de medición ordinal que indica el sector al que pertenece la empresa.
+\item
+  \texttt{EMPLEADOS}variable cuantitativa discreta que almacena el número de empleados de la empresa.
+\item
+  \texttt{ACTIVO} variable cuantitativa continua que almacena el valor de los activos en libros de la empresa.
+\item
+  \texttt{PATRIMONIO} varaible cuantitativa continua que almacena el valor del patrimonio en libros de la empresa.
+\item
+  \texttt{VENTAS} varaible cuantitativa continua que almacena el valor de las ventas en libros de la empresa.
+\item
+  \texttt{UTILIDAD} varaible cuantitativa continua que almacena el valor de la utilidad en libros de la empresa.
+\end{enumerate}
+
+Como hemos dicho anteriormente los diagramas de barra se utilizan para variables cualitativas. Vamos a comenzar elaborando una tabla de frecuencias de las empresas por región.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tabla_reg <-}\StringTok{ }\NormalTok{rank2018com }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(REGIÓN) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{Frecuencia=}\KeywordTok{n}\NormalTok{()) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Porcentaje =} \KeywordTok{round}\NormalTok{(}\DecValTok{100}\OperatorTok{*}\NormalTok{Frecuencia}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(Frecuencia),}\DecValTok{2}\NormalTok{)}
+\NormalTok{  ) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(Porcentaje))}
+\KeywordTok{print}\NormalTok{(tabla_reg)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4 x 3
+##   REGIÓN    Frecuencia Porcentaje
+##   <fct>          <int>      <dbl>
+## 1 COSTA            368      72.6 
+## 2 SIERRA           133      26.2 
+## 3 ORIENTE            4       0.79
+## 4 GALAPAGOS          2       0.39
+\end{verbatim}
+
+Para hacer diagramas de barras se utiliza \texttt{geom\_bar()} en este caso como deseamos hacer un diagrama de barras de las frecuencias dentro de \texttt{geom\_bar()} esvribimos \texttt{stat="count"}. En la figura \ref{fig:barras1} se observa el gráfico de barras de las empresas por región.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(rank2018com, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{REGIÓN)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"count"}\NormalTok{,}\DataTypeTok{col=}\StringTok{"black"}\NormalTok{,}\DataTypeTok{fill=}\StringTok{"white"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{""}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Frecuencia"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[h!]
+
+{\centering \includegraphics[width=0.6\linewidth]{estadistica_files/figure-latex/barras1-1} 
+
+}
+
+\caption{Gráfico de Barras de las empresas por Región}\label{fig:barras1}
+\end{figure}
+
+En la figura se observa que las regiones están en orden alfabético. Supongamos que se desea ordenar las regiones en el siguiente orden:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Costa
+\item
+  Sierra
+\item
+  Oriente
+\item
+  Galápagos
+\end{enumerate}
+
+Para lograr este objetivo, antes de hacer el diagrama de barras debemos reordenar las regiones. Como se muestra a continuación:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rank2018com}\OperatorTok{$}\NormalTok{REGIÓN <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(rank2018com}\OperatorTok{$}\NormalTok{REGIÓN,}
+                             \DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{"COSTA"}\NormalTok{, }\StringTok{"SIERRA"}\NormalTok{, }\StringTok{"ORIENTE"}\NormalTok{, }\StringTok{"GALAPAGOS"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Luego de reordenar las regiones podemos volver a realizar el gráfico de barras pero esta vez obtendremos las regiones en el orden deseado como se observa en la figura \ref{fig:barras2}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(rank2018com, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{REGIÓN)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"count"}\NormalTok{,}\DataTypeTok{col=}\StringTok{"black"}\NormalTok{,}\DataTypeTok{fill=}\StringTok{"white"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{""}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Frecuencia"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[h!]
+
+{\centering \includegraphics[width=0.6\linewidth]{estadistica_files/figure-latex/barras2-1} 
+
+}
+
+\caption{Gráfico de Barras de las empresas por Región (Ordenadas)}\label{fig:barras2}
+\end{figure}
 
 \hypertarget{boxes}{%
 \subsection{Diagramas de Caja y valores atípicos}\label{boxes}}
@@ -1140,13 +1322,13 @@ En la figura \ref{fig:figura4} se observan los diagramas de caja de las ventas s
 \begin{Highlighting}[]
 \KeywordTok{ggplot}\NormalTok{(rank2018, }\KeywordTok{aes}\NormalTok{(TAMAÑO, VENTAS}\OperatorTok{/}\DecValTok{1000}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Tamaño de las empresas"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Ventas en Miles de Dólares")}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Ventas en Miles de Dólares") +theme_light()}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}[h!]
 
-{\centering \includegraphics{estadistica_files/figure-latex/figura4-1} 
+{\centering \includegraphics[width=0.6\linewidth]{estadistica_files/figure-latex/figura4-1} 
 
 }
 
@@ -1159,13 +1341,13 @@ Si se quisiera analizar con mayor detalle las microempresas se podría seleccion
 \begin{Highlighting}[]
 \KeywordTok{ggplot}\NormalTok{(}\KeywordTok{subset}\NormalTok{(rank2018, TAMAÑO }\OperatorTok{==}\StringTok{ "MICROEMPRESA"}\NormalTok{), }\KeywordTok{aes}\NormalTok{(TAMAÑO, VENTAS}\OperatorTok{/}\DecValTok{1000}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{xlab}\NormalTok{(}\StringTok{""}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Ventas en Miles de Dólares")}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Ventas en Miles de Dólares") +theme_light()}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}[h!]
 
-{\centering \includegraphics{estadistica_files/figure-latex/figura5-1} 
+{\centering \includegraphics[width=0.6\linewidth]{estadistica_files/figure-latex/figura5-1} 
 
 }
 
@@ -1750,8 +1932,8 @@ Otro concepto relacionado a las probabilidades de error es la \textbf{potencia d
 \caption{Potencia de una prueba de Hipótesis}\label{fig:power}
 \end{figure}
 
-\hypertarget{el-valor-p}{%
-\subsection{\texorpdfstring{El valor \(p\)}{El valor p}}\label{el-valor-p}}
+\hypertarget{pvalor}{%
+\subsection{\texorpdfstring{El valor \(p\)}{El valor p}}\label{pvalor}}
 
 El valor \(p\) es la probabilidad, calculada suponiendo que la hipótesis nula es cierta, de obtener un valor del estadístico de prueba al menos tan contradictorio para \(H_0\) como el valor calculado a partir de la muestra disponible. Dicho de otra forma el valor \(p\) es el nivel más bajo de significancia en el que el valor observado del estadístico de prueba es significativo.
 
@@ -1789,19 +1971,389 @@ Diferencia de proporciones & No apica & No aplica & \(\dfrac{p_1-p_2}{\sqrt{\hat
 \subsection{Pruebas de hipótesis e Intervalos de Confianza para la proporción en R}\label{pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-proporcion-en-r}}
 
 \hypertarget{methods}{%
-\chapter{Regresión}\label{methods}}
+\chapter{Regresión Lineal Simple y Correlación}\label{methods}}
 
 Supongamos que se quisiera analizar la relación entre las ventas y la utilidad de una empresa, para tratar de explicar de qué forma las ventas afectan la utilidad de las empresas. La existencia de la relación entre variables puede ser analizada usando un gráfico, una medida numérica o una ecuación.
-El gráfico utilizado para analizar la relación entre dos variables se llama \emph{gráfico de dispersión} o \emph{diagrama de dispersión},
+El gráfico utilizado para analizar la relación entre dos variables se llama \emph{gráfico de dispersión} o \emph{diagrama de dispersión}, en la figura \ref{fig:corr} se muestran algunos diagramas de dispersión.
+
+Un diagrama de dispersión muestra la relación entre dos variables cuantitativas medidas para las mismas observaciones. Los valores de una variable aparecen en el eje horizontal, y los valores de la otra variable aparecen en el eje verticcal. Cada observación aparece como el punto en el gráfico fijado por los valores de ambas variables para esa observación.
+
+En un diagrama de dispersión podemos encontrar tres aspectos de la asociación entre dos variables.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  La dirección de la relación. La relación entre dos variables puede no existir o ser negativa o positiva. Retomemos la figura \ref{fig:corr} para entender la dirección de la relación. Cuando los valores de \(x\) e \(y\) aumentan al mismo tiempo se dice que es positiva las gráficas con los puntos de color azul muestran una relación positiva. Cuando los valores de \(x\) aumentan y los de \(y\) disminuyen, o viceversa se dice que la relación es negativa, las gráficas con los puntos de color rojo presentan una relación negativa. Cuando no existen patrones claros como en la gráfica donde los puntos se presentan de color negro, se dice que no existe relación.
+\end{enumerate}
 
 \begin{figure}[h]
 
-{\centering \includegraphics[width=0.7\linewidth]{corr} 
+{\centering \includegraphics[width=0.5\linewidth]{corr} 
 
 }
 
 \caption{Gráficos de dispersión}\label{fig:corr}
 \end{figure}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  La forma de la relación que puede ser lineal o no lineal. En la figura \ref{fig:corr2} se observa que la relación es lineal, mientras que en la figura \ref{fig:corr3} se observa una relación no lineal.
+\end{enumerate}
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.5\linewidth]{corr2} 
+
+}
+
+\caption{Relación Lineal}\label{fig:corr2}
+\end{figure}
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.5\linewidth]{estadistica_files/figure-latex/corr3-1} 
+
+}
+
+\caption{Relación No Lineal}\label{fig:corr3}
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  La fuerza de la relación lineal. Imaginemos que trazamos una recta por el centro de la nube de puntos, la fuerza de la relación se puede medir por la proximidad de los datos a esa linea, a mayor cercanía a la recta mayor fuerza de la relación. En la figura \ref{fig:corr2} se observa que en las dos primeras y en las dos últimas gráficas las nubes de puntos se acercan hacia la recta, lo que nos indica que en esos casos la fuerza de la relación lineal es alta.
+\end{enumerate}
+
+En los dos gráficos centrales dn la figura \ref{fig:corr4} la nube de puntos está más dispersa que en los otros gráficos la dispersión de la nube de puntos es menor. En términos de la fuerza de la relación lineal podemos decir que en los dos gráficos centrales esta es muy débil. Pero ¿cuán fuerte o débil es la relación en cada gráfica? La gráfica por si sola no nos indica que tan fuerte o débil es la relación, se hace necesario entonces medir de alguna forma la fuerza de la relación lineal. La fuerza de la relación lineal se mide con la correlación.
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.5\linewidth]{corr3} 
+
+}
+
+\caption{Fuerza de la relación lineal}\label{fig:corr4}
+\end{figure}
+
+\hypertarget{correl}{%
+\section{Coeficiente de Correlación}\label{correl}}
+
+El \emph{coeficiente de correlación de Pearson} es una medida que puede tomar valores entre \(-1\) y \(1\). Es igual a \(1\) cuando dos variables cuantitativas tienen una relación lineal perfecta positiva y cuando las variables tienen una relación lineal negativa la correlación es igual a \(-1\) como se observa en la figura \ref{fig:corr5}.
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.5\linewidth]{corr4} 
+
+}
+
+\caption{Relaciones lineales perfectas}\label{fig:corr5}
+\end{figure}
+
+Para entender el coeficiente de correlación de Pearson, debemos empezar por definir la \emph{covarianza}. La varianza la definimos en la sección \ref{dispersion} como el promedio de la desviación cuadrática de todas las observaciones de una variable. Cuando trabajamos con dos variables debemos usar la \textbf{covarianza} que es la medida distancia entre cada par ordenado del centroide en un diagrama de dispersión. El centroide de un conjunto de puntos \(\left(x,y\right)\) es el punto \(\left(\bar{x},\bar{y}\right)\).
+
+En la figura \ref{fig:vtaspub} se presenta el diagrama de dispersión del gasto en Publicidad contra el ingreso por ventas de 100 empresas, estos datos han sido simulados. En la figura \ref{fig:centroide} se muestra la ubicación del centroide de los datos. Es fácil observar que el punto del centroide es el centro de un sistema de coordenadas con cuatro cuadrantes, como se muestra en la figura \ref{fig:centroide}. La desviación de cualquier punto desde el centroide se calcula con la expresión \(\left(x-\bar{x}\right)\left(y-\bar{y}\right)\).
+
+Todos los puntos en el cuadrante I tienen publicidad y ventas mayores al promedio y cuando se reemplazan en la expresión \(\left(x-\bar{x}\right)\left(y-\bar{y}\right)\) siempre se obtiene un resultado positivo. Los puntos en el cuadrante II tienen publicidad menor al promedio y ventas mayores al promedio al reemplazarlos en la expresión \(\left(x-\bar{x}\right)\left(y-\bar{y}\right)\) se obtiene un resultado negativo puesto que negativo multiplicado por positivo es negativo, para los cuadrantes III y IV los resultados de reemplazar en \(\left(x-\bar{x}\right)\left(y-\bar{y}\right)\) son positivo y negativo respectivamente (¿por que?).
+
+Para comparar las ventas con la publicidad se debe comparar la suma de los positivos obtenidos en los cuadrantes I y III con los negativos que resultan de los cuadrantes II y IV, Si la suma de los positivos es mayor a la de los negativos estamos ante una asociación positiva, pero si la suma de los negativos es mayor que la de los positivos la asociación es negativa y si la suma de los positivos es casi igual a la suma de los positivos, la sumatoria será cercana a \(0\) por lo que no existe asociación entre las variables.
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.5\linewidth]{estadistica_files/figure-latex/vtaspub-1} 
+
+}
+
+\caption{Diagrama de Dispersión del gasto en Publicidad contra el ingreso en Ventas}\label{fig:vtaspub}
+\end{figure}
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.5\linewidth]{estadistica_files/figure-latex/centroide-1} 
+
+}
+
+\caption{Ubicación del centroide de los datos}\label{fig:centroide}
+\end{figure}
+
+Es decir que la suma de las distancias entre los puntos y el centroide proporciona una medida de la relación entre las variables y si se divide este valor para el número de observaciones obtenemos la desviación promedio de los datos respecto al centroide, conocido como covarianza. Formalmente la covarianza se calcula con:
+
+\begin{equation} 
+  cov(x,y) = S_{xy} = \dfrac{1}{n} \sum_{i=1}^{n}\left(x_i-\bar{x}\right)\left(y_i-\bar{y}\right)
+  \label{eq:covar}
+\end{equation}
+
+La ecuación \eqref{eq:covar} puede ser reescrita como
+
+\begin{equation} 
+  S_{xy} = \dfrac{1}{n}\sum_{i=1}^{n}{x_iy_i}-\bar{x}\bar{y}
+  \label{eq:covar2}
+\end{equation}
+
+Si la covarianza es positiva, la relación entre las variables es positiva. Si la covarianza es negativa, la relación entre las variables puede ser negativa. Y si es \(0\) o cercana a \(0\) entonces no hay relación lineal entre las variables. Es decir que basta con conocer el signo de la covarianza para saber el sentido de la relación. Un problema de la covarianza es que su valor depende de las unidades de medida que están siendo usadas. Una forma de corregir esto es dividiendo para las desviaciones de \(x\) y \(y\). El resultado de dividir la covarianza para las desviaciones recibe el nombre de \textbf{coeficiente de correlación de Pearson}
+\begin{equation} 
+  r=\dfrac{s_{xy}}{s_xs_y}=\dfrac{\dfrac{1}{n} \sum_{i=1}^{n}\left(x_i-\bar{x}\right)\left(y_i-\bar{y}\right)}{\sqrt{\left(\dfrac{1}{n} \sum_{i=1}^{n}\left(x_i-\bar{x}\right)^2\right)\left(\dfrac{1}{n} \sum_{i=1}^{n}\left(y_i-\bar{y}\right)^2\right)}}
+  \label{eq:covar3}
+\end{equation}
+
+En R se utiliza la función \texttt{cor()}, vamos a hacer un ejemplo con los datos de la figura \ref{fig:vtaspub}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\FloatTok{1.8}\NormalTok{)}
+\NormalTok{Publicidad <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{, }\DataTypeTok{mean=}\DecValTok{80}\NormalTok{, }\DataTypeTok{sd=}\DecValTok{10}\NormalTok{)}
+\NormalTok{Ventas <-}\StringTok{ }\DecValTok{30} \OperatorTok{+}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DataTypeTok{mean=}\DecValTok{4}\NormalTok{,}\DataTypeTok{sd=}\FloatTok{0.3}\NormalTok{)}\OperatorTok{*}\NormalTok{Publicidad }\OperatorTok{+}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DataTypeTok{mean =} \DecValTok{0}\NormalTok{,}\DataTypeTok{sd=}\DecValTok{1}\NormalTok{)}
+
+\KeywordTok{cor}\NormalTok{(Publicidad, Ventas)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.834188
+\end{verbatim}
+
+El valor obtenido de la correlación es 0.8342 pero ¿cómo saber qué tan bueno o malo es este valor de correlación? Es ampliamente aceptada la interpretación de acuerdo al intervalo en el que cae el valor de la correlación:
+
+\begin{itemize}
+\tightlist
+\item
+  \(-1\): La relación lineal negativa es perfecta
+\item
+  \(-1<r \leq -0.70\) La relación lineal negativa es fuerte
+\item
+  \(-0.70<r \leq -0.50\) La relación lineal negativa es moderada
+\item
+  \(-0.50<r \leq -0.30\) La relación lineal negativa es débil
+\item
+  \(-0.30<r < 0\) La relación lineal es casi inexistente
+\item
+  \(0\) No existe relación lineal
+\item
+  \(0<r < 0.30\) La relación lineal es casi inexistente
+\item
+  \(0.30 \leq r < 0.50\) La relación lineal positiva es débil
+\item
+  \(0.50 \leq r < 0.70\) La relación lineal positiva es moderada
+\item
+  \(0.70 \leq r < 1\) La relación lineal positiva es fuerte
+\item
+  \(1\) La relación lineal positiva es perfecta
+\end{itemize}
+
+\hypertarget{regresion-lineal}{%
+\section{Regresión lineal}\label{regresion-lineal}}
+
+Al inicio de este capítulo usamos diagramas de dispersión o gráficos de dispersión para analizar la relación entre dos variables. Luego en la seccion \ref{correl} se analizó la relaciónentre la publicidad y las ventas de 100 empresas utilizando el coeficiente de correlación. La correlación no contesta preguntas como ¿influye la publicidad sobre las ventas? Si la publicidad aumenta ¿cuánto aumentarán las ventas? En esta sección utilizaremos el análisis de regresión para analizar la relación entre la publicidad y las ventas.
+
+El análisis de regresión es una forma más avanzada que la correlación para analizar la relación entre variables. Las principales diferencias entre la correlación y la regresión son:
+
+\begin{itemize}
+\tightlist
+\item
+  La regresión puede investigar las relaciones entre dos o más variables.
+\item
+  Se estima una relación de causalidad entre la o las variables explicativas y la variable dependiente.
+\item
+  Se mide la influencia de cada variable explicativa sobre la variable dependiente.
+\item
+  Se puede medir la significancia de cada variable explicativa.
+\end{itemize}
+
+Se espera que la publicidad explique las ventas. Es decir que la publicidad es la variable explicativa o independiente y se ubica sobre el eje de las \(X\), y el nivel de ventas es una variable explicada o dependiente y se ubica sobre el eje de las \(y\). El análisis de regresión describe esta relación causal ajustando una línea recta a los datos como se observa en la figura \ref{fig:regre1}. Esta recta de regresión es creciente, lo que se relaciona con el valor del coeficiente de correlación previamente calculado cuyo signo es positivo, es decir que altos niveles de publicidad se asocian con altos niveles de ventas y viceversa.
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.5\linewidth]{estadistica_files/figure-latex/regre1-1} 
+
+}
+
+\caption{Recta de regresión}\label{fig:regre1}
+\end{figure}
+
+En los datos cuando la publicidad es \(64.76\) las ventas son \(250.35\), sin embargo para la recta de regresión cuando la publicidad es igual a \(64.76\) ventas son iguales a 289.29. Este valor es cercano pero no igual al valor real, la diferencia refleja la ausencia de una correlación perfecta entre las dos variables. La diferencia entre el valor real \(Y\) y el valor predicho \(\hat{Y}\) recibe el nombre de \textbf{error} o \textbf{residual}, en la figura \ref{fig:error1} se observa el error.
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.6\linewidth]{error} 
+
+}
+
+\caption{Error en la estimación}\label{fig:error1}
+\end{figure}
+
+El error puede provenir de diversas fuentes y deberse a varios factores por ejemplo en el contexto que estamos analizando, la diferencia entre las ventas predichas y las ventas reales se puede deber a errores de medición, a condiciones externas a la empresa como la situación política o a condiciones internas como problemas en la producción, etc. Todos los factores están dentro del término de error y esto significa que las observaciones caen alrededor de la recta de regresión y no en ella. Si hay muchos de estos factores, sin uno en particular que predomine y además existe independencia entre los factores se puede asumir que los errores se distribuyen normalmente alrededor de la recta de regresión.
+
+\begin{equation}
+\hat{Y}_i = \beta_0 + \beta_1 X_i
+    \label{eq:regre2}
+\end{equation}
+
+donde:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\hat{Y}_i\) es el valor predicho de \(Y\) para la observación \(i\)
+\item
+  \(X_i\) es el valor de la variable explicativa para la observación \(i\)
+\item
+  \(\beta_0\) y \(\beta_1\) son los coeficientes fijos que serán estimados; \(\beta_0\) representa el intercepto de la recta de regresión con el eje de las \(Y\) y \(\beta_1\) mide la pendiente. En la figura \ref{fig:rectareg} se aprecia el intercepto y la pendiente de la recta de regresión lineal.
+\end{itemize}
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.5\linewidth]{regre3} 
+
+}
+
+\caption{Intercepto y pendiente en la recta de regresión}\label{fig:rectareg}
+\end{figure}
+
+Lo primordial del análisis de regresión consiste en determinar los valores de \(\beta_0\) y \(\beta_1\). Para esto se parte de que la diferencia entre el valor real y el valor predicho es igual al error o dicho de otra forma el valor real es igual al valor predicho más el error es decir:
+
+\begin{equation}
+Y_i=\hat{Y}_i+e_i 
+    \label{eq:regre3}
+\end{equation}
+
+Reemplazando la ecuación \eqref{eq:regre3} en \eqref{eq:regre2} se obtiene:
+
+\begin{equation}
+Y_i=\beta_0 + \beta_1 X_i+e_i 
+    \label{eq:regre4}
+\end{equation}
+
+Con la ecuación \eqref{eq:regre4} se puede entender que las ventas observadas están conformadas de dos componentes:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  La parte que se explica por la publicidad \(\beta_0 + \beta_1 X_i\)
+\item
+  El error \(e_i\)
+\end{enumerate}
+
+La recta de mejor ajuste se determina encontrando los valores \(\beta_0\) y \(\beta_1\) que \textbf{minimizan} la suma de los \textbf{errores cuadráticos} es decir \(\sum_{i=1}^{n}{e_i^2}\), este método se lo conoce como \textbf{mínimos cuadrados ordinarios}. Intuitivamente la primera idea sería minimizar la suma de los errores \(\sum_{i=1}^{n}{e_i}\) sin embargo \(\sum_{i=1}^{n}{e_i}=0\).
+
+De la ecuación \eqref{eq:regre4} se obtiene que
+
+\begin{equation}
+e_i = Y_i-\beta_0 - \beta_1 X_i
+    \label{eq:regre5}
+\end{equation}
+
+Entonces la suma de los errores cuadráticos equivale a:
+
+\begin{equation}
+\sum_{i=1}^{n}{e_i^2} = \sum_{i=1}^{n}{\left(Y_i-\beta_0 - \beta_1 X_i\right)^2}
+    \label{eq:regre6}
+\end{equation}
+
+La expresión de la ecuación \eqref{eq:regre6} se minimiza utilizando derivadas, el resultado obtenido de esa minimización se muestra en las ecuaciones \eqref{eq:pendiente} y \eqref{eq:inter}
+
+\begin{equation}
+\beta_1 = \dfrac{n\sum_{i=1}^{n}{X_iY_i}-\sum_{i=1}^{n}{X_i}\sum_{i=1}^{n}{Y_i}}{n\sum_{i=1}^{n}{X_i^2}-\left(\sum_{i=1}^{n}{X_i}\right)^2}
+    \label{eq:pendiente}
+\end{equation}
+
+\begin{equation}
+\beta_0 = \bar{Y}-\beta_1\bar{X}
+    \label{eq:inter}
+\end{equation}
+
+\hypertarget{regresion-linear-en-r}{%
+\subsection{Regresión linear en R}\label{regresion-linear-en-r}}
+
+Para realizar regresión lineal en R se puede usar la función \texttt{lm(\ )}, el uso de la función es \texttt{lm(formula,\ datos)}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\FloatTok{1.8}\NormalTok{)}
+\NormalTok{Publicidad <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{, }\DataTypeTok{mean=}\DecValTok{80}\NormalTok{, }\DataTypeTok{sd=}\DecValTok{10}\NormalTok{)}
+\NormalTok{Ventas <-}\StringTok{ }\DecValTok{30} \OperatorTok{+}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DataTypeTok{mean=}\DecValTok{4}\NormalTok{,}\DataTypeTok{sd=}\FloatTok{0.3}\NormalTok{)}\OperatorTok{*}\NormalTok{Publicidad }\OperatorTok{+}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DataTypeTok{mean =} \DecValTok{0}\NormalTok{,}\DataTypeTok{sd=}\DecValTok{1}\NormalTok{)}
+
+\NormalTok{m1 =}\StringTok{ }\KeywordTok{lm}\NormalTok{(Ventas }\OperatorTok{~}\StringTok{ }\NormalTok{Publicidad)}
+\KeywordTok{summary}\NormalTok{(m1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Ventas ~ Publicidad)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -43.588 -15.371  -3.649  14.335  59.570 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  34.6898    21.4169    1.62    0.109    
+## Publicidad    3.9312     0.2625   14.97   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 23.46 on 98 degrees of freedom
+## Multiple R-squared:  0.6959, Adjusted R-squared:  0.6928 
+## F-statistic: 224.2 on 1 and 98 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\hypertarget{coefregre}{%
+\subsection{Interpretación de los coeficientes de regresión}\label{coefregre}}
+
+El primer coeficiente a interpretar es el de la pendiente en este caso \(\beta_1\) es igual a 3.93 esto se lo observa en la salida de R en la sección \texttt{Coefficients:} el valor estimado para la publicidad, de manera general el valor de \(\beta_1\) se interpreta como el cambio en la variable dependiente (\(Y\)) por cada aumento de \(1\) unidad en la variable independiente (\(X\)). Es decir que en este caso por cada aumento de \(1\) dólar en la inversión en publicidad, el nivel de ventas sube en promedio 3.93.
+
+Por otro lado \(\beta_0\) es igual a 34.69, \(\beta_0\) se interpreta como el valor que toma la variable dependiente cuando la variable independiente es igual a \(0\). En este caso cuando la inversión en publicidad es igual a \(0\) las ventas son en promedio iguales a 34.69.
+
+\hypertarget{bondad-de-ajuste-del-modelo-de-regresion}{%
+\section{Bondad de Ajuste del modelo de regresión}\label{bondad-de-ajuste-del-modelo-de-regresion}}
+
+Una vez calculada la recta de regresión quizás nos preguntemos si esta da un buen ajuste a los datos, es decir si las observaciones se alejan o se acercan de la recta. Si el ajuste es pobre, quizás el efecto de la variable independiente en la dependiente no es lo suficientemente fuerte. El lector debe fijarse en que, aún cuando no haya efecto de \(X\) sobre \(Y\) se puede calcular la recta de regresión. Medir la bondad de ajuste de una regresión nos permite discriminar entre un buen y un mal modelo de regresión.
+
+La bondad de ajuste se calcula comparando dos rectas, la recta de regresión y la recta promedio de \(Y\) que es una recta horizontal dibujada en el promedio de \(Y\), como se observa en la figura \ref{fig:determinacion} la linea punteada de negro representa el valor promedio de \(Y\), se ilustra además una observación \(\left(X_i,Y_i\right)\). La diferencia entre \(Y\) y \(\bar{Y}\) está dividida en dos partes la primera parte es la parte que explica la recta de regresión \(\hat{Y}-\bar{Y}\). y la segunda parte es el término de error \(Y-\hat{Y}\)
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=0.5\linewidth]{error5} 
+
+}
+
+\caption{Bondad de Ajuste de un Modelo de Regresión Lineal}\label{fig:determinacion}
+\end{figure}
+
+Un buen modelo de regresión debería explicar una gran porción de las diferencias entre \(Y\) y \(\bar{Y}\), por lo tanto la longitud \(\hat{Y}-\bar{Y}\) debería ser más grande respecto a \(Y-\bar{Y}\). Entonces una medida de ajuste puede ser \(\frac{\hat{Y}-\bar{Y}}{Y_i-\bar{Y}}\), esto lo deberíamos usar para todas las observaciones por lo que deberiamos sumar estas expresiones sin embargo en el caso de \(\sum_{i=1}^{n}{Y_i-\bar{Y}}\) esto es igual a \(0\), para saltar este problema usamos el cuadrado de las expresiones para que se hagan positivas. De esta forma definimos:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\sum_{i=1}^{n}{\left(Y_i-\bar{Y}\right)^2}\), conocido como la suma total de cuadrados (STC).
+\item
+  \(\sum_{i=1}^{n}{\left(Y_i-\hat{Y}\right)^2}\), suma cuadrática del error (SCE)
+\end{enumerate}
+
+La bondad de ajuste \(R^2\) se define como:
+
+\begin{equation}
+R^2 = \dfrac{STC-SCE}{STC} = 1 - \dfrac{SCE}{STC}
+    \label{eq:rscuared}
+\end{equation}
+
+El \(R^2\) se lo interpreta como la proporción de la variabilidad de \(Y\) explicada por \(X\). En el modelo obtenido en la sección \ref{coefregre} se obtuvo un \(R^2\) de 0.6959 este valor se observa en las últimas líneas del resumen del modelo donde dice \texttt{Multiple\ R-squared}, se interpreta que el 69.59\% de la variabilidad de las ventas son explicadas por la inversión en publicidad.
+
+\hypertarget{pruebas-de-hipotesis-para-los-coeficientes-de-la-regresion}{%
+\section{Pruebas de Hipótesis para los coeficientes de la regresión}\label{pruebas-de-hipotesis-para-los-coeficientes-de-la-regresion}}
+
+El resumen de R muestra los valores \emph{p} para las hipótesis nulas \(\beta_0=0\) y \(\beta_1=0\), el criterio que se usa para aceptar o rechazar la hipótesis nula es el criterio que se explica en la sección \ref{pvalor}.
+
+En este caso se puede ver en el resumen que para el intercepto \(\beta_0\) el valor \emph{p} es \(0.109\) y para la pendiente \(\beta_1\) el valor \emph{p} es \(<2 \times 10^{-16}\) junto a los valores \emph{p} hay unos códigos de significancia
+lo mejor es simplemnte usar el criterio ya mencionado, en este caso el valor \emph{p} del intercepto nos indica que no se puede rechazar \(H_0: \beta_0=0\) a un nivel de significancia de \(0.05\), mientras que para el caso de la pendiente el valor \emph{p} nos indica que rechazamos \(H_0: \beta_1=0\) a un nivel de significancia de \(0.05\).
 
 \hypertarget{analisis-factorial}{%
 \chapter{Análisis Factorial}\label{analisis-factorial}}

@@ -1,3 +1,11 @@
+```{r include = FALSE}
+if(!knitr:::is_html_output())
+{
+  knitr::opts_chunk$set(fig.pos = 'h')
+}
+```
+
+
 # Introducción {#intro}
 
 En nuestra vida diaria es común escuchar el término **estadística**, las tasas de desempleo, el índice de pobreza, el saldo promedio de nuestra cuenta de ahorros, el número de goles realizados en la LigaPro durante el fin de semana, etc. Aunque no es una forma incorrecta de ver las estadísticas, en este texto se pensará a la estadística como un conjunto de métodos que se utilizan para **recoger, clasificar, resumir, organizar, presentar, analizar e interpretar información numérica**
@@ -9,7 +17,7 @@ En las empresas la estadística es usada para tomar decisiones como los producto
 
 El uso de la estadística puede ser de dos formas. La primera, cuando se describen y se presentan los datos. Y la segunda es cuando los datos son utilizados para hacer inferencias sobre características del ambiente o entorno de donde se seleccionaron los datos o sobre el mecanismo subyacente que generó los datos. La primera forma recibe el nombre de __estadística descriptiva__ y la segunda se conoce como __estadística inferencial__
 
-En la estadística descriptiva se utilizan métodos numéricos y gráficos para encontrar patrones y características de los datos a fin de resumir la información y presentarla de una forma significativa. Mientras que en la estadística inferencial se utilizan los daots para tomar decisiones, hacer estimaciones, pronósticos o predicciones y generalizaciones sobre el entorno del que fueron obtenidos los datos o el proceso que los generó.
+En la estadística descriptiva se utilizan métodos numéricos y gráficos para encontrar patrones y características de los datos a fin de resumir la información y presentarla de una forma significativa. Mientras que en la estadística inferencial se utilizan los datos para tomar decisiones, hacer estimaciones, pronósticos o predicciones y generalizaciones sobre el entorno del que fueron obtenidos los datos o el proceso que los generó.
 
 Sea en estadística descriptiva o en estadística inferencial, el primer paso siempre va a ser obtener información de alguna característica, medida o valor que nos interese de un grupo de elementos. Esa característica, medida o valor de interés para el investigador recibe el nombre de **variable**. 
 
@@ -21,7 +29,7 @@ Las variables cuantitativas se clasifican a la vez en **continuas** que se prese
 
 ### Niveles de medición
 
-Hay cuatro niveles de medición **ordinal**,  **nominal**, **intervalo** y de **radio**. En el nivel  ordinal las observaciones toman valores que se ordenan o clasifican de forma lógica, por ejemplo las tallas de ropa (pequeña, media, grande, extra grande), la frecuencia con la que se hace una actividad (nunca, casi nunca, a veces, casi siempre, siempre). Por otro lado, en el nivel nominal las observaciones toman valores que no se pueden organizar de forna lógica, por ejemplo el sexo, el color de ojos, la marca de ropa favorita. 
+Hay cuatro niveles de medición **ordinal**,  **nominal**, **intervalo** y de **razón**. En el nivel  ordinal las observaciones toman valores que se ordenan o clasifican de forma lógica, por ejemplo las tallas de ropa (pequeña, media, grande, extra grande), la frecuencia con la que se hace una actividad (nunca, casi nunca, a veces, casi siempre, siempre). Por otro lado, en el nivel nominal las observaciones toman valores que no se pueden organizar de forna lógica, por ejemplo el sexo, el color de ojos, la marca de ropa favorita. 
 
 En el nivel de intervalo existe diferencia significativa entre valores pero el cero no representa la ausencia de la característica un ejemplo es la temperatura medida en grados Farenheit. Finalmente en el nivel de razón el 0 es significativo y la razón entre dos números es significativa, un ejemplo es la temperatura medida en grados Kelvin.
 
@@ -36,14 +44,14 @@ Existen algunos conceptos que son importantes y que se deben tener presentes en 
 
 ## Primeros pasos en R {#primerR}
 
-Una vez instalado R y RStudio, abrimos Rstudio para comenzar a trabajar. La ventana de RStudio se ve como se muestra en la figura \@ref(fig:rstudio1).
+Una vez instalado R y RStudio, abrimos Rstudio para comenzar a trabajar. La ventana de RStudio tiene la apariencia que se muestra en la figura \@ref(fig:rstudio1).
 
 ```{r rstudio1, out.width = "50%",fig.cap="Ventana de RStudio",fig.align = 'center', echo=FALSE,fig.pos='h!'}
 
 knitr::include_graphics("rstudio1.png")
 ```
 
-Lo primero que debemos hacer es abrir un nuevo script, un script de R es simplemente un archivo de texto que contiene (casi) todos los comandos que se escribirían en la línea de comandos de R, para esto en la barra de menú seguimos la secuencia __File, New File, R Script__ o desde el teclado con la combinación _Ctrl + Shift + N_, en este archivo iremos escribiendo todos los comandos que vamos a trabajar. En la figura \@ref(fig:rstudio2) se aprecia un script abierto.
+Lo primero que debemos hacer es abrir un nuevo "script", un script de R es simplemente un archivo de texto que contiene (casi) todos los comandos que se escribirían en la línea de comandos de R, para esto en la barra de menú seguimos la secuencia __File, New File, R Script__ o desde el teclado con la combinación _Ctrl + Shift + N_, en este archivo iremos escribiendo todos los comandos que vamos a trabajar. En la figura \@ref(fig:rstudio2) se aprecia un script abierto.
 
 ```{r rstudio2, out.width = "50%",fig.cap="Ventana de RStudio con Script",fig.align = 'center', echo=FALSE,fig.pos='h!'}
 
@@ -51,18 +59,19 @@ knitr::include_graphics("rstudio2.png")
 
 ```
 
-Para empezar a aprender en el script vamos a escribir `3+2` y ejecutamos esto con la combinación de teclas __Ctrl + Enter__ el resultado obviamente es `r 3+2`. Ahora ingresaremos un conjunto de valores y los almacenaremos en una variable, para almacenar algo en una variable se puede usar  `<-` o  `=`. 
-En la variable `x` almacenaremos un conjunto de 8 observaciones escribiendo el código: 
+Para empezar a aprender, en el script vamos a escribir `3+2` y ejecutamos esto con la combinación de teclas __Ctrl + Enter__ el resultado obviamente es `r 3+2`. Ahora ingresaremos un conjunto de valores y los almacenaremos en una variable, para almacenar algo en una variable se puede usar  `<-` o  `=`. 
+
+En el código que se muestra a continuación en la variable `x` almacenaremos un conjunto de 8 observaciones, es importante observar que la lista de datos es ingresada con el comando `c(elem1,elem2,elem3,...)` si los elementos de la lista fueran cadenas de texto o caracteres cada elemento se encierra entre comillas `" "`: 
 
 ```{r results='hide'}
 x <- c(3,7,9,5,6,2,1,10) 
 ```
 
-Recuerde que este código se ejecuta con la combinación de teclas __Ctrl + Enter__. Para poder realizar análisis estadístico, es necesario cargar nuestros datos en el programa. R acepta algunos formatos de archivos, como por ejemplo archivos de Excel, archivos de valores separados por coma, archivos de texto e inclusive archivos de otros programas como SPSS. Lo más usual es trabajar con archvo de valores separados por coma es decir con extensión `.csv`, estos archivos `csv` se generan cuando el investigador recolecta la información, la almacena en un archivo de Excel o alguna otra hoja de cálculo y la guarda como un archivo de valores separados por coma. 
+ Recuerde que este código se ejecuta con la combinación de teclas __Ctrl + Enter__. Para poder realizar análisis estadístico, es necesario cargar nuestros datos en el programa. R acepta algunos formatos de archivos, como por ejemplo archivos de Excel, archivos de valores separados por coma, archivos de texto e inclusive archivos de otros programas como SPSS. Lo más usual es trabajar con archvo de valores separados por coma es decir con extensión `.csv`, estos archivos `csv` se generan cuando el investigador recolecta la información, la almacena en un archivo de Excel o alguna otra hoja de cálculo y la guarda como un archivo de valores separados por coma. 
 
-Para trabajar de forma eficiente con R, se recomienda comenzar por fijar un directorio de trabajo donde deben estar guardados nuestros archivos en el formato que sea de nuestra preferencia. Una forma de hacerlo es desde la barra de menú __Session, Set Working Directory, Choose Directory__ o desde el teclado con la combinación __Ctrl+Shift+H__, o con la función `setwd("rutadelarchivo")`. 
+Para trabajar de forma eficiente con R, se recomienda comenzar por fijar un directorio de trabajo donde deben estar guardados nuestros archivos en el formato que sea de nuestra preferencia. Una forma de hacerlo es desde la barra de menú escoger las opciones __Session, Set Working Directory, Choose Directory__ o desde el teclado con la combinación __Ctrl+Shift+H__, o con la función `setwd("rutadelarchivo")`. 
 
-En este primer ejercicio trabajaremos con el archivo *cap2_big4_size.csv*. Los datos serán guardados en una variable llamada `datos1`, usaremos la función  `read.csv()` para leer los datos. La función `read.csv()` recibe las instrucciones `read.csv("archivo", header=T, sep=";",dec=",")`.  La opción `"archivo"` indica el nombre del archivo, `header=T` o `header=F` permite indicar si las columnas tienen un encabezado que las identifique, `sep=";"` sirve para indicar cual es el separador presente en nuestro archivo en algunas ocasiones ocurre que un archivo de valores separado por coma en realidad tiene sus valores separados por un punto y cona esto generalmente ocurre cuando el sistema utiliza, como en este caso, la coma como separador decimal y finalmente la opción `dec=","` sirve para indicar que el separador decimal es la coma. 
+En este primer ejercicio trabajaremos con el archivo *cap2_big4_size.csv*. Los datos serán guardados en una variable llamada `big4size`, usaremos la función  `read.csv()` para leer los datos. La función `read.csv()` recibe las instrucciones `read.csv("archivo", header=T, sep=";",dec=",")`.  La opción `"archivo"` indica el nombre del archivo, `header=T` o `header=F` permite indicar si las columnas tienen o no un encabezado que las identifique, `sep=";"` sirve para indicar cual es el separador presente en nuestro archivo en algunas ocasiones ocurre que un archivo de valores separado por coma en realidad tiene sus valores separados por un punto y cona esto generalmente ocurre cuando el sistema operativo utiliza, como en este caso, la coma como separador decimal y finalmente la opción `dec=","` sirve para indicar que el separador decimal es la coma. 
 
 Una característica de R es que permite acceder a la ayuda sobre las funciones, esto se hace escribiendo `?funcion` por ejemplo si queremos la ayuda de la función `read.csv` simplemente escribimos `?read.csv` en el panel ubicado en la parte inferior derecha se desplegará la ayuda de la función. Con la particularidad de que la ayuda se despliega en inglés lo que no debería ser problema para un buen investigador.
 
@@ -76,7 +85,11 @@ knitr::kable(
   booktabs = TRUE,format = "pandoc") 
 ```
 
-Sin más preámbulos, empecemos a trabajar. Recapitulando, primero configuraremos el directorio de trabajo, luego cargaremos el archivo indicado. Finalmente usamos la función `str()`, la que nos permite obtener la descripción de la estructura de los datos. 
+Sin más preámbulos, empecemos a trabajar. Recapitulando nuestro flujo de trabajo es:
+
+1. Configurar el directorio de trabajo
+2. Cargar el archivo indicado.
+3.  Finalmente usamos la función `str()`, que nos permite obtener la descripción de la estructura de los datos. 
 
 ```{r}
 setwd("C:/Users/onava_000/OneDrive/libro_mc/estadistica")
@@ -85,22 +98,24 @@ str(big4size)
 ```
 
 
-En la primera línea de los resultados se observa la salida  `'data.frame':    2256 obs. of  6 variables:` esto nos indica que nuestro *marco de datos (data frame)* tiene 2256 observaciones y 6 variables. Con respecto a las variables tenemos 6 variables que a continuación se describen y se explican los resultados obtenidos con la función.
+En la primera línea de los resultados se observa la salida  `'data.frame': 2256 obs. of  6 variables:` esto nos indica que nuestro *marco de datos (data frame)* tiene 2256 observaciones y 6 variables. Con respecto a las variables tenemos 6 variables que a continuación se describen y se explican los resultados obtenidos con la función.
 
-* `EXPMUESTRA`: esta variable es de tipo entera (INT) y almacena el expediente de la empresa. Aunque la variable tiene valores numéricos, no es una variable cuantitativa sino cualitativa "Expediente de la Empresa"
-* `BIG4`: esta variable es de tipo entera, y ha sido codificada con 1 si la empresa fue auditada por una Big Four y 0 si no. Podemos cambiar esta codificación por "Sí" y "No" en lugar de "1" y "0", más adelante aprendemos como hacerlo. Al igual que la variable anterior aunque tiene valores numéricos, no es una variable cuantitativa sino cualitativa, dejamos al lector la reflexión en este particular. 
-* `ACTIVOS`: contiene el valor de los activos totales de la empresa. Es de tipo `num` porque permite el uso de decimales. Corresponde a una variable cuantitativa continua.
+* `EXPMUESTRA`: esta variable es de tipo entera `(INT)` (por el inglés *integer*) y almacena el expediente de la empresa. Aunque la variable tiene valores numéricos, no es una variable cuantitativa sino cualitativa "Expediente de la Empresa"
+* `BIG4`: esta variable es de tipo entera, y ha sido codificada con 1 si la empresa fue auditada por una Big Four y 0 si no. Podemos cambiar esta codificación por "Sí" y "No" en lugar de "1" y "0", más adelante aprenderemos como hacerlo. Al igual que la variable anterior aunque tiene valores numéricos, no es una variable cuantitativa sino cualitativa, dejamos al lector la reflexión en este particular. 
+* `ACTIVOS`: contiene el valor de los activos totales de la empresa. Es de tipo `NUM` es decir una variable cuantitativa continua porque permite el uso de decimales. 
 * `UTILIDAD`: contiene el valor de la utildad de la empresa.
 * `VTAS`: contiene el valor de las ventas de la empresa.
 * `PAT`: contiene el valor del patrimonio de la empresa.
 
-Los paquetes de R son colecciones de funciones y conjuntos de datos desarrollados por la comunidad de usuarios, los paquetes aumentan el poder de R mejorando las funcionalidades existentes en la base de R, o añadiendo nuevas funcionalidades. En este texto trabajaremos con algunos de los paquetes desarrollados por el equipo de RStudio, una descripción detallada de estos paquetes puede ser encontrada en  <https://www.rstudio.com/products/rpackages/>. . Comenzaremos por instalar el paquete `dplyr`, este paquete tiene funciones que permiten realizar facilmente manipulaciones de datos. Para instalar un paquete se utiliza la función `install.packages("paquete")`. Una vez instalado el paquete, se carga el paquete utilizando la función `library(paquete)`.
+Los paquetes de R son colecciones de funciones y conjuntos de datos desarrollados por la comunidad de usuarios, los paquetes aumentan el poder de R mejorando las funcionalidades existentes en la base de R, o añadiendo nuevas funcionalidades. En este texto trabajaremos con algunos de los paquetes desarrollados por el equipo de RStudio como ``ggplot2`, `dplyr` y otros una descripción detallada de estos paquetes puede ser encontrada en  <https://www.rstudio.com/products/rpackages/>. Trabajaremos también con paquetes desarrollados por otros colaboradores de la comunidad de usuarios de R. 
+
+Comenzaremos por instalar el paquete `dplyr`, este paquete tiene funciones que permiten realizar facilmente manipulaciones de datos. Para instalar un paquete se utiliza la función `install.packages("paquete")`. Una vez instalado el paquete, se carga el paquete utilizando la función `library(paquete)`.
 
 ```{r, eval=FALSE}
 install.packages("dplyr")
 ```
 
-La primera manipulación que vamos a realizar es la creación de nuevas variables con el paquete `dplyr`. En nuestros datos cargados en el conjunto de datos `datos1` vamos a crear tres variables nuevas __ROA__, __ROS__ y __ROE__. Recordemos que el __Retorno sobre activos__ ( __ROA__, Return on Assets) se lo calcula como la razón entre la utilidad y los activos como se ve en la ecuación \@ref(eq:roa). En las ecuaciones \@ref(eq:ros) y \@ref(eq:roe) se dan las expresiones para calcular el __Retorno sobre ventas__ ( __ROS__ Return on Sales) y el __Retorno sobre el Patrimonio__ ( __ROE__ Return on Equity)
+La primera manipulación que vamos a realizar es la creación de nuevas variables con el paquete `dplyr`. En nuestros datos cargados en el conjunto de datos `big4size` vamos a crear tres variables nuevas __ROA__, __ROS__ y __ROE__. Recordemos que el __Retorno sobre activos__ ( __ROA__, Return on Assets) se lo calcula como la razón entre la utilidad y los activos como se ve en la ecuación \@ref(eq:roa). En las ecuaciones \@ref(eq:ros) y \@ref(eq:roe) se dan las expresiones para calcular el __Retorno sobre ventas__ ( __ROS__ Return on Sales) y el __Retorno sobre el Patrimonio__ ( __ROE__ Return on Equity)
 
 \begin{equation} 
   ROA = \dfrac{Utilidad}{Activos}
@@ -130,7 +145,7 @@ big4size <- big4size %>%
 str(big4size)
 ```
 
-En las últimas líneas de la salida de R, se observa que ahora en el conjunto de datos existen ahora tres nuevas variables. En la próxima sección seguiremos trabajando con el mismo conjunto de datos.
+En las últimas líneas de la salida de R, se observa que ahora en el conjunto de datos existen tres nuevas variables. En la próxima sección seguiremos trabajando con el mismo conjunto de datos.
 
 ## Medidas de Tendencia Central
 
@@ -146,6 +161,8 @@ La media se la calcula como la suma de todos los valores de una variable dividid
   \bar{x} = \dfrac{\sum_{i=1}^{n}x_i}{n}
   (\#eq:mean)
 \end{equation}
+
+La expresión $\sum_{i=1}^{n}$ se interpreta como la suma desde el primer hasta el último elemento del conjunto de datos. 
 
 La media tiene algunas propiedades que a continuación se detallan:
 
@@ -241,11 +258,15 @@ big4size %>%
             )
 ```
 
+#### ¿Cuándo usar `mutate()` y cuándo usar `summarise()`? 
+ 
+Note que cuando usamos la función `summarise()` creamos nuevas variables en el conjunto de datos, al igual que cuando se usa la función `mutate()` la principal diferencia entre `summarise()`y `mutate()` es que la primera resume los datos es decir devuelve un nuevo conjunto de datos con menos filas, mientras que `mutate()` devuelve el conjunto de datos con el mismo número de observaciones es decir con el mismo número de filas.
+
 ## Medidas de posición (Cuantiles)
 
 Las medidas de posición no central permiten conocer otros puntos característicos de la distribución que no son los valores centrales. Entre las medidas de posición no central más importantes están los cuantiles. El término cuantil fue usado por primera vez por Kendall en 1940.
 
-El cuantil de orden p de una distribución con $0<p<1$ es el valor $x_{i}$ de la variable $X$ que marca un corte de modo que una proporción $p$ o un porcentaje $100p$% de valores de la población es menor o igual que $x_{i}$ Por ejemplo el cuantil de orden $0.35$ dejaría un 35% de valores por debajo de él. 
+El cuantil de orden $p$ de una distribución con $0<p<1$ es el valor $x_{i}$ de la variable $X$ que marca un corte de modo que una proporción $p$ o un porcentaje $100p$% de valores de la población es menor o igual que $x_{i}$ Por ejemplo el cuantil de orden $0.35$ dejaría un 35% de valores por debajo de él. 
 
 ### Tipos de Cuantiles
 
@@ -285,32 +306,45 @@ Para determinar el valor $X_{i.a}$ utilizamos la expresión:
 
 Para calcular percentiles en R, se utiliza la función `quantile()`. Esta función recibe dos argumentos, la variable de la que se calcula el percentil y el porcentaje del percentil que se desea calcular. Se pueden calcular varios percentiles al mismo tiempo. 
 
-Vamos a calcular el primer cuartil $Q_{1}$ de la variable `ACTIVOS` del conjunto de datos ya trabajado anteriormente. Vamos a llamar a esta variable utilizando la notación `$` esta notación se usa poniendo `data.frame$variable` en este caso nuestra variable está en el conjunto `datos1`y se llama `ACTIVOS` por lo que para llamar la variable desde la función escribimos `datos1$ACTIVOS`. Luego debemos recordar que $Q_1=P_{25}$ es decir que en la función `quantile` debemos anotar $0.25$
+Vamos a calcular el primer cuartil $Q_{1}$ de la variable `ACTIVOS` del conjunto de datos ya trabajado anteriormente. Vamos a llamar a esta variable utilizando la notación `$` esta notación se usa poniendo `data.frame$variable` en este caso nuestra variable está en el conjunto `big4size` y se llama `ACTIVOS` por lo que para llamar la variable desde la función escribimos `big4size$ACTIVOS`. Luego debemos recordar que $Q_1=P_{25}$ es decir que en la función `quantile` debemos anotar $0.25$
 
 ```{r echo=TRUE}
 quantile(big4size$ACTIVOS, 0.25)
 ```
 
-Ahora calculamos los tres cuartiles en este caso podemos escribir dentro de una lista los tres valores, para ingresar listas en R lo hacemos con `c(elemento1, elemento2, ... )`
+Ahora calculamos los tres cuartiles en este caso podemos escribir dentro de una lista los tres valores, para ingresar listas en R lo hacemos con `c(elemento1, elemento2, ... )` como ya lo habíamos indicado antes.
 
 ```{r, echo=TRUE}
 quantile(big4size$ACTIVOS, c(0.25,0.50,0.75))
 ```
 
-De los resultados obtenidos se interpreta que el 25% de los activos de las empresas es menor que $3 184 669$. Supongamos que se quieren determinar los deciles, una forma de hacer la lista es con la función `seq` con las instrucciones `seq(inicial, final, by = aumento)` de esta manera evitamos escribir los nueve valores.
+De los resultados obtenidos se interpreta que el 25% de los activos de las empresas es menor que $3\;184\;669$. Supongamos que se quieren determinar los deciles, una forma de hacer la lista es con la función `seq` con las instrucciones `seq(inicial, final, by = aumento)` de esta manera evitamos escribir los nueve valores.
 
 ```{r, echo=TRUE}
 quantile(big4size$ACTIVOS, seq(0.1,0.9, by = 0.1))
 ```
 
 
-## Medidas de dispersión
+## Medidas de dispersión {#dispersion}
 
-Si comparamos los conjuntos de datos $X=\left\{ 2,4,6,8 \right\}$ y $Y=\left\{1,3,7,9\right\}$ se obtiene que las medias son iguels $\bar{X}= \bar{Y}=5$. En la figura \@ref(fig:rnl1) se ha graficado con color naranja los puntos del conjunto $X$ y de color azul los puntos del conjunto $Y$. Se observa que los valores del conjunto $Y$ están más dispersos que los valores del conjunto $X$. En esta sección se discute las formas existentes para cuantificar la dispersión.
+Si comparamos los conjuntos de datos $X=\left\{ 2,4,6,8 \right\}$ y $Y=\left\{1,3,7,9\right\}$ se obtiene que las medias son iguales $\bar{X}= \bar{Y}=5$. En la figura \@ref(fig:rnl1) se han graficado con color rojo los puntos del conjunto $X$ y de color celeste los puntos del conjunto $Y$. Se observa que los valores del conjunto $Y$ están más dispersos que los valores del conjunto $X$, es fácil observar que los valores del conjunto $X$ están más cercanos a la media. En esta sección se discute las formas existentes para cuantificar la dispersión.
 
 ```{r rnl1, out.width = "50%",fig.cap="Conjuntos graficados",fig.align = 'center', echo=FALSE}
+CONJUNTO = c(rep("X",4),rep("Y",4))
+valores = c(2,4,6,8,1,3,7,9)
+datos = valores
+datos = as.data.frame(datos)
+datos =cbind(CONJUNTO, datos)
 
-knitr::include_graphics("rnl.png")
+
+ggplot(datos, aes(x=valores,y=CONJUNTO)) + 
+  geom_point(aes(col=CONJUNTO,size=2)) +
+  scale_x_continuous(breaks=1:9) +
+  geom_vline(xintercept=5, linetype="dashed") +
+  theme(legend.position = "none",panel.background = element_rect(fill="white"))+
+  ylab("") + xlab("") 
+
+
 ```
 
 ### Rango
@@ -322,6 +356,15 @@ El rango es la medida de dispersión más fácil de calcular. Se obtiene restand
 \end{equation}
 
 ### Varianza
+
+La dispersión  en un conjunto $x$ se puede entender como una medida de la distancia que tiene cada dato $x_i$ a la media de los datos. En el caso del conjunto $X$ descrito al inicio de esta sección se puede verificar que para cada dato la distancia del dato a la media ($x_i-\bar{x}$) es:
+
+* $2-5=-3$
+* $4-5=-1$
+* $6-5=1$
+* $8-5=3$
+
+Sin embargo si sumamos estos valores el resultado es  $0$. Para cualquier conjunto de datos $X$ se verifica que $\sum_{i=1}^n{x_i-\bar{x}}=0$ por esta razón para calcular la dispersión se trabaja con la distancia cuadrática $\left(x-\bar{x}\right)^2$.
 
 La varianza es el promedio de la diferencia de la media cuadrática. Si se conocen todos los datos de una población se puede calcular la varianza poblacional:
 
@@ -338,7 +381,6 @@ Por otro lado si se conocen los datos de una población se puede calcular la var
 \end{equation}
 
 
-
 ### Desviación
 
 La desviación es la raíz cuadrada de la varianza, en las fórmulas \@ref(eq:desp) y \@ref(eq:desm) se muestran las expresiones para calcular la desviación poblacional y muestral respectivamente. 
@@ -353,9 +395,9 @@ La desviación es la raíz cuadrada de la varianza, en las fórmulas \@ref(eq:de
   (\#eq:desm)
 \end{equation}
 
-### Medidas de dispersión en R
+### Medidas de dispersión en R 
 
-Es necesario saber que R defecto no tiene una función para calcular el rango sin embargo para calcular el rango vamos a usar `max() - min()`, y que además por defecto R tiene una función para calcular la varianza muestral (`var()`) y otra para calcular la desviación muestral `sd()`, si se desea obtener la varianza y la desviación poblacional existen por lo menos 3 soluciones:
+Es necesario saber que R defecto no tiene una función para calcular el rango sin embargo para calcular el rango vamos a usar `max() - min()`, y que además por defecto R tiene una función para calcular la varianza muestral (`var()`) y otra para calcular la desviación muestral (`sd()`), si se desea obtener la varianza y la desviación poblacional existen por lo menos 3 soluciones:
 
 * Se puede multiplicar la varianza muestral por $\dfrac{n-1}{n}$ para obtener la varianza poblacional y la desviación muestral por $\sqrt{\dfrac{n-1}{n}}$ para obtener la desviación poblacional.
 * Se puede multiplicar la varianza muestral por $\dfrac{n-1}{n}$ para obtener la varianza poblacional y a ese resultado extraer la raíz cuadrada para obtener la desviación poblacional.
@@ -375,17 +417,15 @@ big4size %>%
   mutate(VARP.ACTIVOS = VARM.ACTIVOS*((n-1)/n),
          DESVP.ACTIVOS = sqrt(VARP.ACTIVOS)) %>%
   select(RANGO.ACTIVOS, VARM.ACTIVOS, DESVM.ACTIVOS, VARP.ACTIVOS, DESVP.ACTIVOS)
-
-
-
 ```
+
 ## Tablas de frecuencia
 
 Una tabla de frecuencia es una forma de describir los datos de forma resumida, las tablas de frecuencia pueden construirse para variables cualitativas y para variables cuantitativas.
 
 ### Variables Cualitativas
 
-Para las variables cualitativas una tabla de frecuencia basicámente tiene tres columnas: "Categoría", "Frecuencia", "Porcentaje". Para aprender a realizar tablas de frecuencia para variables cualitativas, trabajaremos con el conjunto de datos `audit_bolsa`, Este conjunto de datos tiene información sobre las empresas que cotizan en la Bolsa de Valores de Guayaquil, se elaborará una tabla de frecuencias de las firmas auditoras que han trabajado para estas empresas. La variable en la que se almacena esta información es la variable `FIRMA`. La tabla de frecuencia se elabora usando el paquete  `dplyr`. El comando `mutate( )` sirve para crear nuevas columnas, en este caso se crea la columna porcentaje. 
+Para las variables cualitativas una tabla de frecuencia basicámente tiene tres columnas: "Categoría", "Frecuencia", "Porcentaje". Para aprender a realizar tablas de frecuencia para variables cualitativas, trabajaremos con el conjunto de datos `audit_bolsa`, Este conjunto de datos tiene información sobre las empresas que cotizan en la Bolsa de Valores de Guayaquil, se elaborará una tabla de frecuencias de las firmas auditoras que han trabajado para estas empresas. La variable en la que se almacena esta información es la variable `FIRMA`. La tabla de frecuencia se elabora usando el paquete  `dplyr`. Recordemos que la función `mutate( )` sirve para crear nuevas columnas, en este caso se crea la columna porcentaje. 
 
 
 ```{r , echo=TRUE,eval=FALSE}
@@ -441,7 +481,7 @@ Nota: es importante tener fijado el directorio de trabajo, como se explicó en l
 
 ### Variables Cuantitativas
 
-Una tabla de frecuencias para variables cualitativas tiene 6 columnas:
+Una tabla de frecuencias para variables cuantitativas tiene 6 columnas:
 
 1. Clase: una clase es un intervalo del tipo $\left[ menor, mayor \right)$
 2. Marca de Clase: es un valor igual al promedio de los dos extremos de la clase.
@@ -548,20 +588,22 @@ Los histogramas se utilizan para variables continuas. Un histograma es un gráfi
 En la figura \@ref(fig:figura1) se muestra el histograma de la variable ventas en millones de dólares del archivo *cap2_big4_size.csv* ya descrito en la sección \@ref(primerR), este primer histograma ha sido configurado para presentar 12 barras, que las barras sean de color azul con un contorno rojo. Antes de abordar los detalles mencionados discutiremos brevemente el funcionamiento de la gramática de `ggplot2`, una gráfica realizada en `ggplot2` empieza por `ggplot(data, aes())` dentro de `aes()` se indica las variables que van a intervenir en la gráfica, Luego se añade la `geom` con la que se va a trabajar en este caso se escogió `geom_histogram()`  puesto que se desea  realizar un histograma. Como se indicó anteriormente se configuró el histograma con 12 barras (`bins=12`), la opción `color="red"` permite que el contorno de las barrras sea rojo y la opción `fill="blue"`hace que las barras sean de color azul. 
 
 ```{r figura1, results='markup', echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Histograma de las Ventas", fig.pos='h!'}
-library(ggplot2)
+
 
 ggplot(big4size, aes(x= VTAS/1000000)) + 
-  geom_histogram(bins=12, color= "red", fill="blue" )
+  geom_histogram(bins=12, color= "red", fill="blue" ) + 
+  theme_light()
 ```
 
 Para configurar las etiquetas de los ejes podemos añadir las opciones `xlab( )` y `ylab( )`. En la figura \@ref(fig:figura2) se aprecia el histograma con las etiquetas de los ejes añadidos. 
 
 ```{r figura2, results='markup', echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Histograma de las Ventas con Etiquetas en los Ejes", fig.pos='h!'}
-library(ggplot2)
+
 
 ggplot(big4size, aes(x= VTAS/1000000)) + 
   geom_histogram(bins=12, color= "red",  fill="blue" ) + 
-  xlab("Ventas en Millones de Dólares") + ylab("Frecuencia")
+  xlab("Ventas en Millones de Dólares") + ylab("Frecuencia") +
+  theme_light()
 ```
 
 Usando el archivo `Ranking2018Guayas.csv`, vamos ahora a hacer el histograma de las ventas en miles de acuerdo al tamaño de la empresa. En la figura \@ref(fig:figura3) se observa el histograma. 
@@ -574,16 +616,84 @@ max(rank2018$VENTAS/1000)
 ```
 Los valores obtenidos para el máximo y el mínimo fueron $0$ y $1348$ respectivamente, por esta razón se decidió crear 10 clases y cada clase con una longitud de 150. Adicionalmente para obtener un gráfico agradable a la vista se cambia la orientación de las marcas de $0^\circ$ a $90^\circ$ en el eje $x$ con la instrucción `theme(axis.text.x = element_text(angle = 90, hjust = 1))`.  
 
-```{r figura3, echo=TRUE,fig.cap="Histograma de las Ventas de Acuerdo al Tamaño de la empresa", fig.pos='h!'}
+```{r figura3, echo=TRUE,out.width = "60%",fig.cap="Histograma de las Ventas de Acuerdo al Tamaño de la empresa", fig.pos='h!'}
 
 ggplot(rank2018, aes(x=VENTAS/1000, fill=TAMAÑO)) + 
   geom_histogram(alpha=0.3, color="black",bins=10, binwidth = 150) +
   scale_x_continuous(breaks = seq(0,1350,150)) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1), panel.background = element_rect(fill="white")) +
   xlab("Ventas en Miles") + ylab("Frecuencia") 
 ```
 
 Se puede observar en la \@ref(fig:figura3) que algunas empresas medianas tienen mayores ventas que el resto de empresas. Una mejor forma de comparar la distribución de una variable de acuerdo a otra variable es usar los diagramas de caja que serán discutidos en profundidad en la sección \@ref(boxes). 
+
+### Diagrama de barras
+
+Los histogramas se usan para variables cuantitativas, mientras que los gráficos o diagramas de barras se utilizan para variables cualitativas. Al igual que los histogramas los diagramas de barras se elaboran para las frecuencias absolutas o las relativas. 
+
+Para ejemplificar la elaboración de diagrama de barras, vamos a trabajar con el conjunto de datos`Ranking2018Comercio.csv` que contiene una muestra de 507 empresas de Ecuador dedicadas al comercio.
+
+```{r echo=TRUE, results = 'markup' }
+rank2018com = read.csv("Ranking2018Comercio.csv",header = T,sep=";",dec=",")
+str(rank2018com)
+```
+
+El conjunto de datos tiene 507 observaciones con 12 variables. Las variables presentes en este conjunto de datos son:
+
+1. `EXPEDIENTE` variable cualitativa que almacena el número de expediente asignado por la Superintendencia de Compañías.
+2. `TIPO` es una variable cualitativa con un nivel de medición nominal que almacena el tipo de compañía. En esta variable existen 3 niveles.
+3. `ACTIVIDAD` variable cualitativa con nivel de medición nominal que almacena la actividad económica de la empresa, estas actividades se rigen por un catalógo dado por la superintendencia.
+4. `REGIÓN` variable cualittativa con nivel de medición nominal que almacena la región del país a la que pertenece la empresa.
+5. `PROVINCIA` variable cualitativa con nivel de medición nominal que almacena la provincia a la que pertenece la empresa.
+6. `TAMAÑO` variable cualitativa con nivel de medición ordinal que almacena el tamaño de la empresa.
+7. `SECTOR` variable cualitativa con nivel de medición ordinal que indica el sector al que pertenece la empresa.
+8. `EMPLEADOS`variable cuantitativa discreta que almacena el número de empleados de la empresa.
+9. `ACTIVO` variable cuantitativa continua que almacena el valor de los activos en libros de la empresa.
+10. `PATRIMONIO` varaible cuantitativa continua que almacena el valor del patrimonio en libros de la empresa.
+11. `VENTAS` varaible cuantitativa continua que almacena el valor de las ventas en libros de la empresa.
+12. `UTILIDAD` varaible cuantitativa continua que almacena el valor de la utilidad en libros de la empresa.
+
+Como hemos dicho anteriormente los diagramas de barra se utilizan para variables cualitativas. Vamos a comenzar elaborando una tabla de frecuencias de las empresas por región.
+
+```{r echo=TRUE}
+tabla_reg <- rank2018com %>%
+  group_by(REGIÓN) %>%
+  summarise(Frecuencia=n()) %>%
+  mutate(Porcentaje = round(100*Frecuencia/sum(Frecuencia),2)
+  ) %>%
+  arrange(desc(Porcentaje))
+print(tabla_reg)
+```
+
+Para hacer diagramas de barras se utiliza `geom_bar()` en este caso como deseamos hacer un diagrama de barras de las frecuencias dentro de `geom_bar()` esvribimos `stat="count"`. En la figura \@ref(fig:barras1) se observa el gráfico de barras de las empresas por región.
+
+```{r barras1, echo=TRUE,out.width = "60%",fig.cap="Gráfico de Barras de las empresas por Región", fig.pos='h!'}
+ggplot(rank2018com, aes(x=REGIÓN)) + 
+  geom_bar(stat = "count",col="black",fill="white") +
+  xlab("") + ylab("Frecuencia")
+```
+
+En la figura se observa que las regiones están en orden alfabético. Supongamos que se desea ordenar las regiones en el siguiente orden:
+
+1. Costa
+2. Sierra
+3. Oriente
+4. Galápagos
+
+Para lograr este objetivo, antes de hacer el diagrama de barras debemos reordenar las regiones. Como se muestra a continuación:
+
+```{r echo=TRUE}
+rank2018com$REGIÓN <- factor(rank2018com$REGIÓN,
+                             levels = c("COSTA", "SIERRA", "ORIENTE", "GALAPAGOS"))
+```
+
+Luego de reordenar las regiones podemos volver a realizar el gráfico de barras pero esta vez obtendremos las regiones en el orden deseado como se observa en la figura \@ref(fig:barras2):
+
+```{r barras2, echo=TRUE,out.width = "60%",fig.cap="Gráfico de Barras de las empresas por Región (Ordenadas)", fig.pos='h!'}
+ggplot(rank2018com, aes(x=REGIÓN)) + 
+  geom_bar(stat = "count",col="black",fill="white") +
+  xlab("") + ylab("Frecuencia")
+```
 
 
 
@@ -615,20 +725,20 @@ knitr::include_graphics("boxplot3.png")
 
 En la figura \@ref(fig:figura4) se observan los diagramas de caja de las ventas según el tamaño de la empresa. Se puede notar que existen diferencias entre las ventas de las empresas medianas, las microempresas y las pequeñas. El $50\%$ de las empresas medianas vende más de $1250000$, mientras que todas las microempresas venden menos de $250000$. Las empresas pequeñas que venden más de $500000$ son atípicas, mientras que en las empresas medianas no se presentan valores atípicos. 
 
-```{r figura4, echo=TRUE,fig.cap="Diagrama de Caja de las Ventas según el Tamaño de la empresa",fig.pos='h!'}
+```{r figura4, echo=TRUE,out.width = "60%",fig.cap="Diagrama de Caja de las Ventas según el Tamaño de la empresa",fig.pos='h!'}
 
 ggplot(rank2018, aes(TAMAÑO, VENTAS/1000)) + 
   geom_boxplot() + xlab("Tamaño de las empresas") +
-  ylab("Ventas en Miles de Dólares")
+  ylab("Ventas en Miles de Dólares") +theme_light()
 ```
 
 Si se quisiera analizar con mayor detalle las microempresas se podría seleccionar solo las empresas con este tamaño y elaborar el diagrama de caja correspondiente, para lograr esto se utiliza la función `subset(df, cond)`. donde `df` corresponde al *data frame* usado y *cond* a la regla que deben cumplir los datos a ser analizados. 
 
-```{r figura5, echo=TRUE,fig.cap="Diagrama de Caja de las Ventas de las Microempresas", fig.pos='h!'}
+```{r figura5, out.width = "60%", echo=TRUE,fig.cap="Diagrama de Caja de las Ventas de las Microempresas", fig.pos='h!'}
 
 ggplot(subset(rank2018, TAMAÑO == "MICROEMPRESA"), aes(TAMAÑO, VENTAS/1000)) + 
   geom_boxplot() + xlab("") +
-  ylab("Ventas en Miles de Dólares")
+  ylab("Ventas en Miles de Dólares") +theme_light()
 ```
 
 

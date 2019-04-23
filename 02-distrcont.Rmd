@@ -1,3 +1,10 @@
+```{r include = FALSE}
+if(!knitr:::is_html_output())
+{
+  knitr::opts_chunk$set(fig.pos = 'h')
+}
+```
+
 # Distribuciones de probabilidad {#distr}
 
 
@@ -59,27 +66,27 @@ names(dt) <- c("Tiempo")
 
 p1 <-ggplot(dt, aes(x=Tiempo)) + 
   geom_histogram(aes(y=..density..), bins=10,colour="black", fill="white") +
-  ylab("") + geom_density(alpha=.2, fill="#FF6666")  + xlab("")
+  ylab("") + geom_density(alpha=.2, fill="#FF6666")  + xlab("") + theme_light()
 
 p2 <- ggplot(dt, aes(x=Tiempo)) + 
   geom_histogram(aes(y=..density..), bins=20,colour="black", fill="white") +
-  ylab("") + geom_density(alpha=.2, fill="#FF6666") + xlab("")
+  ylab("") + geom_density(alpha=.2, fill="#FF6666") + xlab("")  + theme_light()
 
 p3 <- ggplot(dt, aes(x=Tiempo)) + 
   geom_histogram(aes(y=..density..), bins=30,colour="black", fill="white") +
-  ylab("") + geom_density(alpha=.2, fill="#FF6666") + xlab("")
+  ylab("") + geom_density(alpha=.2, fill="#FF6666") + xlab("")  + theme_light()
 
 p4 <- ggplot(dt, aes(x=Tiempo)) + 
   geom_histogram(aes(y=..density..), bins=40,colour="black", fill="white") +
-  ylab("") + geom_density(alpha=.2, fill="#FF6666") + xlab("")
+  ylab("") + geom_density(alpha=.2, fill="#FF6666") + xlab("")  + theme_light()
 
 p5 <- ggplot(dt, aes(x=Tiempo)) + 
   geom_histogram(aes(y=..density..), bins=50,colour="black", fill="white") +
-  ylab("") + geom_density(alpha=.2, fill="#FF6666") + xlab("")
+  ylab("") + geom_density(alpha=.2, fill="#FF6666") + xlab("")  + theme_light()
 
 p6 <- ggplot(dt, aes(x=Tiempo)) + 
   geom_histogram(aes(y=..density..), bins=60,colour="black", fill="white") +
-  ylab("") + geom_density(alpha=.2, fill="#FF6666") + xlab("")
+  ylab("") + geom_density(alpha=.2, fill="#FF6666") + xlab("")  + theme_light()
 
 
 grid.arrange(p1,p2,p3,p4,p5,p6)

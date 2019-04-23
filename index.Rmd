@@ -20,6 +20,10 @@ library(kableExtra)
 library(tidyverse)
 library(gridExtra)
 library(latex2exp)
+library(tinytex)
+library(formatR)
+library(VGAM)
+library(methods)
 ```
 
 # ¿A quién va dirigido este libro?

@@ -1,3 +1,10 @@
+```{r include = FALSE}
+if(!knitr:::is_html_output())
+{
+  knitr::opts_chunk$set(fig.pos = 'h')
+}
+```
+
 # Intervalos de Confianza y Pruebas de Hipótesis {#icph}
 
 En la sección \@ref(estypes) se habló de los típos de estadística, la estadística inferencial consiste de los métodos por medio de los cuales se  puede hacer inferencias o generalizaciones sobre una población. La inferencia estadística se puede dívidir en dos grandes áreas: **estimación** y **pruebas de hipótesis**.
@@ -275,7 +282,7 @@ knitr::include_graphics("power.png")
 
 ```
 
-### El valor $p$
+### El valor $p$ {#pvalor}
 
 El valor $p$ es la probabilidad, calculada suponiendo que la hipótesis nula es cierta, de obtener un valor del estadístico de prueba al menos tan contradictorio para $H_0$ como el valor calculado a partir de la muestra disponible. Dicho de otra forma el valor $p$ es el nivel más bajo de significancia en el que el valor observado del estadístico de prueba es significativo.
 
