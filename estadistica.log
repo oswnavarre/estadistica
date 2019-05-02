@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6500 64-bit) (preloaded format=xelatex 2019.2.9)  23 APR 2019 16:21
+This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6500 64-bit) (preloaded format=xelatex 2019.2.9)  2 MAY 2019 02:47
 entering extended mode
 **./estadistica.tex
 (estadistica.tex
@@ -1020,191 +1020,241 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [8]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 245.
-[9] [10] [11] [12] [13] [14]
+File: project1.png Graphic file (type bmp)
+<project1.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+File: project2.png Graphic file (type bmp)
+<project2.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[9]
+File: project3.png Graphic file (type bmp)
+<project3.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+File: project4.png Graphic file (type bmp)
+<project4.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[10] [11] [12] [13] [14] [15] [16]
 Missing character: There is no ó in font lmmi10!
-[15]
+[17]
 File: estadistica_files/figure-latex/rnl1-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/rnl1-1.pdf>
-[16] [17] [18] [19]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[20]
-Underfull \hbox (badness 1406) in paragraph at lines 984--985
+[18] [19] [20] [21]
+Underfull \hbox (badness 1406) in paragraph at lines 1028--1029
 []\TU/lmr/m/n/10 Para ejemplificar la construcción de una tabla de contingencia
  vamos a trabajar con el archivo
  []
 
-[21]
+[22] [23]
 File: estadistica_files/figure-latex/figura1-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/figura1-1.pdf>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 File: estadistica_files/figure-latex/figura2-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/figura2-1.pdf>
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[22]
+[24]
 File: estadistica_files/figure-latex/figura3-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/figura3-1.pdf>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[23]
-Overfull \hbox (60.49498pt too wide) in paragraph at lines 1169--1169
+[25]
+Overfull \hbox (60.49498pt too wide) in paragraph at lines 1213--1213
 []\TU/lmtt/m/n/10 ##  $ TIPO      : Factor w/ 3 levels "ANÓNIMA","RESPONSABILID
 AD LIMITADA",..: 1 1 2 1 1 2 1 1 2 2 ...[] 
  []
 
 
-Overfull \hbox (34.24498pt too wide) in paragraph at lines 1169--1169
+Overfull \hbox (34.24498pt too wide) in paragraph at lines 1213--1213
 []\TU/lmtt/m/n/10 ##  $ ACTIVIDAD : Factor w/ 112 levels "G4510.01","G4520.01",
 ..: 69 69 71 69 42 1 4 26 60 76 ...[] 
  []
 
-[24] [25]
+[26]
 File: estadistica_files/figure-latex/barras1-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/barras1-1.pdf>
+[27]
 File: estadistica_files/figure-latex/barras2-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/barras2-1.pdf>
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Overfull \vbox (1.99525pt too high) detected at line 1364
+ []
 
-[26]
+[28]
+File: estadistica_files/figure-latex/barras3-1.pdf Graphic file (type pdf)
+<use estadistica_files/figure-latex/barras3-1.pdf>
 File: boxplot3.png Graphic file (type bmp)
 <boxplot3.png>
-[27]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 File: estadistica_files/figure-latex/figura4-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/figura4-1.pdf>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[29]
 File: estadistica_files/figure-latex/figura5-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/figura5-1.pdf>
-[28]
-Capítulo 3.
-[29
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[30] [31] [32
 
 ]
+Capítulo 3.
+[33]
 File: estadistica_files/figure-latex/densidad-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/densidad-1.pdf>
-[30]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 File: estadistica_files/figure-latex/normal-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/normal-1.pdf>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[34]
 File: estadistica_files/figure-latex/normalmus-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/normalmus-1.pdf>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: estadistica_files/figure-latex/normalsds-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/normalsds-1.pdf>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: estadistica_files/figure-latex/unasd-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/unasd-1.pdf>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: estadistica_files/figure-latex/dossd-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/dossd-1.pdf>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: estadistica_files/figure-latex/tressd-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/tressd-1.pdf>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[31]
+
+Underfull \vbox (badness 2564) has occurred while \output is active []
+
+[35]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[36]
 File: estadistica_files/figure-latex/normalz-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/normalz-1.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+[37]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 1562.
-[32]
+(Font)              <14.4> on input line 1651.
 File: estadistica_files/figure-latex/tstudent-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/tstudent-1.pdf>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: estadistica_files/figure-latex/tz-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/tz-1.pdf>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[33] [34] [35] [36
+[38]
+Overfull \hbox (43.06226pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 3.5.  CÁLCULO DE PROBABILIDADES Y USO DE LA DISTRIBUCIÓN NORMAL
+ Y LA $\OML/lmm/m/it/10 T$ \TU/lmr/m/sl/10 DE STUDENT EN R \TU/lmr/m/n/10 39
+ []
+
+[39] [40]
+Overfull \hbox (43.06226pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 3.5.  CÁLCULO DE PROBABILIDADES Y USO DE LA DISTRIBUCIÓN NORMAL
+ Y LA $\OML/lmm/m/it/10 T$ \TU/lmr/m/sl/10 DE STUDENT EN R \TU/lmr/m/n/10 41
+ []
+
+[41] [42
 
 ]
 Capítulo 4.
 File: estadistica_files/figure-latex/figura6-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/figura6-1.pdf>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: estadistica_files/figure-latex/figura7-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/figura7-1.pdf>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[37] [38]
+[43] [44]
 File: ic.png Graphic file (type bmp)
 <ic.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 1687.
+(Font)              <12> on input line 1903.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 1687.
+(Font)              <8> on input line 1903.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 1687.
-
-Underfull \vbox (badness 5893) has occurred while \output is active []
-
-[39] [40] [41] [42]
+(Font)              <6> on input line 1903.
+[45] [46] [47] [48]
 File: phtest.png Graphic file (type bmp)
 <phtest.png>
-[43]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[49]
 File: phless.png Graphic file (type bmp)
 <phless.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 File: phmore.png Graphic file (type bmp)
 <phmore.png>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: ph2c.png Graphic file (type bmp)
 <ph2c.png>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[44]
+[50]
 File: power.png Graphic file (type bmp)
 <power.png>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-Overfull \hbox (3.89061pt too wide) in alignment at lines 1947--1952
+[51]
+Overfull \hbox (3.89061pt too wide) in alignment at lines 2163--2168
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (3.89061pt too wide) in alignment at lines 1952--1956
+Overfull \hbox (3.89061pt too wide) in alignment at lines 2168--2172
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (3.89061pt too wide) in alignment at lines 1956--1965
+Overfull \hbox (3.89061pt too wide) in alignment at lines 2172--2181
  [] [] [] [] [] 
  []
 
-[45] [46] [47] [48
+[52] [53] [54]
+Underfull \hbox (badness 10000) in paragraph at lines 2345--2346
+\TU/lmtt/m/n/10 y = NULL, alternative = "two.sided", mu = 0, sigma.x = NULL,   
+sigma.y = NULL, conf.level
+ []
 
-]
+
+Underfull \hbox (badness 10000) in paragraph at lines 2381--2382
+\TU/lmtt/m/n/10 NULL,alternative = c("two.sided", "less", "greater"),mu = 0, pa
+ired = FALSE, var.equal =
+ []
+
+[55] [56] [57] [58]
 Capítulo 5.
 File: corr.png Graphic file (type bmp)
 <corr.png>
@@ -1218,7 +1268,9 @@ File: estadistica_files/figure-latex/corr3-1.pdf Graphic file (type pdf)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[49]
+[59
+
+]
 File: corr3.png Graphic file (type bmp)
 <corr3.png>
 
@@ -1226,50 +1278,60 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 File: corr4.png Graphic file (type bmp)
 <corr4.png>
-[50] [51]
+[60] [61]
 File: estadistica_files/figure-latex/vtaspub-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/vtaspub-1.pdf>
 File: estadistica_files/figure-latex/centroide-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/centroide-1.pdf>
-[52] [53]
+[62] [63]
 File: estadistica_files/figure-latex/regre1-1.pdf Graphic file (type pdf)
 <use estadistica_files/figure-latex/regre1-1.pdf>
 File: error.png Graphic file (type bmp)
 <error.png>
-[54]
+[64]
 File: regre3.png Graphic file (type bmp)
 <regre3.png>
-[55] [56]
+[65] [66]
 File: error5.png Graphic file (type bmp)
 <error5.png>
+[67]
 
-Underfull \vbox (badness 2865) has occurred while \output is active []
+LaTeX Warning: Reference `rscuared' on page 68 undefined on input line 2954.
 
-[57] [58]
+[68]
+File: estadistica_files/figure-latex/pairs-1.pdf Graphic file (type pdf)
+<use estadistica_files/figure-latex/pairs-1.pdf>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[69] [70]
 Capítulo 6.
-[59
+[71
 
-] [60
+] [72
 
 ]
 Capítulo 7.
-(estadistica.bbl [61] [62
+(estadistica.bbl [73] [74
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2373.
-[63]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2373.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3074.
+[75]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3074.
 (estadistica.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2373.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2373.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 3074.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 3074.
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 23309 strings out of 427835
- 428703 string characters out of 3152455
- 580635 words of memory out of 3000000
- 26987 multiletter control sequences out of 15000+200000
+ 23361 strings out of 427835
+ 429656 string characters out of 3152455
+ 584491 words of memory out of 3000000
+ 27033 multiletter control sequences out of 15000+200000
  559084 words of font info for 77 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
- 45i,10n,68p,10454b,448s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 45i,10n,68p,10454b,444s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on estadistica.pdf (63 pages).
+Output written on estadistica.pdf (75 pages).

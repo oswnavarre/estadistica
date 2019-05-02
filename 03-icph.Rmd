@@ -1,7 +1,7 @@
 ```{r include = FALSE}
 if(!knitr:::is_html_output())
 {
-  knitr::opts_chunk$set(fig.pos = 'h')
+  knitr::opts_chunk$set(fig.pos = 'h!')
 }
 ```
 
@@ -9,7 +9,7 @@ if(!knitr:::is_html_output())
 
 En la sección \@ref(estypes) se habló de los típos de estadística, la estadística inferencial consiste de los métodos por medio de los cuales se  puede hacer inferencias o generalizaciones sobre una población. La inferencia estadística se puede dívidir en dos grandes áreas: **estimación** y **pruebas de hipótesis**.
 
-Imaginemos que se desea estimar el promedio de las ventas en miles de las empresas que son auditadas por firmas Big Four, sin embargo debemos recordar que en nuestro conjunto de datos no tenemos a todas las empresas sino a una muestra de las empresas, por lo que afirmar que el valor obtenido es el promedio de todas las empresas auditadas por Big  Four es el valor real es muy arriesgado. Sin embargo, podríamos dar un intervalo en el que posiblemente se encuentre el valor que deseamos estimar. 
+Imaginemos que se desea estimar el promedio de las ventas en miles de las empresas que son auditadas por firmas Big Four, sin embargo debemos recordar que en nuestro conjunto de datos no tenemos a todas las empresas sino a una muestra de las empresas, por lo que afirmar que el valor obtenido es el promedio de todas las empresas auditadas por Big  Four es muy arriesgado. Sin embargo, podríamos dar un intervalo en el que posiblemente se encuentre el valor que deseamos estimar. 
 
 Ahora supongamos que usted como investigador quiere probar que el promedio de las ventas en miles de las empresas que son auditadas por una Big Four es mayor a las empresas que no son auditadas por una Big Four. Una primera aproximación para resolver este problema es realizar una gráfica que le muestre las ventas de acuerdo al tipo de empresa auditora. 
 
@@ -24,7 +24,7 @@ big4size <- big4size %>%
 
 En las figuras \@ref(fig:figura6) y \@ref(fig:figura7) se observa el histograma y el diagrama de caja de las ventas de acuerdo a la firma auditora. Al observar las gráficas se puede afirmar que evidentemente el promedio de las ventas de las empresas auditadas por firmas Big Four es mayor, sin embargo en estadística no se puede confirmar o negar una afirmación con solo ver un gráfico.
 
-```{r figura6, echo=TRUE,fig.cap="Histograma de las Ventas de Acuerdo al tipo de Firma Auditora"}
+```{r figura6, echo=TRUE,out.width="70%",fig.cap="Histograma de las Ventas de Acuerdo al tipo de Firma Auditora",fig.pos = 'h!'}
 
 ggplot(big4size, aes(x=VTAS/1000, fill=Big4)) + 
   geom_histogram(alpha=0.3, color="black",bins=10, binwidth = 200000) +
@@ -33,7 +33,7 @@ ggplot(big4size, aes(x=VTAS/1000, fill=Big4)) +
   xlab("Ventas en Miles") + ylab("Frecuencia") 
 ```
 
-```{r figura7, echo=TRUE,fig.cap="Diagrama de Caja de las Ventas de Acuerdo al tipo de Firma Auditora"}
+```{r figura7, echo=TRUE,out.width="70%",fig.cap="Diagrama de Caja de las Ventas de Acuerdo al tipo de Firma Auditora",fig.pos = 'h!'}
 
 ggplot(big4size, aes(Big4, VTAS/1000)) + 
   geom_boxplot() + xlab("Tipo de Firma") +
@@ -63,13 +63,13 @@ Un intervalo de confianza del $C \%$ indica que si construimos muchos de esos in
 
 Por ejemplo en la figura \@ref(fig:ic) se muestran 100 intervalos construidos con el $95 \%$ de confianza para el promedio poblacional, para construir cada intervalo se tomaron muestras de 100 elementos. Los intervalos de color celeste son los que contienen el valor real del parámetro, los intervalos de color rojo son los que no contienen el valor real del parámetro. El lector puede verificar que $5$ intervalos es decir el $5 \%$ no contiene el valor real del parámetro lo que implica que el $95 \%$ de los intervalos sí contiene el valor real del parámetro.
 
-```{r ic, out.width = "70%",fig.cap="Intervalos de Confianza simulados",fig.align = 'center', echo=FALSE}
+```{r ic, out.width = "70%",fig.cap="Intervalos de Confianza simulados",fig.align = 'center', echo=FALSE,dpi=120,fig.pos = 'h!'}
 
 knitr::include_graphics("ic.png")
 
 ```
 
-### Intervalo de Confianza para la media $\mu$
+### Intervalo de Confianza para la media $\mu$ {#icmu}
 
 Para construir un intervalo de confianza para $\mu$ existen dos casos, el primero es cuando se conoce la desviación poblacional $\sigma$ y el segundo cuando no se conoce la desviación poblacional $\sigma$.El primer caso es hipotético y puede ser considerado un caso para ejemplificar el concepto de intervalo de confianza, en la sección \@ref(jt) se explica en detalle por qué consideramos este un caso hipotético. Para el primer caso usamos la distribución normal y para el segundo debemos usar otra distribución como lo veremos en la sección \@ref(icsd).
 
@@ -227,7 +227,7 @@ H_1: \mu \neq 500
 
 Una *regla de decisión* podría ser escoger un punto o puntos límites en el eje $x$´como en la figura \@ref(fig:pht). La gráfica de color rojo representa $H_0$ y las de color celeste representan $H_1$. En este caso vamos a escoger dos puntos límites porque si la media muestral se encuentra a la izquierda o a la derecha de estos límites, se rechaza $H_0$. En cualquiera de los dos casos la media muestral está demasiado lejos de $H_0$ para ser creíble. Si la media muestral $\bar{x}$ está entre los valores límite se acepta $H_0$. La región entre los puntos límite es la *región de no rechazo* y hacía la izquierda o derecha de los puntos límite se encuentra la *región de rechazo*.
 
-```{r pht, out.width = "50%",fig.cap="Errores Tipo I y II",fig.align = 'center', echo=FALSE}
+```{r pht, out.width = "60%",fig.cap="Errores Tipo I y II",fig.align = 'center', echo=FALSE,fig.pos = 'h!'}
 
 knitr::include_graphics("phtest.png")
 
@@ -245,19 +245,19 @@ Los puntos lìmites son conocidos como **valores críticos**. Un procedimiento m
 
 Una forma sencilla de entender cómo establecer la regla de decisión es ver la hipótesis alternativa. La hipótesis alternativa puede tener los símbolos $<$, $>$ o $\neq$. La región de rechazo de cada una se sombrea de color verde en las figuras \@ref(fig:phless), \@ref(fig:phmore) y \@ref(fig:ph2c) respectivamente, al igual que en la figura \@ref(fig:pht) la distribución de rojo corresponde a $H_0$ y la de azul a $H_1$. Las figuras \@ref(fig:phless) y \@ref(fig:phmore) corresponden a pruebas de hipótesis de **una cola** y la figura \@ref(fig:ph2c) corresponde a una prueba de hipótesis de **dos colas**
 
-```{r phless, out.width = "50%",fig.cap="$H_1:<$",fig.align = 'center', echo=FALSE}
+```{r phless, out.width = "60%",fig.cap="$H_1:<$",fig.align = 'center', echo=FALSE,fig.pos = 'h!'}
 
 knitr::include_graphics("phless.png")
 
 ```
 
-```{r phmore, out.width = "50%",fig.cap="$H_1:>$",fig.align = 'center', echo=FALSE}
+```{r phmore, out.width = "60%",fig.cap="$H_1:>$",fig.align = 'center', echo=FALSE,fig.pos = 'h!'}
 
 knitr::include_graphics("phmore.png")
 
 ```
 
-```{r ph2c, out.width = "50%",fig.cap="$H_1:\\neq$",fig.align = 'center', echo=FALSE}
+```{r ph2c, out.width = "60%",fig.cap="$H_1:\\neq$",fig.align = 'center', echo=FALSE,fig.pos = 'h!'}
 
 knitr::include_graphics("ph2c.png")
 
@@ -276,7 +276,7 @@ Otro concepto relacionado a las probabilidades de error es la **potencia de una 
 (\#eq:power)
 \end{equation}
 
-```{r power, out.width = "50%",fig.cap="Potencia de una prueba de Hipótesis",fig.align = 'center', echo=FALSE}
+```{r power, out.width = "60%",fig.cap="Potencia de una prueba de Hipótesis",fig.align = 'center', echo=FALSE,fig.pos = 'h!'}
 
 knitr::include_graphics("power.png")
 
@@ -305,11 +305,269 @@ colnames(dt) <- columnas
 kable(dt, booktabs = T, caption = "Estadísticos",format = "pandoc")
 ```
 
+\newpage
 
-### Pruebas de hipótesis e Intervalos de Confianza para la media en R
+## Intervalos de confianza en R
+
+### Para la media
+
+Recapitulando lo revisado en las secciones \@ref(jt) y \@ref(icsd) se definieron los intervalos de confianza para la media con $\sigma$ conocida y desconocida respectivamente. Como se mencionó antes el primer caso es un caso hipotético que sirve como una primera aproximación al concepto y la definición de intervalo de confianza. Mientras que el segundo caso es el escenario con el que frecuentemente se encuentra un investigador o un analista. 
+
+Para el primer caso `R` no tiene una función definida en su instalación base, a manera de ejemplo vamos a hacer algunas suposiciones para construir intervalos de confianza con la distribución normal. El paquete `BSDA` tiene la función `z-test( )` que también será utilizada. Mientras que para el segundo caso se tiene la función `t.test`, que como el lector ha de suponer tiene como objetivo principal realizar pruebas de hipóresis utilizando la distribución $t$  de Student. Esta función además permite obtener intervalos de confianza.
+
+En las dos subsecciones a continuación se trabajará con la variable `ACTIVOS` de las microempresas de la base de datos `Ranking2018Comercio.csv` 
+
+#### $\sigma$ conocida {#musc}
+
+En la ecuación \@ref(eq:icmusc) se define el intervalo de confianza para la media cuando se conoce $\sigma$. Para construir el intervalo supondremos que la desviación de los datos es la desviación poblacional. Recalcamos que esta suposición la hacemos solo para efectos prácticos. 
+
+Primero cargamos los datos y seleccionamos solo los valores con los que deseamos trabajar. Usamos la función `filter( )` para seleccionar las observaciones que cumplen con la condición de que el tamaño de la empresa sea microempresa. Y luego seleccionamos solo la variable que analizaremos con la función `select( )`, en este caso solo escogemos la variable `ACTIVO`. Al finalizar la operación de filtro y selección usamos la función `attach( )`, el argumento que se escribe en la función es el nombre del conjunto de datos. La función `attach` sirve para cargar los datos a la memoria, la principal ventaja de usarla es que cuando los datos se cargan a la memoria no debemos usar el operador `$` por ejemplo en vez de escribir `dataframe$variable` ahora solo escribiremos `variable`. 
 
 
+```{r include=TRUE, eval=FALSE, results='hide'}
 
-### Pruebas de hipótesis e Intervalos de Confianza para la proporción en R
+rank18com = read.csv("Ranking2018Comercio.csv",header=TRUE, 
+                     dec=",", sep=";")
+
+rank18com.Micro = rank18com %>%
+  filter(TAMAÑO == "MICROEMPRESA") %>%
+  select(ACTIVO)
+
+attach(rank18com.Micro)
+
+```
+
+```{r include=FALSE, eval=TRUE,  results='hide'}
+
+rank18com = read.csv("Ranking2018Comercio.csv",header=TRUE, 
+                     dec=",", sep=";")
+
+rank18com.Micro = rank18com %>%
+  filter(TAMAÑO == "MICROEMPRESA") %>%
+  select(ACTIVO)
+
+attach(rank18com.Micro)
+
+```
+
+Vamos a calcular la media y la desviación de los activos de las microempresas.
+
+```{r, echo=TRUE}
+
+media = mean(ACTIVO)
+desviacion = sd(ACTIVO)
+```
+
+Vamos ahora a calcular el término $Z_{\frac{\alpha}{2}}\dfrac{\sigma}{\sqrt{n}}$ para calcular el término $Z_{\frac{\alpha}{2}}$ trabajamos con la función `qnorm` el argumento que escribimos en la función es el valor $1-\frac{\alpha}{2}$, si el intervalo es con el $95\%$ de confianza $\alpha=0.05$ por lo que el valor a ser escrito en la función es $1-\frac{0.05}{2}=0.975$. Para calcular $\sqrt{n}$ primero determinamos $n$ con la función `nrow()` el argumento que recibe esta función es el conjunto de datos. Para calcular la raíz utilizamos la función `sqrt( )`.
+
+ 
+```{r, echo=TRUE}
+
+error  = qnorm(0.975)*desviacion/sqrt(nrow(rank18com))
+
+```
+
+Ahora calculamos los extremos del intervalo:
+
+```{r, echo=TRUE, collapse = TRUE}
+
+menor = media - error
+mayor = media + error
+menor
+mayor
+
+```
+
+El intervalo con el $95\%$ de confianza para la media es $\left( 29074.58, 48737.94 \right)$. Si quisieramos calcular el intervalo con el $98\%$ de confianza cambiamos el argumento en la función `qnorm()` de $0.975$ a $0.99$.
 
 
+```{r, echo=TRUE, collapse=TRUE}
+
+error  = qnorm(0.99)*desviacion/sqrt(nrow(rank18com))
+menor = media - error
+mayor = media + error
+menor
+mayor
+
+```
+
+El intervalo con el $98\%$ de confianza para la media es $\left( 27236.71, 50575.81 \right)$.
+
+Otra opción si no se desea programar todos los pasos es usar la función `z.test` del paquete `BSDA` en la función `z.test()` se debe indicar el valor de $\sigma$ en este caso, como antes, asumiremos que $\sigma$ es la desviación de los activos obtenida con anterioridad. Ya que solo nos interesa calcular el intervalo de confianza usaremos `z.test()$conf.int` que nos dará el intervalo con un $95\%$ de confianza:
+
+```{r, echo=TRUE, collapse=TRUE}
+library(BSDA)
+z.test(ACTIVO,sigma.x = desviacion)$conf.int
+```
+
+Si deseamos calcular el intervalo con un nivel de confianza diferente al $95\%$, por ejemplo el $98\%$, indicamos la opción `conf.level=0.98`
+
+```{r, echo=TRUE, collapse=TRUE}
+z.test(ACTIVO,sigma.x = desviacion, conf.level = 0.98)$conf.int
+```
+
+#### $\sigma$ desconocida {#musd}
+
+La función `t.test()` se utiliza para realizar pruebas de hipótesis, sin embargo entre sus salidas o resultados se encuenta un intervalo de confianza, debido a que solo nos interesa calcular intervalos de confianza utilizaremos la instrucción `t.test()$conf.int` que nos dará directamente el intervalo con un $95\%$ de confianza:
+
+```{r, echo=TRUE, collapse=TRUE}
+
+t.test(ACTIVO)$conf.int
+
+```
+
+Si deseamos calcular el intervalo con otro nivel de confianza, por ejemplo el $90\%$, agregamos dentro de la función `t.test()` la opción `conf.level = 0.90`
+
+```{r, echo=TRUE, collapse=TRUE}
+
+t.test(ACTIVO, conf.level = 0.90 )$conf.int
+
+```
+
+Para terminar esta sección vamos a liberar la memoria de los datos `rank18com.Micro` para esto usamos la función `detach`
+
+```{r, echo = TRUE}
+detach(rank18com.Micro)
+```
+
+### Diferencia de medias
+
+#### $\sigma_1$ y $\sigma_2$ conocidas
+
+Para esta sección necesitamos dos grupos el grupo 1 serán las pequeñas empresas y el grupo 2 las microempresas, 
+
+```{r echo=TRUE, results='hide'}
+rank18com.Peq = rank18com %>%
+  filter(TAMAÑO == "PEQUEÑA") %>%
+  select(ACTIVO)
+act.Peq = rank18com.Peq$ACTIVO
+
+rank18com.Micro = rank18com %>%
+  filter(TAMAÑO == "MICROEMPRESA") %>%
+  select(ACTIVO)
+act.Micro = rank18com.Micro$ACTIVO
+```
+
+Vamos a elaborar el intervalo de confianza para la diferencia de medias de los dos grupos $\mu_1-\mu_2$. Esto lo vamos a hacer con la función `z.test` del paquete `BSDA`. En la sección \@ref(musc) utilizamos la función para elaborar el intervalo de confianza. En extenso esta función se usa de la siguiente forma `z.test(x, y = NULL, alternative = "two.sided", mu = 0, sigma.x = NULL,
+  sigma.y = NULL, conf.level = 0.95)` Como podemos ver por defecto el programa calcula el intervalo de confianza con un $95\%$ de confianza. Además debemos indicar los valores de $\sigma_1$ y $\sigma_2$ y al igual que en la seccion \@ref(musc) supondremos que la desviación muestral es la desviación poblacional. Vamos a calcular el intervalo de confianza para la diferencia de medias con el $95$% de confianza. 
+
+```{r echo=TRUE}
+library(BSDA)
+z.test(x=act.Peq, sigma.x = sd(act.Peq), 
+       y=act.Micro, sigma.y = sd(act.Micro))$conf.int
+```
+
+Vamos ahora a modficar el parámetro de la confianza y trabajamos con un nivel de $90\%$ de confianza.
+
+```{r echo=TRUE}
+library(BSDA)
+z.test(x=act.Peq, sigma.x = sd(act.Peq), 
+       y=act.Micro, sigma.y = sd(act.Micro), 
+       conf.level = 0.90)$conf.int
+```
+
+
+#### Desviaciones desconocidas y diferentes
+
+Para esta sección y la siguiente vamos a trabajar con las mismas variables de la sección anterior. Como en la sección \@ref(musd) vamos a trabajar con la función `t.test` el uso de esta función es `t.test(x, y = NULL,alternative = c("two.sided", "less", "greater"),mu = 0, paired = FALSE, var.equal = FALSE,conf.level = 0.95, ...)` La función por defecto calcula el intervalo con el $95$% de confianza y se asume que las desviaciones son diferentes. 
+
+Vamos a trabajar ahora con un intervalo de confianza al $95$% para la diferencia de medias con desviaciones desconocidas y diferentes. Aunque por defecto la función asume que las desviaciones son diferentes incluimos la opción `var.equal = FALSE`. 
+
+```{r echo=TRUE}
+t.test(x=act.Peq, y=act.Micro, var.equal = FALSE,
+       conf.level = 0.95)$conf.int
+```
+
+Si calculamos el intervalo ahora con el $98$% de confianza.
+
+```{r echo=TRUE}
+t.test(x=act.Peq, y=act.Micro, var.equal = FALSE,
+       conf.level = 0.98)$conf.int
+```
+
+
+#### Desviaciones desconocidas e iguales
+
+Cuando se asumen desviaciones iguales se usa la opción `var.equal = TRUE`. El intervalo de confianza con el $95$% se calcula de la siguiente forma:
+
+```{r echo=TRUE}
+t.test(x=act.Peq, y=act.Micro, var.equal = TRUE,
+       conf.level = 0.95)$conf.int
+```
+
+Mientras que el intervalo con el $98$% seria:
+
+```{r echo=TRUE}
+t.test(x=act.Peq, y=act.Micro, var.equal = TRUE,
+       conf.level = 0.98)$conf.int
+```
+
+
+## Pruebas de Hipótesis en R
+
+### Para la media 
+
+
+En este caso vamos a usar la función `z.test()` o `t.test()`  dependiendo si la o las desviaciones son conocidas o desconocidas respectivamente.
+
+#### $\sigma$ conocida
+
+El uso de la función `z.test` es `z.test(x, y = NULL,alternative = "two.sided", mu = 0, sigma.x = NULL,sigma.y = NULL, conf.level = 0.95)` para pruebas de hipótesis de una sola variable solo ingresamos la variable a ser analizada en `x`,  para indicar la hipótesis alternativa en la opción `alternative` podemos escribir `"greater"`para mayor, ``"less"`` para menor o `"two.sided"` para diferente. Como antes debemos indicar el valor de la desviación conocida que asumiremos también que es la desviación de la muestra.
+Para indicar el valor hipotético de la media reemplazamos en la opción `mu=0` el valor de $0$ por el valor hipotético.
+
+Para ejemplificar el uso de la función, supongamos que queremos verificar si la media del valor de los activos de las microempresas dedicadas al comercio es diferente de $40\;000$, con una significancia del $5\%$, cuando hacemos la prueba de hipótesis debemos indicar la confianza que es el complemento de la significancia $\text{Confianza}=1- \text{Significancia} \rightarrow \text{Significancia}=1-\text{Confianza}$.   
+
+Como ya es costumbre, cargamos primero el archivo a ser analizado. 
+
+```{r include=TRUE, eval=FALSE, results='hide'}
+
+rank18com = read.csv("Ranking2018Comercio.csv",header=TRUE, 
+                     dec=",", sep=";")
+
+rank18com.Micro = rank18com %>%
+  filter(TAMAÑO == "MICROEMPRESA") %>%
+  select(ACTIVO)
+
+attach(rank18com.Micro)
+
+```
+
+```{r include=FALSE, eval=TRUE,  results='hide'}
+
+rank18com = read.csv("Ranking2018Comercio.csv",header=TRUE, 
+                     dec=",", sep=";")
+
+rank18com.Micro = rank18com %>%
+  filter(TAMAÑO == "MICROEMPRESA") %>%
+  select(ACTIVO)
+
+attach(rank18com.Micro)
+
+```
+
+
+La hipótesis nula y alternativa serían:
+
+\begin{equation} 
+\begin{cases} 
+H_0: \mu = 40\;000 \\ 
+H_1: \mu \neq 40\;000
+\end{cases} 
+\end{equation}
+
+La instrucción en R para hacer la prueba de hipótesis sería:
+
+```{r, echo=TRUE, collapse=TRUE}
+desviacion = sd(ACTIVO)
+z.test(ACTIVO, mu = 40000, sigma.x = desviacion, conf.level = 0.95)
+```
+
+En este caso el valor $p$ (`p-value`) es igual a $0.8274$ y recordemos que en la sección \@ref(pvalor) se definió el criterio del valor $p$ que consiste en rechazar $H_0$ cuando $p < \alpha$. En este caso se acepta la hipótesis nula de que el valor real de la media es igual a $40\;000$.
+
+Supongamos ahora que se desea probar que el valor real de la media es menor a $40\;000$, para hacer esto incluimos la opción `alternative ="less".
+
+```{r, echo=TRUE, collapse=TRUE}
+z.test(ACTIVO, mu = 40000, sigma.x = desviacion,alternative = "less",  conf.level = 0.95)
+```
+
+Las conclusiones son parecidas a la primera prueba de hipótesis realizada.

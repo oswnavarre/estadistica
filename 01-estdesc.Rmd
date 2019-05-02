@@ -1,7 +1,7 @@
 ```{r include = FALSE}
 if(!knitr:::is_html_output())
 {
-  knitr::opts_chunk$set(fig.pos = 'h')
+  knitr::opts_chunk$set(fig.pos = 'h!')
 }
 ```
 
@@ -69,7 +69,39 @@ x <- c(3,7,9,5,6,2,1,10)
 
  Recuerde que este código se ejecuta con la combinación de teclas __Ctrl + Enter__. Para poder realizar análisis estadístico, es necesario cargar nuestros datos en el programa. R acepta algunos formatos de archivos, como por ejemplo archivos de Excel, archivos de valores separados por coma, archivos de texto e inclusive archivos de otros programas como SPSS. Lo más usual es trabajar con archvo de valores separados por coma es decir con extensión `.csv`, estos archivos `csv` se generan cuando el investigador recolecta la información, la almacena en un archivo de Excel o alguna otra hoja de cálculo y la guarda como un archivo de valores separados por coma. 
 
-Para trabajar de forma eficiente con R, se recomienda comenzar por fijar un directorio de trabajo donde deben estar guardados nuestros archivos en el formato que sea de nuestra preferencia. Una forma de hacerlo es desde la barra de menú escoger las opciones __Session, Set Working Directory, Choose Directory__ o desde el teclado con la combinación __Ctrl+Shift+H__, o con la función `setwd("rutadelarchivo")`. 
+Para trabajar de forma eficiente con R existen dos formas la primera es fijar un directorio de trabajo y la segunda es crear un proyecto. Un directorio de trabajo es el espacio donde deben estar guardados nuestros archivos en el formato que sea de nuestra preferencia. Una forma de fijar el directorio de trabajo es desde la barra de menú escoger las opciones __Session, Set Working Directory, Choose Directory__ o desde el teclado con la combinación __Ctrl+Shift+H__, o con la función `setwd("rutadelarchivo")`. 
+
+Sin embargo la mejor forma de trabajar, por la experiencia de los autores, es crear un proyecto. Para crear un proyecto primero debemos presionar __File, New Project__ como se ve en la figura \@ref(fig:project1)
+
+```{r project1, out.width = "50%",fig.cap="Nuevo Proyecto. Paso 1",fig.align = 'center', echo=FALSE,fig.pos='h!'}
+
+knitr::include_graphics("project1.png")
+
+```
+
+Si no hemos creado la carpeta donde reposarán nuestros archivos, escogemos la primera opción __New Directory__. Pero si los archivos a ser analizados ya están en una carpeta escogemos la segunda opción __Existing Directory__, en este caso ya tenemos los archivos en una carpeta llamada _AEDFR_ por lo que escogemos la segunda opción. Las opciones se aprecian en la figura \@ref(fig:project2)
+
+```{r project2, out.width = "50%",fig.cap="Nuevo Proyecto. Paso 2",fig.align = 'center', echo=FALSE,fig.pos='h!'}
+
+knitr::include_graphics("project2.png")
+
+```
+
+Luego escogemos la ubicación de la carpeta donde reposan nuestros archivos dando clic en el botón __Browse__. Finalmente escogemos __Create Project__ como se aprecia en la figura \@ref(fig:project3).
+
+```{r project3, out.width = "50%",fig.cap="Nuevo Proyecto. Paso 3",fig.align = 'center', echo=FALSE,fig.pos='h!'}
+
+knitr::include_graphics("project3.png")
+
+```
+
+Finalmente se crea nuestro proyecto, la ventana de Rstudio ahora en la parte superior derecha ahora muestra el nombre de nuestro proyecto como se puede ver en la figura \@ref(fig:project4)
+
+```{r project4, out.width = "50%",fig.cap="Nuevo Proyecto. Paso Final",fig.align = 'center', echo=FALSE,fig.pos='h!'}
+
+knitr::include_graphics("project4.png")
+
+```
 
 En este primer ejercicio trabajaremos con el archivo *cap2_big4_size.csv*. Los datos serán guardados en una variable llamada `big4size`, usaremos la función  `read.csv()` para leer los datos. La función `read.csv()` recibe las instrucciones `read.csv("archivo", header=T, sep=";",dec=",")`.  La opción `"archivo"` indica el nombre del archivo, `header=T` o `header=F` permite indicar si las columnas tienen o no un encabezado que las identifique, `sep=";"` sirve para indicar cual es el separador presente en nuestro archivo en algunas ocasiones ocurre que un archivo de valores separado por coma en realidad tiene sus valores separados por un punto y cona esto generalmente ocurre cuando el sistema operativo utiliza, como en este caso, la coma como separador decimal y finalmente la opción `dec=","` sirve para indicar que el separador decimal es la coma. 
 
@@ -77,8 +109,9 @@ Una característica de R es que permite acceder a la ayuda sobre las funciones, 
 
 El archivo que vamos a analizar contiene los activos, la utilidad, las ventas y el patrimonio de una muestra de empresas tomada de los registros de la Superintendencia de Compañías. Además en el conjunto de datos se indica si la empresa ha sido auditada por una de las 4 firmas auditoras consideradas las más grandes o también llamadas _*Big Four*_. En la \@ref(tab:tabla1) se muestran las 10 primeras observaciones de nuestro conjunto de datos.
 
+\newpage
+
 ```{r tabla1, echo=FALSE}
-setwd("C:/Users/onava_000/OneDrive/libro_mc/estadistica")
 big4size <- read.csv("cap2_big4_size.csv",header=TRUE,sep=";",dec=",")
 knitr::kable(
   head(big4size, 10), caption = 'Primeras 10 observaciones', longtable = TRUE,
@@ -87,12 +120,11 @@ knitr::kable(
 
 Sin más preámbulos, empecemos a trabajar. Recapitulando nuestro flujo de trabajo es:
 
-1. Configurar el directorio de trabajo
+1. Configurar el directorio de trabajo o crear un proyecto 
 2. Cargar el archivo indicado.
 3.  Finalmente usamos la función `str()`, que nos permite obtener la descripción de la estructura de los datos. 
 
 ```{r}
-setwd("C:/Users/onava_000/OneDrive/libro_mc/estadistica")
 big4size <- read.csv("cap2_big4_size.csv",header=TRUE,sep=";",dec=",")
 str(big4size)
 ```
@@ -343,8 +375,6 @@ ggplot(datos, aes(x=valores,y=CONJUNTO)) +
   geom_vline(xintercept=5, linetype="dashed") +
   theme(legend.position = "none",panel.background = element_rect(fill="white"))+
   ylab("") + xlab("") 
-
-
 ```
 
 ### Rango
@@ -373,7 +403,7 @@ La varianza es el promedio de la diferencia de la media cuadrática. Si se conoc
   (\#eq:varp)
 \end{equation}
 
-Por otro lado si se conocen los datos de una población se puede calcular la varianza muestral:
+Por otro lado si se conocen los datos de una muestra se puede calcular la varianza muestral:
 
 \begin{equation} 
   s^2 = \dfrac{\sum_{i=1}^{n}\left(x- \bar{x} \right)^2}{n-1}
@@ -429,7 +459,6 @@ Para las variables cualitativas una tabla de frecuencia basicámente tiene tres 
 
 
 ```{r , echo=TRUE,eval=FALSE}
-setwd("C:/Users/onava_000/OneDrive/libro_mc/estadistica")
 audit_bolsa <- read.csv("audit_bolsa.csv",header=TRUE,sep=";",dec=",")
 
 tabla_firma <- audit_bolsa %>%
@@ -442,7 +471,6 @@ tabla_firma <- audit_bolsa %>%
 ```
 
 ```{r , echo=FALSE,eval=TRUE, results='markup'}
-setwd("C:/Users/onava_000/OneDrive/libro_mc/estadistica")
 audit_bolsa <- read.csv("audit_bolsa.csv",header=TRUE,sep=";",dec=",")
 
 tabla_firma <- audit_bolsa %>%
@@ -532,8 +560,6 @@ Una tabla de contingencia es una forma útil para examinar relaciones entre dos 
 Para ejemplificar la construcción de una tabla de contingencia vamos a trabajar con el archivo `Ranking2018Guayas.csv` este archivo contiene información sobre una muestra de 162 empresas de la provincia del Guayas. Se analizará la relación entre la ciudad y el tamaño de las empresas. 
 
 ```{r, echo=TRUE, eval=TRUE}
-
-setwd("C:/Users/onava_000/OneDrive/libro_mc/estadistica")
 rank2018 = read.csv("Ranking2018Guayas.csv",header=TRUE, sep=";")
 
 
@@ -587,7 +613,7 @@ Los histogramas se utilizan para variables continuas. Un histograma es un gráfi
 
 En la figura \@ref(fig:figura1) se muestra el histograma de la variable ventas en millones de dólares del archivo *cap2_big4_size.csv* ya descrito en la sección \@ref(primerR), este primer histograma ha sido configurado para presentar 12 barras, que las barras sean de color azul con un contorno rojo. Antes de abordar los detalles mencionados discutiremos brevemente el funcionamiento de la gramática de `ggplot2`, una gráfica realizada en `ggplot2` empieza por `ggplot(data, aes())` dentro de `aes()` se indica las variables que van a intervenir en la gráfica, Luego se añade la `geom` con la que se va a trabajar en este caso se escogió `geom_histogram()`  puesto que se desea  realizar un histograma. Como se indicó anteriormente se configuró el histograma con 12 barras (`bins=12`), la opción `color="red"` permite que el contorno de las barrras sea rojo y la opción `fill="blue"`hace que las barras sean de color azul. 
 
-```{r figura1, results='markup', echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Histograma de las Ventas", fig.pos='h!'}
+```{r figura1, results='markup', echo=TRUE, out.width = "70%", message=FALSE, warning=FALSE, fig.cap="Histograma de las Ventas", fig.pos='h!'}
 
 
 ggplot(big4size, aes(x= VTAS/1000000)) + 
@@ -597,7 +623,7 @@ ggplot(big4size, aes(x= VTAS/1000000)) +
 
 Para configurar las etiquetas de los ejes podemos añadir las opciones `xlab( )` y `ylab( )`. En la figura \@ref(fig:figura2) se aprecia el histograma con las etiquetas de los ejes añadidos. 
 
-```{r figura2, results='markup', echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Histograma de las Ventas con Etiquetas en los Ejes", fig.pos='h!'}
+```{r figura2, results='markup', echo=TRUE, out.width = "70%", message=FALSE, warning=FALSE, fig.cap="Histograma de las Ventas con Etiquetas en los Ejes", fig.pos='h!'}
 
 
 ggplot(big4size, aes(x= VTAS/1000000)) + 
@@ -616,12 +642,13 @@ max(rank2018$VENTAS/1000)
 ```
 Los valores obtenidos para el máximo y el mínimo fueron $0$ y $1348$ respectivamente, por esta razón se decidió crear 10 clases y cada clase con una longitud de 150. Adicionalmente para obtener un gráfico agradable a la vista se cambia la orientación de las marcas de $0^\circ$ a $90^\circ$ en el eje $x$ con la instrucción `theme(axis.text.x = element_text(angle = 90, hjust = 1))`.  
 
-```{r figura3, echo=TRUE,out.width = "60%",fig.cap="Histograma de las Ventas de Acuerdo al Tamaño de la empresa", fig.pos='h!'}
+```{r figura3, echo=TRUE,out.width = "70%",fig.cap="Histograma de las Ventas de Acuerdo al Tamaño de la empresa", fig.pos='h!'}
 
 ggplot(rank2018, aes(x=VENTAS/1000, fill=TAMAÑO)) + 
   geom_histogram(alpha=0.3, color="black",bins=10, binwidth = 150) +
   scale_x_continuous(breaks = seq(0,1350,150)) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1), panel.background = element_rect(fill="white")) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1), 
+        panel.background = element_rect(fill="white")) +
   xlab("Ventas en Miles") + ylab("Frecuencia") 
 ```
 
@@ -667,7 +694,7 @@ print(tabla_reg)
 
 Para hacer diagramas de barras se utiliza `geom_bar()` en este caso como deseamos hacer un diagrama de barras de las frecuencias dentro de `geom_bar()` esvribimos `stat="count"`. En la figura \@ref(fig:barras1) se observa el gráfico de barras de las empresas por región.
 
-```{r barras1, echo=TRUE,out.width = "60%",fig.cap="Gráfico de Barras de las empresas por Región", fig.pos='h!'}
+```{r barras1, echo=TRUE,out.width = "70%",fig.cap="Gráfico de Barras de las empresas por Región", fig.pos='h!'}
 ggplot(rank2018com, aes(x=REGIÓN)) + 
   geom_bar(stat = "count",col="black",fill="white") +
   xlab("") + ylab("Frecuencia")
@@ -689,12 +716,33 @@ rank2018com$REGIÓN <- factor(rank2018com$REGIÓN,
 
 Luego de reordenar las regiones podemos volver a realizar el gráfico de barras pero esta vez obtendremos las regiones en el orden deseado como se observa en la figura \@ref(fig:barras2):
 
-```{r barras2, echo=TRUE,out.width = "60%",fig.cap="Gráfico de Barras de las empresas por Región (Ordenadas)", fig.pos='h!'}
+```{r barras2, echo=TRUE,out.width = "70%",fig.cap="Gráfico de Barras de las empresas por Región (Ordenadas)", fig.pos='h!'}
 ggplot(rank2018com, aes(x=REGIÓN)) + 
   geom_bar(stat = "count",col="black",fill="white") +
   xlab("") + ylab("Frecuencia")
 ```
 
+Supongamos ahora que queremos hacer un gráfico de barras de las empresas por región y por tamaño. Elaboremos primero una tabla de contingencia que contenga la información solicitada.
+
+```{r echo=TRUE}
+tama.reg = rank2018com %>% 
+  group_by(TAMAÑO, REGIÓN)%>%
+  summarise(n=n())%>%
+  spread(TAMAÑO, n) %>%
+  replace(., is.na(.), 0)
+
+print(tama.reg)
+```
+
+Para elaborar el gráfico agregamos la opción `fill = TAMAÑO` junto a `x=REGIÓN`
+
+```{r barras3, echo=TRUE, out.width = "70%",fig.cap="Gráfico de Barras de las empresas por Región y por Tamaño", fig.pos='h!'}
+
+ggplot(rank2018com, aes(x=REGIÓN,fill=TAMAÑO)) + 
+  geom_bar(stat = "count",position = "dodge") +
+  xlab("") + ylab("Frecuencia")
+
+```
 
 
 ### Diagramas de Caja y valores atípicos {#boxes}

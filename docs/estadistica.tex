@@ -248,13 +248,59 @@ En el código que se muestra a continuación en la variable \texttt{x} almacenar
 
 Recuerde que este código se ejecuta con la combinación de teclas \textbf{Ctrl + Enter}. Para poder realizar análisis estadístico, es necesario cargar nuestros datos en el programa. R acepta algunos formatos de archivos, como por ejemplo archivos de Excel, archivos de valores separados por coma, archivos de texto e inclusive archivos de otros programas como SPSS. Lo más usual es trabajar con archvo de valores separados por coma es decir con extensión \texttt{.csv}, estos archivos \texttt{csv} se generan cuando el investigador recolecta la información, la almacena en un archivo de Excel o alguna otra hoja de cálculo y la guarda como un archivo de valores separados por coma.
 
-Para trabajar de forma eficiente con R, se recomienda comenzar por fijar un directorio de trabajo donde deben estar guardados nuestros archivos en el formato que sea de nuestra preferencia. Una forma de hacerlo es desde la barra de menú escoger las opciones \textbf{Session, Set Working Directory, Choose Directory} o desde el teclado con la combinación \textbf{Ctrl+Shift+H}, o con la función \texttt{setwd("rutadelarchivo")}.
+Para trabajar de forma eficiente con R existen dos formas la primera es fijar un directorio de trabajo y la segunda es crear un proyecto. Un directorio de trabajo es el espacio donde deben estar guardados nuestros archivos en el formato que sea de nuestra preferencia. Una forma de fijar el directorio de trabajo es desde la barra de menú escoger las opciones \textbf{Session, Set Working Directory, Choose Directory} o desde el teclado con la combinación \textbf{Ctrl+Shift+H}, o con la función \texttt{setwd("rutadelarchivo")}.
+
+Sin embargo la mejor forma de trabajar, por la experiencia de los autores, es crear un proyecto. Para crear un proyecto primero debemos presionar \textbf{File, New Project} como se ve en la figura \ref{fig:project1}
+
+\begin{figure}[h!]
+
+{\centering \includegraphics[width=0.5\linewidth]{project1} 
+
+}
+
+\caption{Nuevo Proyecto. Paso 1}\label{fig:project1}
+\end{figure}
+
+Si no hemos creado la carpeta donde reposarán nuestros archivos, escogemos la primera opción \textbf{New Directory}. Pero si los archivos a ser analizados ya están en una carpeta escogemos la segunda opción \textbf{Existing Directory}, en este caso ya tenemos los archivos en una carpeta llamada \emph{AEDFR} por lo que escogemos la segunda opción. Las opciones se aprecian en la figura \ref{fig:project2}
+
+\begin{figure}[h!]
+
+{\centering \includegraphics[width=0.5\linewidth]{project2} 
+
+}
+
+\caption{Nuevo Proyecto. Paso 2}\label{fig:project2}
+\end{figure}
+
+Luego escogemos la ubicación de la carpeta donde reposan nuestros archivos dando clic en el botón \textbf{Browse}. Finalmente escogemos \textbf{Create Project} como se aprecia en la figura \ref{fig:project3}.
+
+\begin{figure}[h!]
+
+{\centering \includegraphics[width=0.5\linewidth]{project3} 
+
+}
+
+\caption{Nuevo Proyecto. Paso 3}\label{fig:project3}
+\end{figure}
+
+Finalmente se crea nuestro proyecto, la ventana de Rstudio ahora en la parte superior derecha ahora muestra el nombre de nuestro proyecto como se puede ver en la figura \ref{fig:project4}
+
+\begin{figure}[h!]
+
+{\centering \includegraphics[width=0.5\linewidth]{project4} 
+
+}
+
+\caption{Nuevo Proyecto. Paso Final}\label{fig:project4}
+\end{figure}
 
 En este primer ejercicio trabajaremos con el archivo \emph{cap2\_big4\_size.csv}. Los datos serán guardados en una variable llamada \texttt{big4size}, usaremos la función \texttt{read.csv()} para leer los datos. La función \texttt{read.csv()} recibe las instrucciones \texttt{read.csv("archivo",\ header=T,\ sep=";",dec=",")}. La opción \texttt{"archivo"} indica el nombre del archivo, \texttt{header=T} o \texttt{header=F} permite indicar si las columnas tienen o no un encabezado que las identifique, \texttt{sep=";"} sirve para indicar cual es el separador presente en nuestro archivo en algunas ocasiones ocurre que un archivo de valores separado por coma en realidad tiene sus valores separados por un punto y cona esto generalmente ocurre cuando el sistema operativo utiliza, como en este caso, la coma como separador decimal y finalmente la opción \texttt{dec=","} sirve para indicar que el separador decimal es la coma.
 
 Una característica de R es que permite acceder a la ayuda sobre las funciones, esto se hace escribiendo \texttt{?funcion} por ejemplo si queremos la ayuda de la función \texttt{read.csv} simplemente escribimos \texttt{?read.csv} en el panel ubicado en la parte inferior derecha se desplegará la ayuda de la función. Con la particularidad de que la ayuda se despliega en inglés lo que no debería ser problema para un buen investigador.
 
 El archivo que vamos a analizar contiene los activos, la utilidad, las ventas y el patrimonio de una muestra de empresas tomada de los registros de la Superintendencia de Compañías. Además en el conjunto de datos se indica si la empresa ha sido auditada por una de las 4 firmas auditoras consideradas las más grandes o también llamadas \emph{\emph{Big Four}}. En la \ref{tab:tabla1} se muestran las 10 primeras observaciones de nuestro conjunto de datos.
+
+\newpage
 
 \begin{longtable}[]{@{}rrrrrr@{}}
 \caption{\label{tab:tabla1}Primeras 10 observaciones}\tabularnewline
@@ -285,7 +331,7 @@ Sin más preámbulos, empecemos a trabajar. Recapitulando nuestro flujo de traba
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Configurar el directorio de trabajo
+  Configurar el directorio de trabajo o crear un proyecto
 \item
   Cargar el archivo indicado.
 \item
@@ -294,7 +340,6 @@ Sin más preámbulos, empecemos a trabajar. Recapitulando nuestro flujo de traba
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{setwd}\NormalTok{(}\StringTok{"C:/Users/onava_000/OneDrive/libro_mc/estadistica"}\NormalTok{)}
 \NormalTok{big4size <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"cap2_big4_size.csv"}\NormalTok{,}\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{,}\DataTypeTok{sep=}\StringTok{";"}\NormalTok{,}\DataTypeTok{dec=}\StringTok{","}\NormalTok{)}
 \KeywordTok{str}\NormalTok{(big4size)}
 \end{Highlighting}
@@ -691,7 +736,7 @@ De los resultados obtenidos se interpreta que el 25\% de los activos de las empr
 
 Si comparamos los conjuntos de datos \(X=\left\{ 2,4,6,8 \right\}\) y \(Y=\left\{1,3,7,9\right\}\) se obtiene que las medias son iguales \(\bar{X}= \bar{Y}=5\). En la figura \ref{fig:rnl1} se han graficado con color rojo los puntos del conjunto \(X\) y de color celeste los puntos del conjunto \(Y\). Se observa que los valores del conjunto \(Y\) están más dispersos que los valores del conjunto \(X\), es fácil observar que los valores del conjunto \(X\) están más cercanos a la media. En esta sección se discute las formas existentes para cuantificar la dispersión.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
 {\centering \includegraphics[width=0.5\linewidth]{estadistica_files/figure-latex/rnl1-1} 
 
@@ -736,7 +781,7 @@ La varianza es el promedio de la diferencia de la media cuadrática. Si se conoc
   \label{eq:varp}
 \end{equation}
 
-Por otro lado si se conocen los datos de una población se puede calcular la varianza muestral:
+Por otro lado si se conocen los datos de una muestra se puede calcular la varianza muestral:
 
 \begin{equation} 
   s^2 = \dfrac{\sum_{i=1}^{n}\left(x- \bar{x} \right)^2}{n-1}
@@ -808,7 +853,6 @@ Para las variables cualitativas una tabla de frecuencia basicámente tiene tres 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{setwd}\NormalTok{(}\StringTok{"C:/Users/onava_000/OneDrive/libro_mc/estadistica"}\NormalTok{)}
 \NormalTok{audit_bolsa <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"audit_bolsa.csv"}\NormalTok{,}\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{,}\DataTypeTok{sep=}\StringTok{";"}\NormalTok{,}\DataTypeTok{dec=}\StringTok{","}\NormalTok{)}
 
 \NormalTok{tabla_firma <-}\StringTok{ }\NormalTok{audit_bolsa }\OperatorTok{%>%}
@@ -985,7 +1029,6 @@ Para ejemplificar la construcción de una tabla de contingencia vamos a trabajar
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{setwd}\NormalTok{(}\StringTok{"C:/Users/onava_000/OneDrive/libro_mc/estadistica"}\NormalTok{)}
 \NormalTok{rank2018 =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"Ranking2018Guayas.csv"}\NormalTok{,}\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{sep=}\StringTok{";"}\NormalTok{)}
 
 
@@ -1075,7 +1118,7 @@ En la figura \ref{fig:figura1} se muestra el histograma de la variable ventas en
 
 \begin{figure}[h!]
 
-{\centering \includegraphics{estadistica_files/figure-latex/figura1-1} 
+{\centering \includegraphics[width=0.7\linewidth]{estadistica_files/figure-latex/figura1-1} 
 
 }
 
@@ -1095,7 +1138,7 @@ Para configurar las etiquetas de los ejes podemos añadir las opciones \texttt{x
 
 \begin{figure}[h!]
 
-{\centering \includegraphics{estadistica_files/figure-latex/figura2-1} 
+{\centering \includegraphics[width=0.7\linewidth]{estadistica_files/figure-latex/figura2-1} 
 
 }
 
@@ -1122,14 +1165,15 @@ Los valores obtenidos para el máximo y el mínimo fueron \(0\) y \(1348\) respe
 \KeywordTok{ggplot}\NormalTok{(rank2018, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{VENTAS}\OperatorTok{/}\DecValTok{1000}\NormalTok{, }\DataTypeTok{fill=}\NormalTok{TAMAÑO)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{alpha=}\FloatTok{0.3}\NormalTok{, }\DataTypeTok{color=}\StringTok{"black"}\NormalTok{,}\DataTypeTok{bins=}\DecValTok{10}\NormalTok{, }\DataTypeTok{binwidth =} \DecValTok{150}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{breaks =} \KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1350}\NormalTok{,}\DecValTok{150}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{), }\DataTypeTok{panel.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill=}\StringTok{"white"}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{), }
+        \DataTypeTok{panel.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill=}\StringTok{"white"}\NormalTok{)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Ventas en Miles"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Frecuencia"}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}[h!]
 
-{\centering \includegraphics[width=0.6\linewidth]{estadistica_files/figure-latex/figura3-1} 
+{\centering \includegraphics[width=0.7\linewidth]{estadistica_files/figure-latex/figura3-1} 
 
 }
 
@@ -1235,7 +1279,7 @@ Para hacer diagramas de barras se utiliza \texttt{geom\_bar()} en este caso como
 
 \begin{figure}[h!]
 
-{\centering \includegraphics[width=0.6\linewidth]{estadistica_files/figure-latex/barras1-1} 
+{\centering \includegraphics[width=0.7\linewidth]{estadistica_files/figure-latex/barras1-1} 
 
 }
 
@@ -1278,11 +1322,54 @@ Luego de reordenar las regiones podemos volver a realizar el gráfico de barras 
 
 \begin{figure}[h!]
 
-{\centering \includegraphics[width=0.6\linewidth]{estadistica_files/figure-latex/barras2-1} 
+{\centering \includegraphics[width=0.7\linewidth]{estadistica_files/figure-latex/barras2-1} 
 
 }
 
 \caption{Gráfico de Barras de las empresas por Región (Ordenadas)}\label{fig:barras2}
+\end{figure}
+
+Supongamos ahora que queremos hacer un gráfico de barras de las empresas por región y por tamaño. Elaboremos primero una tabla de contingencia que contenga la información solicitada.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tama.reg =}\StringTok{ }\NormalTok{rank2018com }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(TAMAÑO, REGIÓN)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{n=}\KeywordTok{n}\NormalTok{())}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{spread}\NormalTok{(TAMAÑO, n) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{replace}\NormalTok{(., }\KeywordTok{is.na}\NormalTok{(.), }\DecValTok{0}\NormalTok{)}
+
+\KeywordTok{print}\NormalTok{(tama.reg)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4 x 5
+##   REGIÓN    GRANDE MEDIANA MICROEMPRESA PEQUEÑA
+##   <fct>      <dbl>   <dbl>        <int>   <dbl>
+## 1 COSTA          5      13          264      86
+## 2 SIERRA         6      11           73      43
+## 3 ORIENTE        0       0            3       1
+## 4 GALAPAGOS      0       0            2       0
+\end{verbatim}
+
+Para elaborar el gráfico agregamos la opción \texttt{fill\ =\ TAMAÑO} junto a \texttt{x=REGIÓN}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(rank2018com, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{REGIÓN,}\DataTypeTok{fill=}\NormalTok{TAMAÑO)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"count"}\NormalTok{,}\DataTypeTok{position =} \StringTok{"dodge"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{""}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Frecuencia"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[h!]
+
+{\centering \includegraphics[width=0.7\linewidth]{estadistica_files/figure-latex/barras3-1} 
+
+}
+
+\caption{Gráfico de Barras de las empresas por Región y por Tamaño}\label{fig:barras3}
 \end{figure}
 
 \hypertarget{boxes}{%
@@ -1433,9 +1520,9 @@ La densidad de la probabilidad puede ser descrita por una expresión matemática
   \(P\left(X=c\right)=0\) para cualquier valor \(c\) para el que se encuentre definida la función de probabilidad.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
-{\centering \includegraphics[width=0.6\linewidth]{estadistica_files/figure-latex/densidad-1} 
+{\centering \includegraphics[width=0.7\linewidth]{estadistica_files/figure-latex/densidad-1} 
 
 }
 
@@ -1449,9 +1536,9 @@ La distribución de probabilidad más usada para describir variables aleatorias 
 
 La distribución normal tiene la forma de una campana, como se observa en la figura \ref{fig:normal}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
-{\centering \includegraphics[width=0.6\linewidth]{estadistica_files/figure-latex/normal-1} 
+{\centering \includegraphics[width=0.5\linewidth]{estadistica_files/figure-latex/normal-1} 
 
 }
 
@@ -1475,9 +1562,9 @@ como se puede observar en la ecuación \eqref{eq:normalpdf}, la distribución no
   La media es un parámetro de localización, en la figura \ref{fig:normalmus} se observan tres distribuciones normales con la misma desviación pero diferentes medias.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
-{\centering \includegraphics[width=0.6\linewidth]{estadistica_files/figure-latex/normalmus-1} 
+{\centering \includegraphics[width=0.5\linewidth]{estadistica_files/figure-latex/normalmus-1} 
 
 }
 
@@ -1490,9 +1577,9 @@ como se puede observar en la ecuación \eqref{eq:normalpdf}, la distribución no
   La desviación es un parámetro que afecta a la forma de la curva, a mayor desviación la curva se acerca hacia el eje de las \(X\) es decir la curva se ``aplana''. Y a menor desviación la curva se ``estrecha''. Este comportamiento se aprecia en la fiugra \ref{fig:normalsds}
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
-{\centering \includegraphics[width=0.6\linewidth]{estadistica_files/figure-latex/normalsds-1} 
+{\centering \includegraphics[width=0.5\linewidth]{estadistica_files/figure-latex/normalsds-1} 
 
 }
 
@@ -1515,7 +1602,7 @@ como se puede observar en la ecuación \eqref{eq:normalpdf}, la distribución no
   \end{itemize}
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
 {\centering \includegraphics[width=0.5\linewidth]{estadistica_files/figure-latex/unasd-1} 
 
@@ -1524,7 +1611,7 @@ como se puede observar en la ecuación \eqref{eq:normalpdf}, la distribución no
 \caption{Porcentaje a 1 desviación de la media}\label{fig:unasd}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
 {\centering \includegraphics[width=0.5\linewidth]{estadistica_files/figure-latex/dossd-1} 
 
@@ -1533,7 +1620,7 @@ como se puede observar en la ecuación \eqref{eq:normalpdf}, la distribución no
 \caption{Porcentaje a 2 desviaciones de la media}\label{fig:dossd}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
 {\centering \includegraphics[width=0.5\linewidth]{estadistica_files/figure-latex/tressd-1} 
 
@@ -1542,14 +1629,16 @@ como se puede observar en la ecuación \eqref{eq:normalpdf}, la distribución no
 \caption{Porcentaje a 3 desviaciones de la media}\label{fig:tressd}
 \end{figure}
 
-\hypertarget{distribucion-normal-estandar}{%
-\subsection{Distribución Normal Estándar}\label{distribucion-normal-estandar}}
+\hypertarget{dne}{%
+\subsection{Distribución Normal Estándar}\label{dne}}
 
-Supongamos que el tiempo para llenar la declaración del impuesto a la renta se distribuye normalmente con media \(80\) y desviación \(20\) y que nos interesa determinar la probabilidad de que una declaración sea correctamente llenada entre 50 y 90 minutos. Formalmente si definimos a \(X=\text{Tiempo para llenar una declaración}\) podemos decir que \(X \sim \mathcal{N}\left(80,20\right)\), nuestro interés es calcular \(P\left(50< X <90\right)\) si hacemos el cálculo a mano debemos determinar el área bajo la función definida en la ecuación \eqref{eq:normalpdf} enttre \(50\) y \(90\) para \(\mu=80\) y \(\sigma=20\) esto requeriría de un trabajo fuerte desde el punto de vista matemático. Otra solución sería tener una tabla que contenga las probabilidades de la distribución normal, sin embargo existe una cantidad infinita de distribuciones normales tomando en cuenta las combinaciones posibles de \(\mu\) y \(\sigma\). La solución es tener una distribución normal que represente a todas las distribuciones normales, dicha distribución recibe el nombre de \textbf{distribución normal estándar}.
+Supongamos que el tiempo para llenar la declaración del impuesto a la renta se distribuye normalmente con media \(80\) y desviación \(20\) y que nos interesa determinar la probabilidad de que una declaración sea correctamente llenada entre 50 y 90 minutos. Formalmente si definimos a \(X=\text{Tiempo para llenar una declaración}\) podemos decir que \(X \sim \mathcal{N}\left(80,20\right)\), nuestro interés es calcular \(P\left(50< X <90\right)\) si hacemos el cálculo a mano debemos determinar el área bajo la función definida en la ecuación \eqref{eq:normalpdf} entre \(50\) y \(90\) para \(\mu=80\) y \(\sigma=20\) esto requeriría de un trabajo fuerte desde el punto de vista matemático.
+
+Otra solución sería tener una tabla que contenga las probabilidades de la distribución normal, sin embargo existe una cantidad infinita de distribuciones normales tomando en cuenta las combinaciones posibles de \(\mu\) y \(\sigma\). La solución es tener una distribución normal que represente a todas las distribuciones normales, dicha distribución recibe el nombre de \textbf{distribución normal estándar}.
 
 La distribución normal estándar se caracteriza por tener media \(0\) y desviacion \(1\), y se representa con la letra \(Z\). Dicho de otra forma \(Z \sim \mathcal{N}\left(0,1\right)\). En la figura \ref{fig:normalz} se presenta el gráfico de la normal estándar. Cualquier variable normal \(X\) se puede transformar a una normal estándar (estandarizar) realizando la operación \(z=\dfrac{x-\mu}{\sigma}\). Una vez estandarizado se puede determinar la probabilidad deseada usando cualquier tabla de la normal estándar. En este texto no hacemos uso de tablas puesto que los cálculos de probabilidades los haremos utilizando R, sin embargo es importante que el lector aprenda o refresque la noción de la distribución normal estandar ya que aparecerá constantemente en los siguientes capítulos.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
 {\centering \includegraphics[width=0.5\linewidth]{estadistica_files/figure-latex/normalz-1} 
 
@@ -1573,7 +1662,7 @@ En la figura \ref{fig:tstudent} se muestra el gráfico de dos distribuciones \(t
 
 En la figura \ref{fig:tz} se muestra de color azul la curva de la normal estándar junto con las distribuciones \(t\) mostradas anteriormente se observa que las \(t\) tienen más probabilidad en las colas y menos en el centro. Además se puede observar que \(t\) se aproxima a \(z\) a medida que aumentan los grados de libertad, los grados de libertad están relacionados al tamaño muestral es decir que \(t\) converge a \(z\) para tamaños muestrales grandes. En el capítulo \ref{icph} se hace uso de esta distribución.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
 {\centering \includegraphics[width=0.5\linewidth]{estadistica_files/figure-latex/tstudent-1} 
 
@@ -1582,7 +1671,7 @@ En la figura \ref{fig:tz} se muestra de color azul la curva de la normal estánd
 \caption{$t$ de Student}\label{fig:tstudent}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
 {\centering \includegraphics[width=0.5\linewidth]{estadistica_files/figure-latex/tz-1} 
 
@@ -1591,12 +1680,139 @@ En la figura \ref{fig:tz} se muestra de color azul la curva de la normal estánd
 \caption{$t$ de Student comparada con la Normal Estándar}\label{fig:tz}
 \end{figure}
 
+\hypertarget{calculo-de-probabilidades-y-uso-de-la-distribucion-normal-y-la-t-de-student-en-r}{%
+\section{\texorpdfstring{Cálculo de probabilidades y uso de la distribución normal y la \(t\) de Student en R}{Cálculo de probabilidades y uso de la distribución normal y la t de Student en R}}\label{calculo-de-probabilidades-y-uso-de-la-distribucion-normal-y-la-t-de-student-en-r}}
+
+Todas las distribuciones que se manejan en R tienen cuatro funciones. Existe un nombre base, por ejemplo para la normal el nombre base es \texttt{norm}. La base es antecedida por cualquiera de las siguientes cuatro letras.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{p} por \emph{probabilidad}, es decir la función de distribución acumulada
+\item
+  \texttt{q} por \emph{cuantil}, en este caso se refiere a la función de distribución acumulada inversa es decir dado un valor de probabilidad nos devuelve el valor de la distribución que acumula esa probabilidad.
+\item
+  \texttt{d} por \emph{densidad}, es decir la función de densidad
+\item
+  \texttt{r} por \emph{aleatorio}, una variable aleatoria con la distribución especificada.
+\end{itemize}
+
+Para el caso de la distribución normal y la distribución \(t\) de Student entonces las funciones son:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{pnorm}, \texttt{qnorm}, \texttt{dnorm} y \texttt{rnorm}
+\item
+  \texttt{pt}, \texttt{qt}, \texttt{dt}, \texttt{rt}
+\end{itemize}
+
+\hypertarget{ejemplos}{%
+\subsection{Ejemplos}\label{ejemplos}}
+
+El cálculo de probabilidades con la distribución normal se hace con la función \texttt{pnorm}. La función \texttt{pnorm} se utiliza de la siguiente forma \texttt{pnorm(q,\ mean\ =\ 0,\ sd\ =\ 1,\ lower.tail\ =\ TRUE,\ log.p\ =\ FALSE)} las opciones que van dentro de la función son:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{q}: que es el valor para el cual se quiere determinar la probabilidad.
+\item
+  \texttt{mean}: es el valor de la media de la distribución, el valor por defecto es \(0\) que corresponde a la media de la distribución normal estándar.
+\item
+  \texttt{sd}: es el valor de la desviación de la distribución, el valor por defecto es \(1\) que corresponde a la desviación de la distribución normal estándar.
+\item
+  \texttt{lower.tail}: se puede indicar ``TRUE'' o ``FALSE'', si es verdadero (``TRUE'') se determina \(P\left(X \leq q \right)\) y si es falso (``FALSE'') se determina \(P\left( X > q \right)\)
+\item
+  \texttt{log.p}: si es verdadero las probabilidades se dan en logaritmos.
+\end{itemize}
+
+En la sección \ref{dne} se puso un ejemplo sobre el tiempo de llenado de una declaración del impuesto a la renta. Recordemos que se partía de la suposición que el tiempo de llenado de la declaración del impuesto a la renta sigue una distribución normal con media \(80\) y desviación \(20\) minutos. y se quería calcular la probabilidad de que el llenado de una declaración se dé entre 50 y 90 minutos, es decir que deseamos calcular \(P\left( 50 \leq X \leq 90 \right)\). El cálculo de la probabilidad se muestra a continuación.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pnorm}\NormalTok{(}\DecValTok{90}\NormalTok{,}\DataTypeTok{mean=}\DecValTok{80}\NormalTok{,}\DataTypeTok{sd=}\DecValTok{20}\NormalTok{)}\OperatorTok{-}\KeywordTok{pnorm}\NormalTok{(}\DecValTok{50}\NormalTok{,}\DataTypeTok{mean=}\DecValTok{80}\NormalTok{,}\DataTypeTok{sd=}\DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.6246553
+\end{verbatim}
+
+No hemos incluido las opciones \texttt{lower.tail} o \texttt{log.p} ya que son opciones en las que estamos usando los valores que por defecto tiene la función configurada. Si deseamos calcular la probabilidad que el tiempo de llenado de la declaración sea más de 100 minutos, para esto debemos indicar la opción \texttt{lower.tail\ =\ FALSE}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DataTypeTok{mean=}\DecValTok{80}\NormalTok{,}\DataTypeTok{sd=}\DecValTok{20}\NormalTok{, }\DataTypeTok{lower.tail =} \OtherTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1586553
+\end{verbatim}
+
+Supongamos ahora que se quieren simular 100 valores que siguen la distribución normal con media \(80\) y desviación \(20\), utilizamos entonces la función \texttt{rnorm}, esta función se usa de la siguiente forma \texttt{rnorm(n,\ mean\ =\ 0,\ sd\ =\ 1)}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{, }\DataTypeTok{mean =} \DecValTok{80}\NormalTok{, }\DataTypeTok{sd=}\DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1]  47.60923  98.96942  67.24461  86.16940  67.04016  66.25843  61.04778
+##   [8]  50.38047  98.94420  72.19053  69.68588  90.30176  62.54405  59.95936
+##  [15]  82.32314  82.85486  59.47258  75.83318  77.84578  33.78631  94.24315
+##  [22]  64.97883  81.35430  56.54594  99.09123  77.28837  87.03033  62.30110
+##  [29]  47.07591  63.07407  86.09855  66.96359  63.28069  94.44924  71.94656
+##  [36]  87.34025  57.46592  65.84012  87.93984  72.68598  53.39045  55.29303
+##  [43]  67.72395  54.19637  80.45966  94.21219  85.25759  86.16999  95.79983
+##  [50]  54.91902  73.21013  94.44568  89.48457  71.08272  75.01862  59.33797
+##  [57]  66.44737  95.83850  90.92348  83.71054  78.17035 112.67491  95.60348
+##  [64]  77.96828  77.34308  36.22008  53.64770  66.64198  72.19990  50.92120
+##  [71]  55.96343  55.71079  52.48522  66.32572  98.44524  64.16898  81.52070
+##  [78]  99.69316 101.73309  65.95563  73.38932  89.79295  53.62330  64.51062
+##  [85]  56.90119  87.14268  80.07021  60.85577  77.94086  59.84116  77.76579
+##  [92]  95.52738  82.81831 102.81758  70.26175  45.59517  70.96235  87.87413
+##  [99]  82.72691  43.00896
+\end{verbatim}
+
+Si queremos simular valores de una distribución \(t\) de Student utilizamos la función \texttt{rt}, que recibe los parámetros \texttt{rt(n,\ df,\ ncp)}. El parámetro \texttt{ncp} es la no centralidad. La distribución \(t\) que hemos revisado tiene su parámetro de no centralidad igual a \(0\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rt}\NormalTok{(}\DecValTok{100}\NormalTok{, }\DataTypeTok{df =} \DecValTok{19}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1]  1.05793212 -1.91419617 -0.98003248  1.82127814 -0.49177192
+##   [6] -1.60876208 -0.24666830 -0.61907163  0.89161411 -1.07121399
+##  [11]  0.55777858 -0.34173324 -0.22608348  0.60352125 -0.43530532
+##  [16] -2.70888929 -0.14397661  1.47236783  1.12144674  0.54959945
+##  [21] -0.93454398  0.46496417  0.01606558  0.51325380 -0.50768504
+##  [26]  1.23056132  1.17233938  0.45786037  0.71973992 -0.16469405
+##  [31]  2.35267693  1.64599410  0.59061054 -0.32029886  1.61554201
+##  [36]  0.23667190 -1.14439804 -0.34142114 -0.10384022 -1.17344169
+##  [41]  0.16521510 -0.46672483  0.84081554 -0.13078948 -0.80756773
+##  [46] -0.29228584  0.31121386 -1.11066753 -0.14827508  0.61646142
+##  [51]  1.62607652  0.97964258  0.18385486 -1.40560155 -1.55718392
+##  [56]  3.15454077  0.96139249  0.43710936  1.37441840 -0.25103471
+##  [61] -0.74573823 -0.22579408 -0.28792816 -0.04133293 -1.75343816
+##  [66] -1.11549807 -0.37535274  0.20485858 -0.87647931  0.49113814
+##  [71]  2.23549101 -0.03244843  0.07789724 -0.07636843  0.33623236
+##  [76] -0.54203596 -0.28451629  0.96882369 -0.57050798 -0.36881492
+##  [81] -0.52990836  0.10764146 -0.35474714  0.22103691 -1.80767942
+##  [86] -1.17944768  0.89669816 -0.71749452  0.32734466  0.09742948
+##  [91]  0.12345667  0.64564900 -1.02498351 -1.16696937 -0.07550280
+##  [96] -1.54658637 -0.20088762  2.39340654 -1.11400883 -1.37399043
+\end{verbatim}
+
 \hypertarget{icph}{%
 \chapter{Intervalos de Confianza y Pruebas de Hipótesis}\label{icph}}
 
 En la sección \ref{estypes} se habló de los típos de estadística, la estadística inferencial consiste de los métodos por medio de los cuales se puede hacer inferencias o generalizaciones sobre una población. La inferencia estadística se puede dívidir en dos grandes áreas: \textbf{estimación} y \textbf{pruebas de hipótesis}.
 
-Imaginemos que se desea estimar el promedio de las ventas en miles de las empresas que son auditadas por firmas Big Four, sin embargo debemos recordar que en nuestro conjunto de datos no tenemos a todas las empresas sino a una muestra de las empresas, por lo que afirmar que el valor obtenido es el promedio de todas las empresas auditadas por Big Four es el valor real es muy arriesgado. Sin embargo, podríamos dar un intervalo en el que posiblemente se encuentre el valor que deseamos estimar.
+Imaginemos que se desea estimar el promedio de las ventas en miles de las empresas que son auditadas por firmas Big Four, sin embargo debemos recordar que en nuestro conjunto de datos no tenemos a todas las empresas sino a una muestra de las empresas, por lo que afirmar que el valor obtenido es el promedio de todas las empresas auditadas por Big Four es muy arriesgado. Sin embargo, podríamos dar un intervalo en el que posiblemente se encuentre el valor que deseamos estimar.
 
 Ahora supongamos que usted como investigador quiere probar que el promedio de las ventas en miles de las empresas que son auditadas por una Big Four es mayor a las empresas que no son auditadas por una Big Four. Una primera aproximación para resolver este problema es realizar una gráfica que le muestre las ventas de acuerdo al tipo de empresa auditora.
 
@@ -1623,9 +1839,9 @@ En las figuras \ref{fig:figura6} y \ref{fig:figura7} se observa el histograma y 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
-{\centering \includegraphics{estadistica_files/figure-latex/figura6-1} 
+{\centering \includegraphics[width=0.7\linewidth]{estadistica_files/figure-latex/figura6-1} 
 
 }
 
@@ -1640,9 +1856,9 @@ En las figuras \ref{fig:figura6} y \ref{fig:figura7} se observa el histograma y 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
-{\centering \includegraphics{estadistica_files/figure-latex/figura7-1} 
+{\centering \includegraphics[width=0.7\linewidth]{estadistica_files/figure-latex/figura7-1} 
 
 }
 
@@ -1674,7 +1890,7 @@ Un intervalo de confianza del \(C \%\) indica que si construimos muchos de esos 
 
 Por ejemplo en la figura \ref{fig:ic} se muestran 100 intervalos construidos con el \(95 \%\) de confianza para el promedio poblacional, para construir cada intervalo se tomaron muestras de 100 elementos. Los intervalos de color celeste son los que contienen el valor real del parámetro, los intervalos de color rojo son los que no contienen el valor real del parámetro. El lector puede verificar que \(5\) intervalos es decir el \(5 \%\) no contiene el valor real del parámetro lo que implica que el \(95 \%\) de los intervalos sí contiene el valor real del parámetro.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
 {\centering \includegraphics[width=0.7\linewidth]{ic} 
 
@@ -1683,8 +1899,8 @@ Por ejemplo en la figura \ref{fig:ic} se muestran 100 intervalos construidos con
 \caption{Intervalos de Confianza simulados}\label{fig:ic}
 \end{figure}
 
-\hypertarget{intervalo-de-confianza-para-la-media-mu}{%
-\subsection{\texorpdfstring{Intervalo de Confianza para la media \(\mu\)}{Intervalo de Confianza para la media \textbackslash{}mu}}\label{intervalo-de-confianza-para-la-media-mu}}
+\hypertarget{icmu}{%
+\subsection{\texorpdfstring{Intervalo de Confianza para la media \(\mu\)}{Intervalo de Confianza para la media \textbackslash{}mu}}\label{icmu}}
 
 Para construir un intervalo de confianza para \(\mu\) existen dos casos, el primero es cuando se conoce la desviación poblacional \(\sigma\) y el segundo cuando no se conoce la desviación poblacional \(\sigma\).El primer caso es hipotético y puede ser considerado un caso para ejemplificar el concepto de intervalo de confianza, en la sección \ref{jt} se explica en detalle por qué consideramos este un caso hipotético. Para el primer caso usamos la distribución normal y para el segundo debemos usar otra distribución como lo veremos en la sección \ref{icsd}.
 
@@ -1852,9 +2068,9 @@ H_1: \mu \neq 500
 
 Una \emph{regla de decisión} podría ser escoger un punto o puntos límites en el eje \(x\)´como en la figura \ref{fig:pht}. La gráfica de color rojo representa \(H_0\) y las de color celeste representan \(H_1\). En este caso vamos a escoger dos puntos límites porque si la media muestral se encuentra a la izquierda o a la derecha de estos límites, se rechaza \(H_0\). En cualquiera de los dos casos la media muestral está demasiado lejos de \(H_0\) para ser creíble. Si la media muestral \(\bar{x}\) está entre los valores límite se acepta \(H_0\). La región entre los puntos límite es la \emph{región de no rechazo} y hacía la izquierda o derecha de los puntos límite se encuentra la \emph{región de rechazo}.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
-{\centering \includegraphics[width=0.5\linewidth]{phtest} 
+{\centering \includegraphics[width=0.6\linewidth]{phtest} 
 
 }
 
@@ -1882,27 +2098,27 @@ Los puntos lìmites son conocidos como \textbf{valores críticos}. Un procedimie
 
 Una forma sencilla de entender cómo establecer la regla de decisión es ver la hipótesis alternativa. La hipótesis alternativa puede tener los símbolos \(<\), \(>\) o \(\neq\). La región de rechazo de cada una se sombrea de color verde en las figuras \ref{fig:phless}, \ref{fig:phmore} y \ref{fig:ph2c} respectivamente, al igual que en la figura \ref{fig:pht} la distribución de rojo corresponde a \(H_0\) y la de azul a \(H_1\). Las figuras \ref{fig:phless} y \ref{fig:phmore} corresponden a pruebas de hipótesis de \textbf{una cola} y la figura \ref{fig:ph2c} corresponde a una prueba de hipótesis de \textbf{dos colas}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
-{\centering \includegraphics[width=0.5\linewidth]{phless} 
+{\centering \includegraphics[width=0.6\linewidth]{phless} 
 
 }
 
 \caption{$H_1:<$}\label{fig:phless}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
-{\centering \includegraphics[width=0.5\linewidth]{phmore} 
+{\centering \includegraphics[width=0.6\linewidth]{phmore} 
 
 }
 
 \caption{$H_1:>$}\label{fig:phmore}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
-{\centering \includegraphics[width=0.5\linewidth]{ph2c} 
+{\centering \includegraphics[width=0.6\linewidth]{ph2c} 
 
 }
 
@@ -1923,9 +2139,9 @@ Otro concepto relacionado a las probabilidades de error es la \textbf{potencia d
 \label{eq:power}
 \end{equation}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 
-{\centering \includegraphics[width=0.5\linewidth]{power} 
+{\centering \includegraphics[width=0.6\linewidth]{power} 
 
 }
 
@@ -1964,14 +2180,354 @@ Diferencia de proporciones & No apica & No aplica & \(\dfrac{p_1-p_2}{\sqrt{\hat
 \bottomrule
 \end{longtable}
 
-\hypertarget{pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-media-en-r}{%
-\subsection{Pruebas de hipótesis e Intervalos de Confianza para la media en R}\label{pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-media-en-r}}
+\newpage
 
-\hypertarget{pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-proporcion-en-r}{%
-\subsection{Pruebas de hipótesis e Intervalos de Confianza para la proporción en R}\label{pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-proporcion-en-r}}
+\hypertarget{intervalos-de-confianza-en-r}{%
+\section{Intervalos de confianza en R}\label{intervalos-de-confianza-en-r}}
+
+\hypertarget{para-la-media}{%
+\subsection{Para la media}\label{para-la-media}}
+
+Recapitulando lo revisado en las secciones \ref{jt} y \ref{icsd} se definieron los intervalos de confianza para la media con \(\sigma\) conocida y desconocida respectivamente. Como se mencionó antes el primer caso es un caso hipotético que sirve como una primera aproximación al concepto y la definición de intervalo de confianza. Mientras que el segundo caso es el escenario con el que frecuentemente se encuentra un investigador o un analista.
+
+Para el primer caso \texttt{R} no tiene una función definida en su instalación base, a manera de ejemplo vamos a hacer algunas suposiciones para construir intervalos de confianza con la distribución normal. El paquete \texttt{BSDA} tiene la función \texttt{z-test(\ )} que también será utilizada. Mientras que para el segundo caso se tiene la función \texttt{t.test}, que como el lector ha de suponer tiene como objetivo principal realizar pruebas de hipóresis utilizando la distribución \(t\) de Student. Esta función además permite obtener intervalos de confianza.
+
+En las dos subsecciones a continuación se trabajará con la variable \texttt{ACTIVOS} de las microempresas de la base de datos \texttt{Ranking2018Comercio.csv}
+
+\hypertarget{musc}{%
+\subsubsection{\texorpdfstring{\(\sigma\) conocida}{\textbackslash{}sigma conocida}}\label{musc}}
+
+En la ecuación \eqref{eq:icmusc} se define el intervalo de confianza para la media cuando se conoce \(\sigma\). Para construir el intervalo supondremos que la desviación de los datos es la desviación poblacional. Recalcamos que esta suposición la hacemos solo para efectos prácticos.
+
+Primero cargamos los datos y seleccionamos solo los valores con los que deseamos trabajar. Usamos la función \texttt{filter(\ )} para seleccionar las observaciones que cumplen con la condición de que el tamaño de la empresa sea microempresa. Y luego seleccionamos solo la variable que analizaremos con la función \texttt{select(\ )}, en este caso solo escogemos la variable \texttt{ACTIVO}. Al finalizar la operación de filtro y selección usamos la función \texttt{attach(\ )}, el argumento que se escribe en la función es el nombre del conjunto de datos. La función \texttt{attach} sirve para cargar los datos a la memoria, la principal ventaja de usarla es que cuando los datos se cargan a la memoria no debemos usar el operador \texttt{\$} por ejemplo en vez de escribir \texttt{dataframe\$variable} ahora solo escribiremos \texttt{variable}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rank18com =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"Ranking2018Comercio.csv"}\NormalTok{,}\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{, }
+                     \DataTypeTok{dec=}\StringTok{","}\NormalTok{, }\DataTypeTok{sep=}\StringTok{";"}\NormalTok{)}
+
+\NormalTok{rank18com.Micro =}\StringTok{ }\NormalTok{rank18com }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(TAMAÑO }\OperatorTok{==}\StringTok{ "MICROEMPRESA"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(ACTIVO)}
+
+\KeywordTok{attach}\NormalTok{(rank18com.Micro)}
+\end{Highlighting}
+\end{Shaded}
+
+Vamos a calcular la media y la desviación de los activos de las microempresas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{media =}\StringTok{ }\KeywordTok{mean}\NormalTok{(ACTIVO)}
+\NormalTok{desviacion =}\StringTok{ }\KeywordTok{sd}\NormalTok{(ACTIVO)}
+\end{Highlighting}
+\end{Shaded}
+
+Vamos ahora a calcular el término \(Z_{\frac{\alpha}{2}}\dfrac{\sigma}{\sqrt{n}}\) para calcular el término \(Z_{\frac{\alpha}{2}}\) trabajamos con la función \texttt{qnorm} el argumento que escribimos en la función es el valor \(1-\frac{\alpha}{2}\), si el intervalo es con el \(95\%\) de confianza \(\alpha=0.05\) por lo que el valor a ser escrito en la función es \(1-\frac{0.05}{2}=0.975\). Para calcular \(\sqrt{n}\) primero determinamos \(n\) con la función \texttt{nrow()} el argumento que recibe esta función es el conjunto de datos. Para calcular la raíz utilizamos la función \texttt{sqrt(\ )}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{error  =}\StringTok{ }\KeywordTok{qnorm}\NormalTok{(}\FloatTok{0.975}\NormalTok{)}\OperatorTok{*}\NormalTok{desviacion}\OperatorTok{/}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{nrow}\NormalTok{(rank18com))}
+\end{Highlighting}
+\end{Shaded}
+
+Ahora calculamos los extremos del intervalo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{menor =}\StringTok{ }\NormalTok{media }\OperatorTok{-}\StringTok{ }\NormalTok{error}
+\NormalTok{mayor =}\StringTok{ }\NormalTok{media }\OperatorTok{+}\StringTok{ }\NormalTok{error}
+\NormalTok{menor}
+\CommentTok{## [1] 30831.37}
+\NormalTok{mayor}
+\CommentTok{## [1] 46981.15}
+\end{Highlighting}
+\end{Shaded}
+
+El intervalo con el \(95\%\) de confianza para la media es \(\left( 29074.58, 48737.94 \right)\). Si quisieramos calcular el intervalo con el \(98\%\) de confianza cambiamos el argumento en la función \texttt{qnorm()} de \(0.975\) a \(0.99\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{error  =}\StringTok{ }\KeywordTok{qnorm}\NormalTok{(}\FloatTok{0.99}\NormalTok{)}\OperatorTok{*}\NormalTok{desviacion}\OperatorTok{/}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{nrow}\NormalTok{(rank18com))}
+\NormalTok{menor =}\StringTok{ }\NormalTok{media }\OperatorTok{-}\StringTok{ }\NormalTok{error}
+\NormalTok{mayor =}\StringTok{ }\NormalTok{media }\OperatorTok{+}\StringTok{ }\NormalTok{error}
+\NormalTok{menor}
+\CommentTok{## [1] 29321.9}
+\NormalTok{mayor}
+\CommentTok{## [1] 48490.62}
+\end{Highlighting}
+\end{Shaded}
+
+El intervalo con el \(98\%\) de confianza para la media es \(\left( 27236.71, 50575.81 \right)\).
+
+Otra opción si no se desea programar todos los pasos es usar la función \texttt{z.test} del paquete \texttt{BSDA} en la función \texttt{z.test()} se debe indicar el valor de \(\sigma\) en este caso, como antes, asumiremos que \(\sigma\) es la desviación de los activos obtenida con anterioridad. Ya que solo nos interesa calcular el intervalo de confianza usaremos \texttt{z.test()\$conf.int} que nos dará el intervalo con un \(95\%\) de confianza:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(BSDA)}
+\KeywordTok{z.test}\NormalTok{(ACTIVO,}\DataTypeTok{sigma.x =}\NormalTok{ desviacion)}\OperatorTok{$}\NormalTok{conf.int}
+\CommentTok{## [1] 29074.58 48737.94}
+\CommentTok{## attr(,"conf.level")}
+\CommentTok{## [1] 0.95}
+\end{Highlighting}
+\end{Shaded}
+
+Si deseamos calcular el intervalo con un nivel de confianza diferente al \(95\%\), por ejemplo el \(98\%\), indicamos la opción \texttt{conf.level=0.98}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{z.test}\NormalTok{(ACTIVO,}\DataTypeTok{sigma.x =}\NormalTok{ desviacion, }\DataTypeTok{conf.level =} \FloatTok{0.98}\NormalTok{)}\OperatorTok{$}\NormalTok{conf.int}
+\CommentTok{## [1] 27236.71 50575.81}
+\CommentTok{## attr(,"conf.level")}
+\CommentTok{## [1] 0.98}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{musd}{%
+\subsubsection{\texorpdfstring{\(\sigma\) desconocida}{\textbackslash{}sigma desconocida}}\label{musd}}
+
+La función \texttt{t.test()} se utiliza para realizar pruebas de hipótesis, sin embargo entre sus salidas o resultados se encuenta un intervalo de confianza, debido a que solo nos interesa calcular intervalos de confianza utilizaremos la instrucción \texttt{t.test()\$conf.int} que nos dará directamente el intervalo con un \(95\%\) de confianza:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\KeywordTok{t.test}\NormalTok{(ACTIVO)}\OperatorTok{$}\NormalTok{conf.int}
+\CommentTok{## [1] 29039.57 48772.96}
+\CommentTok{## attr(,"conf.level")}
+\CommentTok{## [1] 0.95}
+\end{Highlighting}
+\end{Shaded}
+
+Si deseamos calcular el intervalo con otro nivel de confianza, por ejemplo el \(90\%\), agregamos dentro de la función \texttt{t.test()} la opción \texttt{conf.level\ =\ 0.90}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\KeywordTok{t.test}\NormalTok{(ACTIVO, }\DataTypeTok{conf.level =} \FloatTok{0.90}\NormalTok{ )}\OperatorTok{$}\NormalTok{conf.int}
+\CommentTok{## [1] 30632.78 47179.74}
+\CommentTok{## attr(,"conf.level")}
+\CommentTok{## [1] 0.9}
+\end{Highlighting}
+\end{Shaded}
+
+Para terminar esta sección vamos a liberar la memoria de los datos \texttt{rank18com.Micro} para esto usamos la función \texttt{detach}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{detach}\NormalTok{(rank18com.Micro)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{diferencia-de-medias}{%
+\subsection{Diferencia de medias}\label{diferencia-de-medias}}
+
+\hypertarget{sigma_1-y-sigma_2-conocidas}{%
+\subsubsection{\texorpdfstring{\(\sigma_1\) y \(\sigma_2\) conocidas}{\textbackslash{}sigma\_1 y \textbackslash{}sigma\_2 conocidas}}\label{sigma_1-y-sigma_2-conocidas}}
+
+Para esta sección necesitamos dos grupos el grupo 1 serán las pequeñas empresas y el grupo 2 las microempresas,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rank18com.Peq =}\StringTok{ }\NormalTok{rank18com }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(TAMAÑO }\OperatorTok{==}\StringTok{ "PEQUEÑA"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(ACTIVO)}
+\NormalTok{act.Peq =}\StringTok{ }\NormalTok{rank18com.Peq}\OperatorTok{$}\NormalTok{ACTIVO}
+
+\NormalTok{rank18com.Micro =}\StringTok{ }\NormalTok{rank18com }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(TAMAÑO }\OperatorTok{==}\StringTok{ "MICROEMPRESA"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(ACTIVO)}
+\NormalTok{act.Micro =}\StringTok{ }\NormalTok{rank18com.Micro}\OperatorTok{$}\NormalTok{ACTIVO}
+\end{Highlighting}
+\end{Shaded}
+
+Vamos a elaborar el intervalo de confianza para la diferencia de medias de los dos grupos \(\mu_1-\mu_2\). Esto lo vamos a hacer con la función \texttt{z.test} del paquete \texttt{BSDA}. En la sección \ref{musc} utilizamos la función para elaborar el intervalo de confianza. En extenso esta función se usa de la siguiente forma \texttt{z.test(x,\ y\ =\ NULL,\ alternative\ =\ "two.sided",\ mu\ =\ 0,\ sigma.x\ =\ NULL,\ \ \ sigma.y\ =\ NULL,\ conf.level\ =\ 0.95)} Como podemos ver por defecto el programa calcula el intervalo de confianza con un \(95\%\) de confianza. Además debemos indicar los valores de \(\sigma_1\) y \(\sigma_2\) y al igual que en la seccion \ref{musc} supondremos que la desviación muestral es la desviación poblacional. Vamos a calcular el intervalo de confianza para la diferencia de medias con el \(95\)\% de confianza.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(BSDA)}
+\KeywordTok{z.test}\NormalTok{(}\DataTypeTok{x=}\NormalTok{act.Peq, }\DataTypeTok{sigma.x =} \KeywordTok{sd}\NormalTok{(act.Peq), }
+       \DataTypeTok{y=}\NormalTok{act.Micro, }\DataTypeTok{sigma.y =} \KeywordTok{sd}\NormalTok{(act.Micro))}\OperatorTok{$}\NormalTok{conf.int}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 122739.5 204426.1
+## attr(,"conf.level")
+## [1] 0.95
+\end{verbatim}
+
+Vamos ahora a modficar el parámetro de la confianza y trabajamos con un nivel de \(90\%\) de confianza.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(BSDA)}
+\KeywordTok{z.test}\NormalTok{(}\DataTypeTok{x=}\NormalTok{act.Peq, }\DataTypeTok{sigma.x =} \KeywordTok{sd}\NormalTok{(act.Peq), }
+       \DataTypeTok{y=}\NormalTok{act.Micro, }\DataTypeTok{sigma.y =} \KeywordTok{sd}\NormalTok{(act.Micro), }
+       \DataTypeTok{conf.level =} \FloatTok{0.90}\NormalTok{)}\OperatorTok{$}\NormalTok{conf.int}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 129306.0 197859.5
+## attr(,"conf.level")
+## [1] 0.9
+\end{verbatim}
+
+\hypertarget{desviaciones-desconocidas-y-diferentes-1}{%
+\subsubsection{Desviaciones desconocidas y diferentes}\label{desviaciones-desconocidas-y-diferentes-1}}
+
+Para esta sección y la siguiente vamos a trabajar con las mismas variables de la sección anterior. Como en la sección \ref{musd} vamos a trabajar con la función \texttt{t.test} el uso de esta función es \texttt{t.test(x,\ y\ =\ NULL,alternative\ =\ c("two.sided",\ "less",\ "greater"),mu\ =\ 0,\ paired\ =\ FALSE,\ var.equal\ =\ FALSE,conf.level\ =\ 0.95,\ ...)} La función por defecto calcula el intervalo con el \(95\)\% de confianza y se asume que las desviaciones son diferentes.
+
+Vamos a trabajar ahora con un intervalo de confianza al \(95\)\% para la diferencia de medias con desviaciones desconocidas y diferentes. Aunque por defecto la función asume que las desviaciones son diferentes incluimos la opción \texttt{var.equal\ =\ FALSE}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(}\DataTypeTok{x=}\NormalTok{act.Peq, }\DataTypeTok{y=}\NormalTok{act.Micro, }\DataTypeTok{var.equal =} \OtherTok{FALSE}\NormalTok{,}
+       \DataTypeTok{conf.level =} \FloatTok{0.95}\NormalTok{)}\OperatorTok{$}\NormalTok{conf.int}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 122396.1 204769.5
+## attr(,"conf.level")
+## [1] 0.95
+\end{verbatim}
+
+Si calculamos el intervalo ahora con el \(98\)\% de confianza.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(}\DataTypeTok{x=}\NormalTok{act.Peq, }\DataTypeTok{y=}\NormalTok{act.Micro, }\DataTypeTok{var.equal =} \OtherTok{FALSE}\NormalTok{,}
+       \DataTypeTok{conf.level =} \FloatTok{0.98}\NormalTok{)}\OperatorTok{$}\NormalTok{conf.int}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 114563.4 212602.2
+## attr(,"conf.level")
+## [1] 0.98
+\end{verbatim}
+
+\hypertarget{desviaciones-desconocidas-e-iguales-1}{%
+\subsubsection{Desviaciones desconocidas e iguales}\label{desviaciones-desconocidas-e-iguales-1}}
+
+Cuando se asumen desviaciones iguales se usa la opción \texttt{var.equal\ =\ TRUE}. El intervalo de confianza con el \(95\)\% se calcula de la siguiente forma:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(}\DataTypeTok{x=}\NormalTok{act.Peq, }\DataTypeTok{y=}\NormalTok{act.Micro, }\DataTypeTok{var.equal =} \OtherTok{TRUE}\NormalTok{,}
+       \DataTypeTok{conf.level =} \FloatTok{0.95}\NormalTok{)}\OperatorTok{$}\NormalTok{conf.int}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 134354.2 192811.4
+## attr(,"conf.level")
+## [1] 0.95
+\end{verbatim}
+
+Mientras que el intervalo con el \(98\)\% seria:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(}\DataTypeTok{x=}\NormalTok{act.Peq, }\DataTypeTok{y=}\NormalTok{act.Micro, }\DataTypeTok{var.equal =} \OtherTok{TRUE}\NormalTok{,}
+       \DataTypeTok{conf.level =} \FloatTok{0.98}\NormalTok{)}\OperatorTok{$}\NormalTok{conf.int}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 128861.3 198304.2
+## attr(,"conf.level")
+## [1] 0.98
+\end{verbatim}
+
+\hypertarget{pruebas-de-hipotesis-en-r}{%
+\section{Pruebas de Hipótesis en R}\label{pruebas-de-hipotesis-en-r}}
+
+\hypertarget{para-la-media-1}{%
+\subsection{Para la media}\label{para-la-media-1}}
+
+En este caso vamos a usar la función \texttt{z.test()} o \texttt{t.test()} dependiendo si la o las desviaciones son conocidas o desconocidas respectivamente.
+
+\hypertarget{sigma-conocida}{%
+\subsubsection{\texorpdfstring{\(\sigma\) conocida}{\textbackslash{}sigma conocida}}\label{sigma-conocida}}
+
+El uso de la función \texttt{z.test} es \texttt{z.test(x,\ y\ =\ NULL,alternative\ =\ "two.sided",\ mu\ =\ 0,\ sigma.x\ =\ NULL,sigma.y\ =\ NULL,\ conf.level\ =\ 0.95)} para pruebas de hipótesis de una sola variable solo ingresamos la variable a ser analizada en \texttt{x}, para indicar la hipótesis alternativa en la opción \texttt{alternative} podemos escribir \texttt{"greater"}para mayor, \texttt{"less"} para menor o \texttt{"two.sided"} para diferente. Como antes debemos indicar el valor de la desviación conocida que asumiremos también que es la desviación de la muestra.
+Para indicar el valor hipotético de la media reemplazamos en la opción \texttt{mu=0} el valor de \(0\) por el valor hipotético.
+
+Para ejemplificar el uso de la función, supongamos que queremos verificar si la media del valor de los activos de las microempresas dedicadas al comercio es diferente de \(40\;000\), con una significancia del \(5\%\), cuando hacemos la prueba de hipótesis debemos indicar la confianza que es el complemento de la significancia \(\text{Confianza}=1- \text{Significancia} \rightarrow \text{Significancia}=1-\text{Confianza}\).
+
+Como ya es costumbre, cargamos primero el archivo a ser analizado.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rank18com =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"Ranking2018Comercio.csv"}\NormalTok{,}\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{, }
+                     \DataTypeTok{dec=}\StringTok{","}\NormalTok{, }\DataTypeTok{sep=}\StringTok{";"}\NormalTok{)}
+
+\NormalTok{rank18com.Micro =}\StringTok{ }\NormalTok{rank18com }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(TAMAÑO }\OperatorTok{==}\StringTok{ "MICROEMPRESA"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(ACTIVO)}
+
+\KeywordTok{attach}\NormalTok{(rank18com.Micro)}
+\end{Highlighting}
+\end{Shaded}
+
+La hipótesis nula y alternativa serían:
+
+\begin{equation} 
+\begin{cases} 
+H_0: \mu = 40\;000 \\ 
+H_1: \mu \neq 40\;000
+\end{cases} 
+\end{equation}
+
+La instrucción en R para hacer la prueba de hipótesis sería:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{desviacion =}\StringTok{ }\KeywordTok{sd}\NormalTok{(ACTIVO)}
+\KeywordTok{z.test}\NormalTok{(ACTIVO, }\DataTypeTok{mu =} \DecValTok{40000}\NormalTok{, }\DataTypeTok{sigma.x =}\NormalTok{ desviacion, }\DataTypeTok{conf.level =} \FloatTok{0.95}\NormalTok{)}
+\CommentTok{## }
+\CommentTok{##  One-sample z-Test}
+\CommentTok{## }
+\CommentTok{## data:  ACTIVO}
+\CommentTok{## z = -0.21804, p-value = 0.8274}
+\CommentTok{## alternative hypothesis: true mean is not equal to 40000}
+\CommentTok{## 95 percent confidence interval:}
+\CommentTok{##  29074.58 48737.94}
+\CommentTok{## sample estimates:}
+\CommentTok{## mean of x }
+\CommentTok{##  38906.26}
+\end{Highlighting}
+\end{Shaded}
+
+En este caso el valor \(p\) (\texttt{p-value}) es igual a \(0.8274\) y recordemos que en la sección \ref{pvalor} se definió el criterio del valor \(p\) que consiste en rechazar \(H_0\) cuando \(p < \alpha\). En este caso se acepta la hipótesis nula de que el valor real de la media es igual a \(40\;000\).
+
+Supongamos ahora que se desea probar que el valor real de la media es menor a \(40\;000\), para hacer esto incluimos la opción `alternative =``less''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{z.test}\NormalTok{(ACTIVO, }\DataTypeTok{mu =} \DecValTok{40000}\NormalTok{, }\DataTypeTok{sigma.x =}\NormalTok{ desviacion,}\DataTypeTok{alternative =} \StringTok{"less"}\NormalTok{,  }\DataTypeTok{conf.level =} \FloatTok{0.95}\NormalTok{)}
+\CommentTok{## }
+\CommentTok{##  One-sample z-Test}
+\CommentTok{## }
+\CommentTok{## data:  ACTIVO}
+\CommentTok{## z = -0.21804, p-value = 0.4137}
+\CommentTok{## alternative hypothesis: true mean is less than 40000}
+\CommentTok{## 95 percent confidence interval:}
+\CommentTok{##        NA 47157.26}
+\CommentTok{## sample estimates:}
+\CommentTok{## mean of x }
+\CommentTok{##  38906.26}
+\end{Highlighting}
+\end{Shaded}
+
+Las conclusiones son parecidas a la primera prueba de hipótesis realizada.
 
 \hypertarget{methods}{%
-\chapter{Regresión Lineal Simple y Correlación}\label{methods}}
+\chapter{Correlación y Regresión}\label{methods}}
 
 Supongamos que se quisiera analizar la relación entre las ventas y la utilidad de una empresa, para tratar de explicar de qué forma las ventas afectan la utilidad de las empresas. La existencia de la relación entre variables puede ser analizada usando un gráfico, una medida numérica o una ecuación.
 El gráfico utilizado para analizar la relación entre dos variables se llama \emph{gráfico de dispersión} o \emph{diagrama de dispersión}, en la figura \ref{fig:corr} se muestran algunos diagramas de dispersión.
@@ -2148,7 +2704,7 @@ El valor obtenido de la correlación es 0.8342 pero ¿cómo saber qué tan bueno
 \hypertarget{regresion-lineal}{%
 \section{Regresión lineal}\label{regresion-lineal}}
 
-Al inicio de este capítulo usamos diagramas de dispersión o gráficos de dispersión para analizar la relación entre dos variables. Luego en la seccion \ref{correl} se analizó la relaciónentre la publicidad y las ventas de 100 empresas utilizando el coeficiente de correlación. La correlación no contesta preguntas como ¿influye la publicidad sobre las ventas? Si la publicidad aumenta ¿cuánto aumentarán las ventas? En esta sección utilizaremos el análisis de regresión para analizar la relación entre la publicidad y las ventas.
+Al inicio de este capítulo usamos diagramas de dispersión o gráficos de dispersión para analizar la relación entre dos variables. Luego en la seccion \ref{correl} se analizó la relación entre la publicidad y las ventas de 100 empresas utilizando el coeficiente de correlación. La correlación no contesta preguntas como ¿influye la publicidad sobre las ventas? Si la publicidad aumenta ¿cuánto aumentarán las ventas? En esta sección utilizaremos el análisis de regresión para analizar la relación entre la publicidad y las ventas.
 
 El análisis de regresión es una forma más avanzada que la correlación para analizar la relación entre variables. Las principales diferencias entre la correlación y la regresión son:
 
@@ -2164,7 +2720,7 @@ El análisis de regresión es una forma más avanzada que la correlación para a
   Se puede medir la significancia de cada variable explicativa.
 \end{itemize}
 
-Se espera que la publicidad explique las ventas. Es decir que la publicidad es la variable explicativa o independiente y se ubica sobre el eje de las \(X\), y el nivel de ventas es una variable explicada o dependiente y se ubica sobre el eje de las \(y\). El análisis de regresión describe esta relación causal ajustando una línea recta a los datos como se observa en la figura \ref{fig:regre1}. Esta recta de regresión es creciente, lo que se relaciona con el valor del coeficiente de correlación previamente calculado cuyo signo es positivo, es decir que altos niveles de publicidad se asocian con altos niveles de ventas y viceversa.
+Se espera que la publicidad explique las ventas. Es decir que la publicidad es la variable explicativa o independiente y se ubica sobre el eje de las \(X\), y el nivel de ventas es una variable explicada o dependiente y se ubica sobre el eje de las \(Y\). El análisis de regresión describe esta relación causal ajustando una línea recta a los datos como se observa en la figura \ref{fig:regre1}. Esta recta de regresión es creciente, lo que se relaciona con el valor del coeficiente de correlación previamente calculado cuyo signo es positivo, es decir que altos niveles de publicidad se asocian con altos niveles de ventas y viceversa.
 
 \begin{figure}[h]
 
@@ -2270,7 +2826,12 @@ La expresión de la ecuación \eqref{eq:regre6} se minimiza utilizando derivadas
 \hypertarget{regresion-linear-en-r}{%
 \subsection{Regresión linear en R}\label{regresion-linear-en-r}}
 
-Para realizar regresión lineal en R se puede usar la función \texttt{lm(\ )}, el uso de la función es \texttt{lm(formula,\ datos)}.
+Para realizar regresión lineal en R se puede usar la función \texttt{lm(\ )}, el uso de la función es \texttt{lm(formula,\ datos)}. En este caso se quiere obtener los coeficientes de la ecuación de regresión
+
+\begin{equation}
+  \text{Ventas} = \beta_0 + \beta_1 \text{Publicidad} + \epsilon
+    \label{eq:modelo0}
+\end{equation}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2307,12 +2868,19 @@ Para realizar regresión lineal en R se puede usar la función \texttt{lm(\ )}, 
 \hypertarget{coefregre}{%
 \subsection{Interpretación de los coeficientes de regresión}\label{coefregre}}
 
-El primer coeficiente a interpretar es el de la pendiente en este caso \(\beta_1\) es igual a 3.93 esto se lo observa en la salida de R en la sección \texttt{Coefficients:} el valor estimado para la publicidad, de manera general el valor de \(\beta_1\) se interpreta como el cambio en la variable dependiente (\(Y\)) por cada aumento de \(1\) unidad en la variable independiente (\(X\)). Es decir que en este caso por cada aumento de \(1\) dólar en la inversión en publicidad, el nivel de ventas sube en promedio 3.93.
+En el apartado \texttt{Coefficients:} del resultado la primera columna corresponde a los valores estimados de los coeficientes. La ecuación de regresión obtenida al reemplazar los coeficientes obtenidos en la ecuación \eqref{eq:modelo0} seria:
+
+\begin{equation}
+\text{Ventas} = 34.69 + 3.93\text{Publicidad} + \epsilon 
+    \label{eq:modelo}
+\end{equation}
+
+El primer coeficiente a interpretar es el de la pendiente en este caso \(\beta_1\) es igual a 3.93 esto se lo observa en la salida de R en el apartado \texttt{Coefficients:} el valor estimado para la publicidad, de manera general el valor de \(\beta_1\) se interpreta como el cambio en la variable dependiente (\(Y\)) por cada aumento de \(1\) unidad en la variable independiente (\(X\)). Es decir que en este caso por cada aumento de \(1\) dólar en la inversión en publicidad, el nivel de ventas sube en promedio 3.93.
 
 Por otro lado \(\beta_0\) es igual a 34.69, \(\beta_0\) se interpreta como el valor que toma la variable dependiente cuando la variable independiente es igual a \(0\). En este caso cuando la inversión en publicidad es igual a \(0\) las ventas son en promedio iguales a 34.69.
 
 \hypertarget{bondad-de-ajuste-del-modelo-de-regresion}{%
-\section{Bondad de Ajuste del modelo de regresión}\label{bondad-de-ajuste-del-modelo-de-regresion}}
+\subsection{Bondad de Ajuste del modelo de regresión}\label{bondad-de-ajuste-del-modelo-de-regresion}}
 
 Una vez calculada la recta de regresión quizás nos preguntemos si esta da un buen ajuste a los datos, es decir si las observaciones se alejan o se acercan de la recta. Si el ajuste es pobre, quizás el efecto de la variable independiente en la dependiente no es lo suficientemente fuerte. El lector debe fijarse en que, aún cuando no haya efecto de \(X\) sobre \(Y\) se puede calcular la recta de regresión. Medir la bondad de ajuste de una regresión nos permite discriminar entre un buen y un mal modelo de regresión.
 
@@ -2348,12 +2916,145 @@ R^2 = \dfrac{STC-SCE}{STC} = 1 - \dfrac{SCE}{STC}
 El \(R^2\) se lo interpreta como la proporción de la variabilidad de \(Y\) explicada por \(X\). En el modelo obtenido en la sección \ref{coefregre} se obtuvo un \(R^2\) de 0.6959 este valor se observa en las últimas líneas del resumen del modelo donde dice \texttt{Multiple\ R-squared}, se interpreta que el 69.59\% de la variabilidad de las ventas son explicadas por la inversión en publicidad.
 
 \hypertarget{pruebas-de-hipotesis-para-los-coeficientes-de-la-regresion}{%
-\section{Pruebas de Hipótesis para los coeficientes de la regresión}\label{pruebas-de-hipotesis-para-los-coeficientes-de-la-regresion}}
+\subsection{Pruebas de Hipótesis para los coeficientes de la regresión}\label{pruebas-de-hipotesis-para-los-coeficientes-de-la-regresion}}
 
 El resumen de R muestra los valores \emph{p} para las hipótesis nulas \(\beta_0=0\) y \(\beta_1=0\), el criterio que se usa para aceptar o rechazar la hipótesis nula es el criterio que se explica en la sección \ref{pvalor}.
 
 En este caso se puede ver en el resumen que para el intercepto \(\beta_0\) el valor \emph{p} es \(0.109\) y para la pendiente \(\beta_1\) el valor \emph{p} es \(<2 \times 10^{-16}\) junto a los valores \emph{p} hay unos códigos de significancia
 lo mejor es simplemnte usar el criterio ya mencionado, en este caso el valor \emph{p} del intercepto nos indica que no se puede rechazar \(H_0: \beta_0=0\) a un nivel de significancia de \(0.05\), mientras que para el caso de la pendiente el valor \emph{p} nos indica que rechazamos \(H_0: \beta_1=0\) a un nivel de significancia de \(0.05\).
+
+Además en la última linea de la salida del resumen del modelo de regresión se obtiene un estadístico \(F\) de \(224.2\) este estadístico es un buen indicador de si existe una relación entre la variable independiente y dependiente. A mayor distancia del estadístico de \(1\) el modelo es mejor. Qué tan grande debe ser el valor depende tanto del número de datos y de variables predictoras. En este caso el estadístico está lejos de \(1\), además el valor \(p\) general al final del modelo es para el estadístico \(F\) en este caso el valor \(p\) de \(<2 \times10^{-16}\) nos indica que el modelo global es significativo.
+
+\hypertarget{regresion-multiple}{%
+\section{Regresión Múltiple}\label{regresion-multiple}}
+
+La regresión lineal simple sólo permite tener una variable explicativa, pero en la vida real una variable de respuesta puede ser afectada por más de una variable explicativa. Por ejemplo la demanda puede verse afectada por el precio, pero también por el ingreso. Es decir que la demanda puede ser expresada en función del precio y de los ingresos \(Demanda=f\left(Precio,Ingreso\right)\). La ecuación de regresión puede ser ahora escrita como:
+
+\begin{equation}
+\hat{Y}_i = \beta_0 + \beta_1 X_{1,i} + \beta_2 X_{2,i}  + \ldots + \beta_k X_{k,i}
+    \label{eq:regremul1}
+\end{equation}
+
+El subíndice \(k,i\) se entiende como el valor de la variable \(k\) para la i-ésima observación. Como en la regresión simple \(Y_i\) puede ser escrito como:
+
+\begin{equation}
+Y_i = \beta_0 + \beta_1 X_{1,i} + \beta_2 X_{2,i}  + \ldots + \beta_k X_{k,i} + \epsilon_i
+    \label{eq:regremul2}
+\end{equation}
+
+Combinando las ecuaciones \eqref{eq:regremul1} y \eqref{eq:regremul2}. Se obtiene:
+
+\begin{equation}
+Y_i = \hat{Y}_i + \epsilon_i
+    \label{eq:regremul3}
+\end{equation}
+
+Los principios usados en regresión múltiple son esencialmente los mismos que la regresión simple. Se determinan los coeficientes \(\beta_0,\beta_1,\beta_2,\ldots,\beta_k\) minimizando la suma de los errores cuadráticos. También se obtiene un \(R^2\) y se pueden realizar pruebas de hipótesis para los coeficientes.
+
+Al igual que en la regresión lineal simple, la fracción de la variación en la variable dependiente explicada por las variables independientes se lo puede calcular como en la ecuación \ref{rscuared} es decir:
+
+\begin{equation}
+R^2 = 1 - \dfrac{SCE}{STC}
+    \label{eq:rscuared2}
+\end{equation}
+
+Si se añaden nuevas variables independientes a la regresión el valor del \(R^2\) aumentará. Para entender esto, podemos pensar en un experimento en el cual añadimos variables independientes hasta que el total de variables independientes más la constante es igual al número de observaciones. Esto nos conducirá a un \(R^2\) igual a \(1\). Entonces para poder explicar más de la variación de la variable dependiente simplemente adicionamos variables independientes sin importar si estas variables añadidas son realmente relevantes para la variable dependiente. Para obtener una medida más significativa de cuanta variación de la variable dependiente está siendo explicada, se ajusta el \(R^2\) para compensar la pérdida de grados de libertad asociados a la inclusión de variables independientes adicionales. Este \(R^2\) ajustado se calcula con la expresión de la ecuación \eqref{eq:rscuared3}
+
+\begin{equation}
+R^2 = 1 -\dfrac{n-1}{n-k-1} \dfrac{SCE}{STC}
+    \label{eq:rscuared3}
+\end{equation}
+
+La regresión múltiple se hace también con la función \texttt{lm(formula,datos)}, la diferencia es que en la fórmula se incluye más de una variable independiente.
+
+Para ejemplificar la regresión múltiple en R vamos a construir un modelo de regresión múltiple con la base \texttt{Ranking2018Comercio.csv}, se intentará explicar primero la utilidad de las empresas en función del número de empleados y las ventas. Es decir que la ecuación de regresión sería:
+
+\begin{equation}
+  \text{Utilidad} = \beta_0 + \beta_1 \text{Empleados} + \beta_2 \text{Ventas} + \epsilon
+    \label{eq:modelo2}
+\end{equation}
+
+Primero cargamos los datos. Una particularidad que tienen los datos es que algunas de las observaciones son inconsistentes en el sentido que reportan ventas iguales a 0, se filtrarán los datos de tal forma que solo se analizarán las empresas que han reportado ventas mayores a 0. Se seleccionará además la variable \texttt{TAMAÑO} para verificar más adelante si el tamaño de la empresa influye sobre las utilidades:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{datos =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"Ranking2018Comercio.csv"}\NormalTok{,}\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{,}\DataTypeTok{sep=}\StringTok{";"}\NormalTok{, }\DataTypeTok{dec=}\StringTok{","}\NormalTok{)}
+
+\NormalTok{datos =}\StringTok{ }\NormalTok{datos }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(VENTAS}\OperatorTok{>}\DecValTok{0}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(UTILIDAD,EMPLEADOS,VENTAS,TAMAÑO)}
+\KeywordTok{attach}\NormalTok{(datos)}
+\end{Highlighting}
+\end{Shaded}
+
+Una vez cargados los datos vamos a graficar diagramas de dispersión por pares de variables para esto usaremos la función \texttt{pairs()} las variables para las que se quiere realizar son las tres primeras por lo que las seleccionamos indicando que del conjunto datos solo queremos las columnas de la 1 a la 3. En la figura \ref{fig:pairs} se observa que cuando se relaciona la utilidad con los empleados si hay una tendencia creciente bien definida, sin embargo cuando se relacionan las ventas ya sea con utilidad o con empleados la tendencia no está bien definida.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pairs}\NormalTok{(datos[,}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[!h]
+
+{\centering \includegraphics[width=0.6\linewidth]{estadistica_files/figure-latex/pairs-1} 
+
+}
+
+\caption{Diagramas de Dispersión del Conjunto datos}\label{fig:pairs}
+\end{figure}
+
+Ahora construimos el modelo de regresión. Nótese que en la fórmula del lado de las variables independientes incluimos las dos variables ya mencionadas:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m2 =}\StringTok{ }\KeywordTok{lm}\NormalTok{(UTILIDAD }\OperatorTok{~}\StringTok{ }\NormalTok{EMPLEADOS }\OperatorTok{+}\StringTok{ }\NormalTok{VENTAS)}
+\KeywordTok{summary}\NormalTok{(m2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = UTILIDAD ~ EMPLEADOS + VENTAS)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1193229     1031    12491    18190   484129 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -3.209e+04  6.344e+03  -5.059 7.71e-07 ***
+## EMPLEADOS    4.900e+03  2.203e+02  22.237  < 2e-16 ***
+## VENTAS       3.343e-04  1.709e-03   0.196    0.845    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 101100 on 276 degrees of freedom
+## Multiple R-squared:  0.7622, Adjusted R-squared:  0.7605 
+## F-statistic: 442.4 on 2 and 276 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+Se puede apreciar que con los coeficientes obtenidos la ecuación \eqref{eq:modelo2} sería:
+
+\begin{equation}
+  \text{Utilidad} = -32\;090 + 4\;900 \text{Empleados} + 0.0003343 \text{Ventas} + \epsilon
+    \label{eq:modelo3}
+\end{equation}
+
+El intercepto y el coeficiente estimado para el número de empleados son significativos, no así el estimado para las ventas. La interpretación de cada coeficiente estimado es:
+
+\begin{itemize}
+\tightlist
+\item
+  Intercepto: una empresa sin empleados y con ventas iguales a 0 tiene utilidades de \(-32\;090\) (Pérdidas)
+\item
+  Empleados: por cada empleado adicional que tiene la empresa las utilidades aumentan en promedio \(4\;900\) dólares
+\item
+  Ventas: por cada dólar adicional de ventas las utilidades aumentan en promedio \(0.0003343\)
+\end{itemize}
+
+El \(R^2\) ajustado del modelo es \(0.7605\) es decir que el \(76.05\)\% de la variación de la utilidad es explicada por el número de empleados y las ventas. De acuerdo al estadístico \(F\) y al valor \(p\) de ese estadístico el modelo global es significativo.
 
 \hypertarget{analisis-factorial}{%
 \chapter{Análisis Factorial}\label{analisis-factorial}}

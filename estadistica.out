@@ -16,15 +16,17 @@
 \BOOKMARK [1][-]{section.3.2}{Funciones\040de\040Densidad\040de\040Probabilidad}{chapter.3}% 16
 \BOOKMARK [1][-]{section.3.3}{Distribución de Probabilidad Normal}{chapter.3}% 17
 \BOOKMARK [1][-]{section.3.4}{Distribución t de Student}{chapter.3}% 18
-\BOOKMARK [0][-]{chapter.4}{Intervalos de Confianza y Pruebas de Hipótesis}{}% 19
-\BOOKMARK [1][-]{section.4.1}{Intervalos\040de\040Confianza}{chapter.4}% 20
-\BOOKMARK [1][-]{section.4.2}{Pruebas de hipótesis}{chapter.4}% 21
-\BOOKMARK [0][-]{chapter.5}{Regresión Lineal Simple y Correlación}{}% 22
-\BOOKMARK [1][-]{section.5.1}{Coeficiente de Correlación}{chapter.5}% 23
-\BOOKMARK [1][-]{section.5.2}{Regresión lineal}{chapter.5}% 24
-\BOOKMARK [1][-]{section.5.3}{Bondad de Ajuste del modelo de regresión}{chapter.5}% 25
-\BOOKMARK [1][-]{section.5.4}{Pruebas de Hipótesis para los coeficientes de la regresión}{chapter.5}% 26
-\BOOKMARK [0][-]{chapter.6}{Análisis Factorial}{}% 27
-\BOOKMARK [1][-]{section.6.1}{Análisis de Fiabilidad}{chapter.6}% 28
-\BOOKMARK [1][-]{section.6.2}{Evaluación de Análisis Factorial}{chapter.6}% 29
-\BOOKMARK [0][-]{chapter.7}{Algo\040de\040series\040de\040tiempo}{}% 30
+\BOOKMARK [1][-]{section.3.5}{Cálculo de probabilidades y uso de la distribución normal y la t de Student en R}{chapter.3}% 19
+\BOOKMARK [0][-]{chapter.4}{Intervalos de Confianza y Pruebas de Hipótesis}{}% 20
+\BOOKMARK [1][-]{section.4.1}{Intervalos\040de\040Confianza}{chapter.4}% 21
+\BOOKMARK [1][-]{section.4.2}{Pruebas de hipótesis}{chapter.4}% 22
+\BOOKMARK [1][-]{section.4.3}{Intervalos\040de\040confianza\040en\040R}{chapter.4}% 23
+\BOOKMARK [1][-]{section.4.4}{Pruebas de Hipótesis en R}{chapter.4}% 24
+\BOOKMARK [0][-]{chapter.5}{Correlación y Regresión}{}% 25
+\BOOKMARK [1][-]{section.5.1}{Coeficiente de Correlación}{chapter.5}% 26
+\BOOKMARK [1][-]{section.5.2}{Regresión lineal}{chapter.5}% 27
+\BOOKMARK [1][-]{section.5.3}{Regresión Múltiple}{chapter.5}% 28
+\BOOKMARK [0][-]{chapter.6}{Análisis Factorial}{}% 29
+\BOOKMARK [1][-]{section.6.1}{Análisis de Fiabilidad}{chapter.6}% 30
+\BOOKMARK [1][-]{section.6.2}{Evaluación de Análisis Factorial}{chapter.6}% 31
+\BOOKMARK [0][-]{chapter.7}{Algo\040de\040series\040de\040tiempo}{}% 32

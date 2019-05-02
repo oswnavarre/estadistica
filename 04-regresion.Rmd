@@ -5,7 +5,7 @@ if(!knitr:::is_html_output())
 }
 ```
 
-# Regresión Lineal Simple y Correlación {#methods}
+# Correlación y Regresión {#methods}
 
 Supongamos que se quisiera analizar la relación entre las ventas y la utilidad de una empresa, para tratar de explicar de qué forma las ventas afectan la utilidad de las empresas. La existencia de la relación entre variables puede ser analizada usando un gráfico, una medida numérica o una ecuación. 
 El gráfico utilizado para analizar la relación entre dos variables se llama *gráfico de dispersión* o *diagrama de dispersión*, en la figura \@ref(fig:corr) se muestran algunos diagramas de dispersión. 
@@ -160,7 +160,7 @@ El valor obtenido  de la correlación es `r round(cor(Publicidad, Ventas),4)` pe
 
 ## Regresión lineal
 
-Al inicio de este capítulo usamos diagramas de dispersión o gráficos de dispersión para analizar la relación entre dos variables. Luego en la seccion \@ref(correl) se analizó la relaciónentre la publicidad y las ventas de 100 empresas utilizando el coeficiente de correlación. La correlación no contesta preguntas como ¿influye la publicidad sobre las ventas? Si la publicidad aumenta ¿cuánto aumentarán las ventas? En esta sección utilizaremos el análisis de regresión para analizar la relación entre la publicidad y las ventas. 
+Al inicio de este capítulo usamos diagramas de dispersión o gráficos de dispersión para analizar la relación entre dos variables. Luego en la seccion \@ref(correl) se analizó la relación entre la publicidad y las ventas de 100 empresas utilizando el coeficiente de correlación. La correlación no contesta preguntas como ¿influye la publicidad sobre las ventas? Si la publicidad aumenta ¿cuánto aumentarán las ventas? En esta sección utilizaremos el análisis de regresión para analizar la relación entre la publicidad y las ventas. 
 
 El análisis de regresión es una forma más avanzada que la correlación para analizar la relación entre variables. Las principales diferencias entre la correlación y la regresión son:
 
@@ -169,7 +169,7 @@ El análisis de regresión es una forma más avanzada que la correlación para a
 * Se mide la influencia de cada variable explicativa sobre la variable dependiente.
 * Se puede medir la significancia de cada variable explicativa.
 
-Se espera que la publicidad explique las ventas. Es decir que la publicidad es la variable explicativa o independiente  y se ubica sobre el eje de las $X$, y el nivel de ventas es una variable explicada o dependiente y se ubica sobre el eje de las $y$. El análisis de regresión describe esta relación causal ajustando una línea recta a los datos como se observa en la figura \@ref(fig:regre1). Esta recta de regresión es creciente, lo que se relaciona con el valor del coeficiente de correlación previamente calculado cuyo signo es positivo, es decir que altos niveles de publicidad se asocian con altos niveles de ventas y viceversa. 
+Se espera que la publicidad explique las ventas. Es decir que la publicidad es la variable explicativa o independiente  y se ubica sobre el eje de las $X$, y el nivel de ventas es una variable explicada o dependiente y se ubica sobre el eje de las $Y$. El análisis de regresión describe esta relación causal ajustando una línea recta a los datos como se observa en la figura \@ref(fig:regre1). Esta recta de regresión es creciente, lo que se relaciona con el valor del coeficiente de correlación previamente calculado cuyo signo es positivo, es decir que altos niveles de publicidad se asocian con altos niveles de ventas y viceversa. 
 
 ```{r regre1, out.width = "50%",fig.cap="Recta de regresión",fig.align = 'center', echo=FALSE}
 set.seed(1.8)
@@ -267,7 +267,12 @@ La expresión de la ecuación \@ref(eq:regre6) se minimiza utilizando derivadas,
 
 ### Regresión linear en R
 
-Para realizar regresión lineal en R se puede usar la función `lm( )`, el uso de la función es `lm(formula, datos)`.
+Para realizar regresión lineal en R se puede usar la función `lm( )`, el uso de la función es `lm(formula, datos)`. En este caso se quiere obtener los coeficientes de la ecuación de regresión 
+
+\begin{equation}
+  \text{Ventas} = \beta_0 + \beta_1 \text{Publicidad} + \epsilon
+    (\#eq:modelo0)
+\end{equation}
 
 ```{r linreg, echo=TRUE}
 set.seed(1.8)
@@ -281,11 +286,18 @@ summary(m1)
 
 ### Interpretación de los coeficientes de regresión {#coefregre}
 
-El primer coeficiente a interpretar es el de la pendiente en este caso $\beta_1$ es igual a `r round(b1,2)` esto se lo observa en la salida de R en la sección `Coefficients:` el valor estimado para la publicidad, de manera general el valor de $\beta_1$ se interpreta como el cambio en la variable dependiente ($Y$) por cada aumento de $1$ unidad en la variable independiente ($X$). Es decir que en este caso por cada aumento de $1$ dólar en la inversión en publicidad, el nivel de ventas sube en promedio `r round(b1,2)`.
+En el apartado `Coefficients:` del resultado la primera columna corresponde a los valores estimados de los coeficientes. La ecuación de regresión obtenida al reemplazar los coeficientes obtenidos en la ecuación \@ref(eq:modelo0) seria:
+
+\begin{equation}
+\text{Ventas} = 34.69 + 3.93\text{Publicidad} + \epsilon 
+    (\#eq:modelo)
+\end{equation}
+
+El primer coeficiente a interpretar es el de la pendiente en este caso $\beta_1$ es igual a `r round(b1,2)` esto se lo observa en la salida de R en el apartado `Coefficients:` el valor estimado para la publicidad, de manera general el valor de $\beta_1$ se interpreta como el cambio en la variable dependiente ($Y$) por cada aumento de $1$ unidad en la variable independiente ($X$). Es decir que en este caso por cada aumento de $1$ dólar en la inversión en publicidad, el nivel de ventas sube en promedio `r round(b1,2)`.
 
 Por otro lado $\beta_0$ es igual a `r round(b0,2)`, $\beta_0$ se interpreta como el valor que toma la variable dependiente cuando la variable independiente es igual a $0$. En este caso cuando la inversión en publicidad es igual a $0$ las ventas son en promedio iguales a `r round(b0,2)`. 
 
-## Bondad de Ajuste del modelo de regresión
+### Bondad de Ajuste del modelo de regresión
 
 Una vez calculada la recta de regresión quizás nos preguntemos si esta da un buen ajuste a los datos, es decir si las observaciones se alejan o se acercan de la recta. Si el ajuste es pobre, quizás el efecto de la variable independiente en la dependiente no es lo suficientemente fuerte. El lector debe fijarse en que, aún cuando no haya efecto de $X$ sobre $Y$ se puede calcular la recta de regresión. Medir la bondad de ajuste de una regresión nos permite discriminar entre un buen y un mal modelo de regresión.
 
@@ -312,13 +324,114 @@ R^2 = \dfrac{STC-SCE}{STC} = 1 - \dfrac{SCE}{STC}
 
 El $R^2$ se lo interpreta como la proporción de la variabilidad de $Y$ explicada por $X$. En el modelo obtenido en la sección \@ref(coefregre) se obtuvo un $R^2$ de `r round(summary(m1)$r.squared,4)` este valor se observa en las últimas líneas del resumen del modelo donde dice `Multiple R-squared`, se interpreta que el `r 100*round(summary(m1)$r.squared,4)`% de la variabilidad de las ventas son explicadas por la inversión en publicidad.
 
-## Pruebas de Hipótesis para los coeficientes de la regresión
+### Pruebas de Hipótesis para los coeficientes de la regresión
 
 El resumen de R muestra los valores *p* para las hipótesis nulas $\beta_0=0$ y $\beta_1=0$, el criterio que se usa para aceptar o rechazar la hipótesis nula es el criterio que se explica en la sección \@ref(pvalor).
 
 En este caso se puede ver en el resumen que para el intercepto $\beta_0$ el valor *p* es $0.109$ y para la pendiente $\beta_1$ el valor *p* es $<2 \times 10^{-16}$ junto a los valores *p* hay unos códigos de significancia
 lo mejor es simplemnte usar el criterio ya mencionado, en este caso el valor *p* del intercepto nos indica que no se puede rechazar $H_0: \beta_0=0$ a un nivel de significancia de $0.05$, mientras que para el caso de la pendiente el valor *p* nos indica que rechazamos $H_0:  \beta_1=0$ a un nivel de significancia de $0.05$. 
 
+Además en la última linea de la salida del resumen del modelo de regresión se obtiene un estadístico $F$ de $224.2$ este estadístico es un buen indicador de si existe una relación entre la variable independiente y dependiente. A mayor distancia del estadístico de $1$ el modelo es mejor. Qué tan grande debe ser el valor depende tanto del número de datos y de variables predictoras. En este caso el estadístico está lejos de $1$, además el valor $p$ general al final del modelo es para el estadístico $F$ en este caso el valor $p$ de $<2 \times10^{-16}$ nos indica que el modelo global es significativo.
+
+
+## Regresión Múltiple
+
+La regresión lineal simple sólo permite tener una variable explicativa, pero en la vida real una variable de respuesta puede ser afectada por más de una variable explicativa. Por ejemplo la demanda puede verse afectada por el precio, pero también por el ingreso. Es decir que la demanda puede ser expresada en función del precio y de los ingresos $Demanda=f\left(Precio,Ingreso\right)$. La ecuación de regresión puede ser ahora escrita como:
+
+\begin{equation}
+\hat{Y}_i = \beta_0 + \beta_1 X_{1,i} + \beta_2 X_{2,i}  + \ldots + \beta_k X_{k,i}
+    (\#eq:regremul1)
+\end{equation}
+
+El subíndice $k,i$ se entiende como el valor de la variable $k$ para la i-ésima observación. Como en la regresión simple $Y_i$ puede ser escrito como:
+
+\begin{equation}
+Y_i = \beta_0 + \beta_1 X_{1,i} + \beta_2 X_{2,i}  + \ldots + \beta_k X_{k,i} + \epsilon_i
+    (\#eq:regremul2)
+\end{equation}
+
+Combinando las ecuaciones \@ref(eq:regremul1) y \@ref(eq:regremul2). Se obtiene:
+
+\begin{equation}
+Y_i = \hat{Y}_i + \epsilon_i
+    (\#eq:regremul3)
+\end{equation}
+
+Los principios usados en regresión múltiple son esencialmente los mismos que la regresión simple. Se determinan los coeficientes $\beta_0,\beta_1,\beta_2,\ldots,\beta_k$ minimizando la suma de los errores cuadráticos. También se obtiene un $R^2$ y se pueden realizar  pruebas de hipótesis para los coeficientes. 
+
+Al igual que en la regresión lineal simple, la fracción de la variación en la variable dependiente explicada por las variables independientes se lo puede calcular como en la ecuación \@ref(rscuared) es decir: 
+
+\begin{equation}
+R^2 = 1 - \dfrac{SCE}{STC}
+    (\#eq:rscuared2)
+\end{equation}
+
+Si se añaden nuevas variables independientes a la regresión el valor del $R^2$ aumentará. Para entender esto, podemos pensar en un experimento en el cual añadimos variables independientes hasta  que el total de variables independientes más la constante es igual al número de observaciones. Esto nos conducirá a un $R^2$ igual a $1$. Entonces para poder explicar más de la variación de la variable dependiente simplemente adicionamos variables independientes sin importar si estas variables añadidas son realmente relevantes para la variable dependiente. Para obtener una medida más significativa de cuanta variación de la variable dependiente está siendo explicada, se ajusta el $R^2$ para compensar la pérdida de grados de libertad asociados a la inclusión de variables independientes adicionales. Este $R^2$ ajustado se calcula con la expresión de la ecuación \@ref(eq:rscuared3)
+
+\begin{equation}
+R^2 = 1 -\dfrac{n-1}{n-k-1} \dfrac{SCE}{STC}
+    (\#eq:rscuared3)
+\end{equation}
+
+La regresión múltiple se hace también con la función `lm(formula,datos)`, la diferencia es que en la fórmula se incluye más de una variable independiente.
+
+Para ejemplificar la regresión múltiple en R vamos a construir un modelo de regresión múltiple con la base  `Ranking2018Comercio.csv`, se intentará explicar primero la utilidad de las empresas en función del número de empleados y las ventas. Es decir que la ecuación de regresión sería:
+
+\begin{equation}
+  \text{Utilidad} = \beta_0 + \beta_1 \text{Empleados} + \beta_2 \text{Ventas} + \epsilon
+    (\#eq:modelo2)
+\end{equation}
+
+Primero cargamos los datos. Una particularidad que tienen los datos es que algunas de las observaciones son inconsistentes en el sentido que reportan ventas iguales a 0, se filtrarán los datos de tal forma que solo se analizarán las empresas que han reportado ventas mayores a 0. Se seleccionará además la variable `TAMAÑO` para verificar más adelante si el tamaño de la empresa influye sobre las utilidades:
+
+```{r mulreg0, include=TRUE, eval=FALSE, results='hide'}
+datos = read.csv("Ranking2018Comercio.csv",header=TRUE,sep=";", dec=",")
+
+datos = datos %>%
+  filter(VENTAS>0) %>%
+  select(UTILIDAD,EMPLEADOS,VENTAS,TAMAÑO)
+attach(datos)
+```
+
+```{r mulreg1, include=FALSE, results='hide'}
+datos = read.csv("Ranking2018Comercio.csv",header=TRUE,sep=";", dec=",")
+
+datos = datos %>%
+  filter(VENTAS>0) %>%
+  select(UTILIDAD,EMPLEADOS,VENTAS,TAMAÑO)
+attach(datos)
+```
+
+Una vez cargados los datos vamos a graficar diagramas de dispersión por pares de variables para esto usaremos la función `pairs()` las variables para las que se quiere realizar son las tres primeras por lo que las seleccionamos indicando que del conjunto datos solo queremos las columnas de la 1 a la 3. En la figura \@ref(fig:pairs) se observa que cuando se relaciona la utilidad con los empleados si hay una tendencia creciente bien definida, sin embargo cuando se relacionan las ventas ya sea con utilidad o con empleados la tendencia no está bien definida. 
+
+```{r pairs, out.width="60%", fig.cap="Diagramas de Dispersión del Conjunto datos", fig.align='center',fig.pos="!h"}
+
+pairs(datos[,1:3])
+
+```
+
+
+Ahora construimos el modelo de regresión. Nótese que en la fórmula del lado de las variables independientes incluimos las dos variables ya mencionadas: 
+
+```{r mulreg2, echo=TRUE}
+m2 = lm(UTILIDAD ~ EMPLEADOS + VENTAS)
+summary(m2)
+```
+
+Se puede apreciar que con los coeficientes obtenidos la ecuación \@ref(eq:modelo2) sería:
+
+\begin{equation}
+  \text{Utilidad} = -32\;090 + 4\;900 \text{Empleados} + 0.0003343 \text{Ventas} + \epsilon
+    (\#eq:modelo3)
+\end{equation}
+
+El intercepto y el coeficiente estimado para el número de empleados son significativos, no así el estimado para las ventas. La interpretación de cada coeficiente estimado es:
+
+- Intercepto: una empresa sin empleados y con ventas iguales a 0 tiene utilidades de $-32\;090$ (Pérdidas)
+- Empleados: por cada empleado adicional que tiene la empresa las utilidades aumentan en promedio $4\;900$ dólares
+- Ventas: por cada dólar adicional de ventas las utilidades aumentan en promedio $0.0003343$
+
+El $R^2$ ajustado del modelo es $0.7605$ es decir que el $76.05$% de la variación de la utilidad es explicada por el número de empleados y las ventas. De acuerdo al estadístico $F$ y al valor $p$ de ese estadístico el modelo global es significativo. 
 
 
 

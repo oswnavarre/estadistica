@@ -7,61 +7,73 @@
 \contentsline {subsection}{\numberline {2.2.1}Niveles de medición}{8}{subsection.2.2.1}
 \contentsline {section}{\numberline {2.3}Otros conceptos importantes}{8}{section.2.3}
 \contentsline {section}{\numberline {2.4}Primeros pasos en R}{8}{section.2.4}
-\contentsline {section}{\numberline {2.5}Medidas de Tendencia Central}{12}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Media}{12}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Mediana}{12}{subsection.2.5.2}
-\contentsline {subsection}{\numberline {2.5.3}Moda}{13}{subsection.2.5.3}
-\contentsline {subsection}{\numberline {2.5.4}¿trabajamos con la media o la mediana?}{13}{subsection.2.5.4}
-\contentsline {subsection}{\numberline {2.5.5}Cálculo de las medidas de tendencia central en R}{13}{subsection.2.5.5}
-\contentsline {subsubsection}{\numberline {2.5.5.1}¿Cuándo usar \texttt {mutate()} y cuándo usar \texttt {summarise()}?}{14}{subsubsection.2.5.5.1}
-\contentsline {section}{\numberline {2.6}Medidas de posición (Cuantiles)}{14}{section.2.6}
-\contentsline {subsection}{\numberline {2.6.1}Tipos de Cuantiles}{15}{subsection.2.6.1}
-\contentsline {subsection}{\numberline {2.6.2}Cálculo de cuantiles}{15}{subsection.2.6.2}
-\contentsline {section}{\numberline {2.7}Medidas de dispersión}{16}{section.2.7}
-\contentsline {subsection}{\numberline {2.7.1}Rango}{16}{subsection.2.7.1}
-\contentsline {subsection}{\numberline {2.7.2}Varianza}{16}{subsection.2.7.2}
-\contentsline {subsection}{\numberline {2.7.3}Desviación}{17}{subsection.2.7.3}
-\contentsline {subsection}{\numberline {2.7.4}Medidas de dispersión en R}{17}{subsection.2.7.4}
-\contentsline {section}{\numberline {2.8}Tablas de frecuencia}{18}{section.2.8}
-\contentsline {subsection}{\numberline {2.8.1}Variables Cualitativas}{18}{subsection.2.8.1}
-\contentsline {subsection}{\numberline {2.8.2}Variables Cuantitativas}{19}{subsection.2.8.2}
-\contentsline {section}{\numberline {2.9}Tablas de Contingencia}{21}{section.2.9}
-\contentsline {section}{\numberline {2.10}Gráficos y Visualización}{22}{section.2.10}
-\contentsline {subsection}{\numberline {2.10.1}Histogramas}{22}{subsection.2.10.1}
-\contentsline {subsection}{\numberline {2.10.2}Diagrama de barras}{23}{subsection.2.10.2}
-\contentsline {subsection}{\numberline {2.10.3}Diagramas de Caja y valores atípicos}{26}{subsection.2.10.3}
-\contentsline {chapter}{\numberline {3}Distribuciones de probabilidad}{29}{chapter.3}
-\contentsline {section}{\numberline {3.1}Variable aleatoria y distribución de probabilidad}{29}{section.3.1}
-\contentsline {section}{\numberline {3.2}Funciones de Densidad de Probabilidad}{30}{section.3.2}
-\contentsline {section}{\numberline {3.3}Distribución de Probabilidad Normal}{31}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Distribución Normal Estándar}{32}{subsection.3.3.1}
-\contentsline {section}{\numberline {3.4}Distribución \(t\) de Student}{32}{section.3.4}
-\contentsline {chapter}{\numberline {4}Intervalos de Confianza y Pruebas de Hipótesis}{37}{chapter.4}
-\contentsline {section}{\numberline {4.1}Intervalos de Confianza}{38}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Interpretación de un intervalo de confianza}{39}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Intervalo de Confianza para la media \(\mu \)}{39}{subsection.4.1.2}
-\contentsline {subsubsection}{\numberline {4.1.2.1}Intervalo de confianza para \(\mu \) cuando se conoce \(\sigma \)}{40}{subsubsection.4.1.2.1}
-\contentsline {subsubsection}{\numberline {4.1.2.2}Intervalo de confianza para \(\mu \) cuando no se conoce \(\sigma \)}{40}{subsubsection.4.1.2.2}
-\contentsline {subsection}{\numberline {4.1.3}Intervalo de Confianza para la proporción}{41}{subsection.4.1.3}
-\contentsline {subsection}{\numberline {4.1.4}Intervalo de Confianza para la diferencia de medias}{41}{subsection.4.1.4}
-\contentsline {subsubsection}{\numberline {4.1.4.1}Desviaciones conocidas}{41}{subsubsection.4.1.4.1}
-\contentsline {subsubsection}{\numberline {4.1.4.2}Desviaciones desconocidas e iguales}{41}{subsubsection.4.1.4.2}
-\contentsline {subsubsection}{\numberline {4.1.4.3}Desviaciones desconocidas y diferentes}{42}{subsubsection.4.1.4.3}
-\contentsline {subsection}{\numberline {4.1.5}Intervalo de Confianza para la diferencia de proporciones}{42}{subsection.4.1.5}
-\contentsline {section}{\numberline {4.2}Pruebas de hipótesis}{42}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Significancia, tamaño del efecto y potencia de la prueba}{44}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}El valor \(p\)}{45}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Estadísticos}{46}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Pruebas de hipótesis e Intervalos de Confianza para la media en R}{47}{subsection.4.2.4}
-\contentsline {subsection}{\numberline {4.2.5}Pruebas de hipótesis e Intervalos de Confianza para la proporción en R}{47}{subsection.4.2.5}
-\contentsline {chapter}{\numberline {5}Regresión Lineal Simple y Correlación}{49}{chapter.5}
-\contentsline {section}{\numberline {5.1}Coeficiente de Correlación}{50}{section.5.1}
-\contentsline {section}{\numberline {5.2}Regresión lineal}{53}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Regresión linear en R}{56}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Interpretación de los coeficientes de regresión}{56}{subsection.5.2.2}
-\contentsline {section}{\numberline {5.3}Bondad de Ajuste del modelo de regresión}{57}{section.5.3}
-\contentsline {section}{\numberline {5.4}Pruebas de Hipótesis para los coeficientes de la regresión}{58}{section.5.4}
-\contentsline {chapter}{\numberline {6}Análisis Factorial}{59}{chapter.6}
-\contentsline {section}{\numberline {6.1}Análisis de Fiabilidad}{59}{section.6.1}
-\contentsline {section}{\numberline {6.2}Evaluación de Análisis Factorial}{59}{section.6.2}
-\contentsline {chapter}{\numberline {7}Algo de series de tiempo}{61}{chapter.7}
+\contentsline {section}{\numberline {2.5}Medidas de Tendencia Central}{13}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Media}{14}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Mediana}{14}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.3}Moda}{15}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.4}¿trabajamos con la media o la mediana?}{15}{subsection.2.5.4}
+\contentsline {subsection}{\numberline {2.5.5}Cálculo de las medidas de tendencia central en R}{15}{subsection.2.5.5}
+\contentsline {subsubsection}{\numberline {2.5.5.1}¿Cuándo usar \texttt {mutate()} y cuándo usar \texttt {summarise()}?}{16}{subsubsection.2.5.5.1}
+\contentsline {section}{\numberline {2.6}Medidas de posición (Cuantiles)}{16}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Tipos de Cuantiles}{16}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.2}Cálculo de cuantiles}{16}{subsection.2.6.2}
+\contentsline {section}{\numberline {2.7}Medidas de dispersión}{17}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}Rango}{18}{subsection.2.7.1}
+\contentsline {subsection}{\numberline {2.7.2}Varianza}{18}{subsection.2.7.2}
+\contentsline {subsection}{\numberline {2.7.3}Desviación}{19}{subsection.2.7.3}
+\contentsline {subsection}{\numberline {2.7.4}Medidas de dispersión en R}{19}{subsection.2.7.4}
+\contentsline {section}{\numberline {2.8}Tablas de frecuencia}{19}{section.2.8}
+\contentsline {subsection}{\numberline {2.8.1}Variables Cualitativas}{20}{subsection.2.8.1}
+\contentsline {subsection}{\numberline {2.8.2}Variables Cuantitativas}{21}{subsection.2.8.2}
+\contentsline {section}{\numberline {2.9}Tablas de Contingencia}{22}{section.2.9}
+\contentsline {section}{\numberline {2.10}Gráficos y Visualización}{23}{section.2.10}
+\contentsline {subsection}{\numberline {2.10.1}Histogramas}{23}{subsection.2.10.1}
+\contentsline {subsection}{\numberline {2.10.2}Diagrama de barras}{26}{subsection.2.10.2}
+\contentsline {subsection}{\numberline {2.10.3}Diagramas de Caja y valores atípicos}{29}{subsection.2.10.3}
+\contentsline {chapter}{\numberline {3}Distribuciones de probabilidad}{33}{chapter.3}
+\contentsline {section}{\numberline {3.1}Variable aleatoria y distribución de probabilidad}{33}{section.3.1}
+\contentsline {section}{\numberline {3.2}Funciones de Densidad de Probabilidad}{34}{section.3.2}
+\contentsline {section}{\numberline {3.3}Distribución de Probabilidad Normal}{34}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Distribución Normal Estándar}{37}{subsection.3.3.1}
+\contentsline {section}{\numberline {3.4}Distribución \(t\) de Student}{38}{section.3.4}
+\contentsline {section}{\numberline {3.5}Cálculo de probabilidades y uso de la distribución normal y la \(t\) de Student en R}{38}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Ejemplos}{39}{subsection.3.5.1}
+\contentsline {chapter}{\numberline {4}Intervalos de Confianza y Pruebas de Hipótesis}{43}{chapter.4}
+\contentsline {section}{\numberline {4.1}Intervalos de Confianza}{44}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Interpretación de un intervalo de confianza}{45}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Intervalo de Confianza para la media \(\mu \)}{46}{subsection.4.1.2}
+\contentsline {subsubsection}{\numberline {4.1.2.1}Intervalo de confianza para \(\mu \) cuando se conoce \(\sigma \)}{46}{subsubsection.4.1.2.1}
+\contentsline {subsubsection}{\numberline {4.1.2.2}Intervalo de confianza para \(\mu \) cuando no se conoce \(\sigma \)}{46}{subsubsection.4.1.2.2}
+\contentsline {subsection}{\numberline {4.1.3}Intervalo de Confianza para la proporción}{46}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}Intervalo de Confianza para la diferencia de medias}{47}{subsection.4.1.4}
+\contentsline {subsubsection}{\numberline {4.1.4.1}Desviaciones conocidas}{47}{subsubsection.4.1.4.1}
+\contentsline {subsubsection}{\numberline {4.1.4.2}Desviaciones desconocidas e iguales}{47}{subsubsection.4.1.4.2}
+\contentsline {subsubsection}{\numberline {4.1.4.3}Desviaciones desconocidas y diferentes}{47}{subsubsection.4.1.4.3}
+\contentsline {subsection}{\numberline {4.1.5}Intervalo de Confianza para la diferencia de proporciones}{48}{subsection.4.1.5}
+\contentsline {section}{\numberline {4.2}Pruebas de hipótesis}{48}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Significancia, tamaño del efecto y potencia de la prueba}{50}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}El valor \(p\)}{51}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Estadísticos}{52}{subsection.4.2.3}
+\contentsline {section}{\numberline {4.3}Intervalos de confianza en R}{53}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Para la media}{53}{subsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.1.1}\(\sigma \) conocida}{53}{subsubsection.4.3.1.1}
+\contentsline {subsubsection}{\numberline {4.3.1.2}\(\sigma \) desconocida}{54}{subsubsection.4.3.1.2}
+\contentsline {subsection}{\numberline {4.3.2}Diferencia de medias}{55}{subsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.2.1}\(\sigma _1\) y \(\sigma _2\) conocidas}{55}{subsubsection.4.3.2.1}
+\contentsline {subsubsection}{\numberline {4.3.2.2}Desviaciones desconocidas y diferentes}{56}{subsubsection.4.3.2.2}
+\contentsline {subsubsection}{\numberline {4.3.2.3}Desviaciones desconocidas e iguales}{56}{subsubsection.4.3.2.3}
+\contentsline {section}{\numberline {4.4}Pruebas de Hipótesis en R}{56}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Para la media}{56}{subsection.4.4.1}
+\contentsline {subsubsection}{\numberline {4.4.1.1}\(\sigma \) conocida}{57}{subsubsection.4.4.1.1}
+\contentsline {chapter}{\numberline {5}Correlación y Regresión}{59}{chapter.5}
+\contentsline {section}{\numberline {5.1}Coeficiente de Correlación}{60}{section.5.1}
+\contentsline {section}{\numberline {5.2}Regresión lineal}{63}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Regresión linear en R}{66}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Interpretación de los coeficientes de regresión}{66}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Bondad de Ajuste del modelo de regresión}{67}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}Pruebas de Hipótesis para los coeficientes de la regresión}{68}{subsection.5.2.4}
+\contentsline {section}{\numberline {5.3}Regresión Múltiple}{68}{section.5.3}
+\contentsline {chapter}{\numberline {6}Análisis Factorial}{71}{chapter.6}
+\contentsline {section}{\numberline {6.1}Análisis de Fiabilidad}{71}{section.6.1}
+\contentsline {section}{\numberline {6.2}Evaluación de Análisis Factorial}{71}{section.6.2}
+\contentsline {chapter}{\numberline {7}Algo de series de tiempo}{73}{chapter.7}

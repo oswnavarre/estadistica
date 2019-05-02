@@ -154,7 +154,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.7.1" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html#rango"><i class="fa fa-check"></i><b>2.7.1</b> Rango</a></li>
 <li class="chapter" data-level="2.7.2" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html#varianza"><i class="fa fa-check"></i><b>2.7.2</b> Varianza</a></li>
 <li class="chapter" data-level="2.7.3" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html#desviacion"><i class="fa fa-check"></i><b>2.7.3</b> Desviación</a></li>
-<li class="chapter" data-level="2.7.4" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html#medidas-de-dispersion-en-r"><i class="fa fa-check"></i><b>2.7.4</b> Medidas de dispersión en R</a></li>
+<li class="chapter" data-level="2.7.4" data-path="medidas-de-dispersion.html"><a href="medidas-de-dispersion.html#dispersion"><i class="fa fa-check"></i><b>2.7.4</b> Medidas de dispersión en R</a></li>
 </ul></li>
 <li class="chapter" data-level="2.8" data-path="tablas-de-frecuencia.html"><a href="tablas-de-frecuencia.html"><i class="fa fa-check"></i><b>2.8</b> Tablas de frecuencia</a><ul>
 <li class="chapter" data-level="2.8.1" data-path="tablas-de-frecuencia.html"><a href="tablas-de-frecuencia.html#variables-cualitativas"><i class="fa fa-check"></i><b>2.8.1</b> Variables Cualitativas</a></li>
@@ -190,7 +190,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.5" data-path="ph.html"><a href="ph.html#pruebas-de-hipotesis-e-intervalos-de-confianza-para-la-proporcion-en-r"><i class="fa fa-check"></i><b>4.2.5</b> Pruebas de hipótesis e Intervalos de Confianza para la proporción en R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Regresión</a></li>
+<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Regresión</a><ul>
+<li class="chapter" data-level="5.1" data-path="coeficiente-de-correlacion.html"><a href="coeficiente-de-correlacion.html"><i class="fa fa-check"></i><b>5.1</b> Coeficiente de Correlación</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="analisis-factorial.html"><a href="analisis-factorial.html"><i class="fa fa-check"></i><b>6</b> Análisis Factorial</a><ul>
 <li class="chapter" data-level="6.1" data-path="analisis-de-fiabilidad.html"><a href="analisis-de-fiabilidad.html"><i class="fa fa-check"></i><b>6.1</b> Análisis de Fiabilidad</a></li>
 <li class="chapter" data-level="6.2" data-path="evaluacion-de-analisis-factorial.html"><a href="evaluacion-de-analisis-factorial.html"><i class="fa fa-check"></i><b>6.2</b> Evaluación de Análisis Factorial</a></li>
@@ -259,7 +261,7 @@ Figura 2.3: Conjuntos graficados
   \tag{2.12}
 \end{equation}\]</span></p>
 </div>
-<div id="medidas-de-dispersion-en-r" class="section level3">
+<div id="dispersion" class="section level3">
 <h3><span class="header-section-number">2.7.4</span> Medidas de dispersión en R</h3>
 <p>Es necesario saber que R defecto no tiene una función para calcular el rango sin embargo para calcular el rango vamos a usar <code>max() - min()</code>, y que además por defecto R tiene una función para calcular la varianza muestral (<code>var()</code>) y otra para calcular la desviación muestral <code>sd()</code>, si se desea obtener la varianza y la desviación poblacional existen por lo menos 3 soluciones:</p>
 <ul>
